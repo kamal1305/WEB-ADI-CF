@@ -5,9 +5,9 @@
 # ============================================================
 backend:
   name: github
-  repo: kamal1305/WEB-ADI-CF  # ej: adicovesa/web-club
+  repo: kamal1305/WEB-ADI-CF
   branch: main
-  base_url: https://TODO-tu-pasarela-oauth.vercel.app
+  base_url: https://decap-oauth.deno.dev
   auth_endpoint: auth
 
 # Las fotos que subáis desde el panel se guardan en /uploads
