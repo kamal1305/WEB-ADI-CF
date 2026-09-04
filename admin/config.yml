@@ -1,0 +1,111 @@
+# ============================================================
+# Configuración del panel de administración (Decap CMS)
+# Antes de usarlo, sustituye los dos valores marcados con «TODO»
+# Guía completa: ver README.md, sección "Configurar el panel"
+# ============================================================
+backend:
+  name: github
+  repo: TODO-usuario/TODO-nombre-del-repositorio   # ej: adicovesa/web-club
+  branch: main
+  base_url: https://TODO-tu-pasarela-oauth.vercel.app
+  auth_endpoint: auth
+
+# Las fotos que subáis desde el panel se guardan en /uploads
+media_folder: "uploads"
+public_folder: "/uploads"
+
+# Editar directamente en GitHub sin pasar por un flujo de revisión
+publish_mode: simple
+
+collections:
+
+  - name: "calendario"
+    label: "Calendario y resultados"
+    files:
+      - name: "partidos"
+        label: "Partidos"
+        file: "content/calendario.json"
+        fields:
+          - label: "Partidos"
+            name: "partidos"
+            widget: "list"
+            summary: "{{fecha}} — {{local}} vs {{visitante}}"
+            fields:
+              - { label: "Fecha", name: "fecha", widget: "string", hint: "Ej: Sáb 12 sep" }
+              - { label: "Categoría", name: "categoria", widget: "string" }
+              - { label: "Equipo local", name: "local", widget: "string" }
+              - { label: "Equipo visitante", name: "visitante", widget: "string" }
+              - { label: "Resultado", name: "resultado", widget: "string", required: false, hint: "Déjalo vacío si aún no se ha jugado" }
+              - { label: "Campo", name: "campo", widget: "string" }
+
+  - name: "equipos"
+    label: "Equipos y jugadores"
+    files:
+      - name: "equipos"
+        label: "Equipos"
+        file: "content/equipos.json"
+        fields:
+          - label: "Equipos"
+            name: "equipos"
+            widget: "list"
+            summary: "{{categoria}}"
+            fields:
+              - { label: "Categoría", name: "categoria", widget: "string" }
+              - { label: "Entrenador/a", name: "entrenador", widget: "string", required: false }
+              - label: "Jugadores"
+                name: "jugadores"
+                widget: "list"
+                summary: "{{nombre}}"
+                fields:
+                  - { label: "Nombre", name: "nombre", widget: "string" }
+                  - { label: "Dorsal", name: "dorsal", widget: "number", required: false, value_type: "int" }
+                  - { label: "Posición", name: "posicion", widget: "string", required: false }
+                  - { label: "Foto", name: "foto", widget: "image", required: false }
+
+  - name: "staff"
+    label: "Cuerpo técnico"
+    files:
+      - name: "staff"
+        label: "Cuerpo técnico"
+        file: "content/staff.json"
+        fields:
+          - label: "Miembros"
+            name: "staff"
+            widget: "list"
+            summary: "{{nombre}} — {{cargo}}"
+            fields:
+              - { label: "Nombre", name: "nombre", widget: "string" }
+              - { label: "Cargo", name: "cargo", widget: "string", hint: "Ej: Entrenador, delegado, preparador físico" }
+              - { label: "Equipo o categoría", name: "equipo", widget: "string", required: false }
+              - { label: "Foto", name: "foto", widget: "image", required: false }
+
+  - name: "galeria"
+    label: "Galería de fotos"
+    files:
+      - name: "galeria"
+        label: "Fotos"
+        file: "content/galeria.json"
+        fields:
+          - label: "Fotos"
+            name: "fotos"
+            widget: "list"
+            summary: "{{descripcion}}"
+            fields:
+              - { label: "Imagen", name: "imagen", widget: "image" }
+              - { label: "Descripción", name: "descripcion", widget: "string", required: false }
+
+  - name: "patrocinadores"
+    label: "Patrocinadores"
+    files:
+      - name: "patrocinadores"
+        label: "Patrocinadores"
+        file: "content/patrocinadores.json"
+        fields:
+          - label: "Patrocinadores"
+            name: "patrocinadores"
+            widget: "list"
+            summary: "{{nombre}}"
+            fields:
+              - { label: "Nombre", name: "nombre", widget: "string" }
+              - { label: "Logo", name: "logo", widget: "image" }
+              - { label: "Web (opcional)", name: "url", widget: "string", required: false }

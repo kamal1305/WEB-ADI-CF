@@ -1,0 +1,11 @@
+{
+  "equipos": [
+    { "categoria": "Bebés", "entrenador": "", "jugadores": [] },
+    { "categoria": "Prebenjamín", "entrenador": "", "jugadores": [] },
+    { "categoria": "Benjamín", "entrenador": "", "jugadores": [] },
+    { "categoria": "Alevín", "entrenador": "", "jugadores": [] },
+    { "categoria": "Infantil", "entrenador": "", "jugadores": [] },
+    { "categoria": "Cadete", "entrenador": "", "jugadores": [] },
+    { "categoria": "Juvenil", "entrenador": "", "jugadores": [] }
+  ]
+}

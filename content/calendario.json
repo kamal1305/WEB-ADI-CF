@@ -1,0 +1,7 @@
+{
+  "partidos": [
+    { "fecha": "Sáb 12 sep", "categoria": "Alevín", "local": "A.D. Icovesa", "visitante": "CD Comarca de Jerez", "resultado": "", "campo": "Picadueñas" },
+    { "fecha": "Dom 13 sep", "categoria": "Benjamín", "local": "Xerez Deportivo FC", "visitante": "A.D. Icovesa", "resultado": "", "campo": "Visitante" },
+    { "fecha": "Sáb 19 sep", "categoria": "Infantil", "local": "A.D. Icovesa", "visitante": "Arcos CF", "resultado": "", "campo": "M. L. Martín Moreno" }
+  ]
+}
