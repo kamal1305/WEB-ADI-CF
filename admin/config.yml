@@ -7,8 +7,8 @@ backend:
   name: github
   repo: kamal1305/WEB-ADI-CF
   branch: main
-  base_url: https://decap-oauth.deno.dev
-  auth_endpoint: auth
+  base_url: https://web-adi-cf-d6ap.vercel.app
+  auth_endpoint: api/auth
 
 # Las fotos que subáis desde el panel se guardan en /uploads
 media_folder: "uploads"
