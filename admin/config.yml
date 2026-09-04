@@ -5,7 +5,7 @@
 # ============================================================
 backend:
   name: github
-  repo: TODO-usuario/TODO-nombre-del-repositorio   # ej: adicovesa/web-club
+  repo: repo: kamal1305/WEB-ADI-CF  # ej: adicovesa/web-club
   branch: main
   base_url: https://TODO-tu-pasarela-oauth.vercel.app
   auth_endpoint: auth
