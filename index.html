@@ -1,512 +1,1205 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>A.D. Icovesa — Fútbol base en Jerez</title>
-<meta name="description" content="Asociación Deportiva Icovesa (ADI C.F.), club de fútbol base en la barriada de Icovesa, Jerez de la Frontera. Fundado en 1994.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Work+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
-<style>
-  :root{
-    --paper:#F7F1EC;
-    --paper-2:#EFE6DD;
-    --ink:#1C1712;
-    --magenta:#C2265F;
-    --magenta-deep:#7A1740;
-    --magenta-soft:#F3DCE4;
-    --grey:#6E675F;
-    --line:#E2D5C9;
-    --maxw:1080px;
-    --ease-smooth: cubic-bezier(0.16, 1, 0.3, 1);
-    --ease-bounce: cubic-bezier(0.175, 0.885, 0.32, 1.275);
-  }
-  *{box-sizing:border-box;}
-  html{scroll-behavior:smooth;}
-  body{
-    margin:0;
-    background:linear-gradient(135deg, var(--paper) 0%, #FDFAF4 100%);
-    color:var(--ink);
-    font-family:'Work Sans',sans-serif;
-    font-size:17px;
-    line-height:1.6;
-    -webkit-font-smoothing:antialiased;
-  }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>A.D. Icovesa — Club de Fútbol Base</title>
+  <meta name="description" content="Asociación Deportiva Icovesa. Club de fútbol base en Jerez de la Frontera. Categorías desde bebés hasta juvenil. Fundado en 1994.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@700;800;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --paper: #F7F1EC;
+      --paper-2: #EFE6DD;
+      --paper-3: #E8DDD4;
+      --ink: #1C1712;
+      --magenta: #C2265F;
+      --magenta-deep: #7A1740;
+      --magenta-soft: #F3DCE4;
+      --grey: #6E675F;
+      --grey-light: #8F8680;
+      --line: #E2D5C9;
+      --maxw: 1280px;
+      --ease-smooth: cubic-bezier(0.16, 1, 0.3, 1);
+      --ease-bounce: cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      --ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
+    }
 
-  @keyframes fadeInUp {
-    from { opacity: 0; transform: translateY(30px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-  @keyframes fadeInScale {
-    from { opacity: 0; transform: scale(0.95); }
-    to { opacity: 1; transform: scale(1); }
-  }
-  @keyframes slideInLeft {
-    from { opacity: 0; transform: translateX(-40px); }
-    to { opacity: 1; transform: translateX(0); }
-  }
-  @keyframes float {
-    0%, 100% { transform: translateY(0px); }
-    50% { transform: translateY(-8px); }
-  }
-  @keyframes pulse {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0.6; }
-  }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
 
-  .fade-in { animation: fadeInUp 0.6s var(--ease-smooth) forwards; opacity: 0; }
-  .fade-in-scale { animation: fadeInScale 0.5s var(--ease-bounce) forwards; }
-  .slide-in { animation: slideInLeft 0.6s var(--ease-smooth) forwards; }
-  .float { animation: float 3s ease-in-out infinite; }
-  .pulse { animation: pulse 2s ease-in-out infinite; }
-  h1,h2,h3{
-    font-family:'Archivo Black',sans-serif;
-    font-weight:400;
-    line-height:1.08;
-    margin:0 0 .5em 0;
-    letter-spacing:-0.01em;
-  }
-  p{margin:0 0 1em 0; max-width:62ch; color:var(--ink);}
-  a{color:var(--magenta-deep);}
-  img{max-width:100%; display:block;}
-  .wrap{max-width:var(--maxw); margin:0 auto; padding:0 24px;}
-  .muted{color:var(--grey);}
-  .section{padding:88px 0;}
-  .section-alt{background:var(--paper-2);}
-  .eyebrow{display:none;} /* intentionally unused: avoiding generic tracked-caps labels */
+    body {
+      margin: 0;
+      padding: 0;
+      background: var(--paper);
+      color: var(--ink);
+      font-family: 'Inter', sans-serif;
+      font-size: 16px;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+    }
 
-  /* ---------- nav ---------- */
-  header.nav{
-    position:sticky; top:0; z-index:50;
-    background:rgba(247,241,236,0.92);
-    backdrop-filter:blur(6px);
-    border-bottom:1px solid var(--line);
-  }
-  .nav-inner{
-    max-width:var(--maxw); margin:0 auto; padding:12px 24px;
-    display:flex; align-items:center; justify-content:space-between;
-  }
-  .brand{display:flex; align-items:center; gap:12px; text-decoration:none; color:var(--ink);}
-  .brand img{width:44px; height:44px; border-radius:50%;}
-  .brand strong{font-family:'Archivo Black',sans-serif; font-size:17px; letter-spacing:-.01em;}
-  nav.links{display:none; gap:26px; align-items:center;}
-  nav.links a{color:var(--ink); text-decoration:none; font-weight:500; font-size:15px;}
-  nav.links a:hover{color:var(--magenta);}
-  .nav-cta{
-    background:var(--magenta); color:#fff !important; padding:9px 18px;
-    border-radius:100px; font-weight:600;
-  }
-  .burger{
-    display:flex; flex-direction:column; gap:5px; background:none; border:none;
-    cursor:pointer; padding:8px;
-  }
-  .burger span{width:22px; height:2px; background:var(--ink);}
-  .mobile-menu{
-    display:none; flex-direction:column; padding:8px 24px 20px;
-    border-top:1px solid var(--line);
-  }
-  .mobile-menu.open{display:flex;}
-  .mobile-menu a{
-    padding:12px 0; text-decoration:none; color:var(--ink);
-    border-bottom:1px solid var(--line); font-weight:500;
-  }
-  @media(min-width:860px){
-    nav.links{display:flex;}
-    .burger{display:none;}
-  }
+    /* ==================== ANIMACIONES ==================== */
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(40px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeInScale {
+      from { opacity: 0; transform: scale(0.92); }
+      to { opacity: 1; transform: scale(1); }
+    }
+    @keyframes slideInLeft {
+      from { opacity: 0; transform: translateX(-60px); }
+      to { opacity: 1; transform: translateX(0); }
+    }
+    @keyframes slideInRight {
+      from { opacity: 0; transform: translateX(60px); }
+      to { opacity: 1; transform: translateX(0); }
+    }
+    @keyframes float {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-12px); }
+    }
+    @keyframes glow {
+      0%, 100% { box-shadow: 0 0 30px rgba(194, 38, 95, 0.3); }
+      50% { box-shadow: 0 0 50px rgba(194, 38, 95, 0.5); }
+    }
+    @keyframes shimmer {
+      0% { background-position: -1000px 0; }
+      100% { background-position: 1000px 0; }
+    }
 
-  /* ---------- hero ---------- */
-  .hero{
-    padding:64px 0 40px; position:relative; overflow:hidden;
-    background: linear-gradient(135deg, var(--paper) 0%, #FDFAF4 50%, var(--magenta-soft) 100%);
-    background-attachment: fixed;
-  }
-  .hero::before{
-    content:'';
-    position:absolute;
-    top:-100px; right:-100px;
-    width:400px; height:400px;
-    background: radial-gradient(circle, rgba(194, 38, 95, 0.08) 0%, transparent 70%);
-    border-radius:50%;
-    pointer-events:none;
-  }
-  .hero-inner{
-    display:grid; gap:36px; align-items:center;
-    position:relative;
-    z-index:2;
-  }
-  @media(min-width:860px){
-    .hero-inner{grid-template-columns:1.15fr .85fr;}
-  }
-  .hero h1{
-    font-size:clamp(38px,7vw,64px); color:var(--ink);
-    animation: slideInLeft 0.8s var(--ease-smooth);
-    letter-spacing:-0.02em;
-  }
-  .hero .lead{
-    font-size:19px; color:var(--grey); max-width:52ch;
-    animation: fadeInUp 0.8s var(--ease-smooth) 0.1s forwards;
-    opacity:0;
-  }
-  .hero-crest{
-    justify-self:center; position:relative; width:min(320px,70vw);
-  }
-  .hero-crest img{
-    width:100%;
-    filter:drop-shadow(0 18px 30px rgba(122,23,64,.25));
-    animation: float 3.5s ease-in-out infinite;
-  }
-  .cta-row{
-    display:flex; flex-wrap:wrap; gap:12px; margin-top:22px;
-    animation: fadeInUp 0.8s var(--ease-smooth) 0.2s forwards;
-    opacity:0;
-  }
-  .btn{
-    display:inline-block; padding:13px 22px; border-radius:100px;
-    text-decoration:none; font-weight:600; font-size:15px;
-    border:2px solid var(--ink);
-    transition: all 0.3s var(--ease-smooth);
-    position:relative;
-    overflow:hidden;
-  }
-  .btn::before{
-    content:'';
-    position:absolute;
-    top:0; left:-100%;
-    width:100%; height:100%;
-    background:rgba(255,255,255,0.2);
-    transition:left 0.3s var(--ease-smooth);
-    z-index:-1;
-  }
-  .btn:hover::before{
-    left:100%;
-  }
-  .btn-primary{
-    background: linear-gradient(135deg, var(--magenta) 0%, #b41e53 100%);
-    border-color:var(--magenta);
-    color:#fff;
-    box-shadow: 0 8px 16px rgba(194, 38, 95, 0.25);
-  }
-  .btn-primary:hover{
-    background: linear-gradient(135deg, var(--magenta-deep) 0%, #8a1638 100%);
-    border-color:var(--magenta-deep);
-    transform:translateY(-2px);
-    box-shadow: 0 12px 24px rgba(122, 23, 64, 0.35);
-  }
-  .btn-ghost{
-    background:transparent;
-    color:var(--ink);
-    box-shadow: 0 2px 8px rgba(28, 23, 18, 0.04);
-  }
-  .btn-ghost:hover{
-    background:var(--ink);
-    color:var(--paper);
-    transform:translateY(-2px);
-    box-shadow: 0 8px 16px rgba(28, 23, 18, 0.15);
-  }
+    .fade-in { animation: fadeInUp 0.6s var(--ease-smooth) forwards; opacity: 0; }
+    .fade-in-scale { animation: fadeInScale 0.5s var(--ease-bounce) forwards; }
+    .slide-in-left { animation: slideInLeft 0.7s var(--ease-smooth) forwards; opacity: 0; }
+    .slide-in-right { animation: slideInRight 0.7s var(--ease-smooth) forwards; opacity: 0; }
+    .float { animation: float 3.5s ease-in-out infinite; }
 
-  /* trail motif — echoes the ball trail in the crest */
-  .trail{width:100%; height:auto; display:block;}
-  .trail-divider{margin:8px 0 -8px;}
+    h1, h2, h3, h4, h5, h6 {
+      font-family: 'Playfair Display', serif;
+      font-weight: 700;
+      line-height: 1.15;
+      margin: 0 0 0.4em 0;
+      letter-spacing: -0.02em;
+    }
+    h1 { font-size: clamp(42px, 8vw, 72px); }
+    h2 { font-size: clamp(32px, 5.5vw, 52px); }
+    h3 { font-size: clamp(24px, 4vw, 36px); }
+    h4 { font-size: 22px; }
 
-  /* ---------- highlight cards on home ---------- */
-  .highlights{
-    display:grid; gap:18px; margin-top:56px;
-    grid-template-columns:1fr;
-  }
-  @media(min-width:640px){ .highlights{grid-template-columns:1fr 1fr;} }
-  .h-card{
-    background:#fff; border:1px solid var(--line); border-radius:18px;
-    padding:26px; position:relative;
-    transition: all 0.3s var(--ease-smooth);
-    box-shadow: 0 2px 8px rgba(28, 23, 18, 0.04);
-  }
-  .h-card:hover{
-    transform: translateY(-6px);
-    box-shadow: 0 16px 32px rgba(28, 23, 18, 0.12);
-    border-color:var(--magenta-soft);
-  }
-  .h-card svg{
-    width:34px; height:34px; margin-bottom:14px;
-    transition: transform 0.3s var(--ease-smooth);
-  }
-  .h-card:hover svg{
-    transform: scale(1.1) rotate(5deg);
-  }
-  .h-card h3{font-size:19px; margin-bottom:8px;}
-  .h-card p{font-size:15px; margin:0; color:var(--grey);}
+    p { margin: 0 0 1em 0; }
+    a { color: var(--magenta); text-decoration: none; transition: color 0.3s var(--ease-smooth); }
+    a:hover { color: var(--magenta-deep); }
+    img { max-width: 100%; display: block; }
 
-  /* ---------- section headers ---------- */
-  .section-head{max-width:640px; margin-bottom:44px;}
-  .section-head h2{font-size:clamp(28px,4.2vw,40px);}
-  .section-head .kicker{
-    color:var(--magenta-deep); font-weight:700; font-size:14px; margin-bottom:10px;
-    display:inline-block;
-  }
+    .wrap { max-width: var(--maxw); margin: 0 auto; padding: 0 clamp(16px, 5vw, 40px); }
+    .section { padding: 88px 0; position: relative; }
+    .section-alt { background: var(--paper-2); }
+    .section-head { margin-bottom: 56px; }
+    .section-head .kicker {
+      display: inline-block;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--magenta);
+      margin-bottom: 16px;
+    }
 
-  /* ---------- club (historia/instalaciones/valores) ---------- */
-  .split{display:grid; gap:44px; grid-template-columns:1fr;}
-  @media(min-width:860px){ .split{grid-template-columns:1fr 1fr;} }
-  .fac-card{
-    border:1px solid var(--line); border-radius:16px; overflow:hidden; background:#fff;
-    margin-bottom:20px;
-  }
-  .fac-card .map{width:100%; height:220px; border:0; display:block;}
-  .fac-card .fac-body{padding:20px 22px;}
-  .fac-card h3{font-size:18px; margin-bottom:6px;}
+    /* ==================== HEADER ==================== */
+    header.nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      background: rgba(247, 241, 236, 0.7);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(226, 213, 201, 0.3);
+      transition: all 0.3s var(--ease-smooth);
+    }
+    header.nav.scrolled {
+      background: rgba(247, 241, 236, 0.95);
+      border-bottom-color: var(--line);
+      box-shadow: 0 8px 24px rgba(28, 23, 18, 0.08);
+    }
 
-  .values{list-style:none; padding:0; margin:0; display:grid; gap:14px;}
-  .values li{
-    display:flex; gap:14px; align-items:flex-start;
-    padding:16px 18px; background:#fff; border:1px solid var(--line); border-radius:14px;
-  }
-  .values li .dot{
-    width:10px; height:10px; border-radius:50%; background:var(--magenta);
-    margin-top:8px; flex:none;
-  }
+    .nav-inner {
+      max-width: var(--maxw);
+      margin: 0 auto;
+      padding: 14px clamp(16px, 5vw, 40px);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
 
-  /* ---------- categorías ---------- */
-  .cat-grid{display:grid; gap:14px; grid-template-columns:repeat(2,1fr);}
-  @media(min-width:640px){ .cat-grid{grid-template-columns:repeat(4,1fr);} }
-  .cat-card{
-    background: linear-gradient(135deg, var(--ink) 0%, #2a2420 100%);
-    color:var(--paper);
-    border-radius:14px;
-    padding:18px 16px;
-    min-height:118px;
-    display:flex;
-    flex-direction:column;
-    justify-content:space-between;
-    transition: all 0.3s var(--ease-smooth);
-    box-shadow: 0 4px 12px rgba(28, 23, 18, 0.1);
-    cursor:pointer;
-  }
-  .cat-card:hover{
-    transform: translateY(-4px) scale(1.02);
-    box-shadow: 0 12px 24px rgba(28, 23, 18, 0.2);
-  }
-  .cat-card .num{
-    font-family:'Archivo Black',sans-serif;
-    font-size:13px;
-    color:var(--magenta-soft);
-    opacity:.85;
-    transition: opacity 0.3s var(--ease-smooth);
-  }
-  .cat-card:hover .num{
-    opacity:1;
-  }
-  .cat-card .name{
-    font-family:'Archivo Black',sans-serif;
-    font-size:16px;
-    line-height:1.15;
-    margin-top:10px;
-    transition: transform 0.3s var(--ease-smooth);
-  }
-  .cat-card:hover .name{
-    transform: translateX(4px);
-  }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      color: var(--ink);
+      text-decoration: none;
+      font-weight: 700;
+      transition: transform 0.3s var(--ease-smooth);
+    }
+    .brand:hover { transform: scale(1.04); }
+    .brand img { width: 42px; height: 42px; border-radius: 50%; box-shadow: 0 4px 12px rgba(194, 38, 95, 0.2); }
+    .brand strong { font-family: 'Playfair Display', serif; font-size: 18px; letter-spacing: -0.01em; }
 
-  /* ---------- plantillas / jugadores / cuerpo técnico ---------- */
-  .team-block{
-    margin-top:28px; padding:22px 22px 24px; background:#fff;
-    border:1px solid var(--line); border-radius:16px;
-  }
-  .team-block h4{
-    font-family:'Archivo Black',sans-serif; font-size:16px; font-weight:400;
-    margin:0 0 16px 0;
-  }
-  .player-grid, .staff-grid{
-    display:grid; gap:14px; grid-template-columns:repeat(2,1fr);
-  }
-  @media(min-width:640px){ .player-grid, .staff-grid{grid-template-columns:repeat(4,1fr);} }
-  @media(min-width:860px){ .staff-grid{grid-template-columns:repeat(4,1fr);} }
-  .player-card, .staff-card{
-    text-align:left;
-    transition: all 0.3s var(--ease-smooth);
-  }
-  .player-card:hover, .staff-card:hover{
-    transform: translateY(-4px);
-  }
-  .player-photo, .staff-photo{
-    aspect-ratio:1/1;
-    border-radius:12px;
-    background: linear-gradient(135deg, var(--paper-2), #E8DDD4);
-    overflow:hidden;
-    margin-bottom:8px;
-    border:1px solid var(--line);
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    transition: all 0.3s var(--ease-smooth);
-    position:relative;
-    box-shadow: 0 4px 12px rgba(28, 23, 18, 0.08);
-  }
-  .player-card:hover .player-photo, .staff-card:hover .staff-photo{
-    transform: scale(1.05);
-    box-shadow: 0 8px 20px rgba(194, 38, 95, 0.15);
-  }
-  .player-photo img, .staff-photo img{
-    width:100%;
-    height:100%;
-    object-fit:cover;
-    transition: transform 0.3s var(--ease-smooth);
-  }
-  .player-card:hover .player-photo img, .staff-card:hover .staff-photo img{
-    transform: scale(1.08);
-  }
-  .player-photo svg, .staff-photo svg{width:24px; height:24px; color:var(--grey); opacity:.5;}
-  .player-name, .staff-name{
-    font-weight:600;
-    font-size:14.5px;
-    line-height:1.25;
-    transition: color 0.3s var(--ease-smooth);
-  }
-  .player-card:hover .player-name, .staff-card:hover .staff-name{
-    color:var(--magenta);
-  }
-  .player-meta, .staff-role{font-size:13px; color:var(--grey);}
-  .empty-note{font-size:14.5px; color:var(--grey); margin:0;}
+    nav.links {
+      display: none;
+      gap: 32px;
+      align-items: center;
+    }
+    nav.links a {
+      color: var(--ink);
+      font-weight: 500;
+      font-size: 15px;
+      position: relative;
+      transition: color 0.3s var(--ease-smooth);
+    }
+    nav.links a::after {
+      content: '';
+      position: absolute;
+      bottom: -6px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--magenta);
+      transition: width 0.3s var(--ease-smooth);
+    }
+    nav.links a:hover { color: var(--magenta); }
+    nav.links a:hover::after { width: 100%; }
 
-  .steps{list-style:none; counter-reset:step; padding:0; margin:28px 0 0; display:grid; gap:16px;}
-  .steps li{
-    counter-increment:step; display:flex; gap:16px; align-items:flex-start;
-  }
-  .steps li::before{
-    content:counter(step);
-    font-family:'Archivo Black',sans-serif;
-    background:var(--magenta-soft); color:var(--magenta-deep);
-    width:32px; height:32px; border-radius:50%; flex:none;
-    display:flex; align-items:center; justify-content:center; font-size:14px;
-  }
-  .todo-box{
-    margin-top:28px; border:1px dashed var(--grey); border-radius:14px; padding:18px 20px;
-    background:transparent;
-  }
-  .todo-box p{margin:0; font-size:14.5px; color:var(--grey);}
-  .todo-box strong{color:var(--ink);}
+    .burger {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 8px;
+    }
+    .burger span {
+      width: 24px;
+      height: 2.5px;
+      background: var(--ink);
+      border-radius: 2px;
+      transition: all 0.3s var(--ease-smooth);
+    }
+    .burger.open span:nth-child(1) { transform: rotate(45deg) translateY(12px); }
+    .burger.open span:nth-child(2) { opacity: 0; }
+    .burger.open span:nth-child(3) { transform: rotate(-45deg) translateY(-12px); }
 
-  /* ---------- temporada tabla ---------- */
-  .table-wrap{overflow-x:auto; border:1px solid var(--line); border-radius:14px; background:#fff;}
-  table{width:100%; border-collapse:collapse; min-width:560px; font-size:14.5px;}
-  th,td{text-align:left; padding:12px 16px; border-bottom:1px solid var(--line); white-space:nowrap;}
-  th{font-family:'Archivo Black',sans-serif; font-size:12.5px; color:var(--grey); font-weight:400;}
-  tr:last-child td{border-bottom:none;}
-  .example-tag{
-    display:inline-block; font-size:11.5px; font-weight:700; color:var(--magenta-deep);
-    background:var(--magenta-soft); padding:2px 8px; border-radius:100px; margin-left:8px;
-  }
+    .mobile-menu {
+      display: none;
+      position: absolute;
+      top: 60px;
+      left: 0;
+      right: 0;
+      background: rgba(247, 241, 236, 0.98);
+      backdrop-filter: blur(10px);
+      flex-direction: column;
+      padding: 16px 24px 24px;
+      border-bottom: 1px solid var(--line);
+    }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a {
+      padding: 14px 0;
+      color: var(--ink);
+      font-weight: 500;
+      border-bottom: 1px solid var(--line);
+      transition: color 0.3s var(--ease-smooth);
+    }
+    .mobile-menu a:last-child { border-bottom: none; }
+    .mobile-menu a:hover { color: var(--magenta); }
 
-  /* ---------- eventos ---------- */
-  .event-grid{display:grid; gap:20px; grid-template-columns:1fr;}
-  @media(min-width:760px){ .event-grid{grid-template-columns:1fr 1fr;} }
-  .event-card{
-    border:1px solid var(--line);
-    border-radius:16px;
-    padding:26px;
-    background:#fff;
-    border-top:4px solid var(--magenta);
-    transition: all 0.3s var(--ease-smooth);
-    box-shadow: 0 4px 12px rgba(28, 23, 18, 0.06);
-    position:relative;
-    overflow:hidden;
-  }
-  .event-card::before{
-    content:'';
-    position:absolute;
-    top:0; right:0;
-    width:0; height:4px;
-    background:var(--magenta);
-    transition:width 0.3s var(--ease-smooth);
-  }
-  .event-card:hover{
-    transform: translateY(-6px);
-    box-shadow: 0 16px 32px rgba(194, 38, 95, 0.15);
-  }
-  .event-card:hover::before{
-    width:100%;
-  }
-  .event-card h3{
-    font-size:20px;
-    margin-bottom:8px;
-    transition: color 0.3s var(--ease-smooth);
-  }
-  .event-card:hover h3{
-    color:var(--magenta);
-  }
-  .event-card p{font-size:15px; color:var(--grey); margin-bottom:0;}
+    @media (min-width: 860px) {
+      nav.links { display: flex; }
+      .burger { display: none; }
+      .mobile-menu { display: none !important; }
+    }
 
-  /* ---------- colabora ---------- */
-  .collab-grid{display:grid; gap:14px; grid-template-columns:1fr; margin-top:8px;}
-  @media(min-width:640px){ .collab-grid{grid-template-columns:1fr 1fr;} }
-  .collab-item{
-    display:flex; gap:12px; padding:16px 18px; background:#fff; border:1px solid var(--line);
-    border-radius:14px; align-items:flex-start;
-  }
-  .collab-item svg{flex:none; width:22px; height:22px; margin-top:2px; color:var(--magenta);}
-  .sponsor-row{
-    display:grid; grid-template-columns:repeat(2,1fr); gap:14px; margin-top:32px;
-  }
-  @media(min-width:640px){ .sponsor-row{grid-template-columns:repeat(4,1fr);} }
-  .sponsor-slot{
-    aspect-ratio:2/1; border:1.5px dashed var(--grey); border-radius:12px;
-    display:flex; align-items:center; justify-content:center;
-    color:var(--grey); font-size:12.5px; text-align:center; padding:8px;
-  }
+    /* ==================== HERO ==================== */
+    .hero {
+      min-height: 100vh;
+      padding-top: 80px;
+      padding-bottom: 0;
+      position: relative;
+      overflow: hidden;
+      background: linear-gradient(135deg, var(--paper) 0%, #FDFAF4 50%, rgba(194, 38, 95, 0.04) 100%);
+    }
 
-  /* ---------- galería ---------- */
-  .gallery-grid{
-    display:grid; gap:12px; grid-template-columns:repeat(2,1fr); margin-top:8px;
-  }
-  @media(min-width:640px){ .gallery-grid{grid-template-columns:repeat(4,1fr);} }
-  .gallery-slot{
-    aspect-ratio:1/1; border-radius:14px; background:var(--paper-2);
-    border:1px solid var(--line);
-    display:flex; align-items:center; justify-content:center;
-    color:var(--grey);
-  }
-  .gallery-slot:nth-child(3n+1){background:var(--magenta-soft);}
-  .gallery-slot svg{width:26px; height:26px; opacity:.6;}
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -200px;
+      right: -150px;
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(194, 38, 95, 0.12) 0%, transparent 70%);
+      border-radius: 50%;
+      pointer-events: none;
+    }
 
-  /* ---------- contacto ---------- */
-  .contact-grid{display:grid; gap:44px; grid-template-columns:1fr;}
-  @media(min-width:860px){ .contact-grid{grid-template-columns:1fr 1fr;} }
-  .info-list{list-style:none; padding:0; margin:0; display:grid; gap:12px;}
-  .info-list li{
-    display:flex; justify-content:space-between; gap:16px;
-    padding:13px 0; border-bottom:1px solid var(--line); font-size:15px;
-  }
-  .info-list li span:first-child{color:var(--grey);}
-  .info-list li span:last-child{font-weight:600; text-align:right;}
-  .social-row{display:flex; gap:12px; margin-top:22px;}
-  .social-btn{
-    display:flex; align-items:center; gap:8px; padding:11px 18px;
-    border:2px solid var(--ink); border-radius:100px; text-decoration:none;
-    color:var(--ink); font-weight:600; font-size:14.5px;
-  }
-  .social-btn:hover{background:var(--ink); color:var(--paper);}
-  .social-btn svg{width:17px; height:17px;}
+    .hero::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--magenta), transparent);
+    }
 
-  /* ---------- footer ---------- */
-  footer{background:var(--ink); color:var(--paper); padding:52px 0 28px;}
-  .footer-top{display:flex; flex-wrap:wrap; gap:32px; justify-content:space-between; align-items:flex-start;}
-  .footer-brand{display:flex; align-items:center; gap:14px;}
-  .footer-brand img{width:52px; height:52px; border-radius:50%;}
-  .footer-brand strong{font-family:'Archivo Black',sans-serif; font-size:18px;}
-  footer .muted{color:#B9AFA6;}
-  footer a{color:var(--paper); text-decoration:none;}
-  .footer-cols{display:flex; gap:56px; flex-wrap:wrap;}
-  .footer-cols div{display:flex; flex-direction:column; gap:9px; font-size:14.5px;}
-  .footer-cols strong{font-family:'Archivo Black',sans-serif; font-size:12.5px; color:#B9AFA6; margin-bottom:4px;}
-  .footer-bottom{
-    margin-top:44px; padding-top:22px; border-top:1px solid #38312A;
-    font-size:13px; color:#8f867d; display:flex; justify-content:space-between; flex-wrap:wrap; gap:8px;
-  }
-</style>
+    .hero-inner {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 48px;
+      align-items: center;
+      min-height: calc(100vh - 80px);
+      position: relative;
+      z-index: 2;
+    }
+
+    @media (min-width: 960px) {
+      .hero-inner { grid-template-columns: 1.2fr 0.8fr; gap: 64px; }
+    }
+
+    .hero-content h1 {
+      animation: slideInLeft 0.8s var(--ease-smooth);
+      margin-bottom: 20px;
+      color: var(--ink);
+    }
+
+    .hero-content .lead {
+      font-size: 18px;
+      color: var(--grey-light);
+      max-width: 52ch;
+      line-height: 1.8;
+      animation: fadeInUp 0.8s var(--ease-smooth) 0.1s forwards;
+      opacity: 0;
+      margin-bottom: 32px;
+    }
+
+    .cta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      animation: fadeInUp 0.8s var(--ease-smooth) 0.2s forwards;
+      opacity: 0;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 14px 28px;
+      border-radius: 100px;
+      font-weight: 600;
+      font-size: 15px;
+      border: 2px solid;
+      text-decoration: none;
+      cursor: pointer;
+      transition: all 0.3s var(--ease-smooth);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .btn::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: rgba(255, 255, 255, 0.15);
+      transition: left 0.3s var(--ease-smooth);
+      z-index: -1;
+    }
+    .btn:hover::before { left: 100%; }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--magenta) 0%, #b41e53 100%);
+      border-color: var(--magenta);
+      color: #fff;
+      box-shadow: 0 12px 24px rgba(194, 38, 95, 0.25);
+    }
+    .btn-primary:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 16px 36px rgba(194, 38, 95, 0.35);
+      border-color: var(--magenta-deep);
+    }
+
+    .btn-secondary {
+      background: transparent;
+      border-color: var(--ink);
+      color: var(--ink);
+      box-shadow: 0 2px 8px rgba(28, 23, 18, 0.04);
+    }
+    .btn-secondary:hover {
+      background: var(--ink);
+      color: var(--paper);
+      transform: translateY(-3px);
+      box-shadow: 0 12px 24px rgba(28, 23, 18, 0.12);
+    }
+
+    .hero-crest {
+      position: relative;
+      width: min(340px, 80vw);
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .hero-crest img {
+      width: 100%;
+      height: auto;
+      filter: drop-shadow(0 30px 50px rgba(122, 23, 64, 0.3));
+      animation: float 3.5s ease-in-out infinite;
+    }
+
+    /* ==================== ÚLTIMO PARTIDO ==================== */
+    .match-section {
+      background: linear-gradient(135deg, var(--ink) 0%, #2a2420 100%);
+      color: var(--paper);
+      padding: 64px 0;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .match-section::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      right: -10%;
+      width: 500px;
+      height: 500px;
+      background: radial-gradient(circle, rgba(194, 38, 95, 0.1) 0%, transparent 70%);
+      border-radius: 50%;
+    }
+
+    .match-card {
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 24px;
+      padding: 48px 32px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .match-header {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    .match-header .competition {
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--magenta-soft);
+      margin-bottom: 12px;
+    }
+
+    .match-header .match-date {
+      font-size: 15px;
+      color: var(--paper-3);
+    }
+
+    .match-teams {
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      gap: 32px;
+      align-items: center;
+      margin-bottom: 40px;
+    }
+
+    .team-box {
+      text-align: center;
+      animation: fadeInScale 0.6s var(--ease-bounce);
+    }
+
+    .team-shield {
+      width: 80px;
+      height: 80px;
+      margin: 0 auto 16px;
+      border-radius: 12px;
+      background: rgba(255, 255, 255, 0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 2px solid rgba(194, 38, 95, 0.3);
+      transition: all 0.3s var(--ease-smooth);
+    }
+    .team-box:hover .team-shield {
+      border-color: var(--magenta);
+      box-shadow: 0 0 20px rgba(194, 38, 95, 0.3);
+    }
+
+    .team-shield img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      padding: 8px;
+    }
+
+    .team-name {
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--paper);
+    }
+
+    .match-score {
+      text-align: center;
+      animation: fadeInScale 0.7s var(--ease-bounce) 0.2s forwards;
+      opacity: 0;
+    }
+
+    .score-display {
+      font-family: 'Playfair Display', serif;
+      font-size: 64px;
+      font-weight: 800;
+      line-height: 1;
+      margin-bottom: 12px;
+      background: linear-gradient(135deg, var(--magenta) 0%, #e8659c 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .match-status {
+      font-size: 14px;
+      color: var(--paper-3);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      font-weight: 600;
+    }
+
+    .match-details {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 24px;
+      margin-top: 40px;
+      padding-top: 40px;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .detail-item {
+      text-align: center;
+    }
+
+    .detail-label {
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--magenta-soft);
+      margin-bottom: 8px;
+      font-weight: 700;
+    }
+
+    .detail-value {
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--paper);
+    }
+
+    /* ==================== NOTICIAS MAGAZINE ==================== */
+    .news-section {
+      padding: 88px 0;
+    }
+
+    .news-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 32px;
+    }
+
+    @media (min-width: 960px) {
+      .news-grid { grid-template-columns: 2fr 1fr; }
+    }
+
+    .news-featured {
+      position: relative;
+      border-radius: 20px;
+      overflow: hidden;
+      height: 400px;
+      background: linear-gradient(135deg, var(--paper-2) 0%, var(--paper-3) 100%);
+      animation: slideInLeft 0.7s var(--ease-smooth);
+    }
+
+    .news-featured::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(to top, rgba(28, 23, 18, 0.7) 0%, transparent 50%);
+      z-index: 2;
+    }
+
+    .news-featured-content {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: 40px 32px;
+      z-index: 3;
+      color: var(--paper);
+    }
+
+    .news-featured-content .tag {
+      display: inline-block;
+      background: var(--magenta);
+      color: white;
+      padding: 6px 12px;
+      border-radius: 100px;
+      font-size: 12px;
+      font-weight: 700;
+      margin-bottom: 16px;
+    }
+
+    .news-featured-content h3 {
+      color: var(--paper);
+      margin-bottom: 12px;
+      line-height: 1.25;
+    }
+
+    .news-featured-content .date {
+      font-size: 13px;
+      color: var(--paper-3);
+      font-weight: 600;
+    }
+
+    .news-sidebar {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 24px;
+    }
+
+    .news-card {
+      background: white;
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      overflow: hidden;
+      transition: all 0.3s var(--ease-smooth);
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+      animation: fadeInUp 0.6s var(--ease-smooth);
+    }
+
+    .news-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 20px 40px rgba(28, 23, 18, 0.1);
+      border-color: var(--magenta-soft);
+    }
+
+    .news-card-image {
+      width: 100%;
+      height: 160px;
+      background: linear-gradient(135deg, var(--paper-2) 0%, var(--paper-3) 100%);
+      overflow: hidden;
+    }
+
+    .news-card-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.4s var(--ease-smooth);
+    }
+
+    .news-card:hover .news-card-image img {
+      transform: scale(1.08);
+    }
+
+    .news-card-content {
+      padding: 20px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .news-card-content .date {
+      font-size: 12px;
+      color: var(--grey);
+      margin-bottom: 8px;
+      font-weight: 600;
+    }
+
+    .news-card-content h4 {
+      color: var(--ink);
+      margin-bottom: 12px;
+      transition: color 0.3s var(--ease-smooth);
+    }
+
+    .news-card:hover .news-card-content h4 {
+      color: var(--magenta);
+    }
+
+    .news-card-content p {
+      font-size: 14px;
+      color: var(--grey);
+      margin: 0;
+      flex: 1;
+    }
+
+    /* ==================== CATEGORÍAS ==================== */
+    .categories-section {
+      padding: 88px 0;
+    }
+
+    .cat-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: 16px;
+    }
+
+    @media (min-width: 640px) {
+      .cat-grid { grid-template-columns: repeat(4, 1fr); }
+    }
+
+    .cat-card {
+      background: linear-gradient(135deg, var(--ink) 0%, #2a2420 100%);
+      color: var(--paper);
+      border-radius: 16px;
+      padding: 24px 16px;
+      min-height: 140px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: all 0.3s var(--ease-smooth);
+      box-shadow: 0 8px 16px rgba(28, 23, 18, 0.12);
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+      animation: fadeInUp 0.6s var(--ease-smooth);
+    }
+
+    .cat-card::before {
+      content: '';
+      position: absolute;
+      top: -100%;
+      left: -100%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(194, 38, 95, 0.3) 0%, transparent 70%);
+      transition: all 0.6s var(--ease-smooth);
+    }
+
+    .cat-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 16px 32px rgba(28, 23, 18, 0.2);
+    }
+
+    .cat-card:hover::before {
+      top: 50%;
+      left: 50%;
+    }
+
+    .cat-card-content {
+      position: relative;
+      z-index: 2;
+    }
+
+    .cat-label {
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--magenta-soft);
+      opacity: 0.8;
+      transition: opacity 0.3s var(--ease-smooth);
+    }
+
+    .cat-card:hover .cat-label { opacity: 1; }
+
+    .cat-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 22px;
+      font-weight: 700;
+      line-height: 1.2;
+      margin-top: 12px;
+      transition: transform 0.3s var(--ease-smooth);
+    }
+
+    .cat-card:hover .cat-name { transform: translateX(4px); }
+
+    /* ==================== PLANTILLA DE JUGADORES ==================== */
+    .team-section {
+      padding: 88px 0;
+      background: var(--paper-2);
+    }
+
+    .team-block {
+      margin-top: 56px;
+    }
+
+    .team-block h4 {
+      font-size: 20px;
+      color: var(--ink);
+      margin-bottom: 32px;
+      padding-bottom: 16px;
+      border-bottom: 2px solid var(--line);
+    }
+
+    .player-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+      gap: 20px;
+    }
+
+    @media (min-width: 640px) {
+      .player-grid { grid-template-columns: repeat(4, 1fr); }
+    }
+
+    @media (min-width: 960px) {
+      .player-grid { grid-template-columns: repeat(6, 1fr); }
+    }
+
+    .player-card {
+      text-align: center;
+      transition: all 0.3s var(--ease-smooth);
+      animation: fadeInUp 0.6s var(--ease-smooth);
+    }
+
+    .player-card:hover {
+      transform: translateY(-12px);
+    }
+
+    .player-photo {
+      aspect-ratio: 1/1.2;
+      border-radius: 14px;
+      background: linear-gradient(135deg, var(--paper-2) 0%, var(--paper-3) 100%);
+      overflow: hidden;
+      margin-bottom: 12px;
+      border: 2px solid var(--line);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      box-shadow: 0 8px 20px rgba(28, 23, 18, 0.08);
+      transition: all 0.3s var(--ease-smooth);
+    }
+
+    .player-card:hover .player-photo {
+      border-color: var(--magenta);
+      box-shadow: 0 16px 32px rgba(194, 38, 95, 0.2);
+    }
+
+    .player-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.4s var(--ease-smooth);
+    }
+
+    .player-card:hover .player-photo img {
+      transform: scale(1.1);
+    }
+
+    .player-photo svg {
+      width: 32px;
+      height: 32px;
+      color: var(--grey);
+      opacity: 0.4;
+    }
+
+    .player-number {
+      position: absolute;
+      top: 8px;
+      right: 8px;
+      background: var(--magenta);
+      color: white;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 14px;
+      opacity: 0.9;
+      transition: all 0.3s var(--ease-smooth);
+    }
+
+    .player-card:hover .player-number { opacity: 1; }
+
+    .player-name {
+      font-weight: 700;
+      font-size: 15px;
+      color: var(--ink);
+      margin-bottom: 4px;
+      transition: color 0.3s var(--ease-smooth);
+    }
+
+    .player-card:hover .player-name { color: var(--magenta); }
+
+    .player-meta {
+      font-size: 12px;
+      color: var(--grey);
+    }
+
+    .staff-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+      gap: 20px;
+    }
+
+    @media (min-width: 640px) {
+      .staff-grid { grid-template-columns: repeat(4, 1fr); }
+    }
+
+    .staff-card {
+      text-align: center;
+      transition: all 0.3s var(--ease-smooth);
+      animation: fadeInUp 0.6s var(--ease-smooth);
+    }
+
+    .staff-card:hover { transform: translateY(-8px); }
+
+    .staff-photo {
+      aspect-ratio: 1/1;
+      border-radius: 12px;
+      background: linear-gradient(135deg, var(--paper-2) 0%, var(--paper-3) 100%);
+      overflow: hidden;
+      margin-bottom: 12px;
+      border: 2px solid var(--line);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 8px 16px rgba(28, 23, 18, 0.08);
+      transition: all 0.3s var(--ease-smooth);
+    }
+
+    .staff-card:hover .staff-photo {
+      border-color: var(--magenta);
+      box-shadow: 0 12px 24px rgba(194, 38, 95, 0.15);
+    }
+
+    .staff-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.3s var(--ease-smooth);
+    }
+
+    .staff-card:hover .staff-photo img { transform: scale(1.08); }
+
+    .staff-photo svg { width: 28px; height: 28px; color: var(--grey); opacity: 0.4; }
+
+    .staff-name {
+      font-weight: 700;
+      font-size: 14px;
+      color: var(--ink);
+      margin-bottom: 4px;
+      transition: color 0.3s var(--ease-smooth);
+    }
+
+    .staff-card:hover .staff-name { color: var(--magenta); }
+
+    .staff-role { font-size: 12px; color: var(--grey); }
+
+    .empty-note {
+      font-size: 15px;
+      color: var(--grey);
+      padding: 32px;
+      text-align: center;
+      background: var(--paper);
+      border-radius: 12px;
+      border: 1px dashed var(--line);
+    }
+
+    /* ==================== GALERÍA MASONRY ==================== */
+    .gallery-section {
+      padding: 88px 0;
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+      animation: fadeInUp 0.8s var(--ease-smooth);
+    }
+
+    @media (min-width: 640px) {
+      .gallery-grid { grid-template-columns: repeat(3, 1fr); gap: 20px; }
+    }
+
+    @media (min-width: 960px) {
+      .gallery-grid {
+        grid-template-columns: repeat(4, 1fr);
+        grid-auto-rows: 220px;
+        gap: 20px;
+      }
+    }
+
+    .gallery-slot {
+      border-radius: 16px;
+      overflow: hidden;
+      background: linear-gradient(135deg, var(--paper-2) 0%, var(--paper-3) 100%);
+      border: 1px solid var(--line);
+      position: relative;
+      cursor: pointer;
+      transition: all 0.3s var(--ease-smooth);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      aspect-ratio: 1/1;
+      min-height: 200px;
+      animation: fadeInScale 0.6s var(--ease-smooth);
+    }
+
+    @media (min-width: 960px) {
+      .gallery-slot:nth-child(1),
+      .gallery-slot:nth-child(6) { grid-column: span 2; grid-row: span 2; }
+    }
+
+    .gallery-slot img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.4s var(--ease-smooth);
+    }
+
+    .gallery-slot:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 20px 40px rgba(28, 23, 18, 0.15);
+    }
+
+    .gallery-slot:hover img { transform: scale(1.08); }
+
+    .gallery-slot svg {
+      width: 40px;
+      height: 40px;
+      color: var(--grey);
+      opacity: 0.3;
+    }
+
+    /* ==================== PATROCINADORES ==================== */
+    .sponsors-section {
+      padding: 88px 0;
+      background: var(--paper-2);
+    }
+
+    .sponsor-row {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+      margin-top: 40px;
+    }
+
+    @media (min-width: 640px) {
+      .sponsor-row { grid-template-columns: repeat(4, 1fr); }
+    }
+
+    .sponsor-slot {
+      aspect-ratio: 2/1;
+      border: 2px solid var(--line);
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: white;
+      transition: all 0.3s var(--ease-smooth);
+      padding: 16px;
+      animation: fadeInUp 0.6s var(--ease-smooth);
+      color: var(--grey);
+      font-size: 13px;
+      text-align: center;
+    }
+
+    .sponsor-slot img {
+      max-width: 85%;
+      max-height: 65%;
+      object-fit: contain;
+    }
+
+    .sponsor-slot:hover {
+      border-color: var(--magenta);
+      box-shadow: 0 12px 24px rgba(194, 38, 95, 0.12);
+      transform: translateY(-4px);
+    }
+
+    /* ==================== SECCIONES GENÉRICAS ==================== */
+    .highlight-grid {
+      display: grid;
+      gap: 24px;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      margin-top: 40px;
+    }
+
+    .h-card {
+      background: white;
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      padding: 32px;
+      transition: all 0.3s var(--ease-smooth);
+      box-shadow: 0 4px 12px rgba(28, 23, 18, 0.06);
+      animation: fadeInUp 0.6s var(--ease-smooth);
+    }
+
+    .h-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 20px 40px rgba(28, 23, 18, 0.12);
+      border-color: var(--magenta-soft);
+    }
+
+    .h-card h3 {
+      color: var(--ink);
+      margin-bottom: 12px;
+      font-size: 20px;
+    }
+
+    .h-card p {
+      font-size: 15px;
+      color: var(--grey);
+      margin: 0;
+    }
+
+    /* ==================== TABLA DE CALENDARIO ==================== */
+    .table-wrap {
+      overflow-x: auto;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      background: white;
+      margin-top: 32px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 560px;
+      font-size: 14px;
+    }
+
+    th, td {
+      text-align: left;
+      padding: 14px 18px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    th {
+      font-family: 'Playfair Display', serif;
+      font-weight: 700;
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--grey);
+      background: var(--paper);
+    }
+
+    tr:last-child td { border-bottom: none; }
+
+    tbody tr:hover { background: var(--paper); }
+
+    /* ==================== FOOTER ==================== */
+    footer {
+      background: var(--ink);
+      color: var(--paper);
+      padding: 56px 0 28px;
+    }
+
+    .footer-top {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 48px;
+      margin-bottom: 48px;
+      padding-bottom: 48px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .footer-brand {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .footer-brand img {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      box-shadow: 0 4px 12px rgba(194, 38, 95, 0.2);
+    }
+
+    .footer-brand strong {
+      font-family: 'Playfair Display', serif;
+      font-size: 18px;
+      letter-spacing: -0.01em;
+    }
+
+    .footer-brand .muted {
+      font-size: 13px;
+      color: #B9AFA6;
+    }
+
+    .footer-cols {
+      display: flex;
+      gap: 0;
+      flex-wrap: wrap;
+    }
+
+    .footer-col {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      min-width: 160px;
+    }
+
+    .footer-col strong {
+      font-family: 'Playfair Display', serif;
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--paper);
+      margin-bottom: 4px;
+    }
+
+    .footer-col a {
+      color: #B9AFA6;
+      font-size: 14px;
+      transition: color 0.3s var(--ease-smooth);
+    }
+
+    .footer-col a:hover {
+      color: var(--magenta);
+    }
+
+    .footer-bottom {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 16px;
+      font-size: 13px;
+      color: #8f867d;
+    }
+
+    .footer-bottom a {
+      color: #B9AFA6;
+    }
+
+    .footer-bottom a:hover {
+      color: var(--magenta);
+    }
+
+    /* ==================== RESPONSIVE ==================== */
+    @media (max-width: 640px) {
+      .hero-inner { grid-template-columns: 1fr; padding-top: 20px; }
+      .match-teams { gap: 16px; }
+      .team-shield { width: 70px; height: 70px; }
+      .score-display { font-size: 48px; }
+      .news-grid { grid-template-columns: 1fr; }
+      .cta-row { gap: 10px; }
+      .btn { padding: 12px 20px; font-size: 14px; }
+    }
+  </style>
 </head>
 <body>
 
-<header class="nav">
+<!-- ==================== HEADER ==================== -->
+<header class="nav" id="header">
   <div class="nav-inner">
     <a href="#inicio" class="brand">
       <img src="img/escudo.png" alt="Escudo A.D. Icovesa">
@@ -520,192 +1213,229 @@
       <a href="#galeria">Galería</a>
       <a href="#contacto" class="nav-cta">Contacto</a>
     </nav>
-    <button class="burger" onclick="document.getElementById('mmenu').classList.toggle('open')" aria-label="Abrir menú">
+    <button class="burger" id="burger" onclick="toggleMenu()" aria-label="Abrir menú">
       <span></span><span></span><span></span>
     </button>
   </div>
-  <div class="mobile-menu" id="mmenu">
-    <a href="#club">El club</a>
-    <a href="#futbol-base">Fútbol base</a>
-    <a href="#temporada">Temporada</a>
-    <a href="#eventos">Eventos</a>
-    <a href="#colabora">Colabora</a>
-    <a href="#galeria">Galería</a>
-    <a href="#contacto">Contacto</a>
+  <div class="mobile-menu" id="mobile-menu">
+    <a href="#inicio" onclick="closeMenu()">Inicio</a>
+    <a href="#club" onclick="closeMenu()">El club</a>
+    <a href="#futbol-base" onclick="closeMenu()">Fútbol base</a>
+    <a href="#temporada" onclick="closeMenu()">Temporada</a>
+    <a href="#eventos" onclick="closeMenu()">Eventos</a>
+    <a href="#galeria" onclick="closeMenu()">Galería</a>
+    <a href="#contacto" onclick="closeMenu()">Contacto</a>
   </div>
 </header>
 
-<!-- ===================== HERO / INICIO ===================== -->
+<!-- ==================== HERO ==================== -->
 <section id="inicio" class="hero">
   <div class="wrap hero-inner">
-    <div>
+    <div class="hero-content">
       <h1>Fútbol base en el corazón de Icovesa</h1>
-      <p class="lead">La Asociación Deportiva Icovesa forma a niños y niñas del barrio de Icovesa, en Jerez de la Frontera, desde 1994. Un club humilde y cercano, comprometido con la formación deportiva y personal de sus jugadores.</p>
+      <p class="lead">Formación integral de niños y niñas desde bebés hasta juveniles. Un club humilde y cercano, comprometido con la excelencia deportiva y la educación personal.</p>
       <div class="cta-row">
-        <a href="#club" class="btn btn-primary">Conoce el club</a>
-        <a href="#futbol-base" class="btn btn-ghost">Inscribe a tu hijo/a</a>
-        <a href="#colabora" class="btn btn-ghost">Colabora con nosotros</a>
+        <a href="#futbol-base" class="btn btn-primary">Inscribe a tu hijo/a</a>
+        <a href="#club" class="btn btn-secondary">Conoce el club</a>
+        <a href="#contacto" class="btn btn-secondary">Contacto</a>
       </div>
     </div>
     <div class="hero-crest">
       <img src="img/escudo.png" alt="Escudo de la A.D. Icovesa, fundada en 1994">
     </div>
   </div>
+</section>
 
-  <div class="wrap trail-divider">
-    <svg class="trail" viewBox="0 0 1080 60" xmlns="http://www.w3.org/2000/svg">
-      <path d="M0 50 C 250 10, 550 10, 1080 45" stroke="#C2265F" stroke-width="2.5" fill="none" opacity="0.55"/>
-      <path d="M0 40 C 250 2, 550 2, 1080 32" stroke="#C2265F" stroke-width="2.5" fill="none" opacity="0.3"/>
-    </svg>
-  </div>
-
+<!-- ==================== ÚLTIMO PARTIDO ==================== -->
+<section class="match-section">
   <div class="wrap">
-    <div class="highlights">
-      <div class="h-card">
-        <svg viewBox="0 0 24 24" fill="none" stroke="#C2265F" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M12 3v3M12 18v3M3 12h3M18 12h3M6.5 6.5l2 2M15.5 15.5l2 2M6.5 17.5l2-2M15.5 8.5l2-2"/></svg>
-        <h3>Nuestros equipos</h3>
-        <p>Desde bebés y prebenjamines hasta juveniles, pasando por benjamines, alevines, infantiles y cadetes.</p>
+    <div class="match-card">
+      <div class="match-header">
+        <div class="competition">Temporada 2026-2027</div>
+        <div class="match-date" id="match-date">Próximo partido</div>
       </div>
-      <div class="h-card">
-        <svg viewBox="0 0 24 24" fill="none" stroke="#C2265F" stroke-width="1.8"><path d="M4 20l6-6M4 20v-5M4 20h5"/><path d="M20 4l-6 6M20 4v5M20 4h-5"/></svg>
-        <h3>Escuela de iniciación</h3>
-        <p>Donde muchos dan sus primeros pasos con el balón y aprenden valores, técnica y compañerismo.</p>
+
+      <div class="match-teams">
+        <div class="team-box">
+          <div class="team-shield">
+            <img src="img/escudo.png" alt="Local">
+          </div>
+          <div class="team-name" id="local-name">A.D. Icovesa</div>
+        </div>
+
+        <div class="match-score">
+          <div class="score-display" id="score-display">—</div>
+          <div class="match-status" id="match-status">Próximamente</div>
+        </div>
+
+        <div class="team-box">
+          <div class="team-shield">
+            <img src="img/escudo.png" alt="Visitante" id="away-shield">
+          </div>
+          <div class="team-name" id="away-name">Rival</div>
+        </div>
       </div>
-      <div class="h-card">
-        <svg viewBox="0 0 24 24" fill="none" stroke="#C2265F" stroke-width="1.8"><path d="M12 21s-7-4.5-9.5-9C.7 8 2 4 6 4c2 0 3.5 1.3 4 2 .5-.7 2-2 4-2 4 0 5.3 4 3.5 8-2.5 4.5-9.5 9-9.5 9"/></svg>
-        <h3>Eventos solidarios</h3>
-        <p>Participamos en torneos benéficos como el Maratón de Fútbol 7 "Por Valentina", junto a otros clubes de Jerez y la provincia.</p>
-      </div>
-      <div class="h-card">
-        <svg viewBox="0 0 24 24" fill="none" stroke="#C2265F" stroke-width="1.8"><path d="M3 10l9-6 9 6M5 9v10h14V9"/></svg>
-        <h3>Instalaciones</h3>
-        <p>Entrenamos y jugamos en el Campo Municipal de Picadueñas y el Complejo Deportivo Manuel Luis Martín Moreno.</p>
+
+      <div class="match-details">
+        <div class="detail-item">
+          <div class="detail-label">Categoría</div>
+          <div class="detail-value" id="match-category">—</div>
+        </div>
+        <div class="detail-item">
+          <div class="detail-label">Campo</div>
+          <div class="detail-value" id="match-field">—</div>
+        </div>
+        <div class="detail-item">
+          <div class="detail-label">Fecha</div>
+          <div class="detail-value" id="match-date-detail">—</div>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ===================== EL CLUB ===================== -->
+<!-- ==================== NOTICIAS MAGAZINE ==================== -->
+<section id="noticias" class="news-section">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="kicker">Noticias</span>
+      <h2>Última hora del club</h2>
+    </div>
+
+    <div class="news-grid">
+      <div class="news-featured">
+        <div class="news-featured-content">
+          <span class="tag">Destacado</span>
+          <h3>Éxito en la IV Maratón de Fútbol 7 "Por Valentina"</h3>
+          <p class="date">Septiembre 2026</p>
+        </div>
+      </div>
+
+      <div class="news-sidebar">
+        <div class="news-card">
+          <div class="news-card-image"></div>
+          <div class="news-card-content">
+            <div class="date">15 de septiembre</div>
+            <h4>Plantillas 2026-2027 confirmadas</h4>
+            <p>Se han publicado las plantillas oficiales de todas las categorías con los nuevos fichajes de la temporada.</p>
+          </div>
+        </div>
+
+        <div class="news-card">
+          <div class="news-card-image"></div>
+          <div class="news-card-content">
+            <div class="date">10 de septiembre</div>
+            <h4>Inicio de entrenamientos</h4>
+            <p>Comienza la temporada con la ilusión y energía de siempre. Bienvenidos a todos.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== EL CLUB ==================== -->
 <section id="club" class="section section-alt">
   <div class="wrap">
     <div class="section-head">
       <span class="kicker">El club</span>
-      <h2>Historia, instalaciones y filosofía</h2>
+      <h2>Historia, valores e instalaciones</h2>
     </div>
 
-    <div class="split">
-      <div>
-        <h3 style="font-size:20px;">Historia de la A.D. Icovesa</h3>
-        <p>La A.D. Icovesa es un club histórico del fútbol base en la barriada de Icovesa, en Jerez de la Frontera, fundado en 1994. Desde sus inicios ha sido un referente deportivo para las familias del barrio, ofreciendo una alternativa saludable y formativa para niños y jóvenes.</p>
-        <p>A lo largo de los años, el club ha mantenido una línea de trabajo centrada en la formación, el compañerismo y el respeto, consolidándose como un espacio de crecimiento deportivo y personal para varias generaciones de la barriada.</p>
+    <div class="highlight-grid">
+      <div class="h-card">
+        <h3>Fundada en 1994</h3>
+        <p>Más de 30 años formando a niños y niñas del barrio de Icovesa, en Jerez de la Frontera. Un club histórico, humilde y cercano.</p>
       </div>
-      <div>
-        <h3 style="font-size:20px;">Filosofía y valores</h3>
-        <p>En la A.D. Icovesa entendemos el fútbol como una herramienta educativa. Nuestro objetivo no es solo formar futbolistas, sino personas: trabajamos el respeto, el esfuerzo, el trabajo en equipo y la superación diaria.</p>
-        <ul class="values">
-          <li><span class="dot"></span><span>Formación integral, deportiva y personal</span></li>
-          <li><span class="dot"></span><span>Inclusión y acceso para todos los niños del barrio</span></li>
-          <li><span class="dot"></span><span>Respeto a compañeros, rivales, árbitros y cuerpo técnico</span></li>
-          <li><span class="dot"></span><span>Compromiso familiar y cercanía</span></li>
-          <li><span class="dot"></span><span>Participación en iniciativas solidarias y sociales</span></li>
-        </ul>
-      </div>
-    </div>
 
-    <div style="margin-top:56px;">
-      <h3 style="font-size:20px; margin-bottom:20px;">Nuestras instalaciones</h3>
-      <div class="split">
-        <div class="fac-card">
-          <iframe class="map" loading="lazy" src="https://www.google.com/maps?q=Campo+Municipal+de+Picadue%C3%B1as+Jerez+de+la+Frontera&output=embed"></iframe>
-          <div class="fac-body">
-            <h3>Campo Municipal de Picadueñas</h3>
-            <p class="muted" style="font-size:14.5px; margin:0;">Carretera de Ronda / Circunvalación. Aquí se disputan la mayoría de entrenamientos y partidos oficiales.</p>
-          </div>
-        </div>
-        <div class="fac-card">
-          <iframe class="map" loading="lazy" src="https://www.google.com/maps?q=Avenida+del+Amontillado+Icovesa+Jerez+de+la+Frontera&output=embed"></iframe>
-          <div class="fac-body">
-            <h3>Complejo Deportivo Manuel Luis Martín Moreno</h3>
-            <p class="muted" style="font-size:14.5px; margin:0;">Avenida del Amontillado. Antiguas pistas de Icovesa, renovadas con fondos europeos.</p>
-          </div>
-        </div>
+      <div class="h-card">
+        <h3>Filosofía educativa</h3>
+        <p>Entendemos el fútbol como herramienta educativa. Formamos personas: respeto, esfuerzo, trabajo en equipo y superación diaria.</p>
+      </div>
+
+      <div class="h-card">
+        <h3>Instalaciones de calidad</h3>
+        <p>Campo Municipal de Picadueñas y Complejo Deportivo Manuel Luis Martín Moreno. Espacios seguros y modernos para entrenamientos y partidos.</p>
+      </div>
+
+      <div class="h-card">
+        <h3>Inclusión y acceso</h3>
+        <p>Abiertos a todos los niños del barrio, con cuotas accesibles y programa de ayudas para familias con menos recursos.</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ===================== FÚTBOL BASE ===================== -->
-<section id="futbol-base" class="section">
+<!-- ==================== FÚTBOL BASE ==================== -->
+<section id="futbol-base" class="categories-section">
   <div class="wrap">
     <div class="section-head">
       <span class="kicker">Fútbol base</span>
-      <h2>Categorías, escuela e inscripción</h2>
-      <p style="margin-top:12px;">La A.D. Icovesa compite en las categorías de fútbol base reguladas por la Real Federación Andaluza de Fútbol (RFAF), con equipos en distintas etapas formativas.</p>
+      <h2>Categorías y equipos</h2>
+      <p style="margin-top:16px; font-size:16px; color:var(--grey);">Desde bebés hasta juveniles. Formamos a las generaciones futuras del fútbol de Icovesa.</p>
     </div>
 
     <div class="cat-grid" id="cat-grid">
-      <div class="cat-card"><div class="num">Escuela</div><div class="name">Bebés</div></div>
-      <div class="cat-card"><div class="num">Categoría</div><div class="name">Prebenjamín</div></div>
-      <div class="cat-card"><div class="num">Categoría</div><div class="name">Benjamín</div></div>
-      <div class="cat-card"><div class="num">Categoría</div><div class="name">Alevín</div></div>
-      <div class="cat-card"><div class="num">Categoría</div><div class="name">Infantil</div></div>
-      <div class="cat-card"><div class="num">Categoría</div><div class="name">Cadete</div></div>
-      <div class="cat-card"><div class="num">Categoría</div><div class="name">Juvenil</div></div>
-      <div class="cat-card" style="background:var(--magenta); color:#fff;"><div class="num" style="color:#fff; opacity:.85;">¿Aún no juegas?</div><div class="name">Ven a probar</div></div>
+      <div class="cat-card"><div class="cat-card-content"><div class="cat-label">Escuela</div><div class="cat-name">Bebés</div></div></div>
+      <div class="cat-card"><div class="cat-card-content"><div class="cat-label">Categoría</div><div class="cat-name">Prebenjamín</div></div></div>
+      <div class="cat-card"><div class="cat-card-content"><div class="cat-label">Categoría</div><div class="cat-name">Benjamín</div></div></div>
+      <div class="cat-card"><div class="cat-card-content"><div class="cat-label">Categoría</div><div class="cat-name">Alevín</div></div></div>
+      <div class="cat-card"><div class="cat-card-content"><div class="cat-label">Categoría</div><div class="cat-name">Infantil</div></div></div>
+      <div class="cat-card"><div class="cat-card-content"><div class="cat-label">Categoría</div><div class="cat-name">Cadete</div></div></div>
+      <div class="cat-card"><div class="cat-card-content"><div class="cat-label">Categoría</div><div class="cat-name">Juvenil</div></div></div>
+      <div class="cat-card" style="background: linear-gradient(135deg, var(--magenta) 0%, #b41e53 100%);"><div class="cat-card-content"><div class="cat-label" style="color:#fff;opacity:.9;">¿Aún no juegas?</div><div class="cat-name">Ven a probar</div></div></div>
     </div>
 
-    <div style="margin-top:44px;">
-      <h3 style="font-size:18px;">Plantillas</h3>
-      <p class="muted" style="font-size:14.5px;">Jugadoras y jugadores de cada equipo, gestionados desde el panel de administración.</p>
+    <div class="team-section" style="padding:0; background:transparent; margin-top:56px;">
+      <h3 style="font-size:28px; margin-bottom:8px;">Plantillas 2026-2027</h3>
+      <p style="color:var(--grey); margin-bottom:32px;">Conoce a los jugadores y entrenadoras de cada equipo.</p>
       <div id="plantillas-wrap">
-        <p class="empty-note">Las plantillas se publicarán próximamente. El club puede añadirlas desde el panel de administración (<a href="admin/">/admin</a>).</p>
+        <p class="empty-note">Las plantillas se publicarán próximamente.</p>
       </div>
     </div>
 
-    <div style="margin-top:56px; max-width:64ch;">
-      <h3 style="font-size:20px;">Escuela de iniciación</h3>
-      <p>Nuestra escuela de iniciación es la puerta de entrada al club para los más pequeños. Aquí los niños y niñas aprenden a divertirse con el balón, desarrollan coordinación, motricidad y sus primeros conceptos de juego, siempre desde un enfoque pedagógico y cercano.</p>
-      <p>De esta escuela han salido jugadores que llegaron a categorías destacadas, prueba de que el trabajo en la base da sus frutos con el tiempo.</p>
-    </div>
-
-    <div style="margin-top:56px;">
-      <h3 style="font-size:18px;">Cuerpo técnico</h3>
-      <p class="muted" style="font-size:14.5px;">Entrenadores, delegados y preparadores del club.</p>
+    <div style="margin-top:64px;">
+      <h3 style="font-size:28px; margin-bottom:8px;">Cuerpo técnico</h3>
+      <p style="color:var(--grey); margin-bottom:32px;">Entrenadores, delegados y preparadores físicos.</p>
       <div class="staff-grid" id="staff-grid">
         <p class="empty-note">El cuerpo técnico se publicará próximamente.</p>
       </div>
     </div>
 
-    <div style="margin-top:56px;">
-      <h3 style="font-size:20px;">Cómo inscribirse</h3>
-      <p>Si quieres que tu hijo o hija forme parte de la A.D. Icovesa, ponte en contacto con nosotros. Te informaremos de las categorías disponibles, los horarios de entrenamiento y todo lo necesario para formalizar la inscripción.</p>
-      <ol class="steps">
-        <li>Escríbenos por Instagram, Facebook o el formulario de contacto.</li>
-        <li>Acude a un entrenamiento o día de prueba con tu hijo/a.</li>
-        <li>Entrega la documentación básica: ficha federativa, foto y datos médicos.</li>
-        <li>Formaliza la inscripción y la cuota de socio.</li>
+    <div style="margin-top:64px; max-width:64ch;">
+      <h3 style="font-size:28px; margin-bottom:16px;">Cómo inscribirse</h3>
+      <p style="font-size:16px; line-height:1.8; margin-bottom:24px;">Si quieres que tu hijo o hija forme parte de la A.D. Icovesa:</p>
+      <ol style="list-style:decimal; padding-left:24px; color:var(--grey); line-height:1.8;">
+        <li>Escríbenos por Instagram o Facebook</li>
+        <li>Acude a un entrenamiento de prueba</li>
+        <li>Entrega la documentación básica</li>
+        <li>Formaliza la inscripción</li>
       </ol>
-      <div class="todo-box">
-        <p><strong>Datos por confirmar:</strong> edad mínima de acceso, importe de la cuota, documentación exacta requerida y fecha de inicio de la temporada. El club puede completar estos datos directamente editando esta sección.</p>
-      </div>
+      <a href="#contacto" class="btn btn-primary" style="margin-top:32px;">Ponte en contacto</a>
     </div>
   </div>
 </section>
 
-<!-- ===================== TEMPORADA ===================== -->
+<!-- ==================== TEMPORADA ==================== -->
 <section id="temporada" class="section section-alt">
   <div class="wrap">
     <div class="section-head">
-      <span class="kicker">Temporada 2026–2027</span>
-      <h2>Calendario, resultados y clasificaciones</h2>
+      <span class="kicker">Temporada 2026-2027</span>
+      <h2>Calendario y resultados</h2>
+      <p style="margin-top:16px; font-size:16px; color:var(--grey);">Sigue los partidos de todas nuestras categorías.</p>
     </div>
 
-    <h3 style="font-size:18px;">Calendario y resultados</h3>
-    <p class="muted" style="font-size:14.5px;">Se actualiza desde el panel de administración cada jornada.</p>
     <div class="table-wrap">
       <table>
         <thead>
-          <tr><th>Fecha</th><th>Categoría</th><th>Local</th><th>Visitante</th><th>Resultado</th><th>Campo</th></tr>
+          <tr>
+            <th>Fecha</th>
+            <th>Categoría</th>
+            <th>Local</th>
+            <th>Visitante</th>
+            <th>Resultado</th>
+            <th>Campo</th>
+          </tr>
         </thead>
         <tbody id="calendario-body">
           <tr><td>Sáb 12 sep</td><td>Alevín</td><td>A.D. Icovesa</td><td>CD Comarca de Jerez</td><td>—</td><td>Picadueñas</td></tr>
@@ -714,177 +1444,186 @@
         </tbody>
       </table>
     </div>
-
-    <div style="margin-top:48px; max-width:64ch;">
-      <h3 style="font-size:18px;">Clasificaciones</h3>
-      <p>Seguimos de cerca la clasificación de nuestros equipos en las competiciones de la RFAF. Consulta las tablas oficiales, actualizadas por categoría, directamente en la federación.</p>
-      <a href="https://www.rfaf.es/pnfg/NPcd/NFG_VerClub?cod_primaria=1000118&codigo_club=3499" target="_blank" rel="noopener" class="btn btn-ghost" style="margin-top:6px;">Ver ficha del club en la RFAF</a>
-    </div>
   </div>
 </section>
 
-<!-- ===================== EVENTOS ===================== -->
+<!-- ==================== EVENTOS ==================== -->
 <section id="eventos" class="section">
   <div class="wrap">
     <div class="section-head">
       <span class="kicker">Eventos y torneos</span>
       <h2>Fútbol solidario y competición</h2>
-      <p style="margin-top:12px;">Participamos activamente en torneos locales y provinciales, además de iniciativas solidarias que usan el fútbol como herramienta de transformación social.</p>
     </div>
-    <div class="event-grid">
-      <div class="event-card">
+
+    <div class="highlight-grid">
+      <div class="h-card">
         <h3>IV Maratón de Fútbol 7 "Por Valentina"</h3>
-        <p>Torneo solidario en La Canaleja, con 24 partidos en categorías alevín, prebenjamín y benjamín, junto a clubes como Xerez Deportivo FC, CD Comarca de Jerez y Arcos CF. Recauda fondos para la lucha contra la FOP, organizado por "Un grito a la esperanza".</p>
+        <p>Torneo solidario en La Canaleja. 24 partidos en categorías alevín, prebenjamín y benjamín. Recauda fondos para la lucha contra la FOP.</p>
       </div>
-      <div class="event-card">
+
+      <div class="h-card">
         <h3>Bornos Cup</h3>
-        <p>Torneo en Bornos con participación de la A.D. Icovesa junto a clubes como UD Villamartín, Rayo Alcalá, Atlético Bornense y Arcos CF, en categorías bebé, prebenjamín, benjamín y alevín, masculino y femenino.</p>
+        <p>Torneo con participación de clubes de la provincia. Categorías bebé, prebenjamín, benjamín y alevín, masculino y femenino.</p>
+      </div>
+
+      <div class="h-card">
+        <h3>Ligas Provinciales</h3>
+        <p>Competición oficial de la Real Federación Andaluza de Fútbol. Participamos en todas las categorías reguladas.</p>
+      </div>
+
+      <div class="h-card">
+        <h3>Jornadas solidarias</h3>
+        <p>Iniciativas del club para apoyar causas sociales y comunitarias. Aquí el deporte es formación y solidaridad.</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ===================== COLABORA ===================== -->
-<section id="colabora" class="section section-alt">
-  <div class="wrap">
-    <div class="section-head">
-      <span class="kicker">Colabora</span>
-      <h2>Ayúdanos a seguir formando cantera</h2>
-      <p style="margin-top:12px;">El fútbol base no sería posible sin el apoyo de familias, colaboradores y patrocinadores. Si eres una empresa o particular y quieres apoyar el deporte en Icovesa, puedes hacerlo de varias formas.</p>
-    </div>
-
-    <div class="collab-grid">
-      <div class="collab-item">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20.4 6H3.6a1 1 0 00-1 1v10a1 1 0 001 1h16.8a1 1 0 001-1V7a1 1 0 00-1-1z"/><path d="M2.6 9h18.8"/></svg>
-        <span>Patrocinio de equipaciones: camisetas, chándals y material.</span>
-      </div>
-      <div class="collab-item">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M9.5 15a2.5 2.5 0 002.5 2h.3a2.2 2.2 0 000-4.4h-.6a2.2 2.2 0 010-4.4H12a2.5 2.5 0 012.5 2M12 6.5v11"/></svg>
-        <span>Ayuda económica para inscripciones de familias con menos recursos.</span>
-      </div>
-      <div class="collab-item">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 21s-7-4.5-9.5-9C.7 8 2 4 6 4c2 0 3.5 1.3 4 2 .5-.7 2-2 4-2 4 0 5.3 4 3.5 8-2.5 4.5-9.5 9-9.5 9"/></svg>
-        <span>Colaboración en torneos y eventos solidarios del club.</span>
-      </div>
-      <div class="collab-item">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="8.5"/><path d="M12 7v5l3.5 2"/></svg>
-        <span>Donación de material deportivo: balones, conos y petos.</span>
-      </div>
-    </div>
-
-    <div style="margin-top:44px;">
-      <h3 style="font-size:16px; color:var(--grey); font-family:'Work Sans'; font-weight:600;">Nuestros colaboradores</h3>
-      <div class="sponsor-row" id="sponsor-row">
-        <div class="sponsor-slot">Tu logo aquí</div>
-        <div class="sponsor-slot">Tu logo aquí</div>
-        <div class="sponsor-slot">Tu logo aquí</div>
-        <div class="sponsor-slot">Tu logo aquí</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ===================== GALERÍA ===================== -->
-<section id="galeria" class="section">
+<!-- ==================== GALERÍA ==================== -->
+<section id="galeria" class="gallery-section">
   <div class="wrap">
     <div class="section-head">
       <span class="kicker">Galería</span>
-      <h2>Partidos, entrenamientos y afición</h2>
-      <p style="margin-top:12px;">Aquí irán las fotos de la temporada: partidos en Picadueñas y en el polideportivo de Icovesa, entrenamientos y jornadas solidarias. Sube las vuestras para completar la galería.</p>
+      <h2>Momentos del club</h2>
+      <p style="margin-top:16px; font-size:16px; color:var(--grey);">Partidos, entrenamientos y jornadas solidarias. Capturamos la pasión y la alegría del fútbol base.</p>
     </div>
+
     <div class="gallery-grid" id="galeria-grid">
-      <div class="gallery-slot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="9" cy="11" r="2"/><path d="M21 17l-5.5-5-3 3-2-2L3 18"/></svg></div>
-      <div class="gallery-slot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="9" cy="11" r="2"/><path d="M21 17l-5.5-5-3 3-2-2L3 18"/></svg></div>
-      <div class="gallery-slot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="9" cy="11" r="2"/><path d="M21 17l-5.5-5-3 3-2-2L3 18"/></svg></div>
-      <div class="gallery-slot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="9" cy="11" r="2"/><path d="M21 17l-5.5-5-3 3-2-2L3 18"/></svg></div>
+      <div class="gallery-slot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="9" cy="11" r="2"/><path d="M21 17l-5.5-5-3 3-2-2L3 18"/></svg></div>
+      <div class="gallery-slot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="9" cy="11" r="2"/><path d="M21 17l-5.5-5-3 3-2-2L3 18"/></svg></div>
+      <div class="gallery-slot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="9" cy="11" r="2"/><path d="M21 17l-5.5-5-3 3-2-2L3 18"/></svg></div>
+      <div class="gallery-slot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="9" cy="11" r="2"/><path d="M21 17l-5.5-5-3 3-2-2L3 18"/></svg></div>
     </div>
   </div>
 </section>
 
-<!-- ===================== CONTACTO ===================== -->
+<!-- ==================== PATROCINADORES ==================== -->
+<section class="sponsors-section">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="kicker">Colaboradores</span>
+      <h2>Empresas que apoyan el club</h2>
+    </div>
+
+    <div class="sponsor-row" id="sponsor-row">
+      <div class="sponsor-slot">Tu logo aquí</div>
+      <div class="sponsor-slot">Tu logo aquí</div>
+      <div class="sponsor-slot">Tu logo aquí</div>
+      <div class="sponsor-slot">Tu logo aquí</div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== CONTACTO ==================== -->
 <section id="contacto" class="section section-alt">
   <div class="wrap">
     <div class="section-head">
       <span class="kicker">Contacto</span>
       <h2>¿Hablamos?</h2>
-      <p style="margin-top:12px;">¿Tienes alguna duda, quieres inscribir a tu hijo/a o proponer una colaboración? Escríbenos por redes y te respondemos lo antes posible.</p>
+      <p style="margin-top:16px; font-size:16px; color:var(--grey);">Inscripción de jugadores, colaboraciones, patrocinios. Nos encanta conocer gente interesada en el club.</p>
     </div>
 
-    <div class="contact-grid">
-      <div>
-        <ul class="info-list">
-          <li><span>Denominación</span><span>A.D. Icovesa</span></li>
-          <li><span>Domicilio social</span><span>C/ Oloroso s/n, 11404 Jerez de la Frontera (Cádiz)</span></li>
-          <li><span>Delegación</span><span>Cádiz — RFAF</span></li>
-          <li><span>CIF</span><span>G11694767</span></li>
-          <li><span>Campo principal</span><span>Campo Municipal de Picadueñas</span></li>
-        </ul>
-        <div class="social-row">
-          <a class="social-btn" href="https://www.instagram.com/adicovesa/" target="_blank" rel="noopener">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/></svg>
-            Instagram
-          </a>
-          <a class="social-btn" href="https://www.facebook.com/adicovesa/" target="_blank" rel="noopener">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M14 9h3V6h-3c-1.7 0-3 1.3-3 3v2H8v3h3v6h3v-6h3l1-3h-4V9c0-.6.4-1 1-1z"/></svg>
-            Facebook
-          </a>
-        </div>
-        <div class="todo-box" style="margin-top:26px;">
-          <p><strong>Pendiente:</strong> añadir aquí un teléfono o email directo de contacto en cuanto el club lo facilite.</p>
+    <div class="highlight-grid">
+      <div class="h-card">
+        <h3>Dirección</h3>
+        <p>C/ Oloroso s/n, 11404 Jerez de la Frontera (Cádiz)</p>
+        <p style="font-size:13px; color:var(--grey); margin:0;">G11694767 · RFAF Cádiz</p>
+      </div>
+
+      <div class="h-card">
+        <h3>Síguenos</h3>
+        <p>Encontramos en redes sociales. Noticias diarias, galerías y contacto directo.</p>
+        <div style="display:flex; gap:12px; margin-top:16px;">
+          <a href="https://www.instagram.com/adicovesa/" target="_blank" rel="noopener" class="btn btn-secondary" style="font-size:14px;padding:10px 16px;">Instagram</a>
+          <a href="https://www.facebook.com/adicovesa/" target="_blank" rel="noopener" class="btn btn-secondary" style="font-size:14px;padding:10px 16px;">Facebook</a>
         </div>
       </div>
 
-      <div class="fac-card" style="margin-bottom:0;">
-        <iframe class="map" style="height:280px;" loading="lazy" src="https://www.google.com/maps?q=C%2F+Oloroso+s%2Fn+11404+Jerez+de+la+Frontera&output=embed"></iframe>
-        <div class="fac-body">
-          <h3>Cómo llegar</h3>
-          <p class="muted" style="font-size:14.5px; margin:0;">C/ Oloroso s/n, 11404 Jerez de la Frontera (Cádiz).</p>
-        </div>
+      <div class="h-card">
+        <h3>Instalaciones</h3>
+        <p><strong>Campo Municipal de Picadueñas</strong><br>Carretera de Ronda / Circunvalación</p>
+        <p><strong>Complejo Deportivo Manuel Luis Martín Moreno</strong><br>Avenida del Amontillado</p>
+      </div>
+
+      <div class="h-card">
+        <h3>Próximamente</h3>
+        <p>Teléfono y email de contacto directo del club.</p>
+        <p style="font-size:14px; color:var(--magenta); margin:0;"><strong>Contacta por redes sociales ahora</strong></p>
       </div>
     </div>
   </div>
 </section>
 
+<!-- ==================== FOOTER ==================== -->
 <footer>
   <div class="wrap">
     <div class="footer-top">
       <div class="footer-brand">
         <img src="img/escudo.png" alt="Escudo A.D. Icovesa">
         <div>
-          <strong>A.D. Icovesa</strong><br>
-          <span class="muted" style="font-size:14px;">Fundada en 1994 · Jerez de la Frontera</span>
+          <strong>A.D. Icovesa</strong>
+          <div class="muted">Fundada en 1994</div>
+          <div class="muted">Jerez de la Frontera · Cádiz</div>
         </div>
       </div>
-      <div class="footer-cols">
-        <div>
-          <strong>Explora</strong>
-          <a href="#club">El club</a>
-          <a href="#futbol-base">Fútbol base</a>
-          <a href="#temporada">Temporada</a>
-        </div>
-        <div>
-          <strong>Participa</strong>
-          <a href="#colabora">Colabora</a>
-          <a href="#eventos">Eventos</a>
-          <a href="#contacto">Contacto</a>
-        </div>
-        <div>
-          <strong>Síguenos</strong>
-          <a href="https://www.instagram.com/adicovesa/" target="_blank" rel="noopener">Instagram</a>
-          <a href="https://www.facebook.com/adicovesa/" target="_blank" rel="noopener">Facebook</a>
-        </div>
+
+      <div class="footer-col">
+        <strong>Explora</strong>
+        <a href="#club">El club</a>
+        <a href="#futbol-base">Fútbol base</a>
+        <a href="#temporada">Temporada</a>
+        <a href="#eventos">Eventos</a>
+      </div>
+
+      <div class="footer-col">
+        <strong>Participa</strong>
+        <a href="#futbol-base">Inscribe a tu hijo/a</a>
+        <a href="#contacto">Colabora</a>
+        <a href="#galeria">Galería</a>
+        <a href="#contacto">Contacto</a>
+      </div>
+
+      <div class="footer-col">
+        <strong>Síguenos</strong>
+        <a href="https://www.instagram.com/adicovesa/" target="_blank" rel="noopener">Instagram</a>
+        <a href="https://www.facebook.com/adicovesa/" target="_blank" rel="noopener">Facebook</a>
+        <a href="admin/" target="_blank">Panel de admin</a>
       </div>
     </div>
+
     <div class="footer-bottom">
       <span>© 2026 A.D. Icovesa · G11694767</span>
-      <span>C/ Oloroso s/n, Jerez de la Frontera · <a href="admin/" style="text-decoration:underline;">Panel de administración</a></span>
+      <span>Diseño y desarrollo con cuidado</span>
     </div>
   </div>
 </footer>
 
 <script>
 (function(){
-  // Animación al scroll - Intersection Observer
+  // ==================== FUNCIONES DE MENÚ ====================
+  window.toggleMenu = function(){
+    const burger = document.getElementById('burger');
+    const menu = document.getElementById('mobile-menu');
+    burger.classList.toggle('open');
+    menu.classList.toggle('open');
+  };
+
+  window.closeMenu = function(){
+    document.getElementById('burger').classList.remove('open');
+    document.getElementById('mobile-menu').classList.remove('open');
+  };
+
+  // ==================== EFECTO SCROLL EN HEADER ====================
+  window.addEventListener('scroll', () => {
+    const header = document.getElementById('header');
+    if (window.scrollY > 50) {
+      header.classList.add('scrolled');
+    } else {
+      header.classList.remove('scrolled');
+    }
+  });
+
+  // ==================== OBSERVER PARA ANIMACIONES ====================
   const observerOptions = {
     threshold: 0.1,
     rootMargin: '0px 0px -50px 0px'
@@ -893,29 +1632,21 @@
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
-        entry.target.style.animationDelay = (entry.target.dataset.delay || 0) + 'ms';
+        const delay = entry.target.dataset.delay || 0;
+        entry.target.style.animationDelay = delay + 'ms';
         entry.target.classList.add('fade-in');
         observer.unobserve(entry.target);
       }
     });
   }, observerOptions);
 
-  // Observar elementos con atributo data-observe
   document.addEventListener('DOMContentLoaded', () => {
     document.querySelectorAll('[data-observe]').forEach(el => {
       observer.observe(el);
     });
   });
 
-  // Stagger animation para grillas
-  window.staggerChildren = (selector, delay = 100) => {
-    const children = document.querySelectorAll(selector);
-    children.forEach((child, i) => {
-      child.style.animationDelay = (i * delay) + 'ms';
-      child.classList.add('fade-in');
-    });
-  };
-
+  // ==================== CARGA DE JSON ====================
   async function cargarJSON(ruta){
     try{
       const res = await fetch(ruta, {cache:'no-store'});
@@ -923,90 +1654,111 @@
       return await res.json();
     }catch(e){ return null; }
   }
+
   function escapar(str){
     return (str||'').toString()
       .replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
   }
+
   const iconoFoto = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="9" cy="11" r="2"/><path d="M21 17l-5.5-5-3 3-2-2L3 18"/></svg>';
 
-  // Equipos y plantillas
+  // ==================== EQUIPOS Y PLANTILLAS ====================
   cargarJSON('content/equipos.json').then(data => {
     const equipos = data && data.equipos ? data.equipos.filter(e => e && e.categoria) : [];
-    if(!equipos.length) return; // conserva el contenido estático de respaldo
+    if(!equipos.length) return;
+
     const catGrid = document.getElementById('cat-grid');
     const wrap = document.getElementById('plantillas-wrap');
     catGrid.innerHTML = '';
     wrap.innerHTML = '';
+
     equipos.forEach((eq, i) => {
       const card = document.createElement('div');
       card.className = 'cat-card fade-in';
-      card.style.animationDelay = (i * 80) + 'ms';
-      card.innerHTML = '<div class="num">Categoría</div><div class="name">'+escapar(eq.categoria)+'</div>';
+      card.style.animationDelay = (i * 60) + 'ms';
+      card.innerHTML = '<div class="cat-card-content"><div class="cat-label">Categoría</div><div class="cat-name">'+escapar(eq.categoria)+'</div></div>';
       catGrid.appendChild(card);
 
       const jugadores = eq.jugadores || [];
       const block = document.createElement('div');
       block.className = 'team-block';
-      const titulo = escapar(eq.categoria) + (eq.entrenador ? ' — Entrenador/a: '+escapar(eq.entrenador) : '');
+      const titulo = escapar(eq.categoria) + (eq.entrenador ? ' — '+escapar(eq.entrenador) : '');
       let playersHtml = '<p class="empty-note">Plantilla por publicar.</p>';
+
       if(jugadores.length){
-        playersHtml = '<div class="player-grid">' + jugadores.map(j => {
+        playersHtml = '<div class="player-grid">' + jugadores.map((j, idx) => {
           const foto = j.foto ? '<img src="'+escapar(j.foto)+'" alt="'+escapar(j.nombre)+'">' : iconoFoto;
-          const meta = [j.dorsal ? '#'+escapar(j.dorsal) : '', escapar(j.posicion||'')].filter(Boolean).join(' · ');
-          return '<div class="player-card"><div class="player-photo">'+foto+'</div>'
+          const dorsal = j.dorsal ? '<div class="player-number">'+escapar(j.dorsal)+'</div>' : '';
+          const meta = escapar(j.posicion||'');
+          return '<div class="player-card" style="animation-delay:'+(idx*50)+'ms"><div class="player-photo">'+foto+dorsal+'</div>'
             +'<div class="player-name">'+escapar(j.nombre)+'</div>'
             +'<div class="player-meta">'+meta+'</div></div>';
         }).join('') + '</div>';
       }
+
       block.innerHTML = '<h4>'+titulo+'</h4>'+playersHtml;
       wrap.appendChild(block);
     });
   });
 
-  // Cuerpo técnico
+  // ==================== CUERPO TÉCNICO ====================
   cargarJSON('content/staff.json').then(data => {
     const staff = data && data.staff ? data.staff.filter(s => s && s.nombre) : [];
     if(!staff.length) return;
     const grid = document.getElementById('staff-grid');
     grid.innerHTML = staff.map((s, i) => {
       const foto = s.foto ? '<img src="'+escapar(s.foto)+'" alt="'+escapar(s.nombre)+'">' : iconoFoto;
-      return '<div class="staff-card fade-in" style="animation-delay:'+(i*100)+'ms"><div class="staff-photo">'+foto+'</div>'
+      return '<div class="staff-card fade-in" style="animation-delay:'+(i*60)+'ms"><div class="staff-photo">'+foto+'</div>'
         +'<div class="staff-name">'+escapar(s.nombre)+'</div>'
         +'<div class="staff-role">'+escapar(s.cargo||'')+(s.equipo ? ' · '+escapar(s.equipo) : '')+'</div></div>';
     }).join('');
   });
 
-  // Calendario y resultados
+  // ==================== CALENDARIO Y RESULTADOS ====================
   cargarJSON('content/calendario.json').then(data => {
     const partidos = data && data.partidos ? data.partidos.filter(p => p && p.fecha) : [];
     if(!partidos.length) return;
+
     const body = document.getElementById('calendario-body');
     body.innerHTML = partidos.map(p => (
       '<tr><td>'+escapar(p.fecha)+'</td><td>'+escapar(p.categoria)+'</td><td>'+escapar(p.local)+'</td>'
       +'<td>'+escapar(p.visitante)+'</td><td>'+escapar(p.resultado||'—')+'</td><td>'+escapar(p.campo)+'</td></tr>'
     )).join('');
+
+    // Actualizar sección "Último Partido"
+    if(partidos.length > 0){
+      const primer = partidos[0];
+      document.getElementById('match-category').textContent = escapar(primer.categoria);
+      document.getElementById('match-field').textContent = escapar(primer.campo);
+      document.getElementById('match-date-detail').textContent = escapar(primer.fecha);
+      document.getElementById('match-date').textContent = escapar(primer.fecha);
+      document.getElementById('local-name').textContent = escapar(primer.local);
+      document.getElementById('away-name').textContent = escapar(primer.visitante);
+      document.getElementById('score-display').textContent = escapar(primer.resultado || '—');
+      document.getElementById('match-status').textContent = primer.resultado ? 'Finalizado' : 'Próximamente';
+    }
   });
 
-  // Galería
+  // ==================== GALERÍA ====================
   cargarJSON('content/galeria.json').then(data => {
     const fotos = data && data.fotos ? data.fotos.filter(f => f && f.imagen) : [];
     if(!fotos.length) return;
     const grid = document.getElementById('galeria-grid');
     grid.innerHTML = fotos.map((f, i) => (
-      '<div class="gallery-slot fade-in" style="padding:0;animation-delay:'+(i*100)+'ms;"><img src="'+escapar(f.imagen)+'" alt="'+escapar(f.descripcion||'Foto del club')+'" style="width:100%;height:100%;object-fit:cover;border-radius:14px;"></div>'
+      '<div class="gallery-slot fade-in" style="animation-delay:'+(i*50)+'ms;"><img src="'+escapar(f.imagen)+'" alt="'+escapar(f.descripcion||'Foto del club')+'" style="width:100%;height:100%;object-fit:cover;"></div>'
     )).join('');
   });
 
-  // Patrocinadores
+  // ==================== PATROCINADORES ====================
   cargarJSON('content/patrocinadores.json').then(data => {
     const patrocinadores = data && data.patrocinadores ? data.patrocinadores.filter(p => p && p.logo) : [];
     if(!patrocinadores.length) return;
     const row = document.getElementById('sponsor-row');
     row.innerHTML = patrocinadores.map((p, i) => {
-      const img = '<img src="'+escapar(p.logo)+'" alt="'+escapar(p.nombre||'Patrocinador')+'" style="max-width:80%;max-height:70%;object-fit:contain;">';
+      const img = '<img src="'+escapar(p.logo)+'" alt="'+escapar(p.nombre||'Patrocinador')+'">';
       const content = p.url
-        ? '<a class="sponsor-slot fade-in" href="'+escapar(p.url)+'" target="_blank" rel="noopener" style="border-style:solid;animation-delay:'+(i*100)+'ms;">'+img+'</a>'
-        : '<div class="sponsor-slot fade-in" style="border-style:solid;animation-delay:'+(i*100)+'ms;">'+img+'</div>';
+        ? '<a class="sponsor-slot fade-in" href="'+escapar(p.url)+'" target="_blank" rel="noopener" style="animation-delay:'+(i*60)+'ms;">'+img+'</a>'
+        : '<div class="sponsor-slot fade-in" style="animation-delay:'+(i*60)+'ms;">'+img+'</div>';
       return content;
     }).join('');
   });
