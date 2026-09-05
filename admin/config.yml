@@ -1,12 +1,12 @@
 # ============================================================
 # Configuración del panel de administración (Decap CMS)
-# Antes de usarlo, sustituye los dos valores marcados con «TODO»
 # Guía completa: ver README.md, sección "Configurar el panel"
 # ============================================================
 backend:
   name: github
   repo: kamal1305/WEB-ADI-CF
   branch: main
+  auth_endpoint: https://netlify-cms-oauth-tuclub.vercel.app/auth
 
 # Las fotos que subáis desde el panel se guardan en /uploads
 media_folder: "uploads"
@@ -14,6 +14,16 @@ public_folder: "/uploads"
 
 # Editar directamente en GitHub sin pasar por un flujo de revisión
 publish_mode: simple
+
+# Habilitar el editor visual
+editor:
+  preview: true
+
+# Internacionalización
+locale: es
+
+# Mostrar URL en el backend
+show_preview_links: true
 
 collections:
 
