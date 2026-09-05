@@ -6,7 +6,8 @@ backend:
   name: github
   repo: kamal1305/WEB-ADI-CF
   branch: main
-  auth_endpoint: https://netlify-cms-oauth-tuclub.vercel.app/auth
+  auth_endpoint: /api/auth
+  base_url: https://web-adi-cf.vercel.app
 
 # Las fotos que subáis desde el panel se guardan en /uploads
 media_folder: "uploads"

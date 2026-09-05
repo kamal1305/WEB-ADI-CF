@@ -1,73 +1,56 @@
 # Configuración de GitHub OAuth para el Panel de Administración
 
-Este documento guía la configuración final de la autenticación GitHub OAuth para que el panel de administración funcione correctamente en Vercel.
+Este documento guía la configuración final de la autenticación GitHub OAuth. **La pasarela OAuth ya está incluida en este proyecto** (`/api/auth.js` y `/api/callback.js`).
 
 ## Pasos Principales
 
-### 1. Desplegar la Pasarela OAuth en Vercel
-
-La pasarela OAuth es un proyecto separado que actúa como intermediaria entre GitHub y tu panel de administración.
-
-1. Ve a: **https://github.com/ublabs/netlify-cms-oauth**
-2. Haz clic en el botón **"Deploy with Vercel"** (en el README)
-3. Despliégalo como un **proyecto nuevo y separado** de tu sitio web
-4. Anota la URL que te proporciona Vercel, por ejemplo:
-   ```
-   https://netlify-cms-oauth-tuclub.vercel.app
-   ```
-
-### 2. Crear la Aplicación OAuth de GitHub
+### 1. Crear la Aplicación OAuth de GitHub
 
 1. Inicia sesión en GitHub
 2. Ve a: **https://github.com/settings/developers → OAuth Apps → New OAuth App**
 3. Completa el formulario con:
    - **Application name**: `A.D. Icovesa — panel`
-   - **Homepage URL**: Tu URL de Vercel del sitio web (ej: `https://tu-proyecto.vercel.app`)
-   - **Authorization callback URL**: URL de la pasarela + `/callback`
+   - **Homepage URL**: Tu URL de Vercel del sitio web
      ```
-     https://netlify-cms-oauth-tuclub.vercel.app/callback
+     https://web-adi-cf.vercel.app
+     ```
+   - **Authorization callback URL**: Tu URL Vercel + `/api/callback`
+     ```
+     https://web-adi-cf.vercel.app/api/callback
      ```
 4. GitHub generará:
    - **Client ID**: cópialo
    - **Client Secret**: cópialo (solo se muestra una vez)
 
-### 3. Configurar Variables de Entorno en la Pasarela OAuth
+### 2. Configurar Variables de Entorno en Vercel
 
-1. En Vercel, ve al proyecto de la **pasarela OAuth** (paso 1)
+1. En **Vercel**, ve a tu proyecto web (el de este repositorio)
 2. Settings → **Environment Variables**
-3. Añade estas variables:
+3. Añade estas dos variables:
    ```
-   OAUTH_GITHUB_CLIENT_ID = [tu Client ID del paso 2]
-   OAUTH_GITHUB_CLIENT_SECRET = [tu Client Secret del paso 2]
+   OAUTH_GITHUB_CLIENT_ID = [tu Client ID del paso 1]
+   OAUTH_GITHUB_CLIENT_SECRET = [tu Client Secret del paso 1]
    ```
 4. En Vercel, haz clic en **Redeploy** para aplicar los cambios
 
-### 4. Actualizar config.yml
+### 3. Verificar la Configuración de config.yml
 
-En tu repositorio de GitHub, edita `admin/config.yml`:
+El archivo `admin/config.yml` ya está configurado correctamente:
 
 ```yaml
 backend:
   name: github
-  repo: tu-usuario/tu-repositorio
+  repo: kamal1305/WEB-ADI-CF
   branch: main
-  auth_endpoint: https://netlify-cms-oauth-tuclub.vercel.app/auth
+  auth_endpoint: /api/auth
+  base_url: https://web-adi-cf.vercel.app
 ```
 
-Reemplaza:
-- `tu-usuario/tu-repositorio` con tu usuario y nombre de repo en GitHub
-- La URL de `auth_endpoint` con la de tu pasarela OAuth
+Si cambias tu URL de Vercel, actualiza `base_url` aquí.
 
-### 5. Verificar la Configuración de Vercel
+### 4. Probar el Panel
 
-Vercel ya tiene configurado automáticamente el `vercel.json` con:
-- Reescrituras correctas para `/admin/`
-- Cache headers apropiados
-- Content-Type correcto para `config.yml`
-
-### 6. Probar el Panel
-
-1. Abre: `https://tu-proyecto.vercel.app/admin/`
+1. Abre: `https://web-adi-cf.vercel.app/admin/`
 2. Deberías ver un botón **"Login with GitHub"**
 3. Haz clic y autoriza la aplicación
 4. ¡El panel debería cargar correctamente!
@@ -75,36 +58,45 @@ Vercel ya tiene configurado automáticamente el `vercel.json` con:
 ## Solución de Problemas
 
 ### "Login with GitHub" no funciona o da error 404
-- Verifica que la **Authorization callback URL** de GitHub (paso 2) coincide exactamente con `auth_endpoint` + `/auth` en `config.yml`
-- Comprueba que la pasarela OAuth está correctamente desplegada en Vercel
+- Verifica que la **Authorization callback URL** de GitHub coincida exactamente con tu dominio Vercel + `/api/callback`
+- Comprueba que las variables de entorno `OAUTH_GITHUB_CLIENT_ID` y `OAUTH_GITHUB_CLIENT_SECRET` están configuradas en Vercel
+- En la consola del navegador (F12), busca errores de red en la tab **Network**
 
 ### El login funciona pero no puedo guardar cambios
-- Verifica que `repo: usuario/nombre-repo` en `config.yml` es correcto
+- Verifica que `repo: kamal1305/WEB-ADI-CF` en `config.yml` es correcto
 - Asegúrate de que tu usuario de GitHub tiene acceso de **escritura** en ese repositorio
+- El token debe tener permiso `repo` (escritura en repositorio privado o público)
 
-### El panel no se carga
+### El panel no se carga o parece roto
 - Comprueba la consola del navegador (F12 → Console) para ver mensajes de error
 - Verifica que `/admin/config.yml` se carga correctamente (F12 → Network)
+- Verifica que `/api/auth` responde (debería dar error 400 si no hay `code` query param)
 
-## Variables de Entorno Adicionales (Opcional)
+### Error "OAUTH_GITHUB_CLIENT_ID not configured"
+- Las variables de entorno no se han configurado en Vercel
+- Verifica que agregaste las variables en **Settings → Environment Variables** de tu proyecto Vercel
+- Después de agregar las variables, debes hacer **Redeploy** en Vercel
+- Espera 1-2 minutos para que los cambios se propaguen
 
-Para mayor seguridad en producción, considera:
+## Archivos Incluidos
 
-```
-OAUTH_GITHUB_OAUTH_TOKEN_PATH = /
-OAUTH_GITHUB_REDIRECT_URL = https://netlify-cms-oauth-tuclub.vercel.app/callback
-```
+- **`/api/auth.js`** - Endpoint para autenticación OAuth (GET)
+- **`/api/callback.js`** - Endpoint para procesar callback de OAuth (POST)
+- **`admin/config.yml`** - Configuración de Decap CMS (ya apunta a `/api/auth`)
+- **`admin/index.html`** - Panel de administración con interfaz pulida
+
+## Seguridad
+
+- ✅ Client Secret nunca se expone al navegador (solo en servidor Vercel)
+- ✅ Token de acceso se almacena localmente en el navegador (control del usuario)
+- ✅ Las solicitudes a GitHub API se hacen desde Vercel (server-side)
 
 ## Referencias
 
 - Documentación oficial: **https://decapcms.org/docs/add-to-your-site**
-- Proyecto OAuth proxy: **https://github.com/ublabs/netlify-cms-oauth**
-- Alternativas (si la pasarela no está disponible): **https://decapcms.org/docs/external-oauth-client**
+- GitHub OAuth: **https://docs.github.com/en/apps/oauth-apps**
+- Decap CMS Backend: **https://decapcms.org/docs/backends-overview**
 
 ---
 
-**Nota**: Esta configuración requiere dos proyectos Vercel separados:
-1. Tu sitio web (este repositorio)
-2. La pasarela OAuth (repositorio separado)
-
-No intentes poner ambos en el mismo proyecto de Vercel.
+**¡Eso es todo!** No necesitas proyectos Vercel adicionales. Todo está en un solo proyecto.
