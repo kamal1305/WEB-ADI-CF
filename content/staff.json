@@ -1,3 +1,12 @@
 {
-  "staff": []
+  "staff": [
+    { "nombre": "Juan García Pérez", "cargo": "Director Deportivo", "equipo": "Dirección", "foto": "" },
+    { "nombre": "María López Rodríguez", "cargo": "Coordinadora de Categorías Menores", "equipo": "Administración", "foto": "" },
+    { "nombre": "Antonio Rodríguez Sánchez", "cargo": "Entrenador", "equipo": "Benjamín A", "foto": "" },
+    { "nombre": "Pedro Martín García", "cargo": "Entrenador", "equipo": "Alevín", "foto": "" },
+    { "nombre": "Carlos Ruiz López", "cargo": "Preparador Físico", "equipo": "Todas las categorías", "foto": "" },
+    { "nombre": "Raúl Díaz Martínez", "cargo": "Entrenador", "equipo": "Cadete", "foto": "" },
+    { "nombre": "Francisco González Jiménez", "cargo": "Delegado", "equipo": "Benjamín A", "foto": "" },
+    { "nombre": "Sofía Herrera Ruiz", "cargo": "Fisioterapeuta", "equipo": "Todas las categorías", "foto": "" }
+  ]
 }

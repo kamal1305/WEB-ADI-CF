@@ -1,11 +1,76 @@
 {
   "equipos": [
-    { "categoria": "Bebés", "entrenador": "", "jugadores": [] },
-    { "categoria": "Prebenjamín", "entrenador": "", "jugadores": [] },
-    { "categoria": "Benjamín", "entrenador": "", "jugadores": [] },
-    { "categoria": "Alevín", "entrenador": "", "jugadores": [] },
-    { "categoria": "Infantil", "entrenador": "", "jugadores": [] },
-    { "categoria": "Cadete", "entrenador": "", "jugadores": [] },
-    { "categoria": "Juvenil", "entrenador": "", "jugadores": [] }
+    {
+      "categoria": "Bebés",
+      "entrenador": "Juan García",
+      "jugadores": [
+        { "nombre": "Santiago M.", "dorsal": 1, "posicion": "Portero", "foto": "" },
+        { "nombre": "Diego R.", "dorsal": 2, "posicion": "Defensa", "foto": "" },
+        { "nombre": "Carlos L.", "dorsal": 3, "posicion": "Centrocampista", "foto": "" },
+        { "nombre": "Miguel F.", "dorsal": 4, "posicion": "Delantero", "foto": "" }
+      ]
+    },
+    {
+      "categoria": "Prebenjamín",
+      "entrenador": "María López",
+      "jugadores": [
+        { "nombre": "Pablo G.", "dorsal": 1, "posicion": "Portero", "foto": "" },
+        { "nombre": "Ángel T.", "dorsal": 2, "posicion": "Defensa", "foto": "" },
+        { "nombre": "Alejandro S.", "dorsal": 3, "posicion": "Centrocampista", "foto": "" },
+        { "nombre": "Víctor H.", "dorsal": 4, "posicion": "Delantero", "foto": "" },
+        { "nombre": "David P.", "dorsal": 5, "posicion": "Defensa", "foto": "" }
+      ]
+    },
+    {
+      "categoria": "Benjamín",
+      "entrenador": "Antonio Rodríguez",
+      "jugadores": [
+        { "nombre": "Javier M.", "dorsal": 1, "posicion": "Portero", "foto": "" },
+        { "nombre": "Fernando B.", "dorsal": 2, "posicion": "Defensa", "foto": "" },
+        { "nombre": "Luis E.", "dorsal": 3, "posicion": "Centrocampista", "foto": "" },
+        { "nombre": "Sergio N.", "dorsal": 4, "posicion": "Delantero", "foto": "" },
+        { "nombre": "Roberto J.", "dorsal": 5, "posicion": "Defensa", "foto": "" }
+      ]
+    },
+    {
+      "categoria": "Alevín",
+      "entrenador": "Pedro Sánchez",
+      "jugadores": [
+        { "nombre": "Manuel C.", "dorsal": 1, "posicion": "Portero", "foto": "" },
+        { "nombre": "Enrique V.", "dorsal": 2, "posicion": "Defensa", "foto": "" },
+        { "nombre": "Jorge A.", "dorsal": 3, "posicion": "Centrocampista", "foto": "" },
+        { "nombre": "Tomás O.", "dorsal": 4, "posicion": "Delantero", "foto": "" }
+      ]
+    },
+    {
+      "categoria": "Infantil",
+      "entrenador": "Carlos Martín",
+      "jugadores": [
+        { "nombre": "Cristian D.", "dorsal": 1, "posicion": "Portero", "foto": "" },
+        { "nombre": "Ignacio Q.", "dorsal": 2, "posicion": "Defensa", "foto": "" },
+        { "nombre": "Rafael Z.", "dorsal": 3, "posicion": "Centrocampista", "foto": "" },
+        { "nombre": "Adrián K.", "dorsal": 4, "posicion": "Delantero", "foto": "" }
+      ]
+    },
+    {
+      "categoria": "Cadete",
+      "entrenador": "Raúl Díaz",
+      "jugadores": [
+        { "nombre": "Álvaro W.", "dorsal": 1, "posicion": "Portero", "foto": "" },
+        { "nombre": "Rubén X.", "dorsal": 2, "posicion": "Defensa", "foto": "" },
+        { "nombre": "Marcos Y.", "dorsal": 3, "posicion": "Centrocampista", "foto": "" },
+        { "nombre": "Óscar U.", "dorsal": 4, "posicion": "Delantero", "foto": "" }
+      ]
+    },
+    {
+      "categoria": "Juvenil",
+      "entrenador": "Francisco Ruiz",
+      "jugadores": [
+        { "nombre": "Antonio I.", "dorsal": 1, "posicion": "Portero", "foto": "" },
+        { "nombre": "Gabriel J.", "dorsal": 2, "posicion": "Defensa", "foto": "" },
+        { "nombre": "Ismael K.", "dorsal": 3, "posicion": "Centrocampista", "foto": "" },
+        { "nombre": "Lorenzo L.", "dorsal": 4, "posicion": "Delantero", "foto": "" }
+      ]
+    }
   ]
 }

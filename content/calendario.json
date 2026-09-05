@@ -1,7 +1,10 @@
 {
   "partidos": [
-    { "fecha": "Sáb 12 sep", "categoria": "Alevín", "local": "A.D. Icovesa", "visitante": "CD Comarca de Jerez", "resultado": "", "campo": "Picadueñas" },
-    { "fecha": "Dom 13 sep", "categoria": "Benjamín", "local": "Xerez Deportivo FC", "visitante": "A.D. Icovesa", "resultado": "", "campo": "Visitante" },
-    { "fecha": "Sáb 19 sep", "categoria": "Infantil", "local": "A.D. Icovesa", "visitante": "Arcos CF", "resultado": "", "campo": "M. L. Martín Moreno" }
+    { "fecha": "Sáb 12 sep", "categoria": "Alevín", "local": "A.D. Icovesa", "visitante": "CD Comarca de Jerez", "resultado": "3-2", "campo": "Picadueñas" },
+    { "fecha": "Dom 13 sep", "categoria": "Benjamín", "local": "Xerez Deportivo FC", "visitante": "A.D. Icovesa", "resultado": "1-1", "campo": "Visitante" },
+    { "fecha": "Sáb 19 sep", "categoria": "Infantil", "local": "A.D. Icovesa", "visitante": "Arcos CF", "resultado": "2-0", "campo": "M. L. Martín Moreno" },
+    { "fecha": "Dom 20 sep", "categoria": "Prebenjamín", "local": "A.D. Icovesa", "visitante": "UD Villamartín", "resultado": "4-1", "campo": "Picadueñas" },
+    { "fecha": "Sáb 26 sep", "categoria": "Cadete", "local": "Rayo Alcalá", "visitante": "A.D. Icovesa", "resultado": "0-0", "campo": "Visitante" },
+    { "fecha": "Dom 27 sep", "categoria": "Juvenil", "local": "A.D. Icovesa", "visitante": "Atlético Bornense", "resultado": "", "campo": "M. L. Martín Moreno" }
   ]
 }

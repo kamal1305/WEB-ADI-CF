@@ -1,3 +1,8 @@
 {
-  "patrocinadores": []
+  "patrocinadores": [
+    { "nombre": "Supermercados Díaz", "logo": "https://via.placeholder.com/200x100/C2265F/FFFFFF?text=Supermercados+Díaz", "url": "https://ejemplo.com" },
+    { "nombre": "Clínica Dental Icovesa", "logo": "https://via.placeholder.com/200x100/1C1712/FFFFFF?text=Clínica+Dental", "url": "https://ejemplo.com" },
+    { "nombre": "Taller Mecánico García", "logo": "https://via.placeholder.com/200x100/7A1740/FFFFFF?text=Taller+García", "url": "https://ejemplo.com" },
+    { "nombre": "Academia de Fútbol ADI", "logo": "https://via.placeholder.com/200x100/6E675F/FFFFFF?text=Academia+ADI", "url": "https://ejemplo.com" }
+  ]
 }

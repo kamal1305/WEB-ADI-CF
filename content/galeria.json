@@ -1,3 +1,12 @@
 {
-  "fotos": []
+  "fotos": [
+    { "imagen": "https://images.unsplash.com/photo-1461896836934-ffe607ba8211?w=500&h=500&fit=crop", "descripcion": "Entrenamiento de alevines en Picadueñas" },
+    { "imagen": "https://images.unsplash.com/photo-1518611505868-48510c2a735f?w=500&h=500&fit=crop", "descripcion": "Partido de benjamines" },
+    { "imagen": "https://images.unsplash.com/photo-1529148091759-31c7a73d1d6b?w=500&h=500&fit=crop", "descripcion": "Celebración de gol" },
+    { "imagen": "https://images.unsplash.com/photo-1552993881-5edafb10e087?w=500&h=500&fit=crop", "descripcion": "Equipo infantil posando" },
+    { "imagen": "https://images.unsplash.com/photo-1540747913ee57a63cf165ea60dc06fd82cc80ccc?w=500&h=500&fit=crop", "descripcion": "Maratón de fútbol solidario Por Valentina" },
+    { "imagen": "https://images.unsplash.com/photo-1596859645f4-24dff31d8f94?w=500&h=500&fit=crop", "descripcion": "Torneo Bornos Cup" },
+    { "imagen": "https://images.unsplash.com/photo-1575361204480-aadea25aaada?w=500&h=500&fit=crop", "descripcion": "Entrenamiento cadetes" },
+    { "imagen": "https://images.unsplash.com/photo-1517466895560-aeb08fb17d3b?w=500&h=500&fit=crop", "descripcion": "Juveniles en acción" }
+  ]
 }
