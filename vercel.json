@@ -4,17 +4,9 @@
   "outputDirectory": ".",
   "framework": null,
   "regions": ["auto"],
-  "crons": [],
+  "cleanUrls": true,
+  "trailingSlash": false,
   "headers": [
-    {
-      "source": "/admin/**",
-      "headers": [
-        {
-          "key": "Cache-Control",
-          "value": "public, max-age=0, must-revalidate"
-        }
-      ]
-    },
     {
       "source": "/admin/config.yml",
       "headers": [
@@ -29,7 +21,16 @@
       ]
     },
     {
-      "source": "/content/**",
+      "source": "/admin/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=0, must-revalidate"
+        }
+      ]
+    },
+    {
+      "source": "/content/(.*)",
       "headers": [
         {
           "key": "Cache-Control",
@@ -38,7 +39,7 @@
       ]
     },
     {
-      "source": "/uploads/**",
+      "source": "/uploads/(.*)",
       "headers": [
         {
           "key": "Cache-Control",
@@ -49,7 +50,15 @@
   ],
   "rewrites": [
     {
-      "source": "/admin/:path*",
+      "source": "/admin",
+      "destination": "/admin/index.html"
+    },
+    {
+      "source": "/admin/",
+      "destination": "/admin/index.html"
+    },
+    {
+      "source": "/admin/(.*)",
       "destination": "/admin/index.html"
     }
   ]
