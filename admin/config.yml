@@ -6,9 +6,8 @@ backend:
   name: github
   repo: kamal1305/WEB-ADI-CF
   branch: main
-  site_domain: adicovesa.netlify.app
-  auth_endpoint: /api/auth
-  api_root: https://api.github.com
+  base_url: https://netlify-cms.adrianub.vercel.app
+  auth_endpoint: https://netlify-cms.adrianub.vercel.app/auth
 
 # Las fotos que subáis desde el panel se guardan en /uploads
 media_folder: "uploads"
