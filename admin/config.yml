@@ -7,7 +7,6 @@ backend:
   repo: kamal1305/WEB-ADI-CF
   branch: main
   base_url: https://netlify-cms.adrianub.vercel.app
-  auth_endpoint: https://netlify-cms.adrianub.vercel.app/auth
 
 # Las fotos que subáis desde el panel se guardan en /uploads
 media_folder: "uploads"
