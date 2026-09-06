@@ -7,6 +7,7 @@ backend:
   repo: kamal1305/WEB-ADI-CF
   branch: main
   base_url: https://netlify-cms.adrianub.vercel.app
+  site_domain: adicovesa.netlify.app
 
 # Las fotos que subáis desde el panel se guardan en /uploads
 media_folder: "uploads"
