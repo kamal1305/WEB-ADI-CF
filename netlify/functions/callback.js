@@ -1,11 +1,30 @@
 exports.handler = async (event, context) => {
+  const headers = {
+    'Content-Type': 'application/json',
+    'Access-Control-Allow-Origin': '*',
+    'Access-Control-Allow-Methods': 'GET, POST, OPTIONS',
+    'Access-Control-Allow-Headers': 'Content-Type',
+  };
+
+  // Manejar preflight CORS
+  if (event.httpMethod === 'OPTIONS') {
+    return {
+      statusCode: 200,
+      headers,
+      body: '',
+    };
+  }
+
   try {
     const body = JSON.parse(event.body || '{}');
     const code = body.code;
 
+    console.log('Callback endpoint called with code:', code ? 'present' : 'MISSING');
+
     if (!code) {
       return {
         statusCode: 400,
+        headers,
         body: JSON.stringify({ error: 'Missing authorization code' }),
       };
     }
@@ -66,22 +85,28 @@ exports.handler = async (event, context) => {
     const userData = await userResponse.json();
 
     // Respuesta en formato esperado por Decap CMS
+    const response = {
+      token: tokenData.access_token,
+      provider: 'github',
+      user: {
+        login: userData.login,
+        name: userData.name || userData.login,
+        avatar_url: userData.avatar_url,
+      },
+    };
+
+    console.log('Callback successful for user:', userData.login);
+
     return {
       statusCode: 200,
-      body: JSON.stringify({
-        token: tokenData.access_token,
-        provider: 'github',
-        user: {
-          login: userData.login,
-          name: userData.name || userData.login,
-          avatar_url: userData.avatar_url,
-        },
-      }),
+      headers,
+      body: JSON.stringify(response),
     };
   } catch (error) {
     console.error('Callback error:', error);
     return {
       statusCode: 500,
+      headers,
       body: JSON.stringify({
         error: 'Callback processing failed',
         message: error.message,
