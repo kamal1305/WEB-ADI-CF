@@ -1,6 +1,18 @@
-export default async function handler(req, res) {
-  if (req.method !== 'GET') {
-    return res.status(405).json({ error: 'Method not allowed' });
+exports.handler = async (event, context) => {
+  const headers = {
+    'Content-Type': 'application/json',
+    'Access-Control-Allow-Origin': '*',
+    'Access-Control-Allow-Methods': 'GET, POST, OPTIONS',
+    'Access-Control-Allow-Headers': 'Content-Type',
+  };
+
+  // Manejar preflight CORS
+  if (event.httpMethod === 'OPTIONS') {
+    return {
+      statusCode: 200,
+      headers,
+      body: '',
+    };
   }
 
   try {
@@ -8,15 +20,25 @@ export default async function handler(req, res) {
     const clientSecret = process.env.OAUTH_GITHUB_CLIENT_SECRET;
 
     if (!clientId || !clientSecret) {
-      return res.status(500).json({
-        error: 'OAuth credentials not configured',
-        message: 'Set OAUTH_GITHUB_CLIENT_ID and OAUTH_GITHUB_CLIENT_SECRET env vars',
-      });
+      return {
+        statusCode: 500,
+        headers,
+        body: JSON.stringify({
+          error: 'OAuth credentials not configured',
+          message: 'Set OAUTH_GITHUB_CLIENT_ID and OAUTH_GITHUB_CLIENT_SECRET env vars',
+        }),
+      };
     }
 
-    const code = req.query.code;
+    const code = event.queryStringParameters?.code;
+    console.log('Auth endpoint called with code:', code ? 'present' : 'MISSING');
+
     if (!code) {
-      return res.status(400).json({ error: 'Missing authorization code' });
+      return {
+        statusCode: 400,
+        headers,
+        body: JSON.stringify({ error: 'Missing authorization code' }),
+      };
     }
 
     // Intercambiar código por token
@@ -36,10 +58,13 @@ export default async function handler(req, res) {
     const tokenData = await tokenResponse.json();
 
     if (tokenData.error) {
-      return res.status(401).json({
-        error: 'OAuth authentication failed',
-        details: tokenData.error_description || tokenData.error,
-      });
+      return {
+        statusCode: 401,
+        body: JSON.stringify({
+          error: 'OAuth authentication failed',
+          details: tokenData.error_description || tokenData.error,
+        }),
+      };
     }
 
     // Obtener información del usuario
@@ -51,13 +76,16 @@ export default async function handler(req, res) {
     });
 
     if (!userResponse.ok) {
-      return res.status(401).json({ error: 'Failed to fetch user data' });
+      return {
+        statusCode: 401,
+        body: JSON.stringify({ error: 'Failed to fetch user data' }),
+      };
     }
 
     const userData = await userResponse.json();
 
     // Respuesta en formato esperado por Decap CMS
-    res.status(200).json({
+    const response = {
       token: tokenData.access_token,
       provider: 'github',
       user: {
@@ -65,12 +93,24 @@ export default async function handler(req, res) {
         name: userData.name || userData.login,
         avatar_url: userData.avatar_url,
       },
-    });
+    };
+
+    console.log('Auth successful for user:', userData.login);
+
+    return {
+      statusCode: 200,
+      headers,
+      body: JSON.stringify(response),
+    };
   } catch (error) {
     console.error('Auth error:', error);
-    res.status(500).json({
-      error: 'Authentication failed',
-      message: error.message,
-    });
+    return {
+      statusCode: 500,
+      headers,
+      body: JSON.stringify({
+        error: 'Authentication failed',
+        message: error.message,
+      }),
+    };
   }
-}
+};
