@@ -8,6 +8,18 @@
   node_bundler = "esbuild"
 
 [[redirects]]
+  from = "/api/auth"
+  to = "/.netlify/functions/auth"
+  status = 200
+  force = false
+
+[[redirects]]
+  from = "/api/callback"
+  to = "/.netlify/functions/callback"
+  status = 200
+  force = false
+
+[[redirects]]
   from = "/admin/*"
   to = "/admin/index.html"
   status = 200
