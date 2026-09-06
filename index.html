@@ -1184,6 +1184,232 @@
       color: var(--magenta);
     }
 
+    /* ==================== TIENDA OFICIAL ==================== */
+    .shop-section {
+      padding: 88px 0;
+    }
+
+    .shop-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 32px;
+      margin-top: 40px;
+    }
+
+    .shop-card {
+      background: white;
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      overflow: hidden;
+      transition: all 0.3s var(--ease-smooth);
+      box-shadow: 0 4px 12px rgba(28, 23, 18, 0.06);
+      animation: fadeInUp 0.6s var(--ease-smooth);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .shop-card:hover {
+      transform: translateY(-12px);
+      box-shadow: 0 24px 48px rgba(28, 23, 18, 0.15);
+      border-color: var(--magenta-soft);
+    }
+
+    .shop-card-header {
+      background: linear-gradient(135deg, var(--paper-2) 0%, var(--paper-3) 100%);
+      padding: 32px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 140px;
+    }
+
+    .shop-card-icon {
+      width: 64px;
+      height: 64px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(194, 38, 95, 0.1);
+      border-radius: 16px;
+      transition: all 0.3s var(--ease-smooth);
+    }
+
+    .shop-card:hover .shop-card-icon {
+      background: rgba(194, 38, 95, 0.2);
+      transform: scale(1.1);
+    }
+
+    .shop-card-icon svg {
+      width: 40px;
+      height: 40px;
+      color: var(--magenta);
+      stroke-width: 1.5;
+    }
+
+    .shop-card-content {
+      padding: 24px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .shop-card h3 {
+      color: var(--ink);
+      margin-bottom: 8px;
+      font-size: 20px;
+    }
+
+    .shop-card .price {
+      font-family: 'Playfair Display', serif;
+      font-size: 28px;
+      font-weight: 700;
+      color: var(--magenta);
+      margin: 12px 0 16px 0;
+    }
+
+    .shop-card p {
+      font-size: 14px;
+      color: var(--grey);
+      margin: 0 0 24px 0;
+      flex: 1;
+    }
+
+    .shop-card .btn {
+      align-self: flex-start;
+    }
+
+    /* ==================== PLANES DE PATROCINIO ==================== */
+    .sponsorship-plans {
+      margin-top: 64px;
+      padding-top: 64px;
+      border-top: 1px solid var(--line);
+    }
+
+    .sponsorship-plans h3 {
+      font-size: 28px;
+      margin-bottom: 8px;
+      color: var(--ink);
+    }
+
+    .sponsorship-plans > p {
+      color: var(--grey);
+      margin-bottom: 32px;
+    }
+
+    .plan-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 32px;
+    }
+
+    .plan-card {
+      background: linear-gradient(135deg, var(--ink) 0%, #2a2420 100%);
+      color: var(--paper);
+      border: 1px solid rgba(194, 38, 95, 0.2);
+      border-radius: 20px;
+      padding: 32px;
+      transition: all 0.3s var(--ease-smooth);
+      box-shadow: 0 8px 20px rgba(28, 23, 18, 0.2);
+      animation: fadeInUp 0.6s var(--ease-smooth);
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .plan-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--magenta), transparent);
+    }
+
+    .plan-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 16px 40px rgba(194, 38, 95, 0.25);
+      border-color: var(--magenta);
+    }
+
+    .plan-card h4 {
+      font-size: 22px;
+      margin-bottom: 12px;
+      color: var(--paper);
+    }
+
+    .plan-card .plan-price {
+      font-family: 'Playfair Display', serif;
+      font-size: 24px;
+      font-weight: 700;
+      color: var(--magenta);
+      margin-bottom: 16px;
+    }
+
+    .plan-card p {
+      font-size: 14px;
+      color: rgba(255, 255, 255, 0.8);
+      margin: 0 0 24px 0;
+      flex: 1;
+    }
+
+    .plan-card .btn {
+      align-self: flex-start;
+    }
+
+    /* ==================== BOTÓN FLOTANTE WHATSAPP ==================== */
+    .whatsapp-btn {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      width: 56px;
+      height: 56px;
+      background: linear-gradient(135deg, #25D366 0%, #20a952 100%);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      z-index: 999;
+      box-shadow: 0 8px 24px rgba(37, 211, 102, 0.3);
+      transition: all 0.3s var(--ease-smooth);
+      text-decoration: none;
+      color: white;
+      border: none;
+      animation: fadeInScale 0.5s var(--ease-bounce);
+    }
+
+    .whatsapp-btn:hover {
+      transform: scale(1.1);
+      box-shadow: 0 12px 40px rgba(37, 211, 102, 0.5);
+      animation: glow-whatsapp 2s ease-in-out infinite;
+    }
+
+    .whatsapp-btn svg {
+      width: 28px;
+      height: 28px;
+      fill: white;
+    }
+
+    @keyframes glow-whatsapp {
+      0%, 100% { box-shadow: 0 12px 40px rgba(37, 211, 102, 0.5); }
+      50% { box-shadow: 0 12px 40px rgba(37, 211, 102, 0.8); }
+    }
+
+    @media (max-width: 640px) {
+      .whatsapp-btn {
+        bottom: 20px;
+        right: 20px;
+        width: 52px;
+        height: 52px;
+      }
+      .whatsapp-btn svg {
+        width: 26px;
+        height: 26px;
+      }
+    }
+
     /* ==================== RESPONSIVE ==================== */
     @media (max-width: 640px) {
       .hero-inner { grid-template-columns: 1fr; padding-top: 20px; }
@@ -1193,6 +1419,8 @@
       .news-grid { grid-template-columns: 1fr; }
       .cta-row { gap: 10px; }
       .btn { padding: 12px 20px; font-size: 14px; }
+      .shop-grid { grid-template-columns: 1fr; gap: 24px; }
+      .plan-grid { grid-template-columns: 1fr; }
     }
   </style>
 </head>
@@ -1210,6 +1438,7 @@
       <a href="#futbol-base">Fútbol base</a>
       <a href="#temporada">Temporada</a>
       <a href="#eventos">Eventos</a>
+      <a href="#tienda">Tienda</a>
       <a href="#galeria">Galería</a>
       <a href="#contacto" class="nav-cta">Contacto</a>
     </nav>
@@ -1223,6 +1452,7 @@
     <a href="#futbol-base" onclick="closeMenu()">Fútbol base</a>
     <a href="#temporada" onclick="closeMenu()">Temporada</a>
     <a href="#eventos" onclick="closeMenu()">Eventos</a>
+    <a href="#tienda" onclick="closeMenu()">Tienda</a>
     <a href="#galeria" onclick="closeMenu()">Galería</a>
     <a href="#contacto" onclick="closeMenu()">Contacto</a>
   </div>
@@ -1328,6 +1558,61 @@
             <h4>Inicio de entrenamientos</h4>
             <p>Comienza la temporada con la ilusión y energía de siempre. Bienvenidos a todos.</p>
           </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== TIENDA OFICIAL ==================== -->
+<section id="tienda" class="shop-section section-alt">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="kicker">Tienda</span>
+      <h2>Tienda Oficial A.D. Icovesa</h2>
+      <p style="margin-top:16px; font-size:16px; color:var(--grey);">Apoya al club llevando nuestros productos. Presupuestos y entregas especiales a través de WhatsApp.</p>
+    </div>
+
+    <div class="shop-grid">
+      <div class="shop-card">
+        <div class="shop-card-header">
+          <div class="shop-card-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="6" r="1"/><path d="M12 7v10M7 12h10M9 14l6 2M15 14l-6 2" stroke-width="1.5" stroke-linecap="round"/></svg>
+          </div>
+        </div>
+        <div class="shop-card-content">
+          <h3>Pack de Entrenamiento</h3>
+          <div class="price">35€</div>
+          <p>Pack completo para entrenamientos: botella reutilizable + toalla de microfibra + bolsa de equipaje con logo del club.</p>
+          <a href="https://wa.me/?text=Hola%20A.D.%20Icovesa%2C%20me%20interesa%20el%20Pack%20de%20Entrenamiento%20por%2035€" target="_blank" rel="noopener" class="btn btn-primary" style="font-size:14px;padding:10px 16px;">Reservar por WhatsApp</a>
+        </div>
+      </div>
+
+      <div class="shop-card">
+        <div class="shop-card-header">
+          <div class="shop-card-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M6 4h12c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H6c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" stroke-width="1.5"/><path d="M9 9h6M9 13h6M8 9v4M16 9v4" stroke-width="1.5" stroke-linecap="round"/></svg>
+          </div>
+        </div>
+        <div class="shop-card-content">
+          <h3>Sudadera A.D. Icovesa</h3>
+          <div class="price">28€</div>
+          <p>Sudadera oficial de algodón con logo bordado del club. Disponible en todas las tallas. Diseño elegante y cómodo para todos los públicos.</p>
+          <a href="https://wa.me/?text=Hola%20A.D.%20Icovesa%2C%20me%20interesa%20la%20Sudadera%20por%2028€" target="_blank" rel="noopener" class="btn btn-primary" style="font-size:14px;padding:10px 16px;">Reservar por WhatsApp</a>
+        </div>
+      </div>
+
+      <div class="shop-card">
+        <div class="shop-card-header">
+          <div class="shop-card-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M3 10h18M5 10l2 10h10l2-10M9 10V8c0-1.1.9-2 2-2s2 .9 2 2v2" stroke-width="1.5" stroke-linecap="round"/><path d="M12 14v4M10 16h4" stroke-width="1.5" stroke-linecap="round"/></svg>
+          </div>
+        </div>
+        <div class="shop-card-content">
+          <h3>Bufanda Oficial</h3>
+          <div class="price">12€</div>
+          <p>Bufanda tejida con los colores oficiales del club (magenta y negro). Perfecta para animar en partidos o para el día a día.</p>
+          <a href="https://wa.me/?text=Hola%20A.D.%20Icovesa%2C%20me%20interesa%20la%20Bufanda%20Oficial%20por%2012€" target="_blank" rel="noopener" class="btn btn-primary" style="font-size:14px;padding:10px 16px;">Reservar por WhatsApp</a>
         </div>
       </div>
     </div>
@@ -1510,6 +1795,27 @@
       <div class="sponsor-slot">Tu logo aquí</div>
       <div class="sponsor-slot">Tu logo aquí</div>
       <div class="sponsor-slot">Tu logo aquí</div>
+    </div>
+
+    <div class="sponsorship-plans">
+      <h3>Planes de Patrocinio para Empresas</h3>
+      <p>Colabora con el club y aumenta la visibilidad de tu empresa en la comunidad de Icovesa.</p>
+
+      <div class="plan-grid">
+        <div class="plan-card">
+          <h4>Colaborador Web</h4>
+          <div class="plan-price">150€/temporada</div>
+          <p>Exposición del logo de tu empresa en la web oficial del club + menciones en redes sociales + participación en actividades del club.</p>
+          <a href="https://wa.me/?text=Hola%20A.D.%20Icovesa%2C%20me%20interesa%20conocer%20m%C3%A1s%20sobre%20el%20plan%20Colaborador%20Web" target="_blank" rel="noopener" class="btn btn-secondary" style="font-size:14px;padding:10px 16px;">Contactar</a>
+        </div>
+
+        <div class="plan-card">
+          <h4>Patrocinador Oro</h4>
+          <div class="plan-price">350€/temporada</div>
+          <p>Exposición principal en web + redes sociales + logo en equipaciones del club + branding en estadio + participación en eventos exclusivos.</p>
+          <a href="https://wa.me/?text=Hola%20A.D.%20Icovesa%2C%20me%20interesa%20conocer%20m%C3%A1s%20sobre%20el%20plan%20Patrocinador%20Oro" target="_blank" rel="noopener" class="btn btn-secondary" style="font-size:14px;padding:10px 16px;">Contactar</a>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -1764,6 +2070,13 @@
   });
 })();
 </script>
+
+<!-- ==================== BOTÓN FLOTANTE WHATSAPP ==================== -->
+<a href="https://wa.me/" target="_blank" rel="noopener" class="whatsapp-btn" title="Contactar por WhatsApp">
+  <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.67-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.076 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421-7.403h-.004a9.87 9.87 0 00-5.031 1.378c-1.56.934-2.846 2.318-3.769 3.958C2.4 13.777 1.924 15.482 2.425 17.15c.512 1.81 1.532 3.35 2.917 4.402 1.386 1.053 3.069 1.614 4.802 1.644 1.734.03 3.41-.511 4.797-1.562 1.388-1.052 2.407-2.593 2.918-4.402.5-1.668.024-3.373-.826-4.87-.85-1.497-2.135-2.881-3.694-3.815a9.87 9.87 0 00-5.031-1.378"/>
+  </svg>
+</a>
 
 </body>
 </html>
