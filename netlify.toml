@@ -2,6 +2,10 @@
   command = ""
   publish = "."
   functions = "netlify/functions"
+  base = "."
+
+[functions]
+  node_bundler = "esbuild"
 
 [[redirects]]
   from = "/admin/*"
