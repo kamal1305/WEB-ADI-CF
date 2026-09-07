@@ -1,0 +1,184 @@
+# ============================================================
+# Configuración del panel de administración (Decap CMS)
+# Antes de usarlo, sustituye los dos valores marcados con «TODO»
+# Guía completa: ver README.md, sección "Configurar el panel"
+# ============================================================
+# Activar backend local para desarrollo sin login GitHub
+# (usar solo en local; en producción se ignora este flag)
+local_backend: true
+
+backend:
+  name: github
+  repo: TODO-usuario/TODO-nombre-del-repositorio   # ej: adicovesa/web-club
+  branch: main
+  base_url: https://TODO-tu-pasarela-oauth.vercel.app
+  auth_endpoint: auth
+
+# Las fotos que subáis desde el panel se guardan en /uploads
+media_folder: "uploads"
+public_folder: "/uploads"
+
+# Editar directamente en GitHub sin pasar por un flujo de revisión
+publish_mode: simple
+
+collections:
+
+  - name: "calendario"
+    label: "Calendario y resultados"
+    files:
+      - name: "partidos"
+        label: "Partidos"
+        file: "content/calendario.json"
+        fields:
+          - label: "Partidos"
+            name: "partidos"
+            widget: "list"
+            summary: "{{fecha}} — {{local}} vs {{visitante}}"
+            fields:
+              - { label: "Fecha", name: "fecha", widget: "string", hint: "Ej: Sáb 12 sep" }
+              - { label: "Categoría", name: "categoria", widget: "string" }
+              - { label: "Equipo local", name: "local", widget: "string" }
+              - { label: "Equipo visitante", name: "visitante", widget: "string" }
+              - { label: "Resultado", name: "resultado", widget: "string", required: false, hint: "Déjalo vacío si aún no se ha jugado" }
+              - { label: "Campo", name: "campo", widget: "string" }
+              - { label: "Enlace a la clasificación oficial en la RFAF", name: "rfaf_url", widget: "string", required: false, hint: "URL (NFG_VisClasificacion...) con la clasificación oficial del equipo" }
+
+  - name: "equipos"
+    label: "Equipos y jugadores"
+    files:
+      - name: "equipos"
+        label: "Equipos"
+        file: "content/equipos.json"
+        fields:
+          - label: "Equipos"
+            name: "equipos"
+            widget: "list"
+            summary: "{{categoria}}"
+            fields:
+              - { label: "Categoría", name: "categoria", widget: "string" }
+              - { label: "Entrenador/a", name: "entrenador", widget: "string", required: false }
+              - label: "Equipos federados (competición RFAF)"
+                name: "equipos_federados"
+                widget: "list"
+                required: false
+                summary: "{{nombre}} — {{categoria_federada}}"
+                fields:
+                  - { label: "Nombre del equipo", name: "nombre", widget: "string", hint: "Ej: A.D. Icovesa A" }
+                  - { label: "Categoría federada", name: "categoria_federada", widget: "string", hint: "Ej: 4ª ANDALUZA ALEVIN" }
+                  - { label: "Código de equipo (RFAF)", name: "codigo_equipo", widget: "string", required: false }
+                  - { label: "Temporada", name: "temporada", widget: "string", required: false, hint: "Ej: 2025-2026" }
+                  - { label: "Posición final", name: "posicion_2025_2026", widget: "number", required: false, value_type: "int" }
+                  - { label: "Puntos", name: "puntos_2025_2026", widget: "number", required: false, value_type: "int" }
+                  - { label: "Enlace a la clasificación oficial en la RFAF", name: "rfaf_url", widget: "string", required: false, hint: "URL (NFG_VisClasificacion...) de la tabla oficial" }
+              - label: "Jugadores"
+                name: "jugadores"
+                widget: "list"
+                summary: "{{nombre}}"
+                fields:
+                  - { label: "Nombre", name: "nombre", widget: "string" }
+                  - { label: "Dorsal", name: "dorsal", widget: "number", required: false, value_type: "int" }
+                  - { label: "Posición", name: "posicion", widget: "string", required: false }
+                  - { label: "Foto", name: "foto", widget: "image", required: false }
+
+  - name: "staff"
+    label: "Cuerpo técnico"
+    files:
+      - name: "staff"
+        label: "Cuerpo técnico"
+        file: "content/staff.json"
+        fields:
+          - label: "Miembros"
+            name: "staff"
+            widget: "list"
+            summary: "{{nombre}} — {{cargo}}"
+            fields:
+              - { label: "Nombre", name: "nombre", widget: "string" }
+              - { label: "Cargo", name: "cargo", widget: "string", hint: "Ej: Entrenador, delegado, preparador físico" }
+              - { label: "Equipo o categoría", name: "equipo", widget: "string", required: false }
+              - { label: "Foto", name: "foto", widget: "image", required: false }
+
+  - name: "galeria"
+    label: "Galería de fotos"
+    files:
+      - name: "galeria"
+        label: "Fotos"
+        file: "content/galeria.json"
+        fields:
+          - label: "Fotos"
+            name: "fotos"
+            widget: "list"
+            summary: "{{descripcion}}"
+            fields:
+              - { label: "Imagen", name: "imagen", widget: "image" }
+              - { label: "Descripción", name: "descripcion", widget: "string", required: false }
+
+  - name: "noticias"
+    label: "Noticias y actualidad"
+    files:
+      - name: "noticias"
+        label: "Noticias"
+        file: "content/noticias.json"
+        fields:
+          - label: "Noticias"
+            name: "noticias"
+            widget: "list"
+            summary: "{{titulo}}"
+            fields:
+              - { label: "Título", name: "titulo", widget: "string" }
+              - { label: "Categoría", name: "categoria", widget: "string", hint: "Ej: Crónica del club, Fútbol base, Aviso deportivo" }
+              - { label: "Fecha", name: "fecha", widget: "string", hint: "Ej: 24 Ago 2026" }
+              - { label: "Resumen", name: "resumen", widget: "text" }
+              - { label: "Imagen", name: "imagen", widget: "image", required: false }
+
+  - name: "tienda"
+    label: "Tienda oficial"
+    files:
+      - name: "productos"
+        label: "Productos"
+        file: "content/tienda.json"
+        fields:
+          - label: "Productos"
+            name: "productos"
+            widget: "list"
+            summary: "{{nombre}}"
+            fields:
+              - { label: "Nombre", name: "nombre", widget: "string" }
+              - { label: "Descripción", name: "descripcion", widget: "string" }
+              - { label: "Precio", name: "precio", widget: "string", hint: "Ej: 25 € o desde 8 €" }
+              - { label: "Imagen", name: "imagen", widget: "image", required: false }
+              - label: "Tallas disponibles"
+                name: "tallas"
+                widget: "list"
+                required: false
+                field: { label: "Talla", name: "item", widget: "string" }
+
+  - name: "patrocinadores"
+    label: "Patrocinadores y paquetes"
+    files:
+      - name: "patrocinadores"
+        label: "Patrocinadores"
+        file: "content/patrocinadores.json"
+        fields:
+          - label: "Patrocinadores"
+            name: "patrocinadores"
+            widget: "list"
+            summary: "{{nombre}}"
+            fields:
+              - { label: "Nombre", name: "nombre", widget: "string" }
+              - { label: "Logo", name: "logo", widget: "image" }
+              - { label: "Web (opcional)", name: "url", widget: "string", required: false }
+          - label: "Paquetes de patrocinio"
+            name: "paquetes"
+            widget: "list"
+            summary: "{{nombre}}"
+            fields:
+              - { label: "Nombre del paquete", name: "nombre", widget: "string" }
+              - { label: "Tipo / subtitulo", name: "tipo", widget: "string" }
+              - { label: "Precio orientativo", name: "precio", widget: "string" }
+              - { label: "¿Paquete destacado?", name: "destacado", widget: "boolean", default: false }
+              - label: "Beneficios"
+                name: "beneficios"
+                widget: "list"
+                summary: "{{item}}"
+                field: { label: "Beneficio", name: "item", widget: "string" }
+              - { label: "Ideal para", name: "ideal", widget: "string" }

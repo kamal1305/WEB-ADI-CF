@@ -1,0 +1,44 @@
+{
+  "patrocinadores": [],
+  "paquetes": [
+    {
+      "nombre": "Comercio Amigo del Club",
+      "tipo": "Nivel 1",
+      "precio": "100 €/año",
+      "destacado": false,
+      "beneficios": [
+        "Aporte destinado a balones, petos y botiquines para los equipos",
+        "Mención en la sección de colaboradores de la web",
+        "Agradecimiento público en redes sociales del club"
+      ],
+      "ideal": "Comercios locales y familias que quieran echar una mano"
+    },
+    {
+      "nombre": "Colaborador Lona de Campo",
+      "tipo": "Nivel 2",
+      "precio": "250 €/año",
+      "destacado": false,
+      "beneficios": [
+        "Lona publicitaria en el Campo de Fútbol Picadueñas",
+        "Logo destacado en la web del club",
+        "Mención mensual en redes sociales",
+        "Invitación a la jornada inaugural de temporada"
+      ],
+      "ideal": "Pymes, academias y negocios de la zona de Jerez"
+    },
+    {
+      "nombre": "Patrocinador Principal",
+      "tipo": "Nivel 3",
+      "precio": "500 €/año",
+      "destacado": true,
+      "beneficios": [
+        "Publicidad en equipación oficial del club",
+        "Cobertura de cuotas para familias vulnerables",
+        "Logo principal destacado en la web",
+        "Presencia en todas las redes y comunicaciones oficiales",
+        "Protagonismo en eventos y torneos del club"
+      ],
+      "ideal": "Empresas que quieran comprometerse con el deporte base"
+    }
+  ]
+}

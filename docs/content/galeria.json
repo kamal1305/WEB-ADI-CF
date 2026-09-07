@@ -1,0 +1,20 @@
+{
+  "fotos": [
+    {
+      "imagen": "img/galeria-entreno.jpg",
+      "descripcion": "Sesión de entrenamiento del Alevín en el Campo de Fútbol Picadueñas"
+    },
+    {
+      "imagen": "img/galeria-partido.jpg",
+      "descripcion": "Acción del último partido local del Benjamín"
+    },
+    {
+      "imagen": "img/galeria-equipo.jpg",
+      "descripcion": "Foto del equipo Infantil antes del derbi comarcal"
+    },
+    {
+      "imagen": "img/galeria-fiesta.jpg",
+      "descripcion": "Fiesta de clausura de temporada ADI CF"
+    }
+  ]
+}

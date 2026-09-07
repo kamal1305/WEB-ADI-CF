@@ -1,0 +1,2217 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>A.D. Icovesa — Fútbol base en Jerez</title>
+<meta name="description" content="Asociación Deportiva Icovesa (ADI C.F.), club de fútbol base en la barriada de Icovesa, Jerez de la Frontera. Fundado en 1994.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+/* ═══════════════════════════════════════════════════════════
+   DESIGN TOKENS
+   ═══════════════════════════════════════════════════════════ */
+:root {
+  --bg:       #0A0A0A;
+  --bg-2:     #111111;
+  --bg-3:     #1A1A1A;
+  --surface:  #151515;
+  --surface-2:#1E1E1E;
+  --ink:      #FAFAFA;
+  --ink-2:    #D4D4D4;
+  --ink-3:    #737373;
+  --rosa:     #C2265F;
+  --rosa-h:   #E91E70;
+  --rosa-d:   #7A1740;
+  --rosa-bg:  rgba(194,38,95,0.08);
+  --rosa-glow:rgba(194,38,95,0.25);
+  --green:    #10B981;
+  --amber:    #F59E0B;
+  --red:      #EF4444;
+  --border:   #262626;
+  --border-2: #333333;
+
+  --ff-display: 'Archivo Black', Impact, 'Arial Black', sans-serif;
+  --ff-body:    'Outfit', system-ui, -apple-system, sans-serif;
+
+  --fs-hero:   clamp(2.75rem, 6vw + 1rem, 5rem);
+  --fs-h2:     clamp(1.75rem, 3vw + 0.5rem, 2.5rem);
+  --fs-h3:     clamp(1.15rem, 1.5vw + 0.5rem, 1.35rem);
+  --fs-body:   clamp(0.95rem, 0.3vw + 0.75rem, 1.0625rem);
+  --fs-small:  0.8125rem;
+  --fs-xs:     0.6875rem;
+
+  --max-w:     1200px;
+  --gap:       clamp(0.75rem, 1.5vw, 1.25rem);
+  --radius:    14px;
+  --radius-lg: 20px;
+
+  --ease-out:  cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --dur-fast:  0.2s;
+  --dur-med:   0.4s;
+  --dur-slow:  0.6s;
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    --bg:       #FAFAFA;
+    --bg-2:     #F0F0F0;
+    --bg-3:     #E5E5E5;
+    --surface:  #FFFFFF;
+    --surface-2:#F5F5F5;
+    --ink:      #0A0A0A;
+    --ink-2:    #404040;
+    --ink-3:    #737373;
+    --rosa:     #B01E50;
+    --rosa-h:   #C2265F;
+    --rosa-bg:  rgba(194,38,95,0.06);
+    --rosa-glow:rgba(194,38,95,0.15);
+    --border:   #D4D4D4;
+    --border-2: #A3A3A3;
+  }
+}
+
+/* ═══════════════════════════════════════════════════════════
+   RESET & BASE
+   ═══════════════════════════════════════════════════════════ */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--ff-body);
+  font-size: var(--fs-body);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+img { max-width: 100%; display: block; }
+a { color: var(--rosa); text-decoration: none; transition: color var(--dur-fast) ease; }
+a:hover { color: var(--rosa-h); }
+ul, ol { list-style: none; }
+h1, h2, h3, h4 {
+  font-family: var(--ff-display);
+  font-weight: 400;
+  line-height: 1.05;
+  color: var(--ink);
+}
+p { max-width: 65ch; }
+
+.wrap { max-width: var(--max-w); margin: 0 auto; padding: 0 clamp(1rem, 4vw, 1.5rem); }
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ═══════════════════════════════════════════════════════════
+   SCROLL REVEAL
+   ═══════════════════════════════════════════════════════════ */
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity var(--dur-slow) var(--ease-out),
+              transform var(--dur-slow) var(--ease-out);
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+.reveal-delay-1 { transition-delay: 0.08s; }
+.reveal-delay-2 { transition-delay: 0.16s; }
+.reveal-delay-3 { transition-delay: 0.24s; }
+.reveal-delay-4 { transition-delay: 0.32s; }
+.reveal-delay-5 { transition-delay: 0.4s; }
+.reveal-delay-6 { transition-delay: 0.48s; }
+
+/* ═══════════════════════════════════════════════════════════
+   NAVIGATION
+   ═══════════════════════════════════════════════════════════ */
+.site-nav {
+  position: sticky; top: 0; z-index: 100;
+  background: rgba(10,10,10,0.85);
+  backdrop-filter: blur(16px) saturate(1.2);
+  border-bottom: 1px solid var(--border);
+}
+@media (prefers-color-scheme: light) {
+  .site-nav { background: rgba(250,250,250,0.88); }
+}
+.nav-inner {
+  max-width: var(--max-w); margin: 0 auto;
+  padding: 0 clamp(1rem, 4vw, 1.5rem);
+  display: flex; align-items: center; justify-content: space-between;
+  height: 64px;
+}
+.brand { display: flex; align-items: center; gap: 12px; text-decoration: none; color: var(--ink); }
+.brand img { width: 42px; height: 42px; border-radius: 50%; }
+.brand-name { font-family: var(--ff-display); font-size: 16px; letter-spacing: -0.02em; }
+.nav-links { display: none; gap: 28px; align-items: center; }
+.nav-links a {
+  color: var(--ink-2); text-decoration: none; font-weight: 500;
+  font-size: 0.875rem; letter-spacing: 0.01em;
+  transition: color var(--dur-fast) ease;
+}
+.nav-links a:hover { color: var(--ink); }
+.nav-cta {
+  background: var(--rosa) !important; color: #fff !important;
+  padding: 8px 20px; border-radius: 100px; font-weight: 600;
+  transition: background var(--dur-fast) ease, transform var(--dur-fast) ease !important;
+}
+.nav-cta:hover { background: var(--rosa-h) !important; }
+.nav-cta:active { transform: scale(0.97); }
+
+.burger {
+  display: flex; flex-direction: column; gap: 5px;
+  background: none; border: none; cursor: pointer; padding: 8px;
+}
+.burger span {
+  width: 22px; height: 2px; background: var(--ink);
+  transition: transform var(--dur-fast) ease, opacity var(--dur-fast) ease;
+}
+.burger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.burger.open span:nth-child(2) { opacity: 0; }
+.burger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+.mobile-menu {
+  display: none; flex-direction: column; padding: 0 clamp(1rem, 4vw, 1.5rem) 20px;
+  border-top: 1px solid var(--border);
+}
+.mobile-menu.open { display: flex; }
+.mobile-menu a {
+  padding: 14px 0; text-decoration: none; color: var(--ink-2);
+  border-bottom: 1px solid var(--border); font-weight: 500; font-size: 0.9375rem;
+}
+.mobile-menu a:last-child { border-bottom: none; }
+.mobile-menu a:hover { color: var(--rosa); }
+
+@media (min-width: 860px) {
+  .nav-links { display: flex; }
+  .burger { display: none; }
+}
+
+/* ═══════════════════════════════════════════════════════════
+   HERO
+   ═══════════════════════════════════════════════════════════ */
+.hero {
+  position: relative; overflow: hidden;
+  padding: clamp(3rem, 8vw, 6rem) 0 clamp(2rem, 6vw, 4rem);
+  background: var(--bg);
+}
+.hero::before {
+  content: '';
+  position: absolute; inset: 0;
+  background:
+    radial-gradient(ellipse 80% 60% at 70% 30%, var(--rosa-glow), transparent 70%),
+    radial-gradient(ellipse 50% 50% at 20% 80%, rgba(122,23,64,0.12), transparent 60%);
+  pointer-events: none;
+}
+.hero-grid {
+  display: grid; gap: clamp(2rem, 5vw, 4rem); align-items: center;
+  position: relative; z-index: 1;
+}
+.hero-text { max-width: 600px; }
+.hero-badge {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 6px 14px; border-radius: 100px;
+  background: var(--rosa-bg); border: 1px solid rgba(194,38,95,0.2);
+  font-size: var(--fs-small); font-weight: 600; color: var(--rosa);
+  margin-bottom: clamp(1rem, 3vw, 1.5rem);
+  letter-spacing: 0.03em; text-transform: uppercase;
+}
+.hero-badge::before {
+  content: ''; width: 7px; height: 7px; border-radius: 50%;
+  background: var(--rosa); animation: pulse-dot 2s ease-in-out infinite;
+}
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.5; transform: scale(0.8); }
+}
+.hero h1 {
+  font-size: var(--fs-hero);
+  line-height: 1;
+  letter-spacing: -0.03em;
+  margin-bottom: clamp(1rem, 2vw, 1.5rem);
+}
+.hero h1 .rosa { color: var(--rosa); }
+.hero-sub {
+  font-size: clamp(1rem, 1.5vw, 1.125rem);
+  color: var(--ink-2); line-height: 1.7;
+  max-width: 48ch; margin-bottom: clamp(1.5rem, 3vw, 2rem);
+}
+.hero-stats {
+  display: flex; gap: clamp(1.5rem, 4vw, 3rem);
+  margin-bottom: clamp(1.5rem, 3vw, 2.5rem);
+}
+.hero-stat-num {
+  font-family: var(--ff-display); font-size: clamp(1.5rem, 3vw, 2.25rem);
+  color: var(--ink); line-height: 1;
+}
+.hero-stat-label {
+  font-size: var(--fs-small); color: var(--ink-3);
+  font-weight: 500; margin-top: 4px; letter-spacing: 0.04em; text-transform: uppercase;
+}
+.hero-ctas { display: flex; flex-wrap: wrap; gap: 12px; }
+.btn {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 14px 28px; border-radius: 100px;
+  font-family: var(--ff-body); font-weight: 600; font-size: 0.9375rem;
+  text-decoration: none; border: none; cursor: pointer;
+  transition: all var(--dur-fast) ease;
+}
+.btn:active { transform: scale(0.97); }
+.btn-primary { background: var(--rosa); color: #fff; }
+.btn-primary:hover { background: var(--rosa-h); color: #fff; }
+.btn-outline {
+  background: transparent; color: var(--ink);
+  border: 1.5px solid var(--border-2);
+}
+.btn-outline:hover { border-color: var(--ink); color: var(--ink); }
+.btn-ghost { background: transparent; color: var(--ink-2); padding: 14px 16px; }
+.btn-ghost:hover { color: var(--ink); }
+
+.hero-crest {
+  justify-self: center; position: relative;
+  width: min(340px, 65vw);
+}
+.hero-crest img {
+  width: 100%;
+  filter: drop-shadow(0 0 60px var(--rosa-glow)) drop-shadow(0 20px 40px rgba(0,0,0,0.5));
+  animation: crest-float 6s ease-in-out infinite;
+}
+@keyframes crest-float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-12px); }
+}
+.hero-crest::after {
+  content: ''; position: absolute; bottom: -20px; left: 10%; right: 10%;
+  height: 40px; background: radial-gradient(ellipse, var(--rosa-glow), transparent 70%);
+  filter: blur(20px); pointer-events: none;
+}
+
+@media (min-width: 860px) {
+  .hero-grid { grid-template-columns: 1fr 0.8fr; }
+  .hero-crest { justify-self: end; }
+}
+
+/* ═══════════════════════════════════════════════════════════
+   SECTION HEADERS
+   ═══════════════════════════════════════════════════════════ */
+.section { padding: clamp(3rem, 8vw, 5.5rem) 0; }
+.section-dark { background: var(--bg); }
+.section-alt { background: var(--bg-2); }
+.section-head { margin-bottom: clamp(2rem, 5vw, 3rem); }
+.kicker {
+  display: inline-block; font-size: var(--fs-small); font-weight: 700;
+  color: var(--rosa); letter-spacing: 0.1em; text-transform: uppercase;
+  margin-bottom: 0.75rem;
+}
+.section-head h2 { font-size: var(--fs-h2); }
+.section-head p { color: var(--ink-2); margin-top: 0.75rem; font-size: clamp(0.9375rem, 1vw + 0.5rem, 1.0625rem); }
+
+/* ═══════════════════════════════════════════════════════════
+   BENTO CALENDAR / RESULTS
+   ═══════════════════════════════════════════════════════════ */
+.bento-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--gap);
+}
+.bento-span-4 { grid-column: span 4; }
+.bento-span-2 { grid-column: span 2; }
+.bento-span-1 { grid-column: span 1; }
+
+@media (max-width: 640px) {
+  .bento-grid { grid-template-columns: 1fr 1fr; }
+  .bento-span-4 { grid-column: span 2; }
+}
+@media (min-width: 641px) and (max-width: 860px) {
+  .bento-grid { grid-template-columns: repeat(4, 1fr); }
+}
+
+.bento-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: clamp(1.25rem, 3vw, 1.75rem);
+  display: flex; flex-direction: column;
+  transition: border-color var(--dur-fast) ease, transform var(--dur-fast) var(--ease-spring);
+  position: relative; overflow: hidden;
+}
+.bento-card:hover {
+  border-color: var(--border-2);
+  transform: translateY(-2px);
+}
+
+/* Next match — large feature card */
+.bento-next {
+  background: linear-gradient(135deg, var(--rosa-d) 0%, #1a0a14 50%, var(--surface) 100%);
+  border-color: rgba(194,38,95,0.3);
+}
+.bento-next:hover { border-color: var(--rosa); }
+.bento-next .match-category {
+  color: var(--rosa); background: rgba(194,38,95,0.15);
+  border: 1px solid rgba(194,38,95,0.3);
+}
+.bento-next .match-category::before { background: var(--rosa); }
+.bento-next .match-teams { font-size: clamp(1.25rem, 2vw, 1.75rem); }
+.bento-next .match-venue { color: var(--ink-2); }
+
+/* Result cards */
+.bento-result { border-left: 3px solid var(--border); }
+.bento-result.win { border-left-color: var(--green); }
+.bento-result.draw { border-left-color: var(--amber); }
+.bento-result.loss { border-left-color: var(--red); }
+
+.match-category {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 4px 10px; border-radius: 100px;
+  font-size: var(--fs-xs); font-weight: 600;
+  color: var(--ink-2); background: var(--bg-3);
+  letter-spacing: 0.05em; text-transform: uppercase;
+  margin-bottom: 0.75rem; align-self: flex-start;
+}
+.match-category::before {
+  content: ''; width: 5px; height: 5px;
+  border-radius: 50%; background: var(--ink-3);
+}
+.match-date {
+  font-size: var(--fs-xs); color: var(--ink-3);
+  font-weight: 500; letter-spacing: 0.04em; text-transform: uppercase;
+  margin-top: auto; padding-top: 0.75rem;
+}
+.match-teams {
+  font-family: var(--ff-display); font-size: clamp(1rem, 1.5vw, 1.2rem);
+  line-height: 1.15; color: var(--ink);
+}
+.match-venue {
+  font-size: var(--fs-small); color: var(--ink-3); margin-top: 6px;
+}
+.match-score {
+  font-family: var(--ff-display); font-size: clamp(1.5rem, 3vw, 2rem);
+  color: var(--ink); margin: 0.5rem 0 0.25rem;
+  letter-spacing: 0.05em;
+}
+.match-result-label {
+  font-size: var(--fs-xs); font-weight: 600;
+  letter-spacing: 0.06em; text-transform: uppercase;
+}
+.match-result-label.win { color: var(--green); }
+.match-result-label.draw { color: var(--amber); }
+.match-result-label.loss { color: var(--red); }
+
+/* Fallback */
+.bento-empty {
+  grid-column: 1 / -1;
+  text-align: center; padding: 3rem 1rem;
+  color: var(--ink-3); font-size: var(--fs-body);
+}
+
+/* ═══════════════════════════════════════════════════════════
+   CLUB — SPLIT / VALUES / FACILITIES
+   ═══════════════════════════════════════════════════════════ */
+.split { display: grid; gap: clamp(2rem, 5vw, 3rem); }
+@media (min-width: 860px) { .split-2 { grid-template-columns: 1fr 1fr; } }
+.split h3 { font-size: var(--fs-h3); margin-bottom: 0.75rem; }
+.split p { color: var(--ink-2); }
+
+.values { display: grid; gap: 10px; margin-top: 1.25rem; }
+.values li {
+  display: flex; gap: 14px; align-items: flex-start;
+  padding: 14px 16px; background: var(--surface);
+  border: 1px solid var(--border); border-radius: var(--radius);
+}
+.values .dot {
+  width: 8px; height: 8px; border-radius: 50%;
+  background: var(--rosa); margin-top: 8px; flex: none;
+}
+.values span:last-child { color: var(--ink-2); font-size: 0.9375rem; }
+
+.fac-card {
+  border: 1px solid var(--border); border-radius: var(--radius-lg);
+  overflow: hidden; background: var(--surface); margin-bottom: 20px;
+}
+.fac-card iframe { width: 100%; height: 220px; border: 0; display: block; }
+.fac-card .fac-body { padding: 20px 22px; }
+.fac-card h3 { font-size: var(--fs-h3); margin-bottom: 6px; }
+.fac-card p { color: var(--ink-3); font-size: 0.9375rem; margin: 0; }
+
+.gps-btns {
+  display: flex; gap: 0.75rem; flex-wrap: wrap; margin-top: 1rem;
+}
+.gps-btns a {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  padding: 10px 18px; border-radius: var(--radius);
+  font-size: 0.875rem; font-weight: 600; text-decoration: none;
+  border: 1px solid var(--border); background: var(--surface);
+  color: var(--ink); transition: background .2s, border-color .2s;
+}
+.gps-btns a:hover { background: var(--rosa); border-color: var(--rosa); color: #fff; }
+.gps-btns a svg { width: 16px; height: 16px; flex-shrink: 0; }
+
+/* ═══════════════════════════════════════════════════════════
+   CATEGORIES — BENTO TEAM CARDS
+   ═══════════════════════════════════════════════════════════ */
+.cat-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--gap);
+}
+@media (max-width: 640px) {
+  .cat-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (min-width: 641px) and (max-width: 860px) {
+  .cat-grid { grid-template-columns: repeat(3, 1fr); }
+}
+
+.cat-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: clamp(1rem, 2.5vw, 1.5rem);
+  min-height: 120px;
+  display: flex; flex-direction: column;
+  justify-content: space-between;
+  position: relative; overflow: hidden;
+  transition: all var(--dur-fast) var(--ease-spring);
+}
+.cat-card::after {
+  content: ''; position: absolute; bottom: 0; left: 0; right: 0;
+  height: 3px; background: var(--rosa);
+  transform: scaleX(0); transform-origin: left;
+  transition: transform var(--dur-med) var(--ease-out);
+}
+.cat-card:hover {
+  border-color: var(--rosa);
+  transform: translateY(-3px);
+  box-shadow: 0 12px 40px rgba(194,38,95,0.12);
+}
+.cat-card:hover::after { transform: scaleX(1); }
+
+/* Clasificaciones RFAF */
+.clasif-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0,1fr));
+  gap: var(--gap);
+  margin-top: 1.25rem;
+}
+@media (max-width: 640px) {
+  .clasif-grid { grid-template-columns: 1fr; }
+}
+.clasif-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 1.1rem 1.25rem;
+  display: flex; align-items: center; justify-content: space-between; gap: 0.75rem 1rem; flex-wrap: wrap;
+  transition: border-color var(--dur-fast) ease;
+}
+.clasif-card:hover { border-color: var(--rosa); }
+.clasif-info { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
+.clasif-name { font-weight: 700; color: var(--ink); font-size: 0.9375rem; }
+.clasif-sub { font-size: var(--fs-xs); color: var(--ink-3); letter-spacing: 0.03em; text-transform: uppercase; }
+.clasif-pos {
+  flex-shrink: 0;
+  display: inline-flex; align-items: baseline; gap: 4px;
+  font-size: var(--fs-xs); font-weight: 800; color: var(--ink);
+  background: var(--surface-2);
+  border: 1px solid var(--border-2);
+  border-radius: 100px;
+  padding: 4px 12px;
+}
+.clasif-pos small { font-weight: 500; color: var(--ink-3); font-size: 0.625rem; text-transform: uppercase; }
+.clasif-cta {
+  flex-shrink: 0;
+  display: inline-flex; align-items: center; gap: 6px;
+  font-size: 0.8rem; font-weight: 600;
+  color: var(--rosa); text-decoration: none;
+  border: 1px solid var(--border-2); border-radius: 100px;
+  padding: 8px 14px;
+  transition: all var(--dur-fast) ease;
+}
+.clasif-cta:hover { background: var(--rosa); color: #fff; border-color: var(--rosa); }
+.clasif-cta svg { width: 14px; height: 14px; }
+
+.match-rfaf {
+  margin-top: 0.5rem;
+  font-size: 0.75rem;
+}
+.match-rfaf a {
+  color: var(--ink-3);
+  text-decoration: none;
+  border-bottom: 1px solid var(--border-2);
+  padding-bottom: 1px;
+  transition: color var(--dur-fast) ease, border-color var(--dur-fast) ease;
+}
+.match-rfaf a:hover { color: var(--rosa); border-color: var(--rosa); }
+
+.team-federados {
+  margin: 0.5rem 0 0.75rem;
+  font-size: 0.8125rem;
+  color: var(--ink-2);
+  line-height: 1.6;
+}
+.team-federados span { color: var(--ink-3); }
+.team-federados a { color: var(--rosa); text-decoration: none; border-bottom: 1px solid transparent; }
+.team-federados a:hover { border-color: var(--rosa); }
+
+.cat-card .cat-age {
+  font-size: var(--fs-xs); color: var(--ink-3);
+  font-weight: 500; letter-spacing: 0.05em; text-transform: uppercase;
+  margin-bottom: 0.5rem;
+}
+.cat-card .cat-name {
+  font-family: var(--ff-display); font-size: clamp(1rem, 1.5vw, 1.25rem);
+  line-height: 1.1;
+}
+.cat-card .cat-icon {
+  font-size: 1.5rem; margin-bottom: 0.5rem;
+}
+
+.cat-card-cta {
+  background: var(--rosa); border-color: var(--rosa);
+  color: #fff; justify-content: center; align-items: center;
+  text-align: center; min-height: 120px;
+}
+.cat-card-cta::after { background: var(--rosa-h); }
+.cat-card-cta:hover {
+  background: var(--rosa-h); border-color: var(--rosa-h);
+  box-shadow: 0 12px 40px rgba(194,38,95,0.3);
+}
+.cat-card-cta .cat-name { color: #fff; }
+.cat-card-cta .cat-age { color: rgba(255,255,255,0.7); }
+
+/* ═══════════════════════════════════════════════════════════
+   TEAM BLOCKS (players)
+   ═══════════════════════════════════════════════════════════ */
+.team-block {
+  margin-top: 1.75rem; padding: 1.25rem 1.5rem 1.5rem;
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+}
+.team-block h4 {
+  font-family: var(--ff-display); font-size: 1rem; font-weight: 400;
+  margin: 0 0 1rem 0;
+}
+.player-grid, .staff-grid {
+  display: grid; gap: 14px; grid-template-columns: repeat(2, 1fr);
+}
+@media (min-width: 640px) { .player-grid, .staff-grid { grid-template-columns: repeat(4, 1fr); } }
+
+.player-card, .staff-card { text-align: left; }
+.player-photo, .staff-photo {
+  aspect-ratio: 1/1; border-radius: var(--radius); background: var(--bg-3);
+  overflow: hidden; margin-bottom: 8px; border: 1px solid var(--border);
+  display: flex; align-items: center; justify-content: center;
+}
+.player-photo img, .staff-photo img { width: 100%; height: 100%; object-fit: cover; }
+.player-photo svg, .staff-photo svg { width: 24px; height: 24px; color: var(--ink-3); opacity: 0.5; }
+.player-name, .staff-name { font-weight: 600; font-size: 0.875rem; line-height: 1.3; }
+.player-meta, .staff-role { font-size: var(--fs-xs); color: var(--ink-3); }
+.empty-note { font-size: 0.9375rem; color: var(--ink-3); margin: 0; }
+
+.steps {
+  counter-reset: step; display: grid; gap: 14px; margin-top: 1.75rem;
+}
+.steps li { counter-increment: step; display: flex; gap: 14px; align-items: flex-start; color: var(--ink-2); }
+.steps li::before {
+  content: counter(step);
+  font-family: var(--ff-display); font-size: 0.8125rem;
+  background: var(--rosa-bg); color: var(--rosa);
+  border: 1px solid rgba(194,38,95,0.2);
+  width: 32px; height: 32px; border-radius: 50%; flex: none;
+  display: flex; align-items: center; justify-content: center;
+}
+
+.todo-box {
+  margin-top: 1.75rem; border: 1px dashed var(--border-2);
+  border-radius: var(--radius); padding: 16px 20px; background: transparent;
+}
+.todo-box p { margin: 0; font-size: 0.9375rem; color: var(--ink-3); }
+.todo-box strong { color: var(--ink-2); }
+
+/* ═══════════════════════════════════════════════════════════
+   EVENTS
+   ═══════════════════════════════════════════════════════════ */
+.event-grid { display: grid; gap: var(--gap); }
+@media (min-width: 760px) { .event-grid { grid-template-columns: 1fr 1fr; } }
+.event-card {
+  border: 1px solid var(--border); border-radius: var(--radius-lg);
+  padding: clamp(1.5rem, 3vw, 2rem); background: var(--surface);
+  border-top: 3px solid var(--rosa);
+  transition: transform var(--dur-fast) var(--ease-spring),
+              box-shadow var(--dur-fast) ease;
+}
+.event-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 30px rgba(0,0,0,0.3);
+}
+.event-card h3 { font-size: var(--fs-h3); margin-bottom: 8px; }
+.event-card p { font-size: 0.9375rem; color: var(--ink-2); margin-bottom: 0; }
+
+/* ═══════════════════════════════════════════════════════════
+   COLLABORATE / SPONSORS
+   ═══════════════════════════════════════════════════════════ */
+.collab-grid { display: grid; gap: 12px; margin-top: 8px; }
+@media (min-width: 640px) { .collab-grid { grid-template-columns: 1fr 1fr; } }
+.collab-item {
+  display: flex; gap: 14px; padding: 16px 18px;
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: var(--radius); align-items: flex-start;
+}
+.collab-item svg { flex: none; width: 22px; height: 22px; margin-top: 2px; color: var(--rosa); }
+.collab-item span { color: var(--ink-2); font-size: 0.9375rem; }
+
+.sponsor-row {
+  display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--gap);
+  margin-top: 2rem;
+}
+@media (min-width: 640px) { .sponsor-row { grid-template-columns: repeat(4, 1fr); } }
+.sponsor-slot {
+  aspect-ratio: 2/1; border: 1.5px dashed var(--border-2); border-radius: var(--radius);
+  display: flex; align-items: center; justify-content: center;
+  color: var(--ink-3); font-size: var(--fs-small); text-align: center; padding: 8px;
+  transition: border-color var(--dur-fast) ease;
+}
+.sponsor-slot:hover { border-color: var(--rosa); }
+
+/* ═══════════════════════════════════════════════════════════
+   GALLERY
+   ═══════════════════════════════════════════════════════════ */
+.gallery-grid {
+  display: grid; gap: 12px; grid-template-columns: repeat(2, 1fr); margin-top: 8px;
+}
+@media (min-width: 640px) { .gallery-grid { grid-template-columns: repeat(4, 1fr); } }
+.gallery-slot {
+  aspect-ratio: 1/1; border-radius: var(--radius-lg); background: var(--surface);
+  border: 1px solid var(--border);
+  display: flex; align-items: center; justify-content: center;
+  color: var(--ink-3); overflow: hidden;
+  transition: transform var(--dur-fast) var(--ease-spring);
+}
+.gallery-slot:hover { transform: scale(1.03); }
+.gallery-slot:nth-child(3n+1) { background: var(--bg-3); }
+.gallery-slot svg { width: 26px; height: 26px; opacity: 0.4; }
+
+/* ═══════════════════════════════════════════════════════════
+   CONTACT
+   ═══════════════════════════════════════════════════════════ */
+.contact-grid { display: grid; gap: clamp(2rem, 5vw, 3rem); }
+@media (min-width: 860px) { .contact-grid { grid-template-columns: 1fr 1fr; } }
+.info-list { display: grid; gap: 0; }
+.info-list li {
+  display: flex; justify-content: space-between; gap: 16px;
+  padding: 13px 0; border-bottom: 1px solid var(--border);
+  font-size: 0.9375rem;
+}
+.info-list li span:first-child { color: var(--ink-3); }
+.info-list li span:last-child { font-weight: 600; text-align: right; color: var(--ink-2); }
+.social-row { display: flex; gap: 12px; margin-top: 1.5rem; }
+.social-btn {
+  display: flex; align-items: center; gap: 8px;
+  padding: 11px 18px; border: 1.5px solid var(--border-2);
+  border-radius: 100px; text-decoration: none;
+  color: var(--ink-2); font-weight: 600; font-size: 0.875rem;
+  transition: all var(--dur-fast) ease;
+}
+.social-btn:hover { background: var(--ink); color: var(--bg); border-color: var(--ink); }
+.social-btn svg { width: 17px; height: 17px; }
+
+/* ═══════════════════════════════════════════════════════════
+   FOOTER
+   ═══════════════════════════════════════════════════════════ */
+footer {
+  background: var(--bg-2); border-top: 1px solid var(--border);
+  padding: clamp(2.5rem, 6vw, 3.5rem) 0 clamp(1.5rem, 3vw, 2rem);
+}
+.footer-top {
+  display: flex; flex-wrap: wrap; gap: 2rem;
+  justify-content: space-between; align-items: flex-start;
+}
+.footer-brand { display: flex; align-items: center; gap: 14px; }
+.footer-brand img { width: 48px; height: 48px; border-radius: 50%; }
+.footer-brand strong { font-family: var(--ff-display); font-size: 1rem; }
+.footer-brand .footer-sub { font-size: 0.875rem; color: var(--ink-3); }
+footer a { color: var(--ink-2); }
+footer a:hover { color: var(--rosa); }
+.footer-cols { display: flex; gap: clamp(2rem, 5vw, 3.5rem); flex-wrap: wrap; }
+.footer-cols div { display: flex; flex-direction: column; gap: 8px; font-size: 0.875rem; }
+.footer-cols strong {
+  font-family: var(--ff-display); font-size: var(--fs-xs);
+  color: var(--ink-3); margin-bottom: 4px; text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+.footer-bottom {
+  margin-top: 2.5rem; padding-top: 1.5rem;
+  border-top: 1px solid var(--border);
+  font-size: var(--fs-small); color: var(--ink-3);
+  display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px;
+}
+.footer-bottom a { text-decoration: underline; }
+
+/* ═══════════════════════════════════════════════════════════
+   NOTICIAS & ACTUALIDAD
+   ═══════════════════════════════════════════════════════════ */
+.news-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto auto;
+  gap: 1.25rem;
+  margin-top: 2.5rem;
+}
+.news-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  transition: transform 0.25s ease, border-color 0.25s ease;
+}
+.news-card:hover { transform: translateY(-3px); border-color: var(--rosa); }
+.news-hero { grid-column: 1 / 2; grid-row: 1 / 3; display: flex; flex-direction: column; }
+.news-hero .news-img { aspect-ratio: 4/5; }
+.news-mid { display: flex; flex-direction: column; }
+.news-img {
+  width: 100%; height: 200px;
+  object-fit: cover;
+  background: var(--bg-2);
+  display: block;
+}
+/* Fallback cuando una noticia no tiene imagen */
+.news-img.no-img {
+  position: relative;
+  background:
+    radial-gradient(circle at 80% 20%, rgba(194,38,95,0.28) 0%, transparent 55%),
+    radial-gradient(circle at 15% 90%, rgba(194,38,95,0.16) 0%, transparent 45%),
+    linear-gradient(160deg, var(--surface) 0%, #1d1d22 100%);
+  overflow: hidden;
+}
+.news-img.no-img::after {
+  content: '';
+  position: absolute; inset: 0;
+  background:
+    linear-gradient(115deg, transparent 42%, rgba(250,250,250,0.05) 46%, rgba(250,250,250,0.05) 50%, transparent 54%),
+    linear-gradient(115deg, transparent 58%, rgba(250,250,250,0.035) 62%, rgba(250,250,250,0.035) 66%, transparent 70%);
+  background-size: 280px 100%;
+}
+.news-img.no-img::before {
+  content: 'A.D.I.C.F.';
+  position: absolute; left: 1.25rem; bottom: 1rem;
+  font-family: var(--ff-display);
+  font-size: 0.8rem; letter-spacing: 0.18em;
+  color: rgba(250,250,250,0.22);
+  z-index: 1;
+}
+.news-hero .news-img { height: 100%; min-height: 320px; }
+.news-body { padding: 1.25rem 1.5rem; flex: 1; display: flex; flex-direction: column; gap: 0.5rem; }
+.news-tag {
+  display: inline-block; width: fit-content;
+  font-family: var(--ff-display);
+  font-size: var(--fs-xs); text-transform: uppercase;
+  letter-spacing: 0.06em; color: var(--rosa);
+  background: rgba(194,38,95,0.08);
+  padding: 4px 12px; border-radius: 999px;
+}
+.news-title {
+  font-family: var(--ff-display);
+  font-size: 1.15rem; color: var(--ink);
+  line-height: 1.3;
+}
+.news-hero .news-title { font-size: clamp(1.2rem, 2.5vw, 1.6rem); }
+.news-excerpt {
+  font-size: 0.9rem; color: var(--ink-2);
+  line-height: 1.55; flex: 1;
+}
+.news-date {
+  font-size: var(--fs-small); color: var(--ink-3);
+  margin-top: auto; padding-top: 0.4rem;
+}
+
+/* ═══════════════════════════════════════════════════════════
+   BANNERS PATROCINADOS
+   ═══════════════════════════════════════════════════════════ */
+.banner-ad {
+  position: relative;
+  background: linear-gradient(135deg, var(--surface) 0%, rgba(194,38,95,0.12) 100%);
+  border: 1px solid rgba(194,38,95,0.18);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  display: flex; align-items: center; justify-content: center;
+  min-height: 120px; padding: 2rem;
+  margin: 2.5rem 0;
+  text-align: center;
+  transition: border-color 0.3s ease;
+}
+.banner-ad:hover { border-color: var(--rosa); }
+.banner-ad-inner { position: relative; z-index: 2; }
+.banner-ad-tag {
+  font-family: var(--ff-display);
+  font-size: var(--fs-xs); text-transform: uppercase;
+  letter-spacing: 0.08em; color: var(--ink-3);
+  margin-bottom: 0.5rem;
+}
+.banner-ad-label {
+  font-family: var(--ff-display);
+  font-size: clamp(1.1rem, 2.5vw, 1.5rem);
+  color: var(--ink-2);
+  margin-bottom: 1rem;
+}
+.banner-ad .btn-wa { font-size: 0.85rem; padding: 0.55rem 1.3rem; }
+.banner-ad-deco {
+  position: absolute; inset: 0;
+  background:
+    radial-gradient(circle at 80% 20%, rgba(194,38,95,0.06) 0%, transparent 50%),
+    radial-gradient(circle at 20% 80%, rgba(194,38,95,0.04) 0%, transparent 50%);
+  pointer-events: none;
+}
+.news-grid .banner-ad-slot {
+  grid-column: 2 / 3;
+  grid-row: 2 / 3;
+  min-height: 100%;
+}
+.news-grid .banner-ad-slot .banner-ad {
+  margin: 0; height: 100%; min-height: 0;
+  border-radius: var(--radius-lg);
+}
+
+/* ═══════════════════════════════════════════════════════════
+   FOOTER — ADMIN LINK
+   ═══════════════════════════════════════════════════════════ */
+.footer-admin {
+  display: inline-flex; align-items: center; gap: 6px;
+  color: var(--ink-3); font-size: 0.8rem;
+  text-decoration: none; opacity: 0.7;
+  transition: opacity 0.2s, color 0.2s;
+}
+.footer-admin:hover { opacity: 1; color: var(--rosa); }
+.footer-admin svg { width: 14px; height: 14px; }
+
+/* ═══════════════════════════════════════════════════════════
+   TIENDA — MERCHANDISING
+   ═══════════════════════════════════════════════════════════ */
+.shop-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--gap);
+}
+@media (max-width: 640px) {
+  .shop-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (min-width: 641px) and (max-width: 860px) {
+  .shop-grid { grid-template-columns: repeat(3, 1fr); }
+}
+
+.shop-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  display: flex; flex-direction: column;
+  transition: border-color var(--dur-fast) ease,
+              transform var(--dur-fast) var(--ease-spring),
+              box-shadow var(--dur-fast) ease;
+}
+.shop-card:hover {
+  border-color: var(--rosa);
+  transform: translateY(-3px);
+  box-shadow: 0 14px 40px rgba(194,38,95,.14);
+}
+
+.shop-card-hero { grid-column: span 2; }
+@media (min-width: 860px) {
+  .shop-card-hero { flex-direction: row; }
+  .shop-card-hero .shop-media { aspect-ratio: auto; height: 100%; min-height: 220px; }
+  .shop-card-hero .shop-body { flex: 1 1 45%; padding: clamp(1.2rem, 2.5vw, 1.75rem); }
+}
+
+.shop-media {
+  position: relative; overflow: hidden;
+  aspect-ratio: 1/1; background: #0D0D0D;
+}
+.shop-media img {
+  width: 100%; height: 100%; object-fit: cover;
+  transition: transform var(--dur-med) var(--ease-out);
+}
+.shop-card:hover .shop-media img { transform: scale(1.04); }
+
+.shop-badge {
+  position: absolute; top: 12px; left: 12px; z-index: 2;
+  background: rgba(10,10,10,.78); color: var(--rosa);
+  border: 1px solid rgba(194,38,95,.35); border-radius: 100px;
+  padding: 4px 12px; font-size: var(--fs-xs); font-weight: 700;
+  letter-spacing: 0.06em; text-transform: uppercase;
+}
+
+.shop-body {
+  padding: 1rem 1.1rem 1.2rem;
+  display: flex; flex-direction: column; gap: 4px; flex: 1;
+}
+.shop-tag {
+  font-size: var(--fs-xs); color: var(--ink-3); font-weight: 600;
+  letter-spacing: 0.06em; text-transform: uppercase;
+}
+.shop-name {
+  font-family: var(--ff-display); font-size: 1.05rem; line-height: 1.15;
+}
+.shop-desc {
+  font-size: var(--fs-small); color: var(--ink-2); line-height: 1.5;
+}
+.shop-price {
+  font-weight: 800; color: var(--rosa); font-size: 1.1rem; margin-top: 4px;
+}
+.shop-foot { margin-top: auto; padding-top: 12px; }
+
+.btn-wa {
+  display: inline-flex; align-items: center; gap: 8px; justify-content: center;
+  padding: 11px 16px; border-radius: 100px; border: none; cursor: pointer;
+  background: var(--rosa); color: #fff;
+  font-family: var(--ff-body); font-weight: 600; font-size: 0.875rem;
+  text-decoration: none;
+  transition: background var(--dur-fast) ease, transform var(--dur-fast) ease;
+}
+.btn-wa:hover { background: var(--rosa-h); color: #fff; }
+.btn-wa:active { transform: scale(.97); }
+.btn-wa svg { width: 16px; height: 16px; flex-shrink: 0; }
+
+.tallas {
+  display: flex; gap: 6px; flex-wrap: wrap; margin-top: 8px;
+}
+.talla {
+  min-width: 34px; padding: 6px 0; text-align: center;
+  border: 1px solid var(--border-2); border-radius: 8px;
+  font-size: var(--fs-xs); font-weight: 700; color: var(--ink-2);
+  cursor: pointer; background: transparent;
+  transition: all var(--dur-fast) ease;
+}
+.talla:hover { border-color: var(--rosa); color: var(--ink); }
+.talla.sel { background: var(--rosa); border-color: var(--rosa); color: #fff; }
+
+.shop-note { border-style: dashed; background: transparent; }
+.shop-note:hover { border-color: var(--rosa); transform: none; box-shadow: none; }
+
+/* ═══════════════════════════════════════════════════════════
+   PATROCINIOS — PAQUETES
+   ═══════════════════════════════════════════════════════════ */
+.pkg-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--gap);
+}
+@media (min-width: 760px) {
+  .pkg-grid { grid-template-columns: repeat(3, 1fr); }
+}
+
+.pkg-card {
+  display: flex; flex-direction: column;
+  padding: clamp(1.4rem, 2.5vw, 1.9rem);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  position: relative; overflow: hidden;
+  transition: transform var(--dur-fast) var(--ease-spring),
+              border-color var(--dur-fast) ease,
+              box-shadow var(--dur-fast) ease;
+}
+.pkg-card:hover {
+  transform: translateY(-3px);
+  border-color: var(--border-2);
+}
+
+.pkg-feat {
+  background: linear-gradient(160deg, var(--rosa-d) 0%, #1a0a14 55%, var(--surface) 115%);
+  border-color: rgba(194,38,95,.45);
+}
+.pkg-feat:hover { border-color: var(--rosa); }
+
+.pkg-tier {
+  font-size: var(--fs-xs); font-weight: 700;
+  color: var(--rosa); letter-spacing: 0.08em; text-transform: uppercase;
+}
+.pkg-feat .pkg-tier { color: var(--rosa-h); }
+.pkg-name {
+  font-family: var(--ff-display); font-size: var(--fs-h3);
+  line-height: 1.08; margin: 0.35rem 0 0.15rem;
+}
+.pkg-feat .pkg-name { color: #fff; }
+.pkg-price {
+  font-weight: 800; color: var(--ink-2); font-size: 1rem;
+}
+.pkg-feat .pkg-price { color: rgba(255,255,255,.75); }
+
+.pkg-benefits {
+  margin-top: 1.1rem; display: grid; gap: 9px;
+  padding: 0; list-style: none;
+}
+.pkg-benefits li {
+  display: flex; gap: 10px; font-size: 0.9rem;
+  color: var(--ink-2); line-height: 1.4;
+}
+.pkg-benefits li svg {
+  flex: none; width: 17px; height: 17px;
+  color: var(--rosa); margin-top: 2px;
+}
+.pkg-feat .pkg-benefits li svg { color: var(--rosa-h); }
+
+.pkg-ideal {
+  margin-top: auto; padding-top: 0.85rem;
+  border-top: 1px dashed var(--border-2);
+  font-size: var(--fs-xs); color: var(--ink-3);
+}
+.pkg-ideal strong { color: var(--ink-2); }
+.pkg-foot { padding-top: 1.25rem; }
+
+/* ═══════════════════════════════════════════════════════════
+   CANAL WHATSAPP — aviso bento card
+   ═══════════════════════════════════════════════════════════ */
+.canal-wa {
+  display: flex; flex-direction: column; align-items: center; text-align: center;
+  gap: 1.1rem;
+  padding: clamp(2rem, 4vw, 3rem) clamp(1.5rem, 4vw, 2.8rem);
+  background: linear-gradient(170deg, #1a0a14 0%, var(--surface) 60%);
+  border: 2px solid #ec4899;
+  border-radius: var(--radius-lg);
+  position: relative; overflow: hidden;
+}
+.canal-wa::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: radial-gradient(ellipse at top right, rgba(236,72,153,.12), transparent 70%);
+  pointer-events: none;
+}
+.canal-wa-icon {
+  width: 56px; height: 56px; flex-shrink: 0;
+  background: rgba(236,72,153,.15);
+  border-radius: 50%; display: grid; place-items: center;
+}
+.canal-wa-icon svg { width: 28px; height: 28px; color: #ec4899; }
+.canal-wa-title {
+  font-family: var(--ff-display); font-size: var(--fs-h3);
+  line-height: 1.15; color: #fff;
+}
+.canal-wa-desc {
+  max-width: 52ch; font-size: var(--fs-body);
+  color: var(--ink-2); line-height: 1.65;
+}
+.canal-wa .btn-wa {
+  margin-top: 0.5rem;
+  background: #25D366;
+  padding: 13px 28px; font-size: 0.9375rem;
+}
+.canal-wa .btn-wa:hover { background: #1da851; color: #fff; }
+</style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════════════════════════
+     NAVIGATION
+     ═══════════════════════════════════════════════════════════ -->
+<header class="site-nav">
+  <div class="nav-inner">
+    <a href="#inicio" class="brand">
+      <img src="img/escudo.png" alt="Escudo A.D. Icovesa">
+      <span class="brand-name">A.D. ICOVESA</span>
+    </a>
+    <nav class="nav-links">
+      <a href="#club">El club</a>
+      <a href="#futbol-base">Fútbol base</a>
+      <a href="#temporada">Temporada</a>
+      <a href="#eventos">Eventos</a>
+      <a href="#noticias">Noticias</a>
+      <a href="#tienda">Tienda</a>
+      <a href="#patrocinios">Patrocina</a>
+      <a href="#galeria">Galería</a>
+      <a href="#contacto" class="nav-cta">Contacto</a>
+    </nav>
+    <button class="burger" id="burger-btn" aria-label="Abrir menú">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <div class="mobile-menu" id="mmenu">
+    <a href="#club">El club</a>
+    <a href="#futbol-base">Fútbol base</a>
+    <a href="#temporada">Temporada</a>
+    <a href="#eventos">Eventos</a>
+    <a href="#noticias">Noticias</a>
+    <a href="#tienda">Tienda</a>
+    <a href="#patrocinios">Patrocina</a>
+    <a href="#colabora">Colabora</a>
+    <a href="#galeria">Galería</a>
+    <a href="#contacto">Contacto</a>
+  </div>
+</header>
+
+<!-- ═══════════════════════════════════════════════════════════
+     HERO
+     ═══════════════════════════════════════════════════════════ -->
+<section id="inicio" class="hero">
+  <div class="wrap hero-grid">
+    <div class="hero-text">
+      <div class="hero-badge">Fundado en 1994 · Jerez de la Frontera</div>
+      <h1>FÚTBOL BASE<br>EN EL <span class="rosa">CORAZÓN</span><br>DE ICOVESA</h1>
+      <p class="hero-sub">Formando futbolistas y personas desde 1994. Un club humilde, cercano y comprometido con la formación deportiva y personal de los niños del barrio.</p>
+      <div class="hero-stats">
+        <div>
+          <div class="hero-stat-num">7</div>
+          <div class="hero-stat-label">Categorías</div>
+        </div>
+        <div>
+          <div class="hero-stat-num">30+</div>
+          <div class="hero-stat-label">Años</div>
+        </div>
+        <div>
+          <div class="hero-stat-num">1994</div>
+          <div class="hero-stat-label">Fundación</div>
+        </div>
+      </div>
+      <div class="hero-ctas">
+        <a href="#futbol-base" class="btn btn-primary">Inscríbete</a>
+        <a href="#club" class="btn btn-outline">Conoce el club</a>
+      </div>
+    </div>
+    <div class="hero-crest">
+      <img src="img/escudo.png" alt="Escudo de la A.D. Icovesa, fundada en 1994">
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════
+     TEMPORADA — BENTO CALENDAR / RESULTS
+     ═══════════════════════════════════════════════════════════ -->
+<section id="temporada" class="section section-alt">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="kicker">Temporada 2026–2027</span>
+      <h2>PRÓXIMO PARTIDO Y RESULTADOS</h2>
+    </div>
+    <div class="bento-grid" id="bento-calendario">
+      <div class="bento-empty">Cargando calendario...</div>
+    </div>
+    <div style="margin-top:2.5rem;" class="reveal">
+      <h3 style="font-size:var(--fs-h3); margin-bottom:0.5rem;">Clasificaciones</h3>
+      <p style="color:var(--ink-2); margin-bottom:0.5rem;">Consulta las tablas oficiales de la RFAF por equipo. Se muestra la última temporada completa publicada (2025–2026); las tablas 2026–2027 aparecen en cuanto la federación las publique.</p>
+      <div id="clasificaciones-list">
+        <p class="empty-note">Cargando clasificaciones…</p>
+      </div>
+      <p style="margin-top:1.25rem;"><a href="https://www.rfaf.es/pnfg/NPcd/NFG_VerClub?cod_primaria=1000118&codigo_club=3499" target="_blank" rel="noopener" class="btn btn-outline">Ver ficha del club en la RFAF</a></p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════
+     NOTICIAS & ACTUALIDAD
+     ═══════════════════════════════════════════════════════════ -->
+<section id="noticias" class="section section-alt">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="kicker">Actualidad</span>
+      <h2>NOTICIAS &amp; ACTUALIDAD</h2>
+      <p>Infórmate de las últimas novedades del A.D. Icovesa: crónicas, resultados y noticias del fútbol base en Jerez.</p>
+    </div>
+
+    <div class="news-grid" id="news-grid">
+      <div class="news-hero">
+        <div class="news-img" style="background:var(--surface);display:flex;align-items:center;justify-content:center;color:var(--ink-3);font-size:0.85rem;">Cargando noticias…</div>
+      </div>
+      <div class="news-mid">
+        <div class="news-img" style="background:var(--surface);"></div>
+        <div class="news-body"><div class="news-tag">Cargando…</div></div>
+      </div>
+      <div class="banner-ad-slot">
+        <div class="banner-ad">
+          <div class="banner-ad-deco"></div>
+          <div class="banner-ad-inner">
+            <div class="banner-ad-tag">Espacio Publicitario</div>
+            <div class="banner-ad-label">Tu marca aquí</div>
+            <a href="#patrocinios" class="btn btn-outline">Solicitar información</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════
+     FÚTBOL BASE — CATEGORIES
+     ═══════════════════════════════════════════════════════════ -->
+<section id="futbol-base" class="section section-dark">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="kicker">Fútbol base</span>
+      <h2>CATEGORÍAS, ESCUELA E INSCRIPCIÓN</h2>
+      <p>La A.D. Icovesa compite en las categorías de fútbol base reguladas por la Real Federación Andaluza de Fútbol.</p>
+    </div>
+
+    <div class="cat-grid reveal" id="cat-grid">
+      <div class="cat-card"><div class="cat-icon">⚽</div><div class="cat-age">Escuela</div><div class="cat-name">Bebés</div></div>
+      <div class="cat-card"><div class="cat-icon">⚽</div><div class="cat-age">Categoría</div><div class="cat-name">Prebenjamín</div></div>
+      <div class="cat-card"><div class="cat-icon">⚽</div><div class="cat-age">Categoría</div><div class="cat-name">Benjamín</div></div>
+      <div class="cat-card"><div class="cat-icon">⚽</div><div class="cat-age">Categoría</div><div class="cat-name">Alevín</div></div>
+      <div class="cat-card"><div class="cat-icon">⚽</div><div class="cat-age">Categoría</div><div class="cat-name">Infantil</div></div>
+      <div class="cat-card"><div class="cat-icon">⚽</div><div class="cat-age">Categoría</div><div class="cat-name">Cadete</div></div>
+      <div class="cat-card"><div class="cat-icon">⚽</div><div class="cat-age">Categoría</div><div class="cat-name">Juvenil</div></div>
+      <div class="cat-card cat-card-cta"><div class="cat-age">¿Aún no juegas?</div><div class="cat-name">VEN A PROBAR</div></div>
+    </div>
+
+    <div style="margin-top:2.5rem;" class="reveal">
+      <h3 style="font-size:var(--fs-h3); margin-bottom:0.5rem;">Plantillas</h3>
+      <p style="color:var(--ink-3); font-size:0.9375rem;">Jugadoras y jugadores de cada equipo, gestionados desde el panel de administración.</p>
+      <div id="plantillas-wrap">
+        <p class="empty-note">Las plantillas se publicarán próximamente. El club puede añadirlas desde el panel de administración (<a href="admin/">/admin</a>).</p>
+      </div>
+    </div>
+
+    <div style="margin-top:3rem;" class="reveal">
+      <h3 style="font-size:var(--fs-h3); margin-bottom:0.5rem;">Escuela de iniciación</h3>
+      <p style="color:var(--ink-2); max-width:60ch;">Nuestra escuela es la puerta de entrada al club para los más pequeños. Aquí aprenden a divertirse con el balón, desarrollan coordinación y motricidad, siempre desde un enfoque pedagógico y cercano.</p>
+      <p style="color:var(--ink-2); max-width:60ch; margin-top:0.75rem;">De esta escuela han salido jugadores que llegaron a categorías destacadas, prueba de que el trabajo en la base da sus frutos.</p>
+    </div>
+
+    <div style="margin-top:3rem;" class="reveal">
+      <h3 style="font-size:var(--fs-h3); margin-bottom:0.5rem;">Cuerpo técnico</h3>
+      <p style="color:var(--ink-3); font-size:0.9375rem;">Entrenadores, delegados y preparadores del club.</p>
+      <div class="staff-grid" id="staff-grid">
+        <p class="empty-note">El cuerpo técnico se publicará próximamente.</p>
+      </div>
+    </div>
+
+    <div style="margin-top:3rem;" class="reveal">
+      <h3 style="font-size:var(--fs-h3); margin-bottom:0.5rem;">Cómo inscribirse</h3>
+      <p style="color:var(--ink-2); max-width:60ch;">Si quieres que tu hijo o hija forme parte de la A.D. Icovesa, ponte en contacto con nosotros.</p>
+      <ol class="steps">
+        <li>Escríbenos por Instagram, Facebook o el formulario de contacto.</li>
+        <li>Acude a un entrenamiento o día de prueba con tu hijo/a.</li>
+        <li>Entrega la documentación básica: ficha federativa, foto y datos médicos.</li>
+        <li>Formaliza la inscripción y la cuota de socio.</li>
+      </ol>
+      <div class="todo-box">
+        <p><strong>Datos por confirmar:</strong> edad mínima de acceso, importe de la cuota, documentación exacta requerida y fecha de inicio de la temporada.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════
+     EL CLUB
+     ═══════════════════════════════════════════════════════════ -->
+<section id="club" class="section section-alt">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="kicker">El club</span>
+      <h2>HISTORIA, INSTALACIONES Y FILOSOFÍA</h2>
+    </div>
+
+    <div class="split split-2">
+      <div class="reveal">
+        <h3>Historia de la A.D. Icovesa</h3>
+        <p>La A.D. Icovesa es un club histórico del fútbol base en la barriada de Icovesa, en Jerez de la Frontera, fundado en 1994. Desde sus inicios ha sido un referente deportivo para las familias del barrio, ofreciendo una alternativa saludable y formativa para niños y jóvenes.</p>
+        <p style="margin-top:0.75rem;">A lo largo de los años, el club ha mantenido una línea de trabajo centrada en la formación, el compañerismo y el respeto, consolidándose como un espacio de crecimiento deportivo y personal para varias generaciones.</p>
+      </div>
+      <div class="reveal reveal-delay-2">
+        <h3>Filosofía y valores</h3>
+        <p>En la A.D. Icovesa entendemos el fútbol como una herramienta educativa. Nuestro objetivo no es solo formar futbolistas, sino personas.</p>
+        <ul class="values">
+          <li><span class="dot"></span><span>Formación integral, deportiva y personal</span></li>
+          <li><span class="dot"></span><span>Inclusión y acceso para todos los niños del barrio</span></li>
+          <li><span class="dot"></span><span>Respeto a compañeros, rivales, árbitros y cuerpo técnico</span></li>
+          <li><span class="dot"></span><span>Compromiso familiar y cercanía</span></li>
+          <li><span class="dot"></span><span>Participación en iniciativas solidarias y sociales</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <div style="margin-top:3rem;">
+      <h3 style="font-size:var(--fs-h3); margin-bottom:1.25rem;" class="reveal">Nuestras instalaciones</h3>
+      <div class="fac-card reveal">
+        <iframe loading="lazy" src="https://www.google.com/maps?q=Campo+de+F%C3%BAtbol+Picadue%C3%B1as+Jerez+de+la+Frontera&output=embed"></iframe>
+        <div class="fac-body">
+          <h3>Campo de Fútbol Picadueñas</h3>
+          <p>Carretera Ronda Circunvalación, 2W, 11408 Jerez de la Frontera (Cádiz)</p>
+          <p style="margin-top:0.4rem; color:var(--ink-3); font-size:0.875rem;">Entrenamientos y partidos oficiales de todos los equipos del club.</p>
+          <div class="gps-btns">
+            <a href="https://www.google.com/maps/search/?api=1&query=Campo+de+F%C3%BAtbol+Picadue%C3%B1as+Jerez+de+la+Frontera" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              Abrir en Google Maps
+            </a>
+            <a href="https://waze.com/ul?q=Campo+de+F%C3%BAtbol+Picadue%C3%B1as+Jerez+de+la+Frontera&navigate=yes" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.94-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
+              Cómo llegar en Waze
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════
+     EVENTOS
+     ═══════════════════════════════════════════════════════════ -->
+<section id="eventos" class="section section-dark">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="kicker">Eventos y torneos</span>
+      <h2>FÚTBOL SOLIDARIO Y COMPETICIÓN</h2>
+      <p>Participamos activamente en torneos locales y provinciales, además de iniciativas solidarias que usan el fútbol como herramienta de transformación social.</p>
+    </div>
+    <div class="event-grid">
+      <div class="event-card reveal">
+        <h3>IV Maratón de Fútbol 7 "Por Valentina"</h3>
+        <p>Torneo solidario en La Canaleja, con 24 partidos en categorías alevín, prebenjamín y benjamín, junto a clubes como Xerez Deportivo FC, CD Comarca de Jerez y Arcos CF. Recauda fondos para la lucha contra la FOP.</p>
+      </div>
+      <div class="event-card reveal reveal-delay-1">
+        <h3>Bornos Cup</h3>
+        <p>Torneo en Bornos con participación de la A.D. Icovesa junto a UD Villamartín, Rayo Alcalá, Atlético Bornense y Arcos CF, en categorías bebé, prebenjamín, benjamín y alevín.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════
+     BANNER PATROCINADO
+     ═══════════════════════════════════════════════════════════ -->
+<section class="section section-dark" style="padding:0;">
+  <div class="wrap">
+    <div class="banner-ad reveal">
+      <div class="banner-ad-deco"></div>
+      <div class="banner-ad-inner">
+        <div class="banner-ad-tag">Patrocinador Oficial</div>
+        <div class="banner-ad-label">Tu marca aquí · Espacio publicitario disponible</div>
+        <a href="#patrocinios" class="btn btn-outline">Solicitar dossier de patrocinio</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════
+     TIENDA OFICIAL
+     ═══════════════════════════════════════════════════════════ -->
+<section id="tienda" class="section section-alt">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="kicker">Tienda oficial</span>
+      <h2>EQUIPACIÓN Y COMPLEMENTOS</h2>
+      <p>Llévate la equipación oficial del club. Pedidos por WhatsApp con envío o recogida en el campo.</p>
+    </div>
+    <div class="shop-grid">
+
+      <!-- Camiseta oficial (destacada) -->
+      <div class="shop-card shop-card-hero reveal">
+        <div class="shop-media">
+          <span class="shop-badge">1ª Equipación</span>
+          <img src="img/tienda-camiseta.jpg" alt="Camiseta oficial ADI C.F. 2026-2027">
+        </div>
+        <div class="shop-body">
+          <div class="shop-tag">Rosa / Negro</div>
+          <div class="shop-name">Camiseta Oficial 2026-2027</div>
+          <div class="shop-desc">Primera equipación del club. Cuello redondo y tejido transpirable con detalles en rosa.</div>
+          <div class="shop-price">25 €</div>
+          <div class="tallas">
+            <button class="talla" data-talla="XS">XS</button>
+            <button class="talla" data-talla="S">S</button>
+            <button class="talla sel" data-talla="M">M</button>
+            <button class="talla" data-talla="L">L</button>
+            <button class="talla" data-talla="XL">XL</button>
+          </div>
+          <div class="shop-foot"><a class="btn-wa shop-wa" data-compra="Camiseta Oficial 2026-2027"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>Pedir por WhatsApp</a></div>
+        </div>
+      </div>
+
+      <!-- Sudadera -->
+      <div class="shop-card bento-span-1 reveal reveal-delay-1">
+        <div class="shop-media">
+          <img src="img/tienda-sudadera.jpg" alt="Sudadera ADI C.F.">
+        </div>
+        <div class="shop-body">
+          <div class="shop-tag">Entrenamiento</div>
+          <div class="shop-name">Sudadera ADI C.F.</div>
+          <div class="shop-desc">Sudadera con capucha, cordones rosa y bolsillo canguro con el escudo del club.</div>
+          <div class="shop-price">30 €</div>
+          <div class="shop-foot"><a class="btn-wa shop-wa" data-compra="Sudadera ADI C.F."><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>Pedir por WhatsApp</a></div>
+        </div>
+      </div>
+
+      <!-- Botella térmica -->
+      <div class="shop-card bento-span-1 reveal reveal-delay-2">
+        <div class="shop-media">
+          <img src="img/tienda-botella.jpg" alt="Botella térmica ADI C.F.">
+        </div>
+        <div class="shop-body">
+          <div class="shop-tag">Complementos</div>
+          <div class="shop-name">Botella Térmica 500 ml</div>
+          <div class="shop-desc">Botella térmica de acero inoxidable con la etiqueta oficial del club.</div>
+          <div class="shop-price">12 €</div>
+          <div class="shop-foot"><a class="btn-wa shop-wa" data-compra="Botella Térmica ADI C.F. 500 ml"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>Pedir por WhatsApp</a></div>
+        </div>
+      </div>
+
+      <!-- Bufanda / accesorios -->
+      <div class="shop-card bento-span-2 reveal reveal-delay-3">
+        <div class="shop-media">
+          <img src="img/tienda-bufanda.jpg" alt="Bufanda y accesorios ADI C.F.">
+        </div>
+        <div class="shop-body">
+          <div class="shop-tag">Accesorios</div>
+          <div class="shop-name">Bufanda y Accesorios Oficiales</div>
+          <div class="shop-desc">Bufanda diagonal con rayas rosa y negra, llaveros, calcetines y más para completar tu equipación.</div>
+          <div class="shop-price">desde 8 €</div>
+          <div class="shop-foot"><a class="btn-wa shop-wa" data-compra="Bufanda y accesorios oficiales ADI C.F."><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>Pedir por WhatsApp</a></div>
+        </div>
+      </div>
+
+      <!-- Info / encargos -->
+      <div class="shop-card shop-note bento-span-2 reveal reveal-delay-4">
+        <div class="shop-body" style="justify-content:center; padding:2rem;">
+          <div class="shop-name" style="margin-bottom:0.5rem;">¿Buscas otra talla o equipación?</div>
+          <div class="shop-desc">Si no encuentras lo que buscas o prefieres la segunda equipación, escríbenos y lo encargamos para ti.</div>
+          <div class="shop-foot" style="margin-top:1rem;"><a class="btn-wa shop-wa" data-compra="Consulta sobre productos de la tienda"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>Consultar por WhatsApp</a></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════
+     PATROCINIOS
+     ═══════════════════════════════════════════════════════════ -->
+<section id="patrocinios" class="section section-dark">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="kicker">Patrocinio</span>
+      <h2>PAQUETES DE COLABORACIÓN</h2>
+      <p>Invierte en el fútbol base de tu zona. Presencia local, visibilidad digital y compromiso con la comunidad.</p>
+    </div>
+    <div class="pkg-grid" id="pkg-grid">
+      <div class="bento-empty">Cargando paquetes de patrocinio...</div>
+    </div>
+    <div class="reveal" style="margin-top:2rem; padding:1rem 1.25rem; border-left:3px solid var(--rosa); background:var(--rosa-bg); border-radius:0 var(--radius) var(--radius) 0;">
+      <p style="font-size:var(--fs-small); color:var(--ink-2); line-height:1.65; margin:0;"><strong style="color:var(--rosa);">Compromiso:</strong> El 100% de las aportaciones se destina íntegramente a reducir el coste de inscripciones, seguros médicos y material para los menores.</p>
+    </div>
+    <p class="reveal" style="margin-top:1.5rem; font-size:var(--fs-small); color:var(--ink-3);">Tarifas orientativas. Contacta con el club para recibir el dossier completo y condiciones personalizadas.</p>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════
+     COLABORA
+     ═══════════════════════════════════════════════════════════ -->
+<section id="colabora" class="section section-alt">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="kicker">Colabora</span>
+      <h2>AYÚDANOS A SEGUIR FORMANDO CANTERA</h2>
+      <p>El fútbol base no sería posible sin el apoyo de familias, colaboradores y patrocinadores.</p>
+    </div>
+
+    <div class="collab-grid">
+      <div class="collab-item reveal">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20.4 6H3.6a1 1 0 00-1 1v10a1 1 0 001 1h16.8a1 1 0 001-1V7a1 1 0 00-1-1z"/><path d="M2.6 9h18.8"/></svg>
+        <span>Patrocinio de equipaciones: camisetas, chándals y material.</span>
+      </div>
+      <div class="collab-item reveal reveal-delay-1">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M9.5 15a2.5 2.5 0 002.5 2h.3a2.2 2.2 0 000-4.4h-.6a2.2 2.2 0 010-4.4H12a2.5 2.5 0 012.5 2M12 6.5v11"/></svg>
+        <span>Ayuda económica para inscripciones de familias con menos recursos.</span>
+      </div>
+      <div class="collab-item reveal reveal-delay-2">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 21s-7-4.5-9.5-9C.7 8 2 4 6 4c2 0 3.5 1.3 4 2 .5-.7 2-2 4-2 4 0 5.3 4 3.5 8-2.5 4.5-9.5 9-9.5 9"/></svg>
+        <span>Colaboración en torneos y eventos solidarios del club.</span>
+      </div>
+      <div class="collab-item reveal reveal-delay-3">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="8.5"/><path d="M12 7v5l3.5 2"/></svg>
+        <span>Donación de material deportivo: balones, conos y petos.</span>
+      </div>
+    </div>
+
+    <div style="margin-top:2.5rem;" class="reveal">
+      <h3 style="font-size:0.9375rem; color:var(--ink-3); font-family:var(--ff-body); font-weight:600; margin-bottom:1rem;">Nuestros colaboradores</h3>
+      <div class="sponsor-row" id="sponsor-row">
+        <div class="sponsor-slot">Tu logo aquí</div>
+        <div class="sponsor-slot">Tu logo aquí</div>
+        <div class="sponsor-slot">Tu logo aquí</div>
+        <div class="sponsor-slot">Tu logo aquí</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════
+     GALERÍA
+     ═══════════════════════════════════════════════════════════ -->
+<section id="galeria" class="section section-dark">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="kicker">Galería</span>
+      <h2>PARTIDOS, ENTRENAMIENTOS Y AFICIÓN</h2>
+      <p>Fotos de la temporada: partidos, entrenamientos y jornadas solidarias.</p>
+    </div>
+    <div class="gallery-grid" id="galeria-grid">
+      <div class="gallery-slot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="9" cy="11" r="2"/><path d="M21 17l-5.5-5-3 3-2-2L3 18"/></svg></div>
+      <div class="gallery-slot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="9" cy="11" r="2"/><path d="M21 17l-5.5-5-3 3-2-2L3 18"/></svg></div>
+      <div class="gallery-slot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="9" cy="11" r="2"/><path d="M21 17l-5.5-5-3 3-2-2L3 18"/></svg></div>
+      <div class="gallery-slot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="9" cy="11" r="2"/><path d="M21 17l-5.5-5-3 3-2-2L3 18"/></svg></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════
+     CONTACTO
+     ═══════════════════════════════════════════════════════════ -->
+<section id="contacto" class="section section-alt">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="kicker">Contacto</span>
+      <h2>¿HABLAMOS?</h2>
+      <p>¿Tienes alguna duda, quieres inscribir a tu hijo/a o proponer una colaboración? Escríbenos por redes.</p>
+    </div>
+
+    <div class="contact-grid">
+      <div class="reveal">
+        <ul class="info-list">
+          <li><span>Denominación</span><span>A.D. Icovesa</span></li>
+          <li><span>Domicilio social</span><span>C/ Oloroso s/n, 11404 Jerez de la Frontera (Cádiz)</span></li>
+          <li><span>Delegación</span><span>Cádiz — RFAF</span></li>
+          <li><span>CIF</span><span>G11694767</span></li>
+          <li><span>Campo principal</span><span>Campo de Fútbol Picadueñas</span></li>
+        </ul>
+        <div class="social-row">
+          <a class="social-btn" href="https://www.instagram.com/adicovesa/" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/></svg>
+            Instagram
+          </a>
+          <a class="social-btn" href="https://www.facebook.com/adicovesa/" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M14 9h3V6h-3c-1.7 0-3 1.3-3 3v2H8v3h3v6h3v-6h3l1-3h-4V9c0-.6.4-1 1-1z"/></svg>
+            Facebook
+          </a>
+        </div>
+        <div class="todo-box" style="margin-top:1.5rem;">
+          <p><strong>Pendiente:</strong> añadir aquí un teléfono o email directo de contacto en cuanto el club lo facilite.</p>
+        </div>
+      </div>
+
+      <div class="fac-card reveal reveal-delay-2" style="margin-bottom:0;">
+        <iframe style="height:280px;" loading="lazy" src="https://www.google.com/maps?q=C%2F+Oloroso+s%2Fn+11404+Jerez+de+la+Frontera&output=embed"></iframe>
+        <div class="fac-body">
+          <h3>Cómo llegar</h3>
+          <p>C/ Oloroso s/n, 11404 Jerez de la Frontera (Cádiz).</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════
+     CANAL OFICIAL DE AVISOS — WHATSAPP
+     ═══════════════════════════════════════════════════════════ -->
+<section class="section section-alt" style="padding-bottom:0;">
+  <div class="wrap">
+    <div class="canal-wa reveal">
+      <div class="canal-wa-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M3 11l18-5v12L3 13v-2z"/>
+          <path d="M11.6 16.8a3 3 0 11-5.8-1.6"/>
+        </svg>
+      </div>
+      <h3 class="canal-wa-title">Canal Oficial de Avisos ADI CF</h3>
+      <p class="canal-wa-desc">Entérate al instante de horarios de partidos, convocatorias, fotos del fin de semana y avisos de última hora. Canal gratuito y sin saturación de mensajes.</p>
+      <a class="btn-wa" href="https://wa.me/34680448182?text=Hola%20ADI%20CF%2C%20me%20gustar%C3%ADa%20unirme%20al%20canal%20oficial%20de%20avisos%20de%20la%20cantera." target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        Unirme al canal de avisos
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════
+     FOOTER
+     ═══════════════════════════════════════════════════════════ -->
+<footer>
+  <div class="wrap">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <img src="img/escudo.png" alt="Escudo A.D. Icovesa">
+        <div>
+          <strong>A.D. Icovesa</strong><br>
+          <span class="footer-sub">Fundada en 1994 · Jerez de la Frontera</span>
+        </div>
+      </div>
+      <div class="footer-cols">
+        <div>
+          <strong>Explora</strong>
+          <a href="#club">El club</a>
+          <a href="#futbol-base">Fútbol base</a>
+          <a href="#temporada">Temporada</a>
+          <a href="#noticias">Noticias</a>
+        </div>
+        <div>
+          <strong>Participa</strong>
+          <a href="#colabora">Colabora</a>
+          <a href="#eventos">Eventos</a>
+          <a href="#tienda">Tienda oficial</a>
+          <a href="#patrocinios">Patrocina</a>
+          <a href="#contacto">Contacto</a>
+        </div>
+        <div>
+          <strong>Síguenos</strong>
+          <a href="https://www.instagram.com/adicovesa/" target="_blank" rel="noopener">Instagram</a>
+          <a href="https://www.facebook.com/adicovesa/" target="_blank" rel="noopener">Facebook</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 A.D. Icovesa · G11694767</span>
+      <span>C/ Oloroso s/n, Jerez de la Frontera · <a href="/admin/" class="footer-admin"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg> Acceso Directiva / Admin</a></span>
+    </div>
+  </div>
+</footer>
+
+<!-- ═══════════════════════════════════════════════════════════
+     JAVASCRIPT
+     ═══════════════════════════════════════════════════════════ -->
+<script>
+(function(){
+  /* ---- Utilities ---- */
+  async function cargarJSON(ruta){
+    try { const r = await fetch(ruta, {cache:'no-store'}); return r.ok ? await r.json() : null; }
+    catch(e){ return null; }
+  }
+  function esc(s){ return (s||'').toString().replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+  const iconoFoto = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="9" cy="11" r="2"/><path d="M21 17l-5.5-5-3 3-2-2L3 18"/></svg>';
+
+  /* ---- Mobile Nav ---- */
+  const burger = document.getElementById('burger-btn');
+  const mmenu = document.getElementById('mmenu');
+  burger.addEventListener('click', function(){
+    this.classList.toggle('open');
+    mmenu.classList.toggle('open');
+  });
+  mmenu.querySelectorAll('a').forEach(function(a){
+    a.addEventListener('click', function(){
+      burger.classList.remove('open');
+      mmenu.classList.remove('open');
+    });
+  });
+
+  /* ---- Scroll Reveal (IntersectionObserver) ---- */
+  const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if(!prefersReduced){
+    const revealEls = document.querySelectorAll('.reveal');
+    const obs = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if(e.isIntersecting){ e.target.classList.add('visible'); obs.unobserve(e.target); }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+    revealEls.forEach(function(el){ obs.observe(el); });
+  } else {
+    document.querySelectorAll('.reveal').forEach(function(el){ el.classList.add('visible'); });
+  }
+
+  /* ---- Calendario → Bento ---- */
+  function clasificarResultado(p){
+    if(!p.resultado || p.resultado === '—') return null;
+    var parts = p.resultado.split('-').map(function(s){ return parseInt(s.trim(),10); });
+    if(isNaN(parts[0]) || isNaN(parts[1])) return null;
+    var isLocal = p.local && p.local.toLowerCase().indexOf('icovesa') !== -1;
+    var golesFavor = isLocal ? parts[0] : parts[1];
+    var golesContra = isLocal ? parts[1] : parts[0];
+    if(golesFavor > golesContra) return 'win';
+    if(golesFavor < golesContra) return 'loss';
+    return 'draw';
+  }
+  function fechaBonita(fechaStr){
+    if(!fechaStr) return '';
+    var months = ['ene','feb','mar','abr','may','jun','jul','ago','sep','oct','nov','dic'];
+    var parts = fechaStr.split('-');
+    if(parts.length === 3){
+      var d = parseInt(parts[2],10);
+      var m = months[parseInt(parts[1],10)-1] || '';
+      var dayNames = ['Dom','Lun','Mar','Mié','Jue','Vie','Sáb'];
+      var dt = new Date(parseInt(parts[0]), parseInt(parts[1])-1, parseInt(parts[2]));
+      return dayNames[dt.getDay()] + ' ' + d + ' ' + m;
+    }
+    return fechaStr;
+  }
+
+  cargarJSON('content/calendario.json').then(function(data){
+    var partidos = data && data.partidos ? data.partidos.filter(function(p){ return p && p.fecha; }) : [];
+    var container = document.getElementById('bento-calendario');
+    if(!partidos.length){
+      container.innerHTML = '<div class="bento-empty">No hay partidos programados aún. El club puede añadirlos desde el <a href="admin/">panel de administración</a>.</div>';
+      return;
+    }
+    var sorted = partidos.slice().sort(function(a,b){ return a.fecha < b.fecha ? -1 : a.fecha > b.fecha ? 1 : 0; });
+    var now = new Date();
+    var proximo = null;
+    var resultados = [];
+    sorted.forEach(function(p){
+      var parts = p.fecha.split('-');
+      var fechaPartido = new Date(parseInt(parts[0]), parseInt(parts[1])-1, parseInt(parts[2]));
+      if(fechaPartido >= now && !proximo){ proximo = p; }
+      else { resultados.push(p); }
+    });
+    if(!proximo && sorted.length){ proximo = sorted[sorted.length-1]; resultados = sorted.slice(0,-1); }
+
+    var html = '';
+    if(proximo){
+      var res = clasificarResultado(proximo);
+      html += '<div class="bento-card bento-next bento-span-4 reveal">';
+      html += '<div class="match-category">' + esc(proximo.categoria || 'Próximo partido') + '</div>';
+      html += '<div class="match-teams">' + esc(proximo.local || '?') + ' vs ' + esc(proximo.visitante || '?') + '</div>';
+      html += '<div class="match-venue">' + esc(proximo.campo || '') + '</div>';
+      if(res){
+        html += '<div class="match-score">' + esc(proximo.resultado) + '</div>';
+        html += '<div class="match-result-label ' + res + '">' + (res==='win'?'Victoria':res==='loss'?'Derrota':'Empate') + '</div>';
+      }
+      html += '<div class="match-date">' + fechaBonita(proximo.fecha) + '</div>';
+      if(proximo.rfaf_url){ html += '<div class="match-rfaf"><a href="' + esc(proximo.rfaf_url) + '" target="_blank" rel="noopener">Clasificación oficial ↗</a></div>'; }
+      html += '</div>';
+    }
+    resultados.forEach(function(p, i){
+      var res = clasificarResultado(p);
+      var cls = res ? ' ' + res : '';
+      html += '<div class="bento-card bento-result' + cls + ' bento-span-2 reveal reveal-delay-' + Math.min(i+1, 6) + '">';
+      html += '<div class="match-category">' + esc(p.categoria || '') + '</div>';
+      html += '<div class="match-teams">' + esc(p.local || '?') + ' vs ' + esc(p.visitante || '?') + '</div>';
+      html += '<div class="match-venue">' + esc(p.campo || '') + '</div>';
+      if(res){
+        html += '<div class="match-score">' + esc(p.resultado) + '</div>';
+        html += '<div class="match-result-label ' + res + '">' + (res==='win'?'Victoria':res==='loss'?'Derrota':'Empate') + '</div>';
+      } else {
+        html += '<div class="match-score" style="color:var(--ink-3);">—</div>';
+      }
+      html += '<div class="match-date">' + fechaBonita(p.fecha) + '</div>';
+      if(p.rfaf_url){ html += '<div class="match-rfaf"><a href="' + esc(p.rfaf_url) + '" target="_blank" rel="noopener">Clasificación oficial ↗</a></div>'; }
+      html += '</div>';
+    });
+    container.innerHTML = html;
+    var reducedMotion = prefersReduced;
+    container.querySelectorAll('.reveal').forEach(function (el) {
+      if (reducedMotion) { el.classList.add('visible'); return; }
+      var obs = new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) {
+          if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); }
+        });
+      }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+      obs.observe(el);
+    });
+  });
+
+  /* ---- Clasificaciones RFAF ---- */
+  cargarJSON('content/equipos.json').then(function(data){
+    var list = document.getElementById('clasificaciones-list');
+    if(!list) return;
+    var equipos = data && data.equipos ? data.equipos : [];
+    var fed = [];
+    equipos.forEach(function(eq){
+      (eq.equipos_federados || []).forEach(function(t){
+        fed.push({ categoria: eq.categoria, equipo: t });
+      });
+    });
+    if(!fed.length){
+      list.innerHTML = '<p class="empty-note">Las clasificaciones de la RFAF aparecerán aquí en cuanto la federación las publique.</p>';
+      return;
+    }
+    var html = '<div class="clasif-grid">';
+    fed.forEach(function(item){
+      var t = item.equipo;
+      html += '<div class="clasif-card reveal">';
+      html += '<div class="clasif-info">';
+      html += '<span class="clasif-name">' + esc(t.nombre || item.categoria) + '</span>';
+      html += '<span class="clasif-sub">' + esc(item.categoria || '') + ' · ' + esc(t.categoria_federada || '') + ' · ' + esc(t.temporada || '') + '</span>';
+      html += '</div>';
+      html += '<span class="clasif-pos">' + (t.posicion_2025_2026 ? 'Pos ' + esc(t.posicion_2025_2026) : '—') + (t.puntos_2025_2026 ? ' <small>· ' + esc(t.puntos_2025_2026) + ' pts</small>' : '') + '</span>';
+      if(t.rfaf_url){
+        html += '<a class="clasif-cta" href="' + esc(t.rfaf_url) + '" target="_blank" rel="noopener">Ver clasificación <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>';
+      }
+      html += '</div>';
+    });
+    html += '</div>';
+    list.innerHTML = html;
+    var reducedMotion2 = prefersReduced;
+    list.querySelectorAll('.reveal').forEach(function (el) {
+      if (reducedMotion2) { el.classList.add('visible'); return; }
+      var obs = new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) {
+          if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); }
+        });
+      }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+      obs.observe(el);
+    });
+  });
+
+  /* ---- Equipos → Cat Cards ---- */
+  var catInfo = {
+    'Bebés':       { age: '3-4 años',  icon: '👶' },
+    'Prebenjamín': { age: '5-6 años',  icon: '⚽' },
+    'Benjamín':    { age: '7-8 años',  icon: '⚽' },
+    'Alevín':      { age: '9-10 años', icon: '⚽' },
+    'Infantil':    { age: '11-12 años',icon: '⚽' },
+    'Cadete':      { age: '13-14 años',icon: '⚽' },
+    'Juvenil':     { age: '15-17 años',icon: '⚽' }
+  };
+  cargarJSON('content/equipos.json').then(function(data){
+    var equipos = data && data.equipos ? data.equipos.filter(function(e){ return e && e.categoria; }) : [];
+    if(!equipos.length) return;
+    var catGrid = document.getElementById('cat-grid');
+    var wrap = document.getElementById('plantillas-wrap');
+    catGrid.innerHTML = '';
+    wrap.innerHTML = '';
+    equipos.forEach(function(eq){
+      var info = catInfo[eq.categoria] || { age: 'Categoría', icon: '⚽' };
+      var card = document.createElement('div');
+      card.className = 'cat-card';
+      card.innerHTML = '<div class="cat-icon">' + info.icon + '</div><div class="cat-age">' + info.age + '</div><div class="cat-name">' + esc(eq.categoria) + '</div>';
+      catGrid.appendChild(card);
+      var jugadores = eq.jugadores || [];
+      var federados = eq.equipos_federados || [];
+      var block = document.createElement('div');
+      block.className = 'team-block';
+      var titulo = esc(eq.categoria) + (eq.entrenador ? ' — Entrenador/a: ' + esc(eq.entrenador) : '');
+      var federadosHtml = '';
+      if(federados.length){
+        federadosHtml = '<p class="team-federados">' + federados.map(function(t){
+          var link = t.rfaf_url ? ' — <a href="' + esc(t.rfaf_url) + '" target="_blank" rel="noopener">clasificación RFAF ↗</a>' : '';
+          return esc(t.nombre) + ' (<span>' + esc(t.categoria_federada || '') + (t.posicion_2025_2026 ? ' · Pos ' + esc(t.posicion_2025_2026) : '') + '</span>)' + link;
+        }).join('<br>') + '</p>';
+      }
+      var playersHtml = '<p class="empty-note">Plantilla por publicar.</p>';
+      if(jugadores.length){
+        playersHtml = '<div class="player-grid">' + jugadores.map(function(j){
+          var foto = j.foto ? '<img src="'+esc(j.foto)+'" alt="'+esc(j.nombre)+'">' : iconoFoto;
+          var meta = [j.dorsal ? '#'+esc(j.dorsal) : '', esc(j.posicion||'')].filter(Boolean).join(' · ');
+          return '<div class="player-card"><div class="player-photo">'+foto+'</div>'
+            +'<div class="player-name">'+esc(j.nombre)+'</div>'
+            +'<div class="player-meta">'+meta+'</div></div>';
+        }).join('') + '</div>';
+      }
+      block.innerHTML = '<h4>'+titulo+'</h4>'+federadosHtml+playersHtml;
+      wrap.appendChild(block);
+    });
+    var cta = document.createElement('div');
+    cta.className = 'cat-card cat-card-cta';
+    cta.innerHTML = '<div class="cat-age">¿Aún no juegas?</div><div class="cat-name">VEN A PROBAR</div>';
+    catGrid.appendChild(cta);
+  });
+
+  /* ---- Staff ---- */
+  cargarJSON('content/staff.json').then(function(data){
+    var staff = data && data.staff ? data.staff.filter(function(s){ return s && s.nombre; }) : [];
+    if(!staff.length) return;
+    var grid = document.getElementById('staff-grid');
+    grid.innerHTML = staff.map(function(s){
+      var foto = s.foto ? '<img src="'+esc(s.foto)+'" alt="'+esc(s.nombre)+'">' : iconoFoto;
+      return '<div class="staff-card"><div class="staff-photo">'+foto+'</div>'
+        +'<div class="staff-name">'+esc(s.nombre)+'</div>'
+        +'<div class="staff-role">'+esc(s.cargo||'')+(s.equipo ? ' · '+esc(s.equipo) : '')+'</div></div>';
+    }).join('');
+  });
+
+  /* ---- Galería ---- */
+  cargarJSON('content/galeria.json').then(function(data){
+    var fotos = data && data.fotos ? data.fotos.filter(function(f){ return f && f.imagen; }) : [];
+    if(!fotos.length) return;
+    var grid = document.getElementById('galeria-grid');
+    grid.innerHTML = fotos.map(function(f){
+      return '<div class="gallery-slot" style="padding:0;"><img src="'+esc(f.imagen)+'" alt="'+esc(f.descripcion||'Foto del club')+'" style="width:100%;height:100%;object-fit:cover;border-radius:var(--radius-lg);"></div>';
+    }).join('');
+  });
+
+  /* ---- Patrocinadores ---- */
+  cargarJSON('content/patrocinadores.json').then(function(data){
+    var patrocinadores = data && data.patrocinadores ? data.patrocinadores.filter(function(p){ return p && p.logo; }) : [];
+    if(!patrocinadores.length) return;
+    var row = document.getElementById('sponsor-row');
+    row.innerHTML = patrocinadores.map(function(p){
+      var img = '<img src="'+esc(p.logo)+'" alt="'+esc(p.nombre||'Patrocinador')+'" style="max-width:80%;max-height:70%;object-fit:contain;">';
+      return p.url
+        ? '<a class="sponsor-slot" href="'+esc(p.url)+'" target="_blank" rel="noopener" style="border-style:solid;">'+img+'</a>'
+        : '<div class="sponsor-slot" style="border-style:solid;">'+img+'</div>';
+    }).join('');
+  });
+
+})();
+</script>
+
+<!-- ===================== Widget WhatsApp ===================== -->
+<style>
+  .wa-button{
+    position:fixed; left:24px; bottom:24px; z-index:9999;
+    width:60px; height:60px; border-radius:50%; border:none; cursor:pointer;
+    background:#25D366; color:#fff; display:flex; align-items:center; justify-content:center;
+    box-shadow:0 8px 22px rgba(0,0,0,.45), 0 0 0 0 rgba(37,211,102,.5);
+    transition:transform .2s ease, box-shadow .2s ease;
+  }
+  .wa-button:hover{ transform:translateY(-3px) scale(1.05); box-shadow:0 12px 30px rgba(0,0,0,.55), 0 0 0 0 rgba(37,211,102,.6); }
+  .wa-button:active{ transform:translateY(0) scale(.97); }
+  .wa-button svg{ width:32px; height:32px; }
+  .wa-panel{
+    position:fixed; left:24px; bottom:96px; z-index:9998; width:320px; max-width:calc(100vw - 48px);
+    background:#141414; color:#FAFAFA; border:1px solid rgba(194,38,95,.35);
+    border-radius:18px; box-shadow:0 18px 50px rgba(0,0,0,.6);
+    overflow:hidden; transform-origin:bottom left;
+    opacity:0; visibility:hidden; transform:scale(.85) translateY(12px);
+    transition:opacity .22s ease, transform .22s ease, visibility .22s;
+  }
+  .wa-panel.open{ opacity:1; visibility:visible; transform:scale(1) translateY(0); }
+  .wa-head{ display:flex; align-items:center; gap:12px; padding:16px 18px; background:linear-gradient(135deg,#1a1a1a,#222); border-bottom:1px solid rgba(194,38,95,.3); }
+  .wa-head .wa-mini{ width:40px; height:40px; border-radius:12px; background:#25D366; display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+  .wa-head .wa-mini svg{ width:24px; height:24px; }
+  .wa-head h3{ margin:0; font-family:'Archivo Black',sans-serif; font-size:15px; letter-spacing:.3px; color:#fff; }
+  .wa-head p{ margin:2px 0 0; font-family:'Outfit',sans-serif; font-size:12px; color:rgba(250,250,250,.6); }
+  .wa-body{ padding:12px; display:flex; flex-direction:column; gap:8px; }
+  .wa-opt{
+    display:flex; align-items:center; gap:11px; padding:11px 12px; border-radius:12px; cursor:pointer;
+    background:rgba(255,255,255,.04); border:1px solid rgba(255,255,255,.06);
+    transition:background .18s ease, transform .18s ease, border-color .18s ease;
+  }
+  .wa-opt:hover{ background:rgba(194,38,95,.12); border-color:rgba(194,38,95,.45); transform:translateX(-2px); }
+  .wa-opt:active{ transform:scale(.98); }
+  .wa-opt svg{ width:22px; height:22px; flex-shrink:0; color:#C2265F; }
+  .wa-opt .wa-opt-t{ font-family:'Outfit',sans-serif; font-weight:600; font-size:14px; line-height:1.2; color:#fff; }
+  .wa-opt .wa-opt-s{ font-family:'Outfit',sans-serif; font-size:11.5px; color:rgba(250,250,250,.55); line-height:1.3; }
+  .wa-foot{ padding:10px 18px; border-top:1px solid rgba(255,255,255,.06); font-family:'Outfit',sans-serif; font-size:11.5px; color:rgba(250,250,250,.45); text-align:center; }
+</style>
+
+<button class="wa-button" id="waButton" aria-label="Abrir chat de WhatsApp">
+  <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</button>
+
+<div class="wa-panel" id="waPanel" role="dialog" aria-label="Atención ADI CF">
+  <div class="wa-head">
+    <div class="wa-mini"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></div>
+    <div>
+      <h3>Atención ADI CF</h3>
+      <p>Respondemos por WhatsApp</p>
+    </div>
+  </div>
+  <div class="wa-body">
+    <a class="wa-opt" target="_blank" rel="noopener" data-msg="Hola ADI CF, me gustaría solicitar información sobre inscripciones y categorías.">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 21v-2a4 4 0 00-4-4H6a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
+      <div>
+        <div class="wa-opt-t">Inscripciones Fútbol Base</div>
+        <div class="wa-opt-s">Categorías, plazas y pruebas</div>
+      </div>
+    </a>
+    <a class="wa-opt" target="_blank" rel="noopener" data-msg="Hola ADI CF, consulto por los horarios de entrenamientos y partidos de esta jornada.">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+      <div>
+        <div class="wa-opt-t">Horarios y Próximo Partido</div>
+        <div class="wa-opt-s">Entrenamientos y jornada</div>
+      </div>
+    </a>
+    <a class="wa-opt" target="_blank" rel="noopener" data-msg="Hola ADI CF, ¿en qué campo juegan este fin de semana? Nuestro campo es el Campo de Fútbol Picadueñas, Carretera Ronda Circunvalación, 2W, 11408 Jerez de la Frontera.">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+      <div>
+        <div class="wa-opt-t">Ubicación e Instalaciones</div>
+        <div class="wa-opt-s">Dónde juegan los equipos</div>
+      </div>
+    </a>
+    <a class="wa-opt" target="_blank" rel="noopener" data-msg="Hola ADI CF, tengo una duda general sobre el club.">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+      <div>
+        <div class="wa-opt-t">Otra consulta</div>
+        <div class="wa-opt-s">Dudas generales sobre el club</div>
+      </div>
+    </a>
+  </div>
+  <div class="wa-foot">ADI C.F. · Fútbol base en Jerez de la Frontera</div>
+</div>
+
+<script>
+(function(){
+  /* Cambia aquí el número de WhatsApp (código de país + número, sin + ni espacios) */
+  const TELEFONO_WHATSAPP = '34680448182';
+  window.TELEFONO_WHATSAPP = TELEFONO_WHATSAPP;
+
+  var btn = document.getElementById('waButton');
+  var panel = document.getElementById('waPanel');
+
+  btn.addEventListener('click', function(e){
+    e.stopPropagation();
+    panel.classList.toggle('open');
+  });
+
+  document.addEventListener('click', function(e){
+    if(!panel.classList.contains('open')) return;
+    if(!panel.contains(e.target) && !btn.contains(e.target)){
+      panel.classList.remove('open');
+    }
+  });
+
+  document.addEventListener('keydown', function(e){
+    if(e.key === 'Escape') panel.classList.remove('open');
+  });
+
+  panel.querySelectorAll('.wa-opt').forEach(function(opt){
+    opt.addEventListener('click', function(e){
+      e.preventDefault();
+      var msg = encodeURIComponent(opt.getAttribute('data-msg') || 'Hola ADI CF');
+      window.open('https://wa.me/' + TELEFONO_WHATSAPP + '?text=' + msg, '_blank', 'noopener');
+      panel.classList.remove('open');
+    });
+  });
+})();
+</script>
+
+<script>
+/* ═══════════════════════════════════════════════════════════
+   TIENDA + PATROCINIOS — lógica de compra y paquetes
+   ═══════════════════════════════════════════════════════════ */
+(function () {
+  var tel = window.TELEFONO_WHATSAPP;
+  if (!tel) return;
+
+  function esc(s) {
+    return (s || '').toString()
+      .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+  }
+  function waURL(msg) {
+    return 'https://wa.me/' + tel + '?text=' + encodeURIComponent(msg);
+  }
+
+  /* --- Botones de la tienda: enlace al WhatsApp con el producto --- */
+  function wireShop() {
+    document.querySelectorAll('.shop-wa').forEach(function (a) {
+      var n = a.getAttribute('data-compra');
+      if (!n) return;
+      a.href = waURL('Hola ADI CF, me interesa comprar ' + n);
+      a.target = '_blank';
+      a.rel = 'noopener';
+    });
+  }
+  wireShop();
+
+  /* --- Botones de patrocinio: enlace al WhatsApp con el paquete --- */
+  function wireDossier() {
+    document.querySelectorAll('.pkg-wa').forEach(function (a) {
+      var n = a.getAttribute('data-dossier');
+      if (!n) return;
+      a.href = waURL('Hola ADI CF, me gustaría solicitar información sobre el paquete de patrocinio "' + n + '". ¿Podéis enviarme el dossier de colaboración?');
+      a.target = '_blank';
+      a.rel = 'noopener';
+    });
+  }
+
+  /* --- Selector de talla --- */
+  document.querySelectorAll('.tallas').forEach(function (group) {
+    group.querySelectorAll('.talla').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        var prev = group.querySelector('.talla.sel');
+        if (prev) prev.classList.remove('sel');
+        btn.classList.add('sel');
+      });
+    });
+  });
+
+  /* --- Render de paquetes desde content/patrocinadores.json --- */
+  var chkSvg = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>';
+  fetch('content/patrocinadores.json', { cache: 'no-store' })
+    .then(function (r) { return r.ok ? r.json() : null; })
+    .then(function (data) {
+      var pkgs = data && data.paquetes ? data.paquetes : [];
+      if (!pkgs.length) return;
+      var grid = document.getElementById('pkg-grid');
+      if (!grid) return;
+      var html = '';
+      pkgs.forEach(function (p, i) {
+        var feat = p.destacado ? ' pkg-feat' : '';
+        html += '<div class="pkg-card' + feat + ' reveal reveal-delay-' + Math.min(i + 1, 6) + '">';
+        html += '<div class="pkg-tier">' + esc(p.tipo || '') + '</div>';
+        html += '<div class="pkg-name">' + esc(p.nombre || '') + '</div>';
+        html += '<div class="pkg-price">' + esc(p.precio || 'A convenir') + '</div>';
+        html += '<ul class="pkg-benefits">';
+        (p.beneficios || []).forEach(function (b) {
+          html += '<li>' + chkSvg + '<span>' + esc(b) + '</span></li>';
+        });
+        html += '</ul>';
+        html += '<div class="pkg-ideal"><strong>Ideal para:</strong> ' + esc(p.ideal || '') + '</div>';
+        html += '<div class="pkg-foot"><a class="btn-wa pkg-wa" data-dossier="' + esc(p.nombre || '') + '"><svg viewBox="0 0 24 24" fill="currentColor" width="16" height="16"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg> Contactar por WhatsApp</a></div>';
+        html += '</div>';
+      });
+      grid.innerHTML = html;
+      wireDossier();
+      /* Re-observar los .reveal añadidos por JS */
+      var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      grid.querySelectorAll('.reveal').forEach(function (el) {
+        if (reduced) { el.classList.add('visible'); return; }
+        var obs = new IntersectionObserver(function (entries) {
+          entries.forEach(function (e) {
+            if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); }
+          });
+        }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+        obs.observe(el);
+      });
+    });
+})();
+</script>
+
+<script>
+/* ═══════════════════════════════════════════════════════════
+   NOTICIAS — renderiza desde content/noticias.json
+   ═══════════════════════════════════════════════════════════ */
+(function () {
+  var grid = document.getElementById('news-grid');
+  if (!grid) return;
+
+  function esc(s) {
+    return (s || '').toString()
+      .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+  }
+  function truncate(s, n) {
+    s = s || '';
+    return s.length > n ? s.slice(0, n).trimEnd() + '…' : s;
+  }
+
+  fetch('content/noticias.json', { cache: 'no-store' })
+    .then(function (r) { return r.ok ? r.json() : null; })
+    .then(function (data) {
+      var items = data && data.noticias ? data.noticias : [];
+      if (!items.length) return;
+
+      /* Conservar el slot publicitario que hay dentro del grid */
+      var slot = grid.querySelector('.banner-ad-slot');
+      if (slot) slot = slot.cloneNode(true);
+
+      var h = '';
+      items.forEach(function (n, i) {
+        var cls = i === 0 ? 'news-hero' : 'news-mid';
+        var tagCls = i === 0 ? 'news-tag' : 'news-tag';
+        var titleCls = 'news-title';
+        var excerpt = i === 0 ? (n.resumen || '') : truncate(n.resumen || '', 100);
+        var imgSrc = n.imagen || '';
+        h += '<div class="' + cls + ' reveal reveal-delay-' + Math.min(i + 1, 4) + '">';
+        h += '<div class="news-img' + (imgSrc ? '' : ' no-img') + '" style="' + (imgSrc ? 'background:url(\'' + esc(imgSrc) + '\') center/cover no-repeat;' : '') + '"></div>';
+        h += '<div class="news-body">';
+        h += '<div class="' + tagCls + '">' + esc(n.categoria || 'Noticia') + '</div>';
+        h += '<div class="' + titleCls + '">' + esc(n.titulo || '') + '</div>';
+        if (excerpt) h += '<div class="news-excerpt">' + esc(excerpt) + '</div>';
+        h += '<div class="news-date">' + esc(n.fecha || '') + '</div>';
+        h += '</div></div>';
+      });
+      grid.innerHTML = h;
+      if (slot) grid.appendChild(slot);
+      /* Re-observar los .reveal añadidos por JS */
+      var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      grid.querySelectorAll('.reveal').forEach(function (el) {
+        if (reduced) { el.classList.add('visible'); return; }
+        var obs = new IntersectionObserver(function (entries) {
+          entries.forEach(function (e) {
+            if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); }
+          });
+        }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+        obs.observe(el);
+      });
+    });
+})();
+</script>
+
+<script>
+(function(){if(!window.chatbase||window.chatbase("getState")!=="initialized"){window.chatbase=(...arguments)=>{if(!window.chatbase.q){window.chatbase.q=[]}window.chatbase.q.push(arguments)};window.chatbase=new Proxy(window.chatbase,{get(target,prop){if(prop==="q"){return target.q}return(...args)=>target(prop,...args)}})}const onLoad=function(){const script=document.createElement("script");script.src="https://www.chatbase.co/embed.min.js";script.id="lTyoH7iDl6677wkKIFeCd";script.domain="www.chatbase.co";document.body.appendChild(script)};if(document.readyState==="complete"){onLoad()}else{window.addEventListener("load",onLoad)}})();
+</script>
+
+</body>
+</html>
