@@ -1,18 +1,16 @@
 # ============================================================
 # Configuración del panel de administración (Decap CMS)
-# Antes de usarlo, sustituye los dos valores marcados con «TODO»
-# Guía completa: ver README.md, sección "Configurar el panel"
+# Modo LOCAL: editar desde tu propio ordenador con `decap-server`
+# Uso: ver README.md / preguntar a Claude
 # ============================================================
-# Activar backend local para desarrollo sin login GitHub
-# (usar solo en local; en producción se ignora este flag)
+# Backend local para editar sin login OAuth online.
+# Para usarlo: arranca `npx decap-server` y sirve la carpeta en local.
 local_backend: true
 
 backend:
   name: github
-  repo: TODO-usuario/TODO-nombre-del-repositorio   # ej: adicovesa/web-club
+  repo: kamal1305/WEB-ADI-CF
   branch: main
-  base_url: https://TODO-tu-pasarela-oauth.vercel.app
-  auth_endpoint: auth
 
 # Las fotos que subáis desde el panel se guardan en /uploads
 media_folder: "uploads"
