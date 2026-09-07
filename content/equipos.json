@@ -2,75 +2,113 @@
   "equipos": [
     {
       "categoria": "Bebés",
-      "entrenador": "Juan García",
-      "jugadores": [
-        { "nombre": "Santiago M.", "dorsal": 1, "posicion": "Portero", "foto": "" },
-        { "nombre": "Diego R.", "dorsal": 2, "posicion": "Defensa", "foto": "" },
-        { "nombre": "Carlos L.", "dorsal": 3, "posicion": "Centrocampista", "foto": "" },
-        { "nombre": "Miguel F.", "dorsal": 4, "posicion": "Delantero", "foto": "" }
-      ]
+      "entrenador": "",
+      "jugadores": [],
+      "equipos_federados": [],
+      "nota": "Escuela de iniciación, sin equipo federado."
     },
     {
       "categoria": "Prebenjamín",
-      "entrenador": "María López",
-      "jugadores": [
-        { "nombre": "Pablo G.", "dorsal": 1, "posicion": "Portero", "foto": "" },
-        { "nombre": "Ángel T.", "dorsal": 2, "posicion": "Defensa", "foto": "" },
-        { "nombre": "Alejandro S.", "dorsal": 3, "posicion": "Centrocampista", "foto": "" },
-        { "nombre": "Víctor H.", "dorsal": 4, "posicion": "Delantero", "foto": "" },
-        { "nombre": "David P.", "dorsal": 5, "posicion": "Defensa", "foto": "" }
+      "entrenador": "",
+      "jugadores": [],
+      "equipos_federados": [
+        {
+          "nombre": "A.D. Icovesa A",
+          "categoria_federada": "3ª ANDALUZA PREBENJAMIN",
+          "codigo_equipo": "349917",
+          "temporada": "2025-2026",
+          "posicion_2025_2026": 4,
+          "puntos_2025_2026": 37,
+          "rfaf_url": "https://www.rfaf.es/pnfg/NPcd/NFG_VisClasificacion?cod_primaria=1000120&codcompeticion=46560292&codgrupo=46630645"
+        },
+        {
+          "nombre": "A.D. Icovesa B",
+          "categoria_federada": "3ª ANDALUZA PREBENJAMIN",
+          "codigo_equipo": "28658193",
+          "temporada": "2025-2026",
+          "posicion_2025_2026": 9,
+          "puntos_2025_2026": 22,
+          "rfaf_url": "https://www.rfaf.es/pnfg/NPcd/NFG_VisClasificacion?cod_primaria=1000120&codcompeticion=46560292&codgrupo=46631113"
+        }
       ]
     },
     {
       "categoria": "Benjamín",
-      "entrenador": "Antonio Rodríguez",
-      "jugadores": [
-        { "nombre": "Javier M.", "dorsal": 1, "posicion": "Portero", "foto": "" },
-        { "nombre": "Fernando B.", "dorsal": 2, "posicion": "Defensa", "foto": "" },
-        { "nombre": "Luis E.", "dorsal": 3, "posicion": "Centrocampista", "foto": "" },
-        { "nombre": "Sergio N.", "dorsal": 4, "posicion": "Delantero", "foto": "" },
-        { "nombre": "Roberto J.", "dorsal": 5, "posicion": "Defensa", "foto": "" }
+      "entrenador": "",
+      "jugadores": [],
+      "equipos_federados": [
+        {
+          "nombre": "A.D. Icovesa",
+          "categoria_federada": "4ª ANDALUZA BENJAMIN",
+          "codigo_equipo": "33424766",
+          "temporada": "2025-2026",
+          "posicion_2025_2026": 6,
+          "puntos_2025_2026": 38,
+          "rfaf_url": "https://www.rfaf.es/pnfg/NPcd/NFG_VisClasificacion?cod_primaria=1000120&codcompeticion=46271051&codgrupo=46360123"
+        },
+        {
+          "nombre": "A.D. Icovesa B",
+          "categoria_federada": "4ª ANDALUZA BENJAMIN",
+          "codigo_equipo": "2073084",
+          "temporada": "2025-2026",
+          "posicion_2025_2026": 13,
+          "puntos_2025_2026": 5,
+          "rfaf_url": "https://www.rfaf.es/pnfg/NPcd/NFG_VisClasificacion?cod_primaria=1000120&codcompeticion=30765606&codgrupo=30771371"
+        }
       ]
     },
     {
       "categoria": "Alevín",
-      "entrenador": "Pedro Sánchez",
-      "jugadores": [
-        { "nombre": "Manuel C.", "dorsal": 1, "posicion": "Portero", "foto": "" },
-        { "nombre": "Enrique V.", "dorsal": 2, "posicion": "Defensa", "foto": "" },
-        { "nombre": "Jorge A.", "dorsal": 3, "posicion": "Centrocampista", "foto": "" },
-        { "nombre": "Tomás O.", "dorsal": 4, "posicion": "Delantero", "foto": "" }
+      "entrenador": "",
+      "jugadores": [],
+      "equipos_federados": [
+        {
+          "nombre": "A.D. Icovesa A",
+          "categoria_federada": "4ª ANDALUZA ALEVIN",
+          "codigo_equipo": "10114506",
+          "temporada": "2025-2026",
+          "posicion_2025_2026": 9,
+          "puntos_2025_2026": 21,
+          "rfaf_url": "https://www.rfaf.es/pnfg/NPcd/NFG_VisClasificacion?cod_primaria=1000120&codcompeticion=46125067&codgrupo=46213561"
+        },
+        {
+          "nombre": "A.D. Icovesa B",
+          "categoria_federada": "4ª ANDALUZA ALEVIN",
+          "codigo_equipo": "2856275",
+          "temporada": "2025-2026",
+          "posicion_2025_2026": 10,
+          "puntos_2025_2026": 18,
+          "rfaf_url": "https://www.rfaf.es/pnfg/NPcd/NFG_VisClasificacion?cod_primaria=1000120&codcompeticion=41338698&codgrupo=41447000"
+        }
       ]
     },
     {
       "categoria": "Infantil",
-      "entrenador": "Carlos Martín",
-      "jugadores": [
-        { "nombre": "Cristian D.", "dorsal": 1, "posicion": "Portero", "foto": "" },
-        { "nombre": "Ignacio Q.", "dorsal": 2, "posicion": "Defensa", "foto": "" },
-        { "nombre": "Rafael Z.", "dorsal": 3, "posicion": "Centrocampista", "foto": "" },
-        { "nombre": "Adrián K.", "dorsal": 4, "posicion": "Delantero", "foto": "" }
+      "entrenador": "",
+      "jugadores": [],
+      "equipos_federados": [
+        {
+          "nombre": "A.D. Icovesa",
+          "categoria_federada": "4ª ANDALUZA INFANTIL",
+          "codigo_equipo": "13252190",
+          "temporada": "2025-2026",
+          "posicion_2025_2026": 11,
+          "puntos_2025_2026": 4,
+          "rfaf_url": "https://www.rfaf.es/pnfg/NPcd/NFG_VisClasificacion?cod_primaria=1000120&codcompeticion=45931674&codgrupo=46084358"
+        }
       ]
     },
     {
       "categoria": "Cadete",
-      "entrenador": "Raúl Díaz",
-      "jugadores": [
-        { "nombre": "Álvaro W.", "dorsal": 1, "posicion": "Portero", "foto": "" },
-        { "nombre": "Rubén X.", "dorsal": 2, "posicion": "Defensa", "foto": "" },
-        { "nombre": "Marcos Y.", "dorsal": 3, "posicion": "Centrocampista", "foto": "" },
-        { "nombre": "Óscar U.", "dorsal": 4, "posicion": "Delantero", "foto": "" }
-      ]
+      "entrenador": "",
+      "jugadores": [],
+      "equipos_federados": []
     },
     {
       "categoria": "Juvenil",
-      "entrenador": "Francisco Ruiz",
-      "jugadores": [
-        { "nombre": "Antonio I.", "dorsal": 1, "posicion": "Portero", "foto": "" },
-        { "nombre": "Gabriel J.", "dorsal": 2, "posicion": "Defensa", "foto": "" },
-        { "nombre": "Ismael K.", "dorsal": 3, "posicion": "Centrocampista", "foto": "" },
-        { "nombre": "Lorenzo L.", "dorsal": 4, "posicion": "Delantero", "foto": "" }
-      ]
+      "entrenador": "",
+      "jugadores": [],
+      "equipos_federados": []
     }
   ]
 }

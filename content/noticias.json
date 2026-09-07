@@ -1,0 +1,25 @@
+{
+  "noticias": [
+    {
+      "titulo": "La A.D. Icovesa se proclama campeona del Torneo Internacional de Bornos",
+      "categoria": "Crónica del club",
+      "fecha": "24 Ago 2026",
+      "resumen": "Los equipos benjamín y alevín de la A.D. Icovesa brillaron en el Torneo Internacional de Fútbol Base de Bornos, imponiéndose a rivales de toda Andalucía. El benjamín se llevó el título en una final disputada contra el RA Alcalá, mientras el alevín firmó una campaña impecable con 4 victorias en 4 partidos. Una jornada de esfuerzo, unión y pasión por el fútbol base.",
+      "imagen": ""
+    },
+    {
+      "titulo": "Inscripciones abiertas para la temporada 2026/27 en todas las categorías",
+      "categoria": "Fútbol base",
+      "fecha": "18 Ago 2026",
+      "resumen": "Ya están abiertas las inscripciones para la próxima temporada. Desde escuela (4-5 años) hasta cadete, todas las categorías tienen plazas disponibles. El proceso de inscripción se realiza a través de WhatsApp o presencialmente en el Campo de Fútbol Picadueñas los martes y jueves de 18:00 a 20:00 h.",
+      "imagen": ""
+    },
+    {
+      "titulo": "Nuevo acuerdo de colaboración con el Ayuntamiento de Jerez para la mejora de instalaciones",
+      "categoria": "Aviso deportivo",
+      "fecha": "10 Ago 2026",
+      "resumen": "El Ayuntamiento de Jerez ha aprobado una inversión de 45.000 € para la renovación del césped artificial del Campo de Fútbol Picadueñas, sede del fútbol base icovesano. Las obras comenzarán en septiembre y están previstas para completarse antes del inicio de la liga regular.",
+      "imagen": ""
+    }
+  ]
+}
