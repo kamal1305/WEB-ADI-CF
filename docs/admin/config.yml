@@ -1,16 +1,18 @@
 # ============================================================
 # Configuración del panel de administración (Decap CMS)
-# Modo LOCAL: editar desde tu propio ordenador con `decap-server`
-# Uso: ver README.md / preguntar a Claude
+# Antes de usarlo, sustituye los dos valores marcados con «TODO»
+# Guía completa: ver README.md, sección "Configurar el panel"
 # ============================================================
-# Backend local para editar sin login OAuth online.
-# Para usarlo: arranca `npx decap-server` y sirve la carpeta en local.
+# Activar backend local para desarrollo sin login GitHub
+# (usar solo en local; en producción se ignora este flag)
 local_backend: true
 
 backend:
   name: github
-  repo: kamal1305/WEB-ADI-CF
+  repo: TODO-usuario/TODO-nombre-del-repositorio   # ej: adicovesa/web-club
   branch: main
+  base_url: https://TODO-tu-pasarela-oauth.vercel.app
+  auth_endpoint: auth
 
 # Las fotos que subáis desde el panel se guardan en /uploads
 media_folder: "uploads"
@@ -92,8 +94,9 @@ collections:
             fields:
               - { label: "Nombre", name: "nombre", widget: "string" }
               - { label: "Cargo", name: "cargo", widget: "string", hint: "Ej: Entrenador, delegado, preparador físico" }
+              - { label: "Titulación", name: "titulacion", widget: "string", required: false, hint: "Ej: UEFA Pro, Nivel 1, Nivel 2…" }
               - { label: "Equipo o categoría", name: "equipo", widget: "string", required: false }
-              - { label: "Foto", name: "foto", widget: "image", required: false }
+              - { label: "Foto", name: "foto", widget: "image", required: false, hint: "Opcional: si se deja vacía se muestra un avatar con las iniciales." }
 
   - name: "galeria"
     label: "Galería de fotos"

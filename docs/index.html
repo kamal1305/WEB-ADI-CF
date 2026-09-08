@@ -617,6 +617,93 @@ p { max-width: 65ch; }
 .player-meta, .staff-role { font-size: var(--fs-xs); color: var(--ink-3); }
 .empty-note { font-size: 0.9375rem; color: var(--ink-3); margin: 0; }
 
+/* Staff cards — avatares tipográficos (rosa/negro, sin fotos) */
+.staff-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);           /* ≈ rounded-2xl */
+  padding: 1.4rem 1rem 1.35rem;
+  text-align: center;
+  display: flex; flex-direction: column; align-items: center;
+  position: relative; overflow: hidden;
+  transition: border-color var(--dur-fast) ease,
+              transform var(--dur-fast) var(--ease-spring),
+              box-shadow var(--dur-fast) ease;
+}
+.staff-card::after {
+  content: ''; position: absolute; bottom: 0; left: 0; right: 0;
+  height: 3px; background: linear-gradient(90deg, var(--rosa-h), var(--rosa));
+  transform: scaleX(0); transform-origin: left;
+  transition: transform var(--dur-med) var(--ease-out);
+}
+.staff-card:hover {
+  border-color: var(--rosa);
+  transform: translateY(-3px);
+  box-shadow: 0 14px 44px rgba(194,38,95,0.16);
+}
+.staff-card:hover::after { transform: scaleX(1); }
+
+/* Avatar circular elegante con degradado rosa → negro */
+.staff-photo {
+  width: 96px; height: 96px; flex: none;
+  border-radius: 50%; overflow: hidden;
+  margin-bottom: 0.85rem;
+  display: flex; align-items: center; justify-content: center;
+  background:
+    radial-gradient(circle at 30% 22%, rgba(255,255,255,0.22), transparent 46%),
+    linear-gradient(145deg, var(--rosa-h) 0%, var(--rosa-d) 58%, #0A0A0A 100%);
+  border: 1px solid rgba(194,38,95,0.45);
+  box-shadow: 0 10px 26px rgba(194,38,95,0.3);
+}
+.staff-photo img { width: 100%; height: 100%; object-fit: cover; }
+.staff-initials {
+  font-family: var(--ff-display);
+  font-size: 1.75rem; letter-spacing: 0.02em;
+  color: #fff;
+  text-shadow: 0 2px 14px rgba(0,0,0,0.45);
+  user-select: none;
+}
+.staff-avatar-icon {
+  width: 34px; height: 34px; color: rgba(255,255,255,0.94); opacity: 1;
+}
+.staff-card:hover .staff-photo { border-color: var(--rosa); }
+
+.staff-name {
+  font-weight: 700; font-size: 0.9375rem;
+  line-height: 1.25; color: var(--ink); margin: 0;
+  transition: color var(--dur-fast) ease;
+}
+.staff-card:hover .staff-name { color: var(--rosa-h); }
+
+/* Cargo en rosa + badge de titulación UEFA */
+.staff-role {
+  margin-top: 0.35rem;
+  display: inline-flex; align-items: center; justify-content: center;
+  flex-wrap: wrap; gap: 6px;
+  font-size: var(--fs-xs); font-weight: 600;
+  letter-spacing: 0.02em; color: var(--rosa);
+}
+.staff-tag {
+  display: inline-flex; align-items: center; gap: 5px;
+  font-size: 0.625rem; font-weight: 800;
+  letter-spacing: 0.06em; text-transform: uppercase;
+  color: var(--rosa);
+  background: var(--rosa-bg);
+  border: 1px solid rgba(194,38,95,0.28);
+  border-radius: 100px; padding: 2px 9px;
+}
+.staff-tag::before { content: '★'; font-size: 0.55rem; line-height: 1; }
+.staff-team {
+  margin-top: 0.25rem;
+  font-size: var(--fs-xs); color: var(--ink-3); letter-spacing: 0.02em;
+}
+
+/* Rejilla adaptativa del cuerpo técnico */
+.staff-grid { grid-template-columns: repeat(2, 1fr); }
+@media (min-width: 640px) and (max-width: 859px) { .staff-grid { grid-template-columns: repeat(3, 1fr); } }
+@media (min-width: 860px) and (max-width: 1099px) { .staff-grid { grid-template-columns: repeat(4, 1fr); } }
+@media (min-width: 1100px) { .staff-grid { grid-template-columns: repeat(5, 1fr); } }
+
 .steps {
   counter-reset: step; display: grid; gap: 14px; margin-top: 1.75rem;
 }
@@ -1898,15 +1985,30 @@ footer a:hover { color: var(--rosa); }
   });
 
   /* ---- Staff ---- */
+  var iconoSilbato = '<svg class="staff-avatar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><ellipse cx="16" cy="16" rx="5" ry="4"/><path d="M16 12V7.2A2.2 2.2 0 0 0 13.8 5H4.5A2.5 2.5 0 0 0 2 7.5v2A2.5 2.5 0 0 0 4.5 12H9"/><circle cx="16" cy="16" r="1.3" fill="currentColor" stroke="none"/></svg>';
+  function inicialesStaff(nombre){
+    var partes = String(nombre || '').trim().split(/\s+/).filter(Boolean);
+    var init = partes.slice(0, 2).map(function(p){ return p.charAt(0); }).join('');
+    if(typeof init.normalize === 'function'){
+      init = init.normalize('NFD').split('').filter(function(c){ return c.charCodeAt(0) < 0x0300 || c.charCodeAt(0) > 0x036F; }).join('');
+    }
+    return init.toUpperCase();
+  }
   cargarJSON('content/staff.json').then(function(data){
     var staff = data && data.staff ? data.staff.filter(function(s){ return s && s.nombre; }) : [];
     if(!staff.length) return;
     var grid = document.getElementById('staff-grid');
     grid.innerHTML = staff.map(function(s){
-      var foto = s.foto ? '<img src="'+esc(s.foto)+'" alt="'+esc(s.nombre)+'">' : iconoFoto;
-      return '<div class="staff-card"><div class="staff-photo">'+foto+'</div>'
+      var letras = inicialesStaff(s.nombre);
+      var avatar = s.foto
+        ? '<img src="'+esc(s.foto)+'" alt="'+esc(s.nombre)+'">'
+        : (letras ? '<span class="staff-initials">'+esc(letras)+'</span>' : iconoSilbato);
+      var tag = s.titulacion ? '<span class="staff-tag">'+esc(s.titulacion)+'</span>' : '';
+      var team = s.equipo ? '<div class="staff-team">'+esc(s.equipo)+'</div>' : '';
+      return '<div class="staff-card"><div class="staff-photo">'+avatar+'</div>'
         +'<div class="staff-name">'+esc(s.nombre)+'</div>'
-        +'<div class="staff-role">'+esc(s.cargo||'')+(s.equipo ? ' · '+esc(s.equipo) : '')+'</div></div>';
+        +'<div class="staff-role">'+esc(s.cargo || '')+tag+'</div>'
+        +team+'</div>';
     }).join('');
   });
 

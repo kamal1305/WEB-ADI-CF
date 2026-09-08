@@ -1,3 +1,65 @@
 {
-  "staff": []
+  "staff": [
+    {
+      "nombre": "Miguel Zarzuela",
+      "cargo": "Director Deportivo",
+      "titulacion": "UEFA Pro",
+      "equipo": "Dirección",
+      "foto": null
+    },
+    {
+      "nombre": "Adrián Zarzuela",
+      "cargo": "Entrenador",
+      "equipo": "Escuela de Iniciación",
+      "foto": null
+    },
+    {
+      "nombre": "Antonio Jiménez",
+      "cargo": "Entrenador",
+      "equipo": "Escuela de Iniciación",
+      "foto": null
+    },
+    {
+      "nombre": "Ángel Repiso Barba",
+      "cargo": "Entrenador",
+      "equipo": "Infantil",
+      "foto": null
+    },
+    {
+      "nombre": "Rafa Junquera",
+      "cargo": "Entrenador",
+      "equipo": "Prebenjamín A",
+      "foto": null
+    },
+    {
+      "nombre": "José Antonio Morales",
+      "cargo": "Entrenador",
+      "equipo": "Prebenjamín A",
+      "foto": null
+    },
+    {
+      "nombre": "Moisés Hernández",
+      "cargo": "Entrenador",
+      "equipo": "Prebenjamín B",
+      "foto": null
+    },
+    {
+      "nombre": "Samuel Sabao",
+      "cargo": "Entrenador",
+      "equipo": "Benjamín A",
+      "foto": null
+    },
+    {
+      "nombre": "Luis Céspedes",
+      "cargo": "Entrenador",
+      "equipo": "Benjamín B",
+      "foto": null
+    },
+    {
+      "nombre": "Miguel Cardona",
+      "cargo": "Entrenador",
+      "equipo": "Alevín",
+      "foto": null
+    }
+  ]
 }
