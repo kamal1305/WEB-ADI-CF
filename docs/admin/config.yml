@@ -1,18 +1,10 @@
 # ============================================================
 # Configuración del panel de administración (Decap CMS)
-# Antes de usarlo, sustituye los dos valores marcados con «TODO»
-# Guía completa: ver README.md, sección "Configurar el panel"
 # ============================================================
-# Activar backend local para desarrollo sin login GitHub
-# (usar solo en local; en producción se ignora este flag)
 local_backend: true
 
 backend:
-  name: github
-  repo: TODO-usuario/TODO-nombre-del-repositorio   # ej: adicovesa/web-club
-  branch: main
-  base_url: https://TODO-tu-pasarela-oauth.vercel.app
-  auth_endpoint: auth
+  name: git-gateway
 
 # Las fotos que subáis desde el panel se guardan en /uploads
 media_folder: "uploads"
