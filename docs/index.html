@@ -1994,6 +1994,15 @@ footer a:hover { color: var(--rosa); }
     }
     return init.toUpperCase();
   }
+  /* Si una foto no carga (falta el archivo o ruta rota), la sustituye por
+     el avatar de iniciales para que la tarjeta nunca se quede en blanco */
+  function staffFotoFallback(img){
+    img.onerror = null;
+    var nombre = (img.getAttribute('data-nombre') || img.alt || '');
+    var l = inicialesStaff(nombre);
+    var re = l ? '<span class="staff-initials">'+esc(l)+'</span>' : iconoSilbato;
+    if(img.parentNode) img.parentNode.innerHTML = re;
+  }
   cargarJSON('content/staff.json').then(function(data){
     var staff = data && data.staff ? data.staff.filter(function(s){ return s && s.nombre; }) : [];
     if(!staff.length) return;
@@ -2001,7 +2010,7 @@ footer a:hover { color: var(--rosa); }
     grid.innerHTML = staff.map(function(s){
       var letras = inicialesStaff(s.nombre);
       var avatar = s.foto
-        ? '<img src="'+esc(s.foto)+'" alt="'+esc(s.nombre)+'">'
+        ? '<img src="'+esc(s.foto)+'" alt="'+esc(s.nombre)+'" loading="lazy" data-nombre="'+esc(s.nombre)+'" onerror="staffFotoFallback(this)">'
         : (letras ? '<span class="staff-initials">'+esc(letras)+'</span>' : iconoSilbato);
       var tag = s.titulacion ? '<span class="staff-tag">'+esc(s.titulacion)+'</span>' : '';
       var team = s.equipo ? '<div class="staff-team">'+esc(s.equipo)+'</div>' : '';

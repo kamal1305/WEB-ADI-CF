@@ -2,28 +2,28 @@
   "staff": [
     {
       "nombre": "Miguel Zarzuela",
-      "cargo": "Director Deportivo",
-      "titulacion": "UEFA Pro",
-      "equipo": "Dirección",
-      "foto": null
+      "cargo": "Coordinador Escuela de Iniciación",
+      "titulacion": "UEFA PRO",
+      "equipo": "Escuela de Iniciación",
+      "foto": "img/staff/miguel-zarzuela.jpg"
     },
     {
       "nombre": "Adrián Zarzuela",
-      "cargo": "Entrenador",
+      "cargo": "Ayudante Escuela de Iniciación",
       "equipo": "Escuela de Iniciación",
-      "foto": null
+      "foto": "img/staff/adrian-zarzuela.jpg"
     },
     {
       "nombre": "Antonio Jiménez",
-      "cargo": "Entrenador",
+      "cargo": "Ayudante Escuela de Iniciación",
       "equipo": "Escuela de Iniciación",
-      "foto": null
+      "foto": "img/staff/antonio-jimenez.jpg"
     },
     {
       "nombre": "Ángel Repiso Barba",
       "cargo": "Entrenador",
       "equipo": "Infantil",
-      "foto": null
+      "foto": "img/staff/angel-repiso.jpg"
     },
     {
       "nombre": "Rafa Junquera",
@@ -41,25 +41,25 @@
       "nombre": "Moisés Hernández",
       "cargo": "Entrenador",
       "equipo": "Prebenjamín B",
-      "foto": null
+      "foto": "img/staff/moises-hernandez.jpg"
     },
     {
       "nombre": "Samuel Sabao",
       "cargo": "Entrenador",
       "equipo": "Benjamín A",
-      "foto": null
+      "foto": "img/staff/samuel-sabao.jpg"
     },
     {
       "nombre": "Luis Céspedes",
       "cargo": "Entrenador",
       "equipo": "Benjamín B",
-      "foto": null
+      "foto": "img/staff/luis-cespedes.jpg"
     },
     {
       "nombre": "Miguel Cardona",
       "cargo": "Entrenador",
       "equipo": "Alevín",
-      "foto": null
+      "foto": "img/staff/miguel-cardona.jpg"
     }
   ]
 }
