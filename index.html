@@ -1202,7 +1202,16 @@ footer a:hover { color: var(--rosa); }
     </div>
   </div>
 </section>
-
+<!-- Sección de Marcadores en Vivo -->
+<section id="marcador-en-vivo" style="max-width: 900px; margin: 2.5rem auto; padding: 1.5rem; background: #141414; color: #ffffff; border-radius: 8px; font-family: sans-serif; box-shadow: 0 4px 12px rgba(0,0,0,0.3);">
+  <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid #E20613; padding-bottom: 0.75rem; margin-bottom: 1rem;">
+    <h3 style="margin: 0; font-size: 1.25rem; font-weight: bold; color: #ffffff;">Marcadores de Fútbol en Directo</h3>
+    <span style="background: #E20613; color: white; padding: 3px 8px; border-radius: 4px; font-size: 0.75rem; font-weight: bold; text-transform: uppercase; letter-spacing: 0.5px;">En Vivo</span>
+  </div>
+  <div id="contenedor-lista-partidos">
+    <p style="color: #888; font-size: 0.9rem;">Cargando partidos en juego...</p>
+  </div>
+</section>
 <!-- ═══════════════════════════════════════════════════════════
      NOTICIAS & ACTUALIDAD
      ═══════════════════════════════════════════════════════════ -->
@@ -2208,7 +2217,52 @@ footer a:hover { color: var(--rosa); }
     });
 })();
 </script>
+<script>
+  async function obtenerPartidosEnVivo() {
+    const contenedor = document.getElementById("contenedor-lista-partidos");
+    const url = "https://free-api-live-football-data.p.rapidapi.com/football-current-live";
+    const opciones = {
+      method: "GET",
+      headers: {
+        "x-rapidapi-key": "a656587a32msha0dbf016a16b213pt13368cjsn0caf1110c7c5",
+        "x-rapidapi-host": "free-api-live-football-data.p.rapidapi.com"
+      }
+    };
 
+    try {
+      const respuesta = await fetch(url, opciones);
+      const resultado = await respuesta.json();
+      const partidos = resultado.response?.live || [];
+
+      if (!partidos.length) {
+        contenedor.innerHTML = "<p style='color: #888; font-size: 0.9rem;'>No hay partidos disputándose en este momento.</p>";
+        return;
+      }
+
+      contenedor.innerHTML = partidos.slice(0, 5).map(partido => {
+        const local = partido.home?.name || "Local";
+        const golesLocal = partido.home?.score ?? 0;
+        const visitante = partido.away?.name || "Visitante";
+        const golesVisitante = partido.away?.score ?? 0;
+
+        return `
+          <div style="display: flex; justify-content: space-between; align-items: center; padding: 10px 0; border-bottom: 1px solid #282828;">
+            <span style="flex: 1; text-align: right; font-weight: 500;">${local}</span>
+            <span style="padding: 4px 12px; margin: 0 12px; background: #222; border-radius: 4px; font-weight: bold; color: #ffcc00; letter-spacing: 2px;">
+              ${golesLocal} - ${golesVisitante}
+            </span>
+            <span style="flex: 1; text-align: left; font-weight: 500;">${visitante}</span>
+          </div>
+        `;
+      }).join("");
+    } catch (error) {
+      console.error("Error al cargar marcadores:", error);
+      contenedor.innerHTML = "<p style='color: #ff5555; font-size: 0.9rem;'>No se pudo obtener la información deportiva en este momento.</p>";
+    }
+  }
+
+  document.addEventListener("DOMContentLoaded", obtenerPartidosEnVivo);
+</script>
 <script>
 (function(){if(!window.chatbase||window.chatbase("getState")!=="initialized"){window.chatbase=(...arguments)=>{if(!window.chatbase.q){window.chatbase.q=[]}window.chatbase.q.push(arguments)};window.chatbase=new Proxy(window.chatbase,{get(target,prop){if(prop==="q"){return target.q}return(...args)=>target(prop,...args)}})}const onLoad=function(){const script=document.createElement("script");script.src="https://www.chatbase.co/embed.min.js";script.id="lTyoH7iDl6677wkKIFeCd";script.domain="www.chatbase.co";document.body.appendChild(script)};if(document.readyState==="complete"){onLoad()}else{window.addEventListener("load",onLoad)}})();
 </script>
