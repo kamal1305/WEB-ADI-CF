@@ -2352,39 +2352,12 @@ footer a:hover { color: var(--rosa); }
 
       if (!partidos.length) {
         contenedor.innerHTML = "<p style='color: #888; font-size: 0.9rem;'>No hay partidos disputándose en este momento.</p>";
-        return;
-      }
-
-      contenedor.innerHTML = partidos.slice(0, 5).map(partido => {
-        const local = partido.home?.name || "Local";
-        const golesLocal = partido.home?.score ?? 0;
-        const visitante = partido.away?.name || "Visitante";
-        const golesVisitante = partido.away?.score ?? 0;
-
-        return `
-          <div style="display: flex; justify-content: space-between; align-items: center; padding: 10px 0; border-bottom: 1px solid #282828;">
-            <span style="flex: 1; text-align: right; font-weight: 500;">${local}</span>
-            <span style="padding: 4px 12px; margin: 0 12px; background: #222; border-radius: 4px; font-weight: bold; color: #ffcc00; letter-spacing: 2px;">
-              ${golesLocal} - ${golesVisitante}
-            </span>
-            <span style="flex: 1; text-align: left; font-weight: 500;">${visitante}</span>
-          </div>
-        `;
-      }).join("");
-    } catch (error) {
-      console.error("Error al cargar marcadores:", error);
-      contenedor.innerHTML = "<p style='color: #ff5555; font-size: 0.9rem;'>No se pudo obtener la información deportiva en este momento.</p>";
-    }
-  }
-
-  document.addEventListener("DOMContentLoaded", obtenerPartidosEnVivo);
-
 <script>
   async function cargarWidgetMarcadores() {
     const contenedor = document.getElementById("contenedor-lista-partidos");
     if (!contenedor) return;
 
-    contenedor.innerHTML = "<p style='color: #bbb; font-size: 0.9rem; animation: pulse 1.5s infinite;'>⏳ Conectando con los marcadores...</p>";
+    contenedor.innerHTML = "<p style='color: #bbb; font-size: 0.9rem;'>Conectando con la información deportiva...</p>";
 
     const opciones = {
       method: "GET",
@@ -2395,12 +2368,10 @@ footer a:hover { color: var(--rosa); }
     };
 
     try {
-      // 1. Intentar obtener partidos en directo
       let res = await fetch("https://free-api-live-football-data.p.rapidapi.com/football-current-live", opciones);
       let data = await res.json();
       let partidos = data.response?.live || data.response?.matches || [];
 
-      // 2. Si no hay partidos en juego ahora, consultar los partidos del día
       if (!partidos || partidos.length === 0) {
         const hoy = new Date().toISOString().slice(0, 10).replace(/-/g, "");
         res = await fetch(`https://free-api-live-football-data.p.rapidapi.com/football-get-matches-by-date?date=${hoy}`, opciones);
@@ -2408,19 +2379,17 @@ footer a:hover { color: var(--rosa); }
         partidos = data.response?.matches || data.response?.live || [];
       }
 
-      // Si no hay partidos registrados hoy
       if (!partidos || partidos.length === 0) {
         contenedor.innerHTML = "<p style='color: #888; font-size: 0.9rem; margin: 0;'>No hay partidos disputándose en este momento.</p>";
         return;
       }
 
-      // Renderizar la lista de encuentros
       contenedor.innerHTML = partidos.slice(0, 5).map(p => {
         const local = p.home?.name || p.homeTeam?.name || "Local";
         const visitante = p.away?.name || p.awayTeam?.name || "Visitante";
         const golesLocal = p.home?.score ?? p.score?.home ?? "-";
         const golesVisitante = p.away?.score ?? p.score?.away ?? "-";
-        const estado = p.status?.type || p.status?.reason?.short || p.status || "Partido";
+        const estado = p.status?.type || p.status?.reason?.short || p.status || "Hoy";
 
         return `
           <div style="display: flex; justify-content: space-between; align-items: center; padding: 10px 0; border-bottom: 1px solid #282828;">
@@ -2437,17 +2406,14 @@ footer a:hover { color: var(--rosa); }
       }).join("");
 
     } catch (err) {
-      console.error("Error cargando la API de marcadores:", err);
+      console.error("Error API:", err);
       contenedor.innerHTML = "<p style='color: #e55; font-size: 0.9rem; margin: 0;'>No se pudo sincronizar la información deportiva en este momento.</p>";
     }
   }
 
-  // Ejecutar al cargar la página
-  if (document.readyState === "loading") {
-    document.addEventListener("DOMContentLoaded", cargarWidgetMarcadores);
-  } else {
-    cargarWidgetMarcadores();
-  }
+  document.addEventListener("DOMContentLoaded", cargarWidgetMarcadores);
 </script>
+</body>
+</html>
 </body>
 </html>
