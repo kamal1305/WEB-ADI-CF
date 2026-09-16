@@ -2445,8 +2445,53 @@ footer a:hover { color: var(--rosa); }
       contenedor.innerHTML = "<p style='color: #e55; font-size: 0.9rem; margin: 0;'>No se pudo sincronizar la información deportiva en este momento.</p>";
     }
   }
-document.addEventListener("DOMContentLoaded", cargarWidgetMarcadores);
-  document.addEventListener("DOMContentLoaded", cargarWidgetMarcadores);
-</script>
+// document.addEventListener("DOMContentLoaded", cargarWidgetMarcadores);
+  </script>
+
+  <script>
+    async function cargarNoticiasClub() {
+      const contenedor = document.getElementById('noticias-grid') || 
+                         document.getElementById('contenedor-noticias') || 
+                         document.querySelector('.news-grid') ||
+                         document.querySelector('#noticias .grid') ||
+                         document.querySelector('#noticias');
+      if (!contenedor) return;
+
+      try {
+        const res = await fetch('content/noticias.json');
+        if (!res.ok) throw new Error(`HTTP ${res.status}`);
+        const data = await res.json();
+        
+        const noticias = Array.isArray(data) ? data : (data.noticias || []);
+
+        if (!noticias.length) {
+          contenedor.innerHTML = '<p style="color:#aaa; text-align:center; grid-column: 1/-1;">No hay noticias publicadas recientemente.</p>';
+          return;
+        }
+
+        contenedor.innerHTML = noticias.map(n => `
+          <article style="background:#14141e; border:1px solid #232336; border-radius:12px; overflow:hidden; display:flex; flex-direction:column; margin-bottom:1.5rem;">
+            <img src="${n.imagen || 'https://placehold.co/800x450/1a1a2e/ffffff?text=AD+Icovesa'}" alt="${n.titulo}" style="width:100%; height:200px; object-fit:cover;">
+            <div style="padding:1.25rem; display:flex; flex-direction:column; flex:1;">
+              <div style="display:flex; justify-content:space-between; margin-bottom:0.5rem;">
+                <span style="color:#e20613; font-size:0.75rem; font-weight:700; text-transform:uppercase; letter-spacing:1px;">${n.categoria || 'Crónica'}</span>
+                <span style="color:#888; font-size:0.75rem;">${n.fecha || ''}</span>
+              </div>
+              <h3 style="color:#fff; font-size:1.15rem; margin:0 0 0.75rem 0; line-height:1.3;">${n.titulo}</h3>
+              <p style="color:#bbb; font-size:0.9rem; line-height:1.5; margin:0 0 1rem 0; flex:1;">${n.resumen || ''}</p>
+              <div style="border-top:1px solid #222; padding-top:0.75rem; color:#666; font-size:0.75rem;">
+                Fuente: ${n.fuente || 'A.D. Icovesa'}
+              </div>
+            </div>
+          </article>
+        `).join('');
+      } catch (err) {
+        console.error('Error al cargar noticias:', err);
+        contenedor.innerHTML = '<p style="color:#e55; text-align:center; grid-column: 1/-1;">No se pudieron cargar las noticias en este momento.</p>';
+      }
+    }
+
+    document.addEventListener('DOMContentLoaded', cargarNoticiasClub);
+  </script>
 </body>
 </html>
