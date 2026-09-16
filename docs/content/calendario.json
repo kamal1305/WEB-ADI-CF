@@ -1,49 +1,49 @@
 {
   "partidos": [
     {
-      "fecha": "Sáb 13 sep 2026",
+      "fecha": "Sáb 26 sep 2026",
       "categoria": "Alevín",
-      "local": "A.D. Icovesa",
-      "visitante": "CD Comarca de Jerez",
-      "resultado": "",
-      "campo": "Campo de Fútbol Picadueñas",
-      "rfaf_url": "https://www.rfaf.es/pnfg/NPcd/NFG_VisClasificacion?cod_primaria=1000120&codcompeticion=46125067&codgrupo=46213561"
-    },
-    {
-      "fecha": "Dom 14 sep 2026",
-      "categoria": "Benjamín",
-      "local": "Xerez Deportivo FC",
-      "visitante": "A.D. Icovesa",
+      "local": "CLUB DE FÚTBOL SHERRY ATLÉTICO \"A\"",
+      "visitante": "A.D. ICOVESA \"A\"",
       "resultado": "",
       "campo": "Visitante",
-      "rfaf_url": "https://www.rfaf.es/pnfg/NPcd/NFG_VisClasificacion?cod_primaria=1000120&codcompeticion=46271051&codgrupo=46360123"
+      "rfaf_url": "https://www.rfaf.es/pnfg/NPcd/NFG_VisClasificacion?cod_primaria=1000120&codcompeticion=49608278&codgrupo=49795797"
     },
     {
-      "fecha": "Sáb 20 sep 2026",
+      "fecha": "Sáb 26 sep 2026",
+      "categoria": "Alevín",
+      "local": "A.D. ICOVESA \"B\"",
+      "visitante": "CLUB DEPORTIVO PROMESAS XEREZ C.D. 1947",
+      "resultado": "",
+      "campo": "Campo de Fútbol Picadueñas",
+      "rfaf_url": "https://www.rfaf.es/pnfg/NPcd/NFG_VisClasificacion?cod_primaria=1000120&codcompeticion=49608278&codgrupo=49796446"
+    },
+    {
+      "fecha": "Sáb 3 oct 2026",
+      "categoria": "Alevín",
+      "local": "A.D. ICOVESA \"A\"",
+      "visitante": "A.D. MARIANISTAS C.D. \"A\"",
+      "resultado": "",
+      "campo": "Campo de Fútbol Picadueñas",
+      "rfaf_url": "https://www.rfaf.es/pnfg/NPcd/NFG_VisClasificacion?cod_primaria=1000120&codcompeticion=49608278&codgrupo=49795797"
+    },
+    {
+      "fecha": "Sáb 3 oct 2026",
+      "categoria": "Alevín",
+      "local": "AFICION XEREZ C.D.",
+      "visitante": "A.D. ICOVESA \"B\"",
+      "resultado": "",
+      "campo": "Visitante",
+      "rfaf_url": "https://www.rfaf.es/pnfg/NPcd/NFG_VisClasificacion?cod_primaria=1000120&codcompeticion=49608278&codgrupo=49796446"
+    },
+    {
+      "fecha": "Sáb 3 oct 2026",
       "categoria": "Infantil",
-      "local": "A.D. Icovesa",
-      "visitante": "Arcos CF",
+      "local": "XEREZ DEPORTIVO F.C. \"A\"",
+      "visitante": "A.D. ICOVESA",
       "resultado": "",
-      "campo": "Campo de Fútbol Picadueñas",
-      "rfaf_url": "https://www.rfaf.es/pnfg/NPcd/NFG_VisClasificacion?cod_primaria=1000120&codcompeticion=45931674&codgrupo=46084358"
-    },
-    {
-      "fecha": "Sáb 6 sep 2026",
-      "categoria": "Alevín",
-      "local": "CD La Peña",
-      "visitante": "A.D. Icovesa",
-      "resultado": "1 - 3",
       "campo": "Visitante",
-      "rfaf_url": "https://www.rfaf.es/pnfg/NPcd/NFG_VisClasificacion?cod_primaria=1000120&codcompeticion=46125067&codgrupo=46213561"
-    },
-    {
-      "fecha": "Dom 31 ago 2026",
-      "categoria": "Benjamín",
-      "local": "A.D. Icovesa",
-      "visitante": "UD Chiclana",
-      "resultado": "4 - 0",
-      "campo": "Campo de Fútbol Picadueñas",
-      "rfaf_url": "https://www.rfaf.es/pnfg/NPcd/NFG_VisClasificacion?cod_primaria=1000120&codcompeticion=46271051&codgrupo=46360123"
+      "rfaf_url": "https://www.rfaf.es/pnfg/NPcd/NFG_VisClasificacion?cod_primaria=1000120&codcompeticion=49505530&codgrupo=49603909"
     }
   ]
 }

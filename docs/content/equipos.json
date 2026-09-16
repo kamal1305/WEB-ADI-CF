@@ -4,8 +4,23 @@
       "categoria": "Bebés",
       "entrenador": "",
       "jugadores": [],
-      "equipos_federados": [],
-      "nota": "Escuela de iniciación, sin equipo federado."
+      "equipos_federados": [
+        {
+          "nombre": "A.D. Icovesa",
+          "categoria_federada": "2ª ANDALUZA BEBE (CADIZ)",
+          "codigo_equipo": "14747812",
+          "temporada": "2025-2026",
+          "temporada_2026_27": "TORNEO BEBE IFECA (CÁDIZ)",
+          "rfaf_url": "https://www.rfaf.es/pnfg/NPcd/NFG_VisClasificacion?cod_primaria=1000120&codcompeticion=47320150&codgrupo=47320163",
+          "posicion_2025_2026": 2,
+          "puntos_2025_2026": 22,
+          "pj_2025_2026": 22,
+          "pg_2025_2026": 0,
+          "pe_2025_2026": 22,
+          "pp_2025_2026": 0
+        }
+      ],
+      "nota": "Escuela de iniciación que además compite federado (2ª ANDALUZA BEBE)."
     },
     {
       "categoria": "Prebenjamín",
@@ -17,18 +32,28 @@
           "categoria_federada": "3ª ANDALUZA PREBENJAMIN",
           "codigo_equipo": "349917",
           "temporada": "2025-2026",
+          "temporada_2026_27": "2ª ANDALUZA PREBENJAMIN (CADIZ) · Grupo 5º",
+          "rfaf_url": "https://www.rfaf.es/pnfg/NPcd/NFG_VisClasificacion?cod_primaria=1000120&codcompeticion=46560292&codgrupo=46630645",
           "posicion_2025_2026": 4,
           "puntos_2025_2026": 37,
-          "rfaf_url": "https://www.rfaf.es/pnfg/NPcd/NFG_VisClasificacion?cod_primaria=1000120&codcompeticion=46560292&codgrupo=46630645"
+          "pj_2025_2026": 20,
+          "pg_2025_2026": 11,
+          "pe_2025_2026": 4,
+          "pp_2025_2026": 5
         },
         {
           "nombre": "A.D. Icovesa B",
           "categoria_federada": "3ª ANDALUZA PREBENJAMIN",
           "codigo_equipo": "28658193",
           "temporada": "2025-2026",
+          "temporada_2026_27": "",
+          "rfaf_url": "https://www.rfaf.es/pnfg/NPcd/NFG_VisClasificacion?cod_primaria=1000120&codcompeticion=46560292&codgrupo=46631113",
           "posicion_2025_2026": 9,
           "puntos_2025_2026": 22,
-          "rfaf_url": "https://www.rfaf.es/pnfg/NPcd/NFG_VisClasificacion?cod_primaria=1000120&codcompeticion=46560292&codgrupo=46631113"
+          "pj_2025_2026": 22,
+          "pg_2025_2026": 7,
+          "pe_2025_2026": 1,
+          "pp_2025_2026": 14
         }
       ]
     },
@@ -42,18 +67,28 @@
           "categoria_federada": "4ª ANDALUZA BENJAMIN",
           "codigo_equipo": "33424766",
           "temporada": "2025-2026",
+          "temporada_2026_27": "",
+          "rfaf_url": "https://www.rfaf.es/pnfg/NPcd/NFG_VisClasificacion?cod_primaria=1000120&codcompeticion=46271051&codgrupo=46360123",
           "posicion_2025_2026": 6,
           "puntos_2025_2026": 38,
-          "rfaf_url": "https://www.rfaf.es/pnfg/NPcd/NFG_VisClasificacion?cod_primaria=1000120&codcompeticion=46271051&codgrupo=46360123"
+          "pj_2025_2026": 24,
+          "pg_2025_2026": 12,
+          "pe_2025_2026": 2,
+          "pp_2025_2026": 10
         },
         {
           "nombre": "A.D. Icovesa B",
           "categoria_federada": "4ª ANDALUZA BENJAMIN",
           "codigo_equipo": "2073084",
           "temporada": "2025-2026",
+          "temporada_2026_27": "",
+          "rfaf_url": "https://www.rfaf.es/pnfg/NPcd/NFG_VisClasificacion?cod_primaria=1000120&codcompeticion=30765606&codgrupo=30771371",
           "posicion_2025_2026": 13,
           "puntos_2025_2026": 5,
-          "rfaf_url": "https://www.rfaf.es/pnfg/NPcd/NFG_VisClasificacion?cod_primaria=1000120&codcompeticion=30765606&codgrupo=30771371"
+          "pj_2025_2026": 24,
+          "pg_2025_2026": 1,
+          "pe_2025_2026": 2,
+          "pp_2025_2026": 21
         }
       ]
     },
@@ -67,18 +102,28 @@
           "categoria_federada": "4ª ANDALUZA ALEVIN",
           "codigo_equipo": "10114506",
           "temporada": "2025-2026",
+          "temporada_2026_27": "4ª ANDALUZA ALEVIN (CADIZ) · Grupo 9º",
+          "rfaf_url": "https://www.rfaf.es/pnfg/NPcd/NFG_VisClasificacion?cod_primaria=1000120&codcompeticion=46125067&codgrupo=46213561",
           "posicion_2025_2026": 9,
           "puntos_2025_2026": 21,
-          "rfaf_url": "https://www.rfaf.es/pnfg/NPcd/NFG_VisClasificacion?cod_primaria=1000120&codcompeticion=46125067&codgrupo=46213561"
+          "pj_2025_2026": 22,
+          "pg_2025_2026": 6,
+          "pe_2025_2026": 3,
+          "pp_2025_2026": 13
         },
         {
           "nombre": "A.D. Icovesa B",
           "categoria_federada": "4ª ANDALUZA ALEVIN",
           "codigo_equipo": "2856275",
           "temporada": "2025-2026",
+          "temporada_2026_27": "4ª ANDALUZA ALEVIN (CADIZ) · Grupo 10º",
+          "rfaf_url": "https://www.rfaf.es/pnfg/NPcd/NFG_VisClasificacion?cod_primaria=1000120&codcompeticion=41338698&codgrupo=41447000",
           "posicion_2025_2026": 10,
           "puntos_2025_2026": 18,
-          "rfaf_url": "https://www.rfaf.es/pnfg/NPcd/NFG_VisClasificacion?cod_primaria=1000120&codcompeticion=41338698&codgrupo=41447000"
+          "pj_2025_2026": 22,
+          "pg_2025_2026": 5,
+          "pe_2025_2026": 3,
+          "pp_2025_2026": 14
         }
       ]
     },
@@ -92,9 +137,14 @@
           "categoria_federada": "4ª ANDALUZA INFANTIL",
           "codigo_equipo": "13252190",
           "temporada": "2025-2026",
+          "temporada_2026_27": "4ª ANDALUZA INFANTIL (CADIZ) · Grupo 7º",
+          "rfaf_url": "https://www.rfaf.es/pnfg/NPcd/NFG_VisClasificacion?cod_primaria=1000120&codcompeticion=45931674&codgrupo=46084358",
           "posicion_2025_2026": 11,
           "puntos_2025_2026": 4,
-          "rfaf_url": "https://www.rfaf.es/pnfg/NPcd/NFG_VisClasificacion?cod_primaria=1000120&codcompeticion=45931674&codgrupo=46084358"
+          "pj_2025_2026": 20,
+          "pg_2025_2026": 1,
+          "pe_2025_2026": 1,
+          "pp_2025_2026": 18
         }
       ]
     },

@@ -44,3 +44,7 @@ ehthumbs.db
 
 # Verificación local de Vercel
 .vercel/
+.aider*
+
+# Extracción RFAF: caché de trabajo (HTML crudo descargado)
+rfaf/dat/
