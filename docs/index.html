@@ -1317,13 +1317,8 @@ footer a:hover { color: var(--rosa); }
     </div>
 
     <div class="news-grid" id="news-grid">
-      <div class="news-hero">
-        <div class="news-img" style="background:var(--surface);display:flex;align-items:center;justify-content:center;color:var(--ink-3);font-size:0.85rem;">Cargando noticias…</div>
-      </div>
-      <div class="news-mid">
-        <div class="news-img" style="background:var(--surface);"></div>
-        <div class="news-body"><div class="news-tag">Cargando…</div></div>
-      </div>
+  <p style="color:var(--ink-3); padding:1rem; grid-column:1/-1;">Cargando noticias del club...</p>
+</div>
       <div class="banner-ad-slot">
         <div class="banner-ad">
           <div class="banner-ad-deco"></div>
@@ -2447,14 +2442,12 @@ footer a:hover { color: var(--rosa); }
   }
 // document.addEventListener("DOMContentLoaded", cargarWidgetMarcadores);
   </script>
+// document.addEventListener("DOMContentLoaded", cargarWidgetMarcadores);
+  </script>
 
   <script>
     async function cargarNoticiasClub() {
-      const contenedor = document.getElementById('noticias-grid') || 
-                         document.getElementById('contenedor-noticias') || 
-                         document.querySelector('.news-grid') ||
-                         document.querySelector('#noticias .grid') ||
-                         document.querySelector('#noticias');
+      const contenedor = document.getElementById('news-grid');
       if (!contenedor) return;
 
       try {
@@ -2465,21 +2458,21 @@ footer a:hover { color: var(--rosa); }
         const noticias = Array.isArray(data) ? data : (data.noticias || []);
 
         if (!noticias.length) {
-          contenedor.innerHTML = '<p style="color:#aaa; text-align:center; grid-column: 1/-1;">No hay noticias publicadas recientemente.</p>';
+          contenedor.innerHTML = '<p style="color:#aaa; grid-column:1/-1;">No hay noticias publicadas recientemente.</p>';
           return;
         }
 
         contenedor.innerHTML = noticias.map(n => `
-          <article style="background:#14141e; border:1px solid #232336; border-radius:12px; overflow:hidden; display:flex; flex-direction:column; margin-bottom:1.5rem;">
-            <img src="${n.imagen || 'https://placehold.co/800x450/1a1a2e/ffffff?text=AD+Icovesa'}" alt="${n.titulo}" style="width:100%; height:200px; object-fit:cover;">
-            <div style="padding:1.25rem; display:flex; flex-direction:column; flex:1;">
-              <div style="display:flex; justify-content:space-between; margin-bottom:0.5rem;">
-                <span style="color:#e20613; font-size:0.75rem; font-weight:700; text-transform:uppercase; letter-spacing:1px;">${n.categoria || 'Crónica'}</span>
-                <span style="color:#888; font-size:0.75rem;">${n.fecha || ''}</span>
+          <article class="news-card" style="background:var(--surface-2, #1a1a2e); border:1px solid rgba(255,255,255,0.08); border-radius:12px; overflow:hidden; display:flex; flex-direction:column; margin-bottom:1rem;">
+            <img src="${n.imagen || 'https://placehold.co/800x450/1a1a2e/ffffff?text=AD+Icovesa'}" alt="${n.titulo}" style="width:100%; height:190px; object-fit:cover;">
+            <div style="padding:1.2rem; display:flex; flex-direction:column; flex:1;">
+              <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.5rem;">
+                <span style="color:#e20613; font-size:0.75rem; font-weight:700; text-transform:uppercase; letter-spacing:0.5px;">${n.categoria || 'Club'}</span>
+                <span style="color:var(--ink-3, #888); font-size:0.75rem;">${n.fecha || ''}</span>
               </div>
-              <h3 style="color:#fff; font-size:1.15rem; margin:0 0 0.75rem 0; line-height:1.3;">${n.titulo}</h3>
-              <p style="color:#bbb; font-size:0.9rem; line-height:1.5; margin:0 0 1rem 0; flex:1;">${n.resumen || ''}</p>
-              <div style="border-top:1px solid #222; padding-top:0.75rem; color:#666; font-size:0.75rem;">
+              <h3 style="color:#fff; font-size:1.1rem; line-height:1.3; margin:0 0 0.5rem 0;">${n.titulo}</h3>
+              <p style="color:var(--ink-2, #bbb); font-size:0.88rem; line-height:1.45; margin:0 0 1rem 0; flex:1;">${n.resumen || ''}</p>
+              <div style="font-size:0.75rem; color:var(--ink-3, #777); border-top:1px solid rgba(255,255,255,0.05); padding-top:0.6rem;">
                 Fuente: ${n.fuente || 'A.D. Icovesa'}
               </div>
             </div>
@@ -2487,7 +2480,7 @@ footer a:hover { color: var(--rosa); }
         `).join('');
       } catch (err) {
         console.error('Error al cargar noticias:', err);
-        contenedor.innerHTML = '<p style="color:#e55; text-align:center; grid-column: 1/-1;">No se pudieron cargar las noticias en este momento.</p>';
+        contenedor.innerHTML = '<p style="color:#e55; grid-column:1/-1;">Error al cargar las noticias.</p>';
       }
     }
 
@@ -2495,3 +2488,4 @@ footer a:hover { color: var(--rosa); }
   </script>
 </body>
 </html>
+    
