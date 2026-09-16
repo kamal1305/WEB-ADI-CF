@@ -1275,6 +1275,25 @@ footer a:hover { color: var(--rosa); }
 <!-- ═══════════════════════════════════════════════════════════
      TEMPORADA — BENTO CALENDAR / RESULTS
      ═══════════════════════════════════════════════════════════ -->
+   <style>
+  /* Contraste nítido para fechas, categorías y campos */
+  #temporada [class*="hero"], #temporada .match-card-hero {
+    color: #ffffff !important;
+  }
+  #temporada [class*="hero"] span, 
+  #temporada [class*="hero"] small, 
+  #temporada [class*="hero"] p,
+  #temporada [class*="hero"] a {
+    color: #ffffff !important;
+    opacity: 0.95;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.5);
+  }
+  #temporada .match-card span,
+  #temporada .match-card small,
+  #temporada .match-card p {
+    color: #e2e8f0 !important;
+  }
+</style>
 <section id="temporada" class="section section-alt">
   <div class="wrap">
     <div class="section-head reveal">
@@ -1298,27 +1317,42 @@ footer a:hover { color: var(--rosa); }
 <!-- ═══════════════════════════════════════════════════════════
      NOTICIAS & ACTUALIDAD
      ═══════════════════════════════════════════════════════════ -->
-<section id="noticias" class="section section-alt">
+<section id="noticias" class="section">
   <div class="wrap">
     <div class="section-head reveal">
       <span class="kicker">Actualidad</span>
-      <h2>NOTICIAS &amp; ACTUALIDAD</h2>
-      <p>Infórmate de las últimas novedades del A.D. Icovesa: crónicas, resultados y noticias del fútbol base en Jerez.</p>
+      <h2>Noticias & Actualidad</h2>
+      <p>Infórmate de las últimas novedades del A.D. Icovesa: crónicas, resultados y cantera.</p>
     </div>
 
-    <div class="news-grid" id="news-grid">
-  <p style="color:var(--ink-3); padding:1rem; grid-column:1/-1;">Cargando noticias del club...</p>
-</div>
-      <div class="banner-ad-slot">
-        <div class="banner-ad">
-          <div class="banner-ad-deco"></div>
-          <div class="banner-ad-inner">
-            <div class="banner-ad-tag">Espacio Publicitario</div>
-            <div class="banner-ad-label">Tu marca aquí</div>
-            <a href="#patrocinios" class="btn btn-outline">Solicitar información</a>
-          </div>
-        </div>
+    <!-- Layout: 75% Noticias | 25% Publicidad -->
+    <div style="display: grid; grid-template-columns: 1fr; gap: 1.5rem; align-items: start;" class="noticias-layout">
+      <style>
+        @media (min-width: 900px) {
+          .noticias-layout { grid-template-columns: 2.8fr 1.2fr !important; }
+        }
+      </style>
+
+      <!-- Cuadrícula compacta de noticias -->
+      <div id="news-grid" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 1.2rem;">
+        <p style="color: #aaa; grid-column: 1/-1;">Cargando crónicas...</p>
       </div>
+
+      <!-- Banner Publicitario Vertical -->
+      <aside style="background: linear-gradient(180deg, #181828 0%, #10101c 100%); border: 1px dashed rgba(255,255,255,0.25); border-radius: 12px; padding: 2rem 1.2rem; text-align: center; position: sticky; top: 90px;">
+        <span style="color: #ff3366; font-size: 0.75rem; font-weight: bold; letter-spacing: 1.5px; text-transform: uppercase;">Patrocinio</span>
+        <h3 style="color: #ffffff; margin: 1rem 0 0.5rem 0; font-size: 1.25rem;">Espacio Publicitario</h3>
+        <p style="color: #bbb; font-size: 0.85rem; line-height: 1.4; margin-bottom: 1.5rem;">
+          Llega a toda la masa social y familias de la A.D. Icovesa.
+        </p>
+        <div style="background: rgba(255,255,255,0.04); border-radius: 8px; padding: 1.5rem 0.5rem; margin-bottom: 1.5rem; border: 1px solid rgba(255,255,255,0.08);">
+          <strong style="color: #fff; display: block; font-size: 1rem;">Tu Empresa Aquí</strong>
+          <small style="color: #777;">Banner 300x600</small>
+        </div>
+        <a href="#patrocinios" class="btn" style="background: #e20613; color: #fff; padding: 10px 18px; border-radius: 6px; text-decoration: none; font-size: 0.85rem; font-weight: bold; display: inline-block;">
+          Solicitar patrocinio
+        </a>
+      </aside>
     </div>
   </div>
 </section>
@@ -2430,12 +2464,10 @@ footer a:hover { color: var(--rosa); }
       contenedor.innerHTML = "<p style='color: #e55; font-size: 0.9rem; margin: 0;'>No se pudo sincronizar la información deportiva en este momento.</p>";
     }
   }
-// document.addEventListener("DOMContentLoaded", cargarWidgetMarcadores);
-  </script>
-// document.addEventListener("DOMContentLoaded", cargarWidgetMarcadores);
-  </script>
+</script>
 
   <script>
+    // 1. Cargar crónicas sin títulos duplicados y con tamaño compacto
     async function cargarNoticiasClub() {
       const contenedor = document.getElementById('news-grid');
       if (!contenedor) return;
@@ -2444,7 +2476,6 @@ footer a:hover { color: var(--rosa); }
         const res = await fetch('content/noticias.json');
         if (!res.ok) throw new Error(`HTTP ${res.status}`);
         const data = await res.json();
-        
         const noticias = Array.isArray(data) ? data : (data.noticias || []);
 
         if (!noticias.length) {
@@ -2453,29 +2484,37 @@ footer a:hover { color: var(--rosa); }
         }
 
         contenedor.innerHTML = noticias.map(n => `
-          <article class="news-card" style="background:var(--surface-2, #1a1a2e); border:1px solid rgba(255,255,255,0.08); border-radius:12px; overflow:hidden; display:flex; flex-direction:column; margin-bottom:1rem;">
-            <img src="${n.imagen || 'https://placehold.co/800x450/1a1a2e/ffffff?text=AD+Icovesa'}" alt="${n.titulo}" style="width:100%; height:190px; object-fit:cover;">
-            <div style="padding:1.2rem; display:flex; flex-direction:column; flex:1;">
-              <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.5rem;">
-                <span style="color:#e20613; font-size:0.75rem; font-weight:700; text-transform:uppercase; letter-spacing:0.5px;">${n.categoria || 'Club'}</span>
-                <span style="color:var(--ink-3, #888); font-size:0.75rem;">${n.fecha || ''}</span>
+          <article style="background:#14141f; border:1px solid rgba(255,255,255,0.08); border-radius:10px; overflow:hidden; display:flex; flex-direction:column;">
+            <img src="${n.imagen || 'https://placehold.co/800x450/1a1a2e/ffffff?text=AD+Icovesa'}" alt="${n.titulo}" style="width:100%; height:150px; object-fit:cover;">
+            <div style="padding:1rem; display:flex; flex-direction:column; flex:1;">
+              <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.4rem;">
+                <span style="color:#e20613; font-size:0.72rem; font-weight:700; text-transform:uppercase;">${n.categoria || 'Club'}</span>
+                <span style="color:#999; font-size:0.72rem;">${n.fecha || ''}</span>
               </div>
-              <h3 style="color:#fff; font-size:1.1rem; line-height:1.3; margin:0 0 0.5rem 0;">${n.titulo}</h3>
-              <p style="color:var(--ink-2, #bbb); font-size:0.88rem; line-height:1.45; margin:0 0 1rem 0; flex:1;">${n.resumen || ''}</p>
-              <div style="font-size:0.75rem; color:var(--ink-3, #777); border-top:1px solid rgba(255,255,255,0.05); padding-top:0.6rem;">
-                Fuente: ${n.fuente || 'A.D. Icovesa'}
+              <h3 style="color:#fff; font-size:0.95rem; line-height:1.3; margin:0 0 0.4rem 0;">${n.titulo}</h3>
+              <p style="color:#bbb; font-size:0.82rem; line-height:1.4; margin:0 0 0.8rem 0; flex:1;">${n.resumen || ''}</p>
+              <div style="font-size:0.72rem; color:#777; border-top:1px solid rgba(255,255,255,0.05); padding-top:0.5rem;">
+                ${n.fuente || 'A.D. Icovesa'}
               </div>
             </div>
           </article>
         `).join('');
       } catch (err) {
         console.error('Error al cargar noticias:', err);
-        contenedor.innerHTML = '<p style="color:#e55; grid-column:1/-1;">Error al cargar las noticias.</p>';
+        contenedor.innerHTML = '<p style="color:#e55; grid-column:1/-1;">Error al cargar noticias.</p>';
       }
     }
 
-    document.addEventListener('DOMContentLoaded', cargarNoticiasClub);
+    // 2. Desplegar la lista de jugadores de cada equipo
+    function togglePlantilla(idEquipo) {
+      const panel = document.getElementById('plantilla-' + idEquipo);
+      if (!panel) return;
+      panel.style.display = panel.style.display === 'none' ? 'block' : 'none';
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      cargarNoticiasClub();
+    });
   </script>
 </body>
 </html>
-    
