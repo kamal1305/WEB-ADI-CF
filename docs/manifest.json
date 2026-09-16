@@ -1,0 +1,25 @@
+{
+  "name": "A.D. Icovesa — Fútbol base en Jerez",
+  "short_name": "ADI CF",
+  "description": "Club de fútbol base en la barriada de Icovesa, Jerez de la Frontera. Fundado en 1994.",
+  "start_url": ".",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "background_color": "#0A0A0A",
+  "theme_color": "#E6007E",
+  "categories": ["sports", "community"],
+  "icons": [
+    {
+      "src": "img/escudo.png",
+      "sizes": "any",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "img/escudo.png",
+      "sizes": "any",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ]
+}
