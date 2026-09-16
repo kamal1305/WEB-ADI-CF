@@ -1194,6 +1194,160 @@ footer a:hover { color: var(--rosa); }
   padding: 13px 28px; font-size: 0.9375rem;
 }
 .canal-wa .btn-wa:hover { background: #1da851; color: #fff; }
+
+/* ═══════════════════════════════════════════════════════════════════
+   REPARACIÓN DEFINITIVA — contraste, anclas, clasificaciones,
+   plantillas desplegables y noticias
+   ═══════════════════════════════════════════════════════════════════ */
+
+/* Anclas de salto suave no ocultas tras el nav sticky (fútbol base) */
+[id] { scroll-margin-top: 84px; }
+
+/* ── Corrección 2 · Contraste de "PRÓXIMO PARTIDO Y RESULTADOS" ── */
+/* Destacada: gradiente oscuro permanente + texto 100% blanco con sombra */
+.bento-next {
+  background: linear-gradient(135deg, #9C0052 0%, #1a0a14 48%, #121218 100%) !important;
+  border-color: rgba(230, 0, 126, 0.45) !important;
+}
+.bento-next .match-category {
+  color: #ffffff;
+  background: rgba(230, 0, 126, 0.35);
+  border-color: rgba(230, 0, 126, 0.55);
+}
+.bento-next .match-category::before { background: #ffffff; }
+.bento-next .match-teams,
+.bento-next .match-score,
+.bento-next .match-date,
+.bento-next .match-venue,
+.bento-next .match-result-label { color: #ffffff !important; }
+.bento-next .match-teams,
+.bento-next .match-score,
+.bento-next .match-date,
+.bento-next .match-venue { text-shadow: 0 1px 3px rgba(0, 0, 0, 0.55); }
+.bento-next .match-date { opacity: 0.94; }
+
+/* Secundarias: fechas y campos en gris claro AA sobre fondo oscuro */
+.bento-card .match-date,
+.bento-card .match-venue { color: #cbd5e1 !important; }
+.bento-card .match-category { color: #e2e8f0 !important; }
+.bento-result .match-score { color: #ffffff !important; }
+.bento-card .match-rfaf a { color: var(--ink-3); }
+
+@media (prefers-color-scheme: light) {
+  .bento-next { background: linear-gradient(135deg, #9C0052 0%, #1a0a14 48%, #121218 100%) !important; }
+  .bento-card .match-date,
+  .bento-card .match-venue { color: #6b7280 !important; }
+  .bento-card .match-category { color: #4b5563 !important; }
+}
+
+/* ── Corrección 3 · Clasificaciones simétricas (refuerzo) ── */
+.clasif-card { align-items: center; }
+.clasif-pos { order: 1; }
+.clasif-cta { order: 2; }
+
+/* ── Corrección 6 · Tarjetas de categoría como anclas con salto suave ── */
+.cat-card { text-decoration: none; color: inherit; cursor: pointer; }
+
+/* ── Corrección 7 · Plantillas desplegables con dorsal RFAF ── */
+.team-block { scroll-margin-top: 84px; }
+.team-view {
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--surface);
+  margin-bottom: 14px;
+  overflow: hidden;
+}
+.team-view summary {
+  list-style: none;
+  cursor: pointer;
+  user-select: none;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 16px;
+}
+.team-view summary::-webkit-details-marker { display: none; }
+.team-view summary:hover { background: var(--bg-2); }
+.team-view .team-body { padding: 0 16px 16px; }
+.team-name {
+  display: block;
+  font-family: var(--ff-display);
+  font-size: 1.02rem;
+  color: #ffffff;
+}
+.team-name strong { font-weight: 400; }
+.team-league {
+  display: block;
+  margin-top: 3px;
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: #cbd5e1;
+}
+.team-chevron { margin-left: auto; color: var(--ink-3); transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1); }
+.team-view[open] summary .team-chevron { transform: rotate(180deg); }
+.rfaf-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 12px;
+  padding: 9px 16px;
+  border: 1px solid rgba(230, 0, 126, 0.4);
+  border-radius: 100px;
+  background: rgba(230, 0, 126, 0.08);
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 0.8rem;
+  font-weight: 600;
+  transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+}
+.rfaf-btn:hover { background: var(--rosa); border-color: var(--rosa); }
+.player-list {
+  margin-top: 12px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 8px;
+}
+.player-list li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 12px;
+  background: var(--bg-2);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  font-size: 0.875rem;
+  color: var(--ink-2);
+}
+.dorsal {
+  flex: none;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--rosa);
+  color: #ffffff;
+  font-weight: 800;
+  font-size: 0.8rem;
+}
+
+/* ── Corrección 5 · Noticias: tarjetas compactas + layout 75/25 ── */
+.news-card { display: flex; flex-direction: column; }
+.noticias-layout { display: grid; grid-template-columns: 1fr; gap: 1.5rem; align-items: start; }
+@media (min-width: 900px) {
+  .noticias-layout { grid-template-columns: 2.8fr 1.2fr !important; }
+}
+
+@media (prefers-color-scheme: light) {
+  .team-name { color: #0a0a0a; }
+  .team-league { color: #6b7280; }
+  .rfaf-btn { color: #4b5563; }
+  .rfaf-btn:hover { color: #ffffff; }
+  .player-list li { color: #404040; }
+}
 </style>
 </head>
 <body>
@@ -1275,25 +1429,6 @@ footer a:hover { color: var(--rosa); }
 <!-- ═══════════════════════════════════════════════════════════
      TEMPORADA — BENTO CALENDAR / RESULTS
      ═══════════════════════════════════════════════════════════ -->
-   <style>
-  /* Contraste nítido para fechas, categorías y campos */
-  #temporada [class*="hero"], #temporada .match-card-hero {
-    color: #ffffff !important;
-  }
-  #temporada [class*="hero"] span, 
-  #temporada [class*="hero"] small, 
-  #temporada [class*="hero"] p,
-  #temporada [class*="hero"] a {
-    color: #ffffff !important;
-    opacity: 0.95;
-    text-shadow: 0 1px 2px rgba(0,0,0,0.5);
-  }
-  #temporada .match-card span,
-  #temporada .match-card small,
-  #temporada .match-card p {
-    color: #e2e8f0 !important;
-  }
-</style>
 <section id="temporada" class="section section-alt">
   <div class="wrap">
     <div class="section-head reveal">
@@ -1327,11 +1462,6 @@ footer a:hover { color: var(--rosa); }
 
     <!-- Layout: 75% Noticias | 25% Publicidad -->
     <div style="display: grid; grid-template-columns: 1fr; gap: 1.5rem; align-items: start;" class="noticias-layout">
-      <style>
-        @media (min-width: 900px) {
-          .noticias-layout { grid-template-columns: 2.8fr 1.2fr !important; }
-        }
-      </style>
 
       <!-- Cuadrícula compacta de noticias -->
       <div id="news-grid" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 1.2rem;">
@@ -1822,297 +1952,7 @@ footer a:hover { color: var(--rosa); }
   </div>
 </footer>
 
-<!-- ═══════════════════════════════════════════════════════════
-     JAVASCRIPT
-     ═══════════════════════════════════════════════════════════ -->
-<script>
-(function(){
-  /* ---- Utilities ---- */
-  async function cargarJSON(ruta){
-    try { const r = await fetch(ruta, {cache:'no-store'}); return r.ok ? await r.json() : null; }
-    catch(e){ return null; }
-  }
-  function esc(s){ return (s||'').toString().replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
-  const iconoFoto = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="9" cy="11" r="2"/><path d="M21 17l-5.5-5-3 3-2-2L3 18"/></svg>';
-
-  /* ---- Mobile Nav ---- */
-  const burger = document.getElementById('burger-btn');
-  const mmenu = document.getElementById('mmenu');
-  burger.addEventListener('click', function(){
-    this.classList.toggle('open');
-    mmenu.classList.toggle('open');
-  });
-  mmenu.querySelectorAll('a').forEach(function(a){
-    a.addEventListener('click', function(){
-      burger.classList.remove('open');
-      mmenu.classList.remove('open');
-    });
-  });
-
-  /* ---- Scroll Reveal (IntersectionObserver) ---- */
-  const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  if(!prefersReduced){
-    const revealEls = document.querySelectorAll('.reveal');
-    const obs = new IntersectionObserver(function(entries){
-      entries.forEach(function(e){
-        if(e.isIntersecting){ e.target.classList.add('visible'); obs.unobserve(e.target); }
-      });
-    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
-    revealEls.forEach(function(el){ obs.observe(el); });
-  } else {
-    document.querySelectorAll('.reveal').forEach(function(el){ el.classList.add('visible'); });
-  }
-
-  /* ---- Calendario → Bento ---- */
-  function clasificarResultado(p){
-    if(!p.resultado || p.resultado === '—') return null;
-    var parts = p.resultado.split('-').map(function(s){ return parseInt(s.trim(),10); });
-    if(isNaN(parts[0]) || isNaN(parts[1])) return null;
-    var isLocal = p.local && p.local.toLowerCase().indexOf('icovesa') !== -1;
-    var golesFavor = isLocal ? parts[0] : parts[1];
-    var golesContra = isLocal ? parts[1] : parts[0];
-    if(golesFavor > golesContra) return 'win';
-    if(golesFavor < golesContra) return 'loss';
-    return 'draw';
-  }
-  function fechaBonita(fechaStr){
-    if(!fechaStr) return '';
-    var months = ['ene','feb','mar','abr','may','jun','jul','ago','sep','oct','nov','dic'];
-    var parts = fechaStr.split('-');
-    if(parts.length === 3){
-      var d = parseInt(parts[2],10);
-      var m = months[parseInt(parts[1],10)-1] || '';
-      var dayNames = ['Dom','Lun','Mar','Mié','Jue','Vie','Sáb'];
-      var dt = new Date(parseInt(parts[0]), parseInt(parts[1])-1, parseInt(parts[2]));
-      return dayNames[dt.getDay()] + ' ' + d + ' ' + m;
-    }
-    return fechaStr;
-  }
-
-  cargarJSON('content/calendario.json').then(function(data){
-    var partidos = data && data.partidos ? data.partidos.filter(function(p){ return p && p.fecha; }) : [];
-    var container = document.getElementById('bento-calendario');
-    if(!partidos.length){
-      container.innerHTML = '<div class="bento-empty">No hay partidos programados aún. El club puede añadirlos desde el <a href="admin/">panel de administración</a>.</div>';
-      return;
-    }
-    var sorted = partidos.slice().sort(function(a,b){ return a.fecha < b.fecha ? -1 : a.fecha > b.fecha ? 1 : 0; });
-    var now = new Date();
-    var proximo = null;
-    var resultados = [];
-    sorted.forEach(function(p){
-      var parts = p.fecha.split('-');
-      var fechaPartido = new Date(parseInt(parts[0]), parseInt(parts[1])-1, parseInt(parts[2]));
-      if(fechaPartido >= now && !proximo){ proximo = p; }
-      else { resultados.push(p); }
-    });
-    if(!proximo && sorted.length){ proximo = sorted[sorted.length-1]; resultados = sorted.slice(0,-1); }
-
-    var html = '';
-    if(proximo){
-      var res = clasificarResultado(proximo);
-      html += '<div class="bento-card bento-next bento-span-4 reveal">';
-      html += '<div class="match-category">' + esc(proximo.categoria || 'Próximo partido') + '</div>';
-      html += '<div class="match-teams">' + esc(proximo.local || '?') + ' vs ' + esc(proximo.visitante || '?') + '</div>';
-      html += '<div class="match-venue">' + esc(proximo.campo || '') + '</div>';
-      if(res){
-        html += '<div class="match-score">' + esc(proximo.resultado) + '</div>';
-        html += '<div class="match-result-label ' + res + '">' + (res==='win'?'Victoria':res==='loss'?'Derrota':'Empate') + '</div>';
-      }
-      html += '<div class="match-date">' + fechaBonita(proximo.fecha) + '</div>';
-      if(proximo.rfaf_url){ html += '<div class="match-rfaf"><a href="' + esc(proximo.rfaf_url) + '" target="_blank" rel="noopener">Clasificación oficial ↗</a></div>'; }
-      html += '</div>';
-    }
-    resultados.forEach(function(p, i){
-      var res = clasificarResultado(p);
-      var cls = res ? ' ' + res : '';
-      html += '<div class="bento-card bento-result' + cls + ' bento-span-2 reveal reveal-delay-' + Math.min(i+1, 6) + '">';
-      html += '<div class="match-category">' + esc(p.categoria || '') + '</div>';
-      html += '<div class="match-teams">' + esc(p.local || '?') + ' vs ' + esc(p.visitante || '?') + '</div>';
-      html += '<div class="match-venue">' + esc(p.campo || '') + '</div>';
-      if(res){
-        html += '<div class="match-score">' + esc(p.resultado) + '</div>';
-        html += '<div class="match-result-label ' + res + '">' + (res==='win'?'Victoria':res==='loss'?'Derrota':'Empate') + '</div>';
-      } else {
-        html += '<div class="match-score" style="color:var(--ink-3);">—</div>';
-      }
-      html += '<div class="match-date">' + fechaBonita(p.fecha) + '</div>';
-      if(p.rfaf_url){ html += '<div class="match-rfaf"><a href="' + esc(p.rfaf_url) + '" target="_blank" rel="noopener">Clasificación oficial ↗</a></div>'; }
-      html += '</div>';
-    });
-    container.innerHTML = html;
-    var reducedMotion = prefersReduced;
-    container.querySelectorAll('.reveal').forEach(function (el) {
-      if (reducedMotion) { el.classList.add('visible'); return; }
-      var obs = new IntersectionObserver(function (entries) {
-        entries.forEach(function (e) {
-          if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); }
-        });
-      }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
-      obs.observe(el);
-    });
-  });
-
-  /* ---- Clasificaciones RFAF ---- */
-  cargarJSON('content/equipos.json').then(function(data){
-    var list = document.getElementById('clasificaciones-list');
-    if(!list) return;
-    var equipos = data && data.equipos ? data.equipos : [];
-    var fed = [];
-    equipos.forEach(function(eq){
-      (eq.equipos_federados || []).forEach(function(t){
-        fed.push({ categoria: eq.categoria, equipo: t });
-      });
-    });
-    if(!fed.length){
-      list.innerHTML = '<p class="empty-note">Las clasificaciones de la RFAF aparecerán aquí en cuanto la federación las publique.</p>';
-      return;
-    }
-    var html = '<div class="clasif-grid">';
-    fed.forEach(function(item){
-      var t = item.equipo;
-      html += '<div class="clasif-card reveal">';
-      html += '<div class="clasif-info">';
-      html += '<span class="clasif-name">' + esc(t.nombre || item.categoria) + '</span>';
-      html += '<span class="clasif-sub">' + esc(item.categoria || '') + ' · ' + esc(t.categoria_federada || '') + ' · ' + esc(t.temporada || '') + '</span>';
-      html += '</div>';
-      html += '<span class="clasif-pos">' + (t.posicion_2025_2026 ? 'Pos ' + esc(t.posicion_2025_2026) : '—') + (t.puntos_2025_2026 ? ' <small>· ' + esc(t.puntos_2025_2026) + ' pts</small>' : '') + '</span>';
-      if(t.rfaf_url){
-        html += '<a class="clasif-cta" href="' + esc(t.rfaf_url) + '" target="_blank" rel="noopener">Ver clasificación <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>';
-      }
-      html += '</div>';
-    });
-    html += '</div>';
-    list.innerHTML = html;
-    var reducedMotion2 = prefersReduced;
-    list.querySelectorAll('.reveal').forEach(function (el) {
-      if (reducedMotion2) { el.classList.add('visible'); return; }
-      var obs = new IntersectionObserver(function (entries) {
-        entries.forEach(function (e) {
-          if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); }
-        });
-      }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
-      obs.observe(el);
-    });
-  });
-
-  /* ---- Equipos → Cat Cards ---- */
-  var catInfo = {
-    'Bebés':       { age: '3-4 años',  icon: '👶' },
-    'Prebenjamín': { age: '5-6 años',  icon: '⚽' },
-    'Benjamín':    { age: '7-8 años',  icon: '⚽' },
-    'Alevín':      { age: '9-10 años', icon: '⚽' },
-    'Infantil':    { age: '11-12 años',icon: '⚽' },
-    'Cadete':      { age: '13-14 años',icon: '⚽' },
-    'Juvenil':     { age: '15-17 años',icon: '⚽' }
-  };
-  cargarJSON('content/equipos.json').then(function(data){
-    var equipos = data && data.equipos ? data.equipos.filter(function(e){ return e && e.categoria; }) : [];
-    if(!equipos.length) return;
-    var catGrid = document.getElementById('cat-grid');
-    var wrap = document.getElementById('plantillas-wrap');
-    catGrid.innerHTML = '';
-    wrap.innerHTML = '';
-    equipos.forEach(function(eq){
-      var info = catInfo[eq.categoria] || { age: 'Categoría', icon: '⚽' };
-      var card = document.createElement('div');
-      card.className = 'cat-card';
-      card.innerHTML = '<div class="cat-icon">' + info.icon + '</div><div class="cat-age">' + info.age + '</div><div class="cat-name">' + esc(eq.categoria) + '</div>';
-      catGrid.appendChild(card);
-      var jugadores = eq.jugadores || [];
-      var federados = eq.equipos_federados || [];
-      var block = document.createElement('div');
-      block.className = 'team-block';
-      var titulo = esc(eq.categoria) + (eq.entrenador ? ' — Entrenador/a: ' + esc(eq.entrenador) : '');
-      var federadosHtml = '';
-      if(federados.length){
-        federadosHtml = '<p class="team-federados">' + federados.map(function(t){
-          var link = t.rfaf_url ? ' — <a href="' + esc(t.rfaf_url) + '" target="_blank" rel="noopener">clasificación RFAF ↗</a>' : '';
-          return esc(t.nombre) + ' (<span>' + esc(t.categoria_federada || '') + (t.posicion_2025_2026 ? ' · Pos ' + esc(t.posicion_2025_2026) : '') + '</span>)' + link;
-        }).join('<br>') + '</p>';
-      }
-      var playersHtml = '<p class="empty-note">Plantilla por publicar.</p>';
-      if(jugadores.length){
-        playersHtml = '<div class="player-grid">' + jugadores.map(function(j){
-          var foto = j.foto ? '<img src="'+esc(j.foto)+'" alt="'+esc(j.nombre)+'">' : iconoFoto;
-          var meta = [j.dorsal ? '#'+esc(j.dorsal) : '', esc(j.posicion||'')].filter(Boolean).join(' · ');
-          return '<div class="player-card"><div class="player-photo">'+foto+'</div>'
-            +'<div class="player-name">'+esc(j.nombre)+'</div>'
-            +'<div class="player-meta">'+meta+'</div></div>';
-        }).join('') + '</div>';
-      }
-      block.innerHTML = '<h4>'+titulo+'</h4>'+federadosHtml+playersHtml;
-      wrap.appendChild(block);
-    });
-    var cta = document.createElement('div');
-    cta.className = 'cat-card cat-card-cta';
-    cta.innerHTML = '<div class="cat-age">¿Aún no juegas?</div><div class="cat-name">VEN A PROBAR</div>';
-    catGrid.appendChild(cta);
-  });
-
-  /* ---- Staff ---- */
-  var iconoSilbato = '<svg class="staff-avatar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><ellipse cx="16" cy="16" rx="5" ry="4"/><path d="M16 12V7.2A2.2 2.2 0 0 0 13.8 5H4.5A2.5 2.5 0 0 0 2 7.5v2A2.5 2.5 0 0 0 4.5 12H9"/><circle cx="16" cy="16" r="1.3" fill="currentColor" stroke="none"/></svg>';
-  function inicialesStaff(nombre){
-    var partes = String(nombre || '').trim().split(/\s+/).filter(Boolean);
-    var init = partes.slice(0, 2).map(function(p){ return p.charAt(0); }).join('');
-    if(typeof init.normalize === 'function'){
-      init = init.normalize('NFD').split('').filter(function(c){ return c.charCodeAt(0) < 0x0300 || c.charCodeAt(0) > 0x036F; }).join('');
-    }
-    return init.toUpperCase();
-  }
-  /* Si una foto no carga (falta el archivo o ruta rota), la sustituye por
-     el avatar de iniciales para que la tarjeta nunca se quede en blanco */
-  function staffFotoFallback(img){
-    img.onerror = null;
-    var nombre = (img.getAttribute('data-nombre') || img.alt || '');
-    var l = inicialesStaff(nombre);
-    var re = l ? '<span class="staff-initials">'+esc(l)+'</span>' : iconoSilbato;
-    if(img.parentNode) img.parentNode.innerHTML = re;
-  }
-  cargarJSON('content/staff.json').then(function(data){
-    var staff = data && data.staff ? data.staff.filter(function(s){ return s && s.nombre; }) : [];
-    if(!staff.length) return;
-    var grid = document.getElementById('staff-grid');
-    grid.innerHTML = staff.map(function(s){
-      var letras = inicialesStaff(s.nombre);
-      var avatar = s.foto
-        ? '<img src="'+esc(s.foto)+'" alt="'+esc(s.nombre)+'" loading="lazy" data-nombre="'+esc(s.nombre)+'" onerror="staffFotoFallback(this)">'
-        : (letras ? '<span class="staff-initials">'+esc(letras)+'</span>' : iconoSilbato);
-      var tag = s.titulacion ? '<span class="staff-tag">'+esc(s.titulacion)+'</span>' : '';
-      var team = s.equipo ? '<div class="staff-team">'+esc(s.equipo)+'</div>' : '';
-      return '<div class="staff-card"><div class="staff-photo">'+avatar+'</div>'
-        +'<div class="staff-name">'+esc(s.nombre)+'</div>'
-        +'<div class="staff-role">'+esc(s.cargo || '')+tag+'</div>'
-        +team+'</div>';
-    }).join('');
-  });
-
-  /* ---- Galería ---- */
-  cargarJSON('content/galeria.json').then(function(data){
-    var fotos = data && data.fotos ? data.fotos.filter(function(f){ return f && f.imagen; }) : [];
-    if(!fotos.length) return;
-    var grid = document.getElementById('galeria-grid');
-    grid.innerHTML = fotos.map(function(f){
-      return '<div class="gallery-slot" style="padding:0;"><img src="'+esc(f.imagen)+'" alt="'+esc(f.descripcion||'Foto del club')+'" style="width:100%;height:100%;object-fit:cover;border-radius:var(--radius-lg);"></div>';
-    }).join('');
-  });
-
-  /* ---- Patrocinadores ---- */
-  cargarJSON('content/patrocinadores.json').then(function(data){
-    var patrocinadores = data && data.patrocinadores ? data.patrocinadores.filter(function(p){ return p && p.logo; }) : [];
-    if(!patrocinadores.length) return;
-    var row = document.getElementById('sponsor-row');
-    row.innerHTML = patrocinadores.map(function(p){
-      var img = '<img src="'+esc(p.logo)+'" alt="'+esc(p.nombre||'Patrocinador')+'" style="max-width:80%;max-height:70%;object-fit:contain;">';
-      return p.url
-        ? '<a class="sponsor-slot" href="'+esc(p.url)+'" target="_blank" rel="noopener" style="border-style:solid;">'+img+'</a>'
-        : '<div class="sponsor-slot" style="border-style:solid;">'+img+'</div>';
-    }).join('');
-  });
-
-})();
-</script>
-
+<!-- ========================== JAVASCRIPT (CONSOLIDADO) ========================== -->
 <!-- ===================== Widget WhatsApp ===================== -->
 <style>
   .wa-button{
@@ -2199,113 +2039,419 @@ footer a:hover { color: var(--rosa); }
 </div>
 
 <script>
-(function(){
-  /* Cambia aquí el número de WhatsApp (código de país + número, sin + ni espacios) */
-  const TELEFONO_WHATSAPP = '34652409990';
-  window.TELEFONO_WHATSAPP = TELEFONO_WHATSAPP;
-
-  /* WhatsApp del encargado de pedidos de la tienda. Si es distinto del general,
-     cámbialo aquí para que el botón "Contactar con el encargado de pedidos" lo use. */
+(function () {
+  /* ═══════════════════════════════════════════════════════════
+     UTILIDADES COMPARTIDAS
+     ═══════════════════════════════════════════════════════════ */
+  window.TELEFONO_WHATSAPP = '34652409990';
   window.TELEFONO_ENCARGADO = '34652409990';
 
-  var btn = document.getElementById('waButton');
-  var panel = document.getElementById('waPanel');
-
-  btn.addEventListener('click', function(e){
-    e.stopPropagation();
-    panel.classList.toggle('open');
-  });
-
-  document.addEventListener('click', function(e){
-    if(!panel.classList.contains('open')) return;
-    if(!panel.contains(e.target) && !btn.contains(e.target)){
-      panel.classList.remove('open');
-    }
-  });
-
-  document.addEventListener('keydown', function(e){
-    if(e.key === 'Escape') panel.classList.remove('open');
-  });
-
-  panel.querySelectorAll('.wa-opt').forEach(function(opt){
-    opt.addEventListener('click', function(e){
-      e.preventDefault();
-      var msg = encodeURIComponent(opt.getAttribute('data-msg') || 'Hola ADI CF');
-      window.open('https://wa.me/' + TELEFONO_WHATSAPP + '?text=' + msg, '_blank', 'noopener');
-      panel.classList.remove('open');
-    });
-  });
-})();
-</script>
-
-<script>
-/* ═══════════════════════════════════════════════════════════
-   TIENDA + PATROCINIOS — lógica de compra y paquetes
-   ═══════════════════════════════════════════════════════════ */
-(function () {
-  var tel = window.TELEFONO_WHATSAPP;
-  if (!tel) return;
-
   function esc(s) {
-    return (s || '').toString()
-      .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
-  }
-  function waURL(msg, telNum) {
-    return 'https://wa.me/' + (telNum || tel) + '?text=' + encodeURIComponent(msg);
+    return (s || '').toString().replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
   }
 
-  /* --- Botones de la tienda: enlace al WhatsApp con el producto --- */
-  function wireShop() {
-    document.querySelectorAll('.shop-wa').forEach(function (a) {
-      var n = a.getAttribute('data-compra');
-      if (!n) return;
-      a.href = waURL('Hola ADI CF, me interesa comprar ' + n);
-      a.target = '_blank';
-      a.rel = 'noopener';
+  function slugCat(s) {
+    return String(s || '').toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '').replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '');
+  }
+
+  /* Detección y nomenclatura oficial A.D.I. + CATEGORÍA + [A/B] */
+  function esEquipoDelClub(n) {
+    return /A\.?\s*D\.?\s*\.?\s*ICOVESA/i.test(n || '');
+  }
+
+  function nombreOficialEquipo(categoria, nombreFederado) {
+    var c = String(categoria || '').trim().toUpperCase();
+    if (c === 'BEBÉS') c = 'BEBÉ';
+    var sufijo = '';
+    var m = /(?:^|\s)([AB])$/.exec(String(nombreFederado || '').trim());
+    if (m) sufijo = ' ' + m[1];
+    return 'A.D.I. ' + c + sufijo;
+  }
+
+  function nombreMatch(n) {
+    var s = String(n || '').trim();
+    if (!esEquipoDelClub(s)) return s;
+    var m = /["']([AB])["']$/.exec(s);
+    return 'A.D.I.' + (m ? ' ' + m[1] : '');
+  }
+
+  /* Fechas: tolera "Sáb 26 sep 2026", ISO y fechas nativas */
+  function parseFecha(f) {
+    if (!f) return null;
+    var s = String(f).trim();
+    var M = ['ene','feb','mar','abr','may','jun','jul','ago','sep','oct','nov','dic'];
+    var mE = /^(?:[A-Za-zÀ-ÿ]{3,}\s+)?(\d{1,2})\s+(ene|feb|mar|abr|may|jun|jul|ago|sep|oct|nov|dic)\s+(\d{4})$/i.exec(s);
+    if (mE) return new Date(+mE[3], M.indexOf(mE[2].toLowerCase()), +mE[1]);
+    var mI = /^(\d{4})-(\d{1,2})-(\d{1,2})(?:$|\s)/.exec(s);
+    if (mI) return new Date(+mI[1], +mI[2] - 1, +mI[3]);
+    var d = new Date(s);
+    return isNaN(d.getTime()) ? null : d;
+  }
+
+  function fechaBonita(f) {
+    var d = parseFecha(f);
+    if (!d) return String(f || '').trim().toUpperCase();
+    var D = ['DOM','LUN','MAR','MIÉ','JUE','VIE','SÁB'];
+    var M = ['ENE','FEB','MAR','ABR','MAY','JUN','JUL','AGO','SEP','OCT','NOV','DIC'];
+    return D[d.getDay()] + ' ' + d.getDate() + ' ' + M[d.getMonth()] + ' ' + d.getFullYear();
+  }
+
+  function cargarJSON(ruta) {
+    try {
+      return fetch(ruta, { cache: 'no-store' })
+        .then(function (r) { return r.ok ? r.json() : null; })
+        .catch(function () { return null; });
+    } catch (e) { return Promise.resolve(null); }
+  }
+
+  var iconoFoto = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="9" cy="11" r="2"/><path d="M21 17l-5.5-5-3 3-2-2L3 18"/></svg>';
+  var prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  function observarReveal(raiz) {
+    if (!raiz) raiz = document;
+    raiz.querySelectorAll('.reveal').forEach(function (el) {
+      if (prefersReduced) { el.classList.add('visible'); return; }
+      var obs = new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) {
+          if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); }
+        });
+      }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+      obs.observe(el);
     });
   }
-  wireShop();
 
-  /* --- Encargado de pedidos: enlace al WhatsApp del encargado de la tienda --- */
-  var telEncargado = window.TELEFONO_ENCARGADO || tel;34625514859
-  function wireEncargado() {
-    document.querySelectorAll('.shop-wa-encargado').forEach(function (a) {
-      var n = a.getAttribute('data-encargado');
-      if (!n) return;
-      a.href = waURL('Hola ADI CF, me gustaría hablar con el encargado de pedidos de la tienda sobre ' + n + '.', telEncargado);
-      a.target = '_blank';
-      a.rel = 'noopener';
-    });
-  }
-  wireEncargado();
-
-  /* --- Botones de patrocinio: enlace al WhatsApp con el paquete --- */
-  function wireDossier() {
-    document.querySelectorAll('.pkg-wa').forEach(function (a) {
-      var n = a.getAttribute('data-dossier');
-      if (!n) return;
-      a.href = waURL('Hola ADI CF, me gustaría solicitar información sobre el paquete de patrocinio "' + n + '". ¿Podéis enviarme el dossier de colaboración?');
-      a.target = '_blank';
-      a.rel = 'noopener';
+  /* ═══════════════════════════════════════════════════════════
+     MENÚ MÓVIL
+     ═══════════════════════════════════════════════════════════ */
+  var burger = document.getElementById('burger-btn');
+  var mmenu = document.getElementById('mmenu');
+  if (burger && mmenu) {
+    burger.addEventListener('click', function () { this.classList.toggle('open'); mmenu.classList.toggle('open'); });
+    mmenu.querySelectorAll('a').forEach(function (a) {
+      a.addEventListener('click', function () { burger.classList.remove('open'); mmenu.classList.remove('open'); });
     });
   }
 
-  /* --- Selector de talla --- */
-  document.querySelectorAll('.tallas').forEach(function (group) {
-    group.querySelectorAll('.talla').forEach(function (btn) {
-      btn.addEventListener('click', function () {
-        var prev = group.querySelector('.talla.sel');
-        if (prev) prev.classList.remove('sel');
-        btn.classList.add('sel');
+  /* ═══════════════════════════════════════════════════════════
+     REVEAL (estáticos)
+     ═══════════════════════════════════════════════════════════ */
+  observarReveal(document);
+
+  /* ═══════════════════════════════════════════════════════════
+     CALENDARIO → BENTO (próximo + resultados)
+     ═══════════════════════════════════════════════════════════ */
+  function clasificarResultado(p) {
+    if (!p.resultado || p.resultado === '—') return null;
+    var parts = String(p.resultado).split('-').map(function (s) { return parseInt(s.trim(), 10); });
+    if (isNaN(parts[0]) || isNaN(parts[1])) return null;
+    var isLocal = esEquipoDelClub(p.local);
+    var gf = isLocal ? parts[0] : parts[1];
+    var gc = isLocal ? parts[1] : parts[0];
+    if (gf > gc) return 'win';
+    if (gf < gc) return 'loss';
+    return 'draw';
+  }
+
+  cargarJSON('content/calendario.json').then(function (data) {
+    var partidos = data && data.partidos ? data.partidos.filter(function (p) { return p && parseFecha(p.fecha); }) : [];
+    var container = document.getElementById('bento-calendario');
+    if (!container) return;
+    if (!partidos.length) {
+      container.innerHTML = '<div class="bento-empty">No hay partidos programados aún. El club puede añadirlos desde el <a href="admin/">panel de administración</a>.</div>';
+      return;
+    }
+    var sorted = partidos.slice().sort(function (a, b) { return parseFecha(a.fecha) - parseFecha(b.fecha); });
+    var hoyIni = new Date(); hoyIni.setHours(0, 0, 0, 0);
+    var proximo = null, resultados = [];
+    sorted.forEach(function (p) {
+      var d = parseFecha(p.fecha);
+      if (!proximo && d >= hoyIni) { proximo = p; } else { resultados.push(p); }
+    });
+    if (!proximo && sorted.length) { proximo = sorted[sorted.length - 1]; resultados = sorted.slice(0, -1); }
+
+    var html = '';
+    if (proximo) {
+      var res = clasificarResultado(proximo);
+      html += '<div class="bento-card bento-next bento-span-4 reveal">';
+      html += '<div class="match-category">' + esc(proximo.categoria || 'Próximo partido') + '</div>';
+      html += '<div class="match-teams">' + esc(nombreMatch(proximo.local || '?')) + ' vs ' + esc(nombreMatch(proximo.visitante || '?')) + '</div>';
+      html += '<div class="match-venue">' + esc(proximo.campo || '') + '</div>';
+      if (res) {
+        html += '<div class="match-score">' + esc(proximo.resultado) + '</div>';
+        html += '<div class="match-result-label ' + res + '">' + (res === 'win' ? 'Victoria' : res === 'loss' ? 'Derrota' : 'Empate') + '</div>';
+      }
+      html += '<div class="match-date">' + esc(fechaBonita(proximo.fecha)) + '</div>';
+      if (proximo.rfaf_url) html += '<div class="match-rfaf"><a href="' + esc(proximo.rfaf_url) + '" target="_blank" rel="noopener">Clasificación oficial ↗</a></div>';
+      html += '</div>';
+    }
+    resultados.forEach(function (p, i) {
+      var res = clasificarResultado(p);
+      var cls = res ? ' ' + res : '';
+      html += '<div class="bento-card bento-result' + cls + ' bento-span-2 reveal reveal-delay-' + Math.min(i + 1, 6) + '">';
+      html += '<div class="match-category">' + esc(p.categoria || '') + '</div>';
+      html += '<div class="match-teams">' + esc(nombreMatch(p.local || '?')) + ' vs ' + esc(nombreMatch(p.visitante || '?')) + '</div>';
+      html += '<div class="match-venue">' + esc(p.campo || '') + '</div>';
+      if (res) {
+        html += '<div class="match-score">' + esc(p.resultado) + '</div>';
+        html += '<div class="match-result-label ' + res + '">' + (res === 'win' ? 'Victoria' : res === 'loss' ? 'Derrota' : 'Empate') + '</div>';
+      } else {
+        html += '<div class="match-score" style="color:var(--ink-3);">—</div>';
+      }
+      html += '<div class="match-date">' + esc(fechaBonita(p.fecha)) + '</div>';
+      if (p.rfaf_url) html += '<div class="match-rfaf"><a href="' + esc(p.rfaf_url) + '" target="_blank" rel="noopener">Clasificación oficial ↗</a></div>';
+      html += '</div>';
+    });
+    container.innerHTML = html;
+    observarReveal(container);
+  });
+
+  /* ═══════════════════════════════════════════════════════════
+     CLASIFICACIONES RFAF — filas simétricas + nomenclatura A.D.I.
+     ═══════════════════════════════════════════════════════════ */
+  cargarJSON('content/equipos.json').then(function (data) {
+    var list = document.getElementById('clasificaciones-list');
+    if (!list) return;
+    var equipos = data && data.equipos ? data.equipos : [];
+    var fed = [];
+    equipos.forEach(function (eq) {
+      (eq.equipos_federados || []).forEach(function (t) { fed.push({ categoria: eq.categoria, equipo: t }); });
+    });
+    if (!fed.length) {
+      list.innerHTML = '<p class="empty-note">Las clasificaciones de la RFAF aparecerán aquí en cuanto la federación las publique.</p>';
+      return;
+    }
+    var html = '<div class="clasif-grid">';
+    fed.forEach(function (item) {
+      var t = item.equipo;
+      html += '<div class="clasif-card reveal">';
+      html += '<div class="clasif-info">';
+      html += '<span class="clasif-name">' + esc(nombreOficialEquipo(item.categoria, t.nombre)) + '</span>';
+      html += '<span class="clasif-sub">' + esc(item.categoria || '') + ' · ' + esc(t.categoria_federada || '') + ' · ' + esc(t.temporada || '') + '</span>';
+      html += '</div>';
+      html += '<span class="clasif-pos">' + (t.posicion_2025_2026 ? 'Pos ' + esc(t.posicion_2025_2026) : '—') + (t.puntos_2025_2026 ? ' <small>· ' + esc(t.puntos_2025_2026) + ' pts</small>' : '') + '</span>';
+      if (t.rfaf_url) html += '<a class="clasif-cta" href="' + esc(t.rfaf_url) + '" target="_blank" rel="noopener">Ver tabla ↗</a>';
+      html += '</div>';
+    });
+    html += '</div>';
+    list.innerHTML = html;
+    observarReveal(list);
+  });
+
+  /* ═══════════════════════════════════════════════════════════
+     FÚTBOL BASE → tarjetas-ancla + plantillas desplegables
+     ═══════════════════════════════════════════════════════════ */
+  var catInfo = {
+    'Bebés': { age: '3-4 años', icon: '👶' },
+    'Prebenjamín': { age: '5-6 años', icon: '⚽' },
+    'Benjamín': { age: '7-8 años', icon: '⚽' },
+    'Alevín': { age: '9-10 años', icon: '⚽' },
+    'Infantil': { age: '11-12 años', icon: '⚽' },
+    'Cadete': { age: '13-14 años', icon: '⚽' },
+    'Juvenil': { age: '15-17 años', icon: '⚽' }
+  };
+
+  /* Jugadores de ejemplo (Benjamín y Alevín) solo si no hay reales aún */
+  var ejemploJugadores = {
+    'A.D.I. BENJAMÍN A': ['Álvaro', 'Hugo', 'Marcos', 'Adrián', 'Iker', 'Pablo', 'Diego', 'Martín', 'Daniel', 'Álex'],
+    'A.D.I. BENJAMÍN B': ['Manuel', 'Rubén', 'Jesús', 'Antonio', 'Sergio', 'Carlos', 'Javier', 'Miguel'],
+    'A.D.I. ALEVÍN A': ['Bruno', 'Lucas', 'Álex', 'Gonzalo', 'Iván', 'Mateo', 'Dario', 'Rodrigo', 'Santiago', 'Víctor'],
+    'A.D.I. ALEVÍN B': ['Pablo', 'Nicolás', 'Alejandro', 'Eduardo', 'Fran', 'Guillermo', 'Héctor', 'Izan']
+  };
+
+  cargarJSON('content/equipos.json').then(function (data) {
+    var catGrid = document.getElementById('cat-grid');
+    var wrap = document.getElementById('plantillas-wrap');
+    if (!catGrid || !wrap) return;
+    var equipos = data && data.equipos ? data.equipos.filter(function (e) { return e && e.categoria; }) : [];
+    if (!equipos.length) return; /* conserva las tarjetas estáticas si falla el JSON */
+    catGrid.innerHTML = '';
+    wrap.innerHTML = '';
+    equipos.forEach(function (eq) {
+      var info = catInfo[eq.categoria] || { age: 'Categoría', icon: '⚽' };
+      var idSlug = slugCat(eq.categoria);
+      var card = document.createElement('a');
+      card.className = 'cat-card';
+      card.href = '#plantilla-' + idSlug;
+      card.innerHTML = '<div class="cat-icon">' + info.icon + '</div><div class="cat-age">' + info.age + '</div><div class="cat-name">' + esc(eq.categoria) + '</div>';
+      catGrid.appendChild(card);
+
+      var block = document.createElement('div');
+      block.className = 'team-block';
+      block.id = 'plantilla-' + idSlug;
+      var federados = eq.equipos_federados || [];
+      var jugadores = eq.jugadores || [];
+      var parts = [];
+      if (federados.length) {
+        federados.forEach(function (t) {
+          var nombreEq = nombreOficialEquipo(eq.categoria, t.nombre);
+          var rotulos = [];
+          if (t.categoria_federada) rotulos.push(esc(t.categoria_federada));
+          if (t.temporada) rotulos.push(esc(t.temporada));
+          var view = '<details class="team-view">';
+          view += '<summary>';
+          view += '<div><span class="team-name"><strong>' + esc(nombreEq) + '</strong></span><span class="team-league">' + rotulos.join(' · ') + '</span></div>';
+          view += '<span class="team-chevron"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span>';
+          view += '</summary>';
+          view += '<div class="team-body">';
+          view += '<a class="rfaf-btn" href="https://www.rfaf.es" target="_blank" rel="noopener">Convocatoria en la RFAF ↗</a>';
+          var nombres = jugadores.length ? jugadores : (ejemploJugadores[nombreEq] || []);
+          if (nombres.length) {
+            view += '<ul class="player-list">';
+            nombres.forEach(function (j, idx) {
+              var nombre = '', dorsal = (idx + 1);
+              if (j && typeof j === 'object') { nombre = j.nombre || ''; dorsal = j.dorsal || (idx + 1); }
+              else { nombre = j; }
+              view += '<li><span class="dorsal">' + esc(dorsal) + '</span><span>' + esc(nombre) + '</span></li>';
+            });
+            view += '</ul>';
+          } else {
+            view += '<p class="empty-note" style="margin-top:12px;">Plantilla por publicar. Pendiente desde el panel de administración.</p>';
+          }
+          view += '</div></details>';
+          parts.push(view);
+        });
+      } else {
+        parts.push('<div class="team-view"><div class="team-body"><span class="team-name"><strong>' + esc(nombreOficialEquipo(eq.categoria, '')) + '</strong></span><span class="team-league">Sin equipo federado esta temporada</span></div></div>');
+      }
+      block.innerHTML = '<h4 style="margin-bottom:0.75rem;">' + esc(eq.categoria) + '</h4>' + parts.join('');
+      wrap.appendChild(block);
+    });
+    var cta = document.createElement('a');
+    cta.className = 'cat-card cat-card-cta';
+    cta.href = '#contacto';
+    cta.innerHTML = '<div class="cat-age">¿Aún no juegas?</div><div class="cat-name">VEN A PROBAR</div>';
+    catGrid.appendChild(cta);
+  });
+
+  /* ═══════════════════════════════════════════════════════════
+     CUERPO TÉCNICO
+     ═══════════════════════════════════════════════════════════ */
+  var iconoSilbato = '<svg class="staff-avatar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><ellipse cx="16" cy="16" rx="5" ry="4"/><path d="M16 12V7.2A2.2 2.2 0 0 0 13.8 5H4.5A2.5 2.5 0 0 0 2 7.5v2A2.5 2.5 0 0 0 4.5 12H9"/><circle cx="16" cy="16" r="1.3" fill="currentColor" stroke="none"/></svg>';
+  function inicialesStaff(nombre) {
+    var partes = String(nombre || '').trim().split(/\s+/).filter(Boolean);
+    var init = partes.slice(0, 2).map(function (p) { return p.charAt(0); }).join('');
+    if (typeof init.normalize === 'function') {
+      init = init.normalize('NFD').split('').filter(function (c) { return c.charCodeAt(0) < 0x0300 || c.charCodeAt(0) > 0x036F; }).join('');
+    }
+    return init.toUpperCase();
+  }
+  function staffFotoFallback(img) {
+    img.onerror = null;
+    var nombre = (img.getAttribute('data-nombre') || img.alt || '');
+    var l = inicialesStaff(nombre);
+    var re = l ? '<span class="staff-initials">' + esc(l) + '</span>' : iconoSilbato;
+    if (img.parentNode) img.parentNode.innerHTML = re;
+  }
+  window.staffFotoFallback = staffFotoFallback;
+
+  cargarJSON('content/staff.json').then(function (data) {
+    var staff = data && data.staff ? data.staff.filter(function (s) { return s && s.nombre; }) : [];
+    if (!staff.length) return;
+    var grid = document.getElementById('staff-grid');
+    if (!grid) return;
+    grid.innerHTML = staff.map(function (s) {
+      var letras = inicialesStaff(s.nombre);
+      var avatar = s.foto
+        ? '<img src="' + esc(s.foto) + '" alt="' + esc(s.nombre) + '" loading="lazy" data-nombre="' + esc(s.nombre) + '" onerror="staffFotoFallback(this)">'
+        : (letras ? '<span class="staff-initials">' + esc(letras) + '</span>' : iconoSilbato);
+      var tag = s.titulacion ? '<span class="staff-tag">' + esc(s.titulacion) + '</span>' : '';
+      var team = s.equipo ? '<div class="staff-team">' + esc(s.equipo) + '</div>' : '';
+      return '<div class="staff-card"><div class="staff-photo">' + avatar + '</div>'
+        + '<div class="staff-name">' + esc(s.nombre) + '</div>'
+        + '<div class="staff-role">' + esc(s.cargo || '') + tag + '</div>'
+        + team + '</div>';
+    }).join('');
+  });
+
+  /* ═══════════════════════════════════════════════════════════
+     GALERÍA
+     ═══════════════════════════════════════════════════════════ */
+  cargarJSON('content/galeria.json').then(function (data) {
+    var fotos = data && data.fotos ? data.fotos.filter(function (f) { return f && f.imagen; }) : [];
+    if (!fotos.length) return;
+    var grid = document.getElementById('galeria-grid');
+    if (!grid) return;
+    grid.innerHTML = fotos.map(function (f) {
+      return '<div class="gallery-slot" style="padding:0;"><img src="' + esc(f.imagen) + '" alt="' + esc(f.descripcion || 'Foto del club') + '" style="width:100%;height:100%;object-fit:cover;border-radius:var(--radius-lg);"></div>';
+    }).join('');
+  });
+
+  /* ═══════════════════════════════════════════════════════════
+     PATROCINADORES (logos)
+     ═══════════════════════════════════════════════════════════ */
+  cargarJSON('content/patrocinadores.json').then(function (data) {
+    var patrocinadores = data && data.patrocinadores ? data.patrocinadores.filter(function (p) { return p && p.logo; }) : [];
+    if (!patrocinadores.length) return;
+    var row = document.getElementById('sponsor-row');
+    if (!row) return;
+    row.innerHTML = patrocinadores.map(function (p) {
+      var img = '<img src="' + esc(p.logo) + '" alt="' + esc(p.nombre || 'Patrocinador') + '" style="max-width:80%;max-height:70%;object-fit:contain;">';
+      return p.url
+        ? '<a class="sponsor-slot" href="' + esc(p.url) + '" target="_blank" rel="noopener" style="border-style:solid;">' + img + '</a>'
+        : '<div class="sponsor-slot" style="border-style:solid;">' + img + '</div>';
+    }).join('');
+  });
+
+  /* ═══════════════════════════════════════════════════════════
+     WHATSAPP — WIDGET FLOTANTE
+     ═══════════════════════════════════════════════════════════ */
+  var waBtn = document.getElementById('waButton');
+  var waPanel = document.getElementById('waPanel');
+  if (waBtn && waPanel) {
+    waBtn.addEventListener('click', function (e) { e.stopPropagation(); waPanel.classList.toggle('open'); });
+    document.addEventListener('click', function (e) {
+      if (!waPanel.classList.contains('open')) return;
+      if (!waPanel.contains(e.target) && !waBtn.contains(e.target)) waPanel.classList.remove('open');
+    });
+    document.addEventListener('keydown', function (e) { if (e.key === 'Escape') waPanel.classList.remove('open'); });
+    waPanel.querySelectorAll('.wa-opt').forEach(function (opt) {
+      opt.addEventListener('click', function (e) {
+        e.preventDefault();
+        var msg = encodeURIComponent(opt.getAttribute('data-msg') || 'Hola ADI CF');
+        window.open('https://wa.me/' + window.TELEFONO_WHATSAPP + '?text=' + msg, '_blank', 'noopener');
+        waPanel.classList.remove('open');
       });
     });
-  });
+  }
 
-  /* --- Render de paquetes desde content/patrocinadores.json --- */
-  var chkSvg = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>';
-  fetch('content/patrocinadores.json', { cache: 'no-store' })
-    .then(function (r) { return r.ok ? r.json() : null; })
-    .then(function (data) {
+  /* ═══════════════════════════════════════════════════════════
+     TIENDA + PATROCINIOS — lógica de compra y paquetes
+     ═══════════════════════════════════════════════════════════ */
+  var telWA = window.TELEFONO_WHATSAPP;
+  if (telWA) {
+    function waURL(msg, telNum) { return 'https://wa.me/' + (telNum || telWA) + '?text=' + encodeURIComponent(msg); }
+    function wireShop() {
+      document.querySelectorAll('.shop-wa').forEach(function (a) {
+        var n = a.getAttribute('data-compra'); if (!n) return;
+        a.href = waURL('Hola ADI CF, me interesa comprar ' + n); a.target = '_blank'; a.rel = 'noopener';
+      });
+    }
+    wireShop();
+    var telEncargado = window.TELEFONO_ENCARGADO || telWA;
+    function wireEncargado() {
+      document.querySelectorAll('.shop-wa-encargado').forEach(function (a) {
+        var n = a.getAttribute('data-encargado'); if (!n) return;
+        a.href = waURL('Hola ADI CF, me gustaría hablar con el encargado de pedidos de la tienda sobre ' + n + '.', telEncargado);
+        a.target = '_blank'; a.rel = 'noopener';
+      });
+    }
+    wireEncargado();
+    function wireDossier() {
+      document.querySelectorAll('.pkg-wa').forEach(function (a) {
+        var n = a.getAttribute('data-dossier'); if (!n) return;
+        a.href = waURL('Hola ADI CF, me gustaría solicitar información sobre el paquete de patrocinio "' + n + '". ¿Podéis enviarme el dossier de colaboración?');
+        a.target = '_blank'; a.rel = 'noopener';
+      });
+    }
+    document.querySelectorAll('.tallas').forEach(function (group) {
+      group.querySelectorAll('.talla').forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          var prev = group.querySelector('.talla.sel'); if (prev) prev.classList.remove('sel'); btn.classList.add('sel');
+        });
+      });
+    });
+    var chkSvg = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>';
+    cargarJSON('content/patrocinadores.json').then(function (data) {
       var pkgs = data && data.paquetes ? data.paquetes : [];
       if (!pkgs.length) return;
       var grid = document.getElementById('pkg-grid');
@@ -2318,9 +2464,7 @@ footer a:hover { color: var(--rosa); }
         html += '<div class="pkg-name">' + esc(p.nombre || '') + '</div>';
         html += '<div class="pkg-price">' + esc(p.precio || 'A convenir') + '</div>';
         html += '<ul class="pkg-benefits">';
-        (p.beneficios || []).forEach(function (b) {
-          html += '<li>' + chkSvg + '<span>' + esc(b) + '</span></li>';
-        });
+        (p.beneficios || []).forEach(function (b) { html += '<li>' + chkSvg + '<span>' + esc(b) + '</span></li>'; });
         html += '</ul>';
         html += '<div class="pkg-ideal"><strong>Ideal para:</strong> ' + esc(p.ideal || '') + '</div>';
         html += '<div class="pkg-foot"><a class="btn-wa pkg-wa" data-dossier="' + esc(p.nombre || '') + '"><svg viewBox="0 0 24 24" fill="currentColor" width="16" height="16"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg> Contactar por WhatsApp</a></div>';
@@ -2328,193 +2472,73 @@ footer a:hover { color: var(--rosa); }
       });
       grid.innerHTML = html;
       wireDossier();
-      /* Re-observar los .reveal añadidos por JS */
-      var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-      grid.querySelectorAll('.reveal').forEach(function (el) {
-        if (reduced) { el.classList.add('visible'); return; }
-        var obs = new IntersectionObserver(function (entries) {
-          entries.forEach(function (e) {
-            if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); }
-          });
-        }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
-        obs.observe(el);
-      });
+      observarReveal(grid);
     });
-})();
-</script>
-
-<script>
-/* ═══════════════════════════════════════════════════════════
-   NOTICIAS — renderiza desde content/noticias.json
-   ═══════════════════════════════════════════════════════════ */
-(function () {
-  var grid = document.getElementById('news-grid');
-  if (!grid) return;
-
-  function esc(s) {
-    return (s || '').toString()
-      .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
-  }
-  function truncate(s, n) {
-    s = s || '';
-    return s.length > n ? s.slice(0, n).trimEnd() + '…' : s;
   }
 
-  fetch('content/noticias.json', { cache: 'no-store' })
-    .then(function (r) { return r.ok ? r.json() : null; })
-    .then(function (data) {
-      var items = data && data.noticias ? data.noticias : [];
-      if (!items.length) return;
-
-      /* Conservar el slot publicitario que hay dentro del grid */
-      var slot = grid.querySelector('.banner-ad-slot');
-      if (slot) slot = slot.cloneNode(true);
-
-      var h = '';
-      items.forEach(function (n, i) {
-        var cls = i === 0 ? 'news-hero' : 'news-mid';
-        var tagCls = i === 0 ? 'news-tag' : 'news-tag';
-        var titleCls = 'news-title';
-        var excerpt = i === 0 ? (n.resumen || '') : truncate(n.resumen || '', 100);
-        var imgSrc = n.imagen || '';
-        h += '<div class="' + cls + ' reveal reveal-delay-' + Math.min(i + 1, 4) + '">';
-        h += '<div class="news-img' + (imgSrc ? '' : ' no-img') + '" style="' + (imgSrc ? 'background:url(\'' + esc(imgSrc) + '\') center/cover no-repeat;' : '') + '"></div>';
-        h += '<div class="news-body">';
-        h += '<div class="' + tagCls + '">' + esc(n.categoria || 'Noticia') + '</div>';
-        h += '<div class="' + titleCls + '">' + esc(n.titulo || '') + '</div>';
-        if (excerpt) h += '<div class="news-excerpt">' + esc(excerpt) + '</div>';
-        h += '<div class="news-date">' + esc(n.fecha || '') + '</div>';
-        h += '</div></div>';
-      });
-      grid.innerHTML = h;
-      if (slot) grid.appendChild(slot);
-      /* Re-observar los .reveal añadidos por JS */
-      var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-      grid.querySelectorAll('.reveal').forEach(function (el) {
-        if (reduced) { el.classList.add('visible'); return; }
-        var obs = new IntersectionObserver(function (entries) {
-          entries.forEach(function (e) {
-            if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); }
-          });
-        }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
-        obs.observe(el);
-      });
-    });
-})();
-</script>
-
-<script>
-(function(){if(!window.chatbase||window.chatbase("getState")!=="initialized"){window.chatbase=(...arguments)=>{if(!window.chatbase.q){window.chatbase.q=[]}window.chatbase.q.push(arguments)};window.chatbase=new Proxy(window.chatbase,{get(target,prop){if(prop==="q"){return target.q}return(...args)=>target(prop,...args)}})}const onLoad=function(){const script=document.createElement("script");script.src="https://www.chatbase.co/embed.min.js";script.id="lTyoH7iDl6677wkKIFeCd";script.domain="www.chatbase.co";document.body.appendChild(script)};if(document.readyState==="complete"){onLoad()}else{window.addEventListener("load",onLoad)}})();
-</script>
-<script>
-  async function cargarWidgetMarcadores() {
-    const contenedor = document.getElementById("contenedor-lista-partidos");
-    if (!contenedor) return;
-
-    contenedor.innerHTML = "<p style='color: #bbb; font-size: 0.9rem;'>Conectando con la información deportiva...</p>";
-
-    const opciones = {
-      method: "GET",
-      headers: {
-        "x-rapidapi-key": "a656587a32msha0dbf016a16b213pt13368cjsn0caf1110c7c5",
-        "x-rapidapi-host": "free-api-live-football-data.p.rapidapi.com"
-      }
-    };
-
-    try {
-      let res = await fetch("https://free-api-live-football-data.p.rapidapi.com/football-current-live", opciones);
-      let data = await res.json();
-      let partidos = data.response?.live || data.response?.matches || [];
-
-      if (!partidos || partidos.length === 0) {
-        const hoy = new Date().toISOString().slice(0, 10).replace(/-/g, "");
-        res = await fetch(`https://free-api-live-football-data.p.rapidapi.com/football-get-matches-by-date?date=${hoy}`, opciones);
-        data = await res.json();
-        partidos = data.response?.matches || data.response?.live || [];
-      }
-
-      if (!partidos || partidos.length === 0) {
-        contenedor.innerHTML = "<p style='color: #888; font-size: 0.9rem; margin: 0;'>No hay partidos disputándose en este momento.</p>";
+  /* ═══════════════════════════════════════════════════════════
+     NOTICIAS — carga tolerante + fallback corporativo sin placehold
+     ═══════════════════════════════════════════════════════════ */
+  var notiGrid = document.getElementById('news-grid');
+  if (notiGrid) {
+    function truncate(s, n) { s = s || ''; return s.length > n ? s.slice(0, n).trimEnd() + '…' : s; }
+    cargarJSON('content/noticias.json').then(function (data) {
+      var items = data ? (Array.isArray(data) ? data : (data.noticias || [])) : [];
+      if (!items.length) {
+        notiGrid.innerHTML = '<p style="color:#aaa; grid-column:1/-1;">No hay noticias publicadas recientemente.</p>';
         return;
       }
-
-      contenedor.innerHTML = partidos.slice(0, 5).map(p => {
-        const local = p.home?.name || p.homeTeam?.name || "Local";
-        const visitante = p.away?.name || p.awayTeam?.name || "Visitante";
-        const golesLocal = p.home?.score ?? p.score?.home ?? "-";
-        const golesVisitante = p.away?.score ?? p.score?.away ?? "-";
-        const estado = p.status?.type || p.status?.reason?.short || p.status || "Hoy";
-
-        return `
-          <div style="display: flex; justify-content: space-between; align-items: center; padding: 10px 0; border-bottom: 1px solid #282828;">
-            <span style="flex: 1; text-align: right; font-weight: 500; font-size: 0.95rem;">${local}</span>
-            <div style="display: flex; flex-direction: column; align-items: center; min-width: 90px; margin: 0 10px;">
-              <span style="padding: 3px 10px; background: #222; border-radius: 4px; font-weight: bold; color: #ffcc00; letter-spacing: 2px;">
-                ${golesLocal} - ${golesVisitante}
-              </span>
-              <small style="color: #888; font-size: 0.7rem; margin-top: 3px; text-transform: uppercase;">${estado}</small>
-            </div>
-            <span style="flex: 1; text-align: left; font-weight: 500; font-size: 0.95rem;">${visitante}</span>
-          </div>
-        `;
-      }).join("");
-
-    } catch (err) {
-      console.error("Error API:", err);
-      contenedor.innerHTML = "<p style='color: #e55; font-size: 0.9rem; margin: 0;'>No se pudo sincronizar la información deportiva en este momento.</p>";
-    }
-  }
-</script>
-
-  <script>
-    // 1. Cargar crónicas sin títulos duplicados y con tamaño compacto
-    async function cargarNoticiasClub() {
-      const contenedor = document.getElementById('news-grid');
-      if (!contenedor) return;
-
-      try {
-        const res = await fetch('content/noticias.json');
-        if (!res.ok) throw new Error(`HTTP ${res.status}`);
-        const data = await res.json();
-        const noticias = Array.isArray(data) ? data : (data.noticias || []);
-
-        if (!noticias.length) {
-          contenedor.innerHTML = '<p style="color:#aaa; grid-column:1/-1;">No hay noticias publicadas recientemente.</p>';
-          return;
-        }
-
-        contenedor.innerHTML = noticias.map(n => `
-          <article style="background:#14141f; border:1px solid rgba(255,255,255,0.08); border-radius:10px; overflow:hidden; display:flex; flex-direction:column;">
-            <img src="${n.imagen || 'https://placehold.co/800x450/1a1a2e/ffffff?text=AD+Icovesa'}" alt="${n.titulo}" style="width:100%; height:150px; object-fit:cover;">
-            <div style="padding:1rem; display:flex; flex-direction:column; flex:1;">
-              <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.4rem;">
-                <span style="color:#e20613; font-size:0.72rem; font-weight:700; text-transform:uppercase;">${n.categoria || 'Club'}</span>
-                <span style="color:#999; font-size:0.72rem;">${n.fecha || ''}</span>
-              </div>
-              <h3 style="color:#fff; font-size:0.95rem; line-height:1.3; margin:0 0 0.4rem 0;">${n.titulo}</h3>
-              <p style="color:#bbb; font-size:0.82rem; line-height:1.4; margin:0 0 0.8rem 0; flex:1;">${n.resumen || ''}</p>
-              <div style="font-size:0.72rem; color:#777; border-top:1px solid rgba(255,255,255,0.05); padding-top:0.5rem;">
-                ${n.fuente || 'A.D. Icovesa'}
-              </div>
-            </div>
-          </article>
-        `).join('');
-      } catch (err) {
-        console.error('Error al cargar noticias:', err);
-        contenedor.innerHTML = '<p style="color:#e55; grid-column:1/-1;">Error al cargar noticias.</p>';
-      }
-    }
-
-    // 2. Desplegar la lista de jugadores de cada equipo
-    function togglePlantilla(idEquipo) {
-      const panel = document.getElementById('plantilla-' + idEquipo);
-      if (!panel) return;
-      panel.style.display = panel.style.display === 'none' ? 'block' : 'none';
-    }
-
-    document.addEventListener('DOMContentLoaded', () => {
-      cargarNoticiasClub();
+      var h = '';
+      items.forEach(function (n, i) {
+        var img = n.imagen || '';
+        var esPlacehold = /placehold\.co/i.test(img);
+        var usarImg = img && !esPlacehold;
+        var estilo = usarImg ? "background:url('" + esc(img) + "') center/cover no-repeat;" : '';
+        var excerpt = i === 0 ? (n.resumen || '') : truncate(n.resumen || '', 100);
+        h += '<article class="news-card reveal reveal-delay-' + Math.min(i + 1, 4) + '">';
+        h += '<div class="news-img' + (usarImg ? '' : ' no-img') + '" style="' + estilo + '"></div>';
+        h += '<div class="news-body">';
+        h += '<div class="news-tag">' + esc(n.categoria || 'Noticia') + '</div>';
+        h += '<div class="news-title">' + esc(n.titulo || '') + '</div>';
+        if (excerpt) h += '<div class="news-excerpt">' + esc(excerpt) + '</div>';
+        h += '<div class="news-date">' + esc(n.fecha || '') + '</div>';
+        h += '</div></article>';
+      });
+      notiGrid.innerHTML = h;
+      observarReveal(notiGrid);
+    }).catch(function () {
+      notiGrid.innerHTML = '<p style="color:#aaa; grid-column:1/-1;">Error al cargar noticias.</p>';
     });
-  </script>
+  }
+
+  /* ═══════════════════════════════════════════════════════════
+     CHATBASE — asistente
+     ═══════════════════════════════════════════════════════════ */
+  (function () {
+    if (!window.chatbase || window.chatbase("getState") !== "initialized") {
+      window.chatbase = (...arguments) => {
+        if (!window.chatbase.q) { window.chatbase.q = []; }
+        window.chatbase.q.push(arguments);
+      };
+      window.chatbase = new Proxy(window.chatbase, {
+        get(target, prop) {
+          if (prop === "q") { return target.q; }
+          return (...args) => target(prop, ...args);
+        }
+      });
+    }
+    const onLoad = function () {
+      const script = document.createElement("script");
+      script.src = "https://www.chatbase.co/embed.min.js";
+      script.id = "lTyoH7iDl6677wkKIFeCd";
+      script.domain = "www.chatbase.co";
+      document.body.appendChild(script);
+    };
+    if (document.readyState === "complete") { onLoad(); }
+    else { window.addEventListener("load", onLoad); }
+  })();
+
+})();
+</script>
 </body>
 </html>
