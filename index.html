@@ -1776,7 +1776,7 @@ footer a:hover { color: var(--rosa); }
         html += '<div class="match-result-label ' + res + '">' + (res==='win'?'Victoria':res==='loss'?'Derrota':'Empate') + '</div>';
       }
       html += '<div class="match-date">' + fechaBonita(proximo.fecha) + '</div>';
-      if(proximo.rfaf_url){ html += '<div class="match-rfaf"><a href="' + esc(proximo.rfaf_url) + '" target="_blank" rel="noopener">Clasificación oficial ↗</a></div>'; }
+      if(proximo.rfaf_url){ html += '<div class="match-rfaf"><a href="' + esc(proximo.rfaf_url) + '" target="_blank" rel="noopener">Ver calendario oficial RFAF ↗</a></div>'; }
       html += '</div>';
     }
     resultados.forEach(function(p, i){
@@ -1793,7 +1793,7 @@ footer a:hover { color: var(--rosa); }
         html += '<div class="match-score" style="color:var(--ink-3);">—</div>';
       }
       html += '<div class="match-date">' + fechaBonita(p.fecha) + '</div>';
-      if(p.rfaf_url){ html += '<div class="match-rfaf"><a href="' + esc(p.rfaf_url) + '" target="_blank" rel="noopener">Clasificación oficial ↗</a></div>'; }
+      if(p.rfaf_url){ html += '<div class="match-rfaf"><a href="' + esc(p.rfaf_url) + '" target="_blank" rel="noopener">Ver calendario oficial RFAF ↗</a></div>'; }
       html += '</div>';
     });
     container.innerHTML = html;
@@ -1857,7 +1857,11 @@ footer a:hover { color: var(--rosa); }
     'Bebés':       { age: '3-4 años',  icon: '👶' },
     'Prebenjamín': { age: '5-6 años',  icon: '⚽' },
     'Benjamín':    { age: '7-8 años',  icon: '⚽' },
+    'Benjamín A':  { age: '7-8 años',  icon: '⚽' },
+    'Benjamín B':  { age: '7-8 años',  icon: '⚽' },
     'Alevín':      { age: '9-10 años', icon: '⚽' },
+    'Alevín A':    { age: '9-10 años', icon: '⚽' },
+    'Alevín B':    { age: '9-10 años', icon: '⚽' },
     'Infantil':    { age: '11-12 años',icon: '⚽' },
     'Cadete':      { age: '13-14 años',icon: '⚽' },
     'Juvenil':     { age: '15-17 años',icon: '⚽' }
@@ -1883,7 +1887,7 @@ footer a:hover { color: var(--rosa); }
       var federadosHtml = '';
       if(federados.length){
         federadosHtml = '<p class="team-federados">' + federados.map(function(t){
-          var link = t.rfaf_url ? ' — <a href="' + esc(t.rfaf_url) + '" target="_blank" rel="noopener">clasificación RFAF ↗</a>' : '';
+          var link = t.rfaf_url ? ' — <a href="' + esc(t.rfaf_url) + '" target="_blank" rel="noopener">Ver calendario oficial RFAF ↗</a>' : '';
           return esc(t.nombre) + ' (<span>' + esc(t.categoria_federada || '') + (t.posicion_2025_2026 ? ' · Pos ' + esc(t.posicion_2025_2026) : '') + '</span>)' + link;
         }).join('<br>') + '</p>';
       }

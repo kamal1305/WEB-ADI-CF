@@ -39,7 +39,7 @@ collections:
               - { label: "Equipo visitante", name: "visitante", widget: "string" }
               - { label: "Resultado", name: "resultado", widget: "string", required: false, hint: "Déjalo vacío si aún no se ha jugado" }
               - { label: "Campo", name: "campo", widget: "string" }
-              - { label: "Enlace a la clasificación oficial en la RFAF", name: "rfaf_url", widget: "string", required: false, hint: "URL (NFG_VisClasificacion...) con la clasificación oficial del equipo" }
+              - { label: "Enlace al calendario oficial en la RFAF", name: "rfaf_url", widget: "string", required: false, hint: "URL (NFG_VisCalendario_Vis...) con el calendario oficial del equipo" }
 
   - name: "equipos"
     label: "Equipos y jugadores"

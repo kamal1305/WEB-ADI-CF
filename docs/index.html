@@ -2062,6 +2062,9 @@ footer a:hover { color: var(--rosa); }
   function nombreOficialEquipo(categoria, nombreFederado) {
     var c = String(categoria || '').trim().toUpperCase();
     if (c === 'BEBÉS') c = 'BEBÉ';
+    if (/\s[AB]$/.test(c)) {
+      return 'A.D.I. ' + c;
+    }
     var sufijo = '';
     var m = /(?:^|\s)([AB])$/.exec(String(nombreFederado || '').trim());
     if (m) sufijo = ' ' + m[1];
@@ -2181,7 +2184,7 @@ footer a:hover { color: var(--rosa); }
         html += '<div class="match-result-label ' + res + '">' + (res === 'win' ? 'Victoria' : res === 'loss' ? 'Derrota' : 'Empate') + '</div>';
       }
       html += '<div class="match-date">' + esc(fechaBonita(proximo.fecha)) + '</div>';
-      if (proximo.rfaf_url) html += '<div class="match-rfaf"><a href="' + esc(proximo.rfaf_url) + '" target="_blank" rel="noopener">Clasificación oficial ↗</a></div>';
+      if (proximo.rfaf_url) html += '<div class="match-rfaf"><a href="' + esc(proximo.rfaf_url) + '" target="_blank" rel="noopener">Ver calendario oficial RFAF ↗</a></div>';
       html += '</div>';
     }
     resultados.forEach(function (p, i) {
@@ -2198,7 +2201,7 @@ footer a:hover { color: var(--rosa); }
         html += '<div class="match-score" style="color:var(--ink-3);">—</div>';
       }
       html += '<div class="match-date">' + esc(fechaBonita(p.fecha)) + '</div>';
-      if (p.rfaf_url) html += '<div class="match-rfaf"><a href="' + esc(p.rfaf_url) + '" target="_blank" rel="noopener">Clasificación oficial ↗</a></div>';
+      if (p.rfaf_url) html += '<div class="match-rfaf"><a href="' + esc(p.rfaf_url) + '" target="_blank" rel="noopener">Ver calendario oficial RFAF ↗</a></div>';
       html += '</div>';
     });
     container.innerHTML = html;
@@ -2244,7 +2247,11 @@ footer a:hover { color: var(--rosa); }
     'Bebés': { age: '3-4 años', icon: '👶' },
     'Prebenjamín': { age: '5-6 años', icon: '⚽' },
     'Benjamín': { age: '7-8 años', icon: '⚽' },
+    'Benjamín A': { age: '7-8 años', icon: '⚽' },
+    'Benjamín B': { age: '7-8 años', icon: '⚽' },
     'Alevín': { age: '9-10 años', icon: '⚽' },
+    'Alevín A': { age: '9-10 años', icon: '⚽' },
+    'Alevín B': { age: '9-10 años', icon: '⚽' },
     'Infantil': { age: '11-12 años', icon: '⚽' },
     'Cadete': { age: '13-14 años', icon: '⚽' },
     'Juvenil': { age: '15-17 años', icon: '⚽' }
@@ -2293,7 +2300,11 @@ footer a:hover { color: var(--rosa); }
           view += '<span class="team-chevron"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span>';
           view += '</summary>';
           view += '<div class="team-body">';
-          view += '<a class="rfaf-btn" href="https://www.rfaf.es" target="_blank" rel="noopener">Convocatoria en la RFAF ↗</a>';
+          var rfafHref = t.rfaf_url || 'https://www.rfaf.es';
+          view += '<a class="rfaf-btn" href="' + esc(rfafHref) + '" target="_blank" rel="noopener">Ver calendario oficial RFAF ↗</a>';
+          if (eq.entrenador) {
+            view += '<div class="team-coach" style="margin-top:10px;font-size:0.875rem;color:var(--ink-2);"><strong>Entrenador:</strong> ' + esc(eq.entrenador) + '</div>';
+          }
           var nombres = jugadores.length ? jugadores : (ejemploJugadores[nombreEq] || []);
           if (nombres.length) {
             view += '<ul class="player-list">';

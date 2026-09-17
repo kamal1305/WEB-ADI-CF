@@ -58,31 +58,96 @@
       ]
     },
     {
-      "categoria": "Benjamín",
-      "entrenador": "",
-      "jugadores": [],
-      "equipos_federados": [
+      "categoria": "Benjamín A",
+      "entrenador": "SABAO PEREA, SAMUEL",
+      "jugadores": [
         {
-          "nombre": "A.D. Icovesa",
-          "categoria_federada": "4ª ANDALUZA BENJAMIN",
-          "codigo_equipo": "33424766",
-          "temporada": "2025-2026",
-          "temporada_2026_27": "",
-          "rfaf_url": "https://www.rfaf.es/pnfg/NPcd/NFG_VisClasificacion?cod_primaria=1000120&codcompeticion=46271051&codgrupo=46360123",
-          "posicion_2025_2026": 6,
-          "puntos_2025_2026": 38,
-          "pj_2025_2026": 24,
-          "pg_2025_2026": 12,
-          "pe_2025_2026": 2,
-          "pp_2025_2026": 10
+          "nombre": "AREVALO ROMERO, MANUEL",
+          "dorsal": null,
+          "posicion": "",
+          "foto": ""
         },
         {
-          "nombre": "A.D. Icovesa B",
+          "nombre": "ARFOUY SGHIRI, ADAM",
+          "dorsal": null,
+          "posicion": "",
+          "foto": ""
+        },
+        {
+          "nombre": "CAÑAS GIL, JUAN JESÚS",
+          "dorsal": null,
+          "posicion": "",
+          "foto": ""
+        },
+        {
+          "nombre": "CARRILLO ZARZUELA, JAVIER",
+          "dorsal": null,
+          "posicion": "",
+          "foto": ""
+        },
+        {
+          "nombre": "DE LOS REYES SOTO, ALEJANDRO",
+          "dorsal": null,
+          "posicion": "",
+          "foto": ""
+        },
+        {
+          "nombre": "EL BAKKACH ROMERO, ABDELKADER",
+          "dorsal": null,
+          "posicion": "",
+          "foto": ""
+        },
+        {
+          "nombre": "GALISTEO BERMUDEZ, OLIVER",
+          "dorsal": null,
+          "posicion": "",
+          "foto": ""
+        },
+        {
+          "nombre": "GAMALELDIN ZITOUNI, SELIM",
+          "dorsal": null,
+          "posicion": "",
+          "foto": ""
+        },
+        {
+          "nombre": "MARTÍN RAMOS, JOSE",
+          "dorsal": null,
+          "posicion": "",
+          "foto": ""
+        },
+        {
+          "nombre": "MORÓN ARANA, ALEJANDRO",
+          "dorsal": null,
+          "posicion": "",
+          "foto": ""
+        },
+        {
+          "nombre": "OUAHABI ZARZUELA, TARIK",
+          "dorsal": null,
+          "posicion": "",
+          "foto": ""
+        },
+        {
+          "nombre": "ROMERO DEL AGUILA, MARTIN",
+          "dorsal": null,
+          "posicion": "",
+          "foto": ""
+        },
+        {
+          "nombre": "SABORIDO MONTORO, NATANAHEL",
+          "dorsal": null,
+          "posicion": "",
+          "foto": ""
+        }
+      ],
+      "equipos_federados": [
+        {
+          "nombre": "A.D. Icovesa A",
           "categoria_federada": "4ª ANDALUZA BENJAMIN",
           "codigo_equipo": "2073084",
           "temporada": "2025-2026",
           "temporada_2026_27": "",
-          "rfaf_url": "https://www.rfaf.es/pnfg/NPcd/NFG_VisClasificacion?cod_primaria=1000120&codcompeticion=30765606&codgrupo=30771371",
+          "rfaf_url": "https://www.rfaf.es/pnfg/NPcd/NFG_VisCalendario_Vis?cod_primaria=1000120&codtemporada=18&codcompeticion=30765606&codgrupo=30771371",
           "posicion_2025_2026": 13,
           "puntos_2025_2026": 5,
           "pj_2025_2026": 24,
@@ -93,31 +158,230 @@
       ]
     },
     {
-      "categoria": "Alevín",
-      "entrenador": "",
-      "jugadores": [],
+      "categoria": "Benjamín B",
+      "entrenador": "CESPEDES BARROSO, LUIS",
+      "jugadores": [
+        {
+          "nombre": "ANGULO RODRIGUEZ, JOSE",
+          "dorsal": null,
+          "posicion": "",
+          "foto": ""
+        },
+        {
+          "nombre": "DE JESÚS CORTES, OLIVER",
+          "dorsal": null,
+          "posicion": "",
+          "foto": ""
+        },
+        {
+          "nombre": "FRANCO GARCIA, MANUEL",
+          "dorsal": null,
+          "posicion": "",
+          "foto": ""
+        },
+        {
+          "nombre": "GONZALEZ JUNQUERA, FELIPE",
+          "dorsal": null,
+          "posicion": "",
+          "foto": ""
+        },
+        {
+          "nombre": "HARILLO CERDERO, NEIZAN",
+          "dorsal": null,
+          "posicion": "",
+          "foto": ""
+        },
+        {
+          "nombre": "JIMENEZ SOTO, HUGO",
+          "dorsal": null,
+          "posicion": "",
+          "foto": ""
+        },
+        {
+          "nombre": "JONES BOCANEGRA, GIANNI ALEXANDER",
+          "dorsal": null,
+          "posicion": "",
+          "foto": ""
+        },
+        {
+          "nombre": "PEREZ POLO, BRUNO",
+          "dorsal": null,
+          "posicion": "",
+          "foto": ""
+        },
+        {
+          "nombre": "ROMAN JIMENEZ, ALEJANDRO",
+          "dorsal": null,
+          "posicion": "",
+          "foto": ""
+        },
+        {
+          "nombre": "ROMAN JIMENEZ, BRUNO",
+          "dorsal": null,
+          "posicion": "",
+          "foto": ""
+        }
+      ],
+      "equipos_federados": [
+        {
+          "nombre": "A.D. Icovesa B",
+          "categoria_federada": "4ª ANDALUZA BENJAMIN (GRUPO 5)",
+          "codigo_equipo": "33424766",
+          "temporada": "2025-2026",
+          "temporada_2026_27": "",
+          "rfaf_url": "https://www.rfaf.es/pnfg/NPcd/NFG_VisClasificacion?cod_primaria=1000120&codcompeticion=46271051&codgrupo=46360123",
+          "posicion_2025_2026": 6,
+          "puntos_2025_2026": 38,
+          "pj_2025_2026": 24,
+          "pg_2025_2026": 12,
+          "pe_2025_2026": 2,
+          "pp_2025_2026": 10
+        }
+      ]
+    },
+    {
+      "categoria": "Alevín A",
+      "entrenador": "CARDONA ORELLANA, MIGUEL",
+      "jugadores": [
+        {
+          "nombre": "BOCANEGRA LÓPEZ, DYLAN",
+          "dorsal": null,
+          "posicion": "",
+          "foto": ""
+        },
+        {
+          "nombre": "BOCANEGRA LOPEZ, MOISES",
+          "dorsal": null,
+          "posicion": "",
+          "foto": ""
+        },
+        {
+          "nombre": "DE JESUS CORTES, IVAN",
+          "dorsal": null,
+          "posicion": "",
+          "foto": ""
+        },
+        {
+          "nombre": "DELGADO GARRIDO, ANGEL MANUEL",
+          "dorsal": null,
+          "posicion": "",
+          "foto": ""
+        },
+        {
+          "nombre": "LKHLUF FERNÁNDEZ, ADAM",
+          "dorsal": null,
+          "posicion": "",
+          "foto": ""
+        },
+        {
+          "nombre": "LKHLUF FERNÁNDEZ, NAJÍM",
+          "dorsal": null,
+          "posicion": "",
+          "foto": ""
+        },
+        {
+          "nombre": "MONTESINOS GARCIA, DANIEL",
+          "dorsal": null,
+          "posicion": "",
+          "foto": ""
+        },
+        {
+          "nombre": "ROSILLO ANGULO, SALVADOR",
+          "dorsal": null,
+          "posicion": "",
+          "foto": ""
+        },
+        {
+          "nombre": "SOTO CHACON, ANTONIO",
+          "dorsal": null,
+          "posicion": "",
+          "foto": ""
+        },
+        {
+          "nombre": "VALLE MARTÍN, PABLO",
+          "dorsal": null,
+          "posicion": "",
+          "foto": ""
+        },
+        {
+          "nombre": "ZARZUELA CANO, IZAN",
+          "dorsal": null,
+          "posicion": "",
+          "foto": ""
+        }
+      ],
       "equipos_federados": [
         {
           "nombre": "A.D. Icovesa A",
-          "categoria_federada": "4ª ANDALUZA ALEVIN",
+          "categoria_federada": "4ª ANDALUZA ALEVIN (GRUPO 9)",
           "codigo_equipo": "10114506",
           "temporada": "2025-2026",
           "temporada_2026_27": "4ª ANDALUZA ALEVIN (CADIZ) · Grupo 9º",
-          "rfaf_url": "https://www.rfaf.es/pnfg/NPcd/NFG_VisClasificacion?cod_primaria=1000120&codcompeticion=46125067&codgrupo=46213561",
+          "rfaf_url": "https://www.rfaf.es/pnfg/NPcd/NFG_VisCalendario_Vis?cod_primaria=1000120&codtemporada=22&codcompeticion=49608278&codgrupo=49795797",
           "posicion_2025_2026": 9,
           "puntos_2025_2026": 21,
           "pj_2025_2026": 22,
           "pg_2025_2026": 6,
           "pe_2025_2026": 3,
           "pp_2025_2026": 13
+        }
+      ]
+    },
+    {
+      "categoria": "Alevín B",
+      "entrenador": "MORALES GARCIA, JOSE ANTONIO",
+      "jugadores": [
+        {
+          "nombre": "DOMINGUEZ TORO, IZAN",
+          "dorsal": null,
+          "posicion": "",
+          "foto": ""
         },
         {
+          "nombre": "LOPEZ SANCHEZ, DYLAN",
+          "dorsal": null,
+          "posicion": "",
+          "foto": ""
+        },
+        {
+          "nombre": "PRADO REYES, LEONEL",
+          "dorsal": null,
+          "posicion": "",
+          "foto": ""
+        },
+        {
+          "nombre": "ROMERO PEÑA, SAMUEL",
+          "dorsal": null,
+          "posicion": "",
+          "foto": ""
+        },
+        {
+          "nombre": "RUIZ PEREZ, DARIO",
+          "dorsal": null,
+          "posicion": "",
+          "foto": ""
+        },
+        {
+          "nombre": "SANCHEZ GARCIA, ANTONIO",
+          "dorsal": null,
+          "posicion": "",
+          "foto": ""
+        },
+        {
+          "nombre": "SANCHEZ PAULIUKAITE, LUKAS",
+          "dorsal": null,
+          "posicion": "",
+          "foto": ""
+        }
+      ],
+      "equipos_federados": [
+        {
           "nombre": "A.D. Icovesa B",
-          "categoria_federada": "4ª ANDALUZA ALEVIN",
+          "categoria_federada": "4ª ANDALUZA ALEVIN (GRUPO 10)",
           "codigo_equipo": "2856275",
           "temporada": "2025-2026",
           "temporada_2026_27": "4ª ANDALUZA ALEVIN (CADIZ) · Grupo 10º",
-          "rfaf_url": "https://www.rfaf.es/pnfg/NPcd/NFG_VisClasificacion?cod_primaria=1000120&codcompeticion=41338698&codgrupo=41447000",
+          "rfaf_url": "https://www.rfaf.es/pnfg/NPcd/NFG_VisCalendario_Vis?cod_primaria=1000120&codtemporada=22&codcompeticion=49608278&codgrupo=49796446",
           "posicion_2025_2026": 10,
           "puntos_2025_2026": 18,
           "pj_2025_2026": 22,
@@ -129,16 +393,113 @@
     },
     {
       "categoria": "Infantil",
-      "entrenador": "",
-      "jugadores": [],
+      "entrenador": "REPISO BARBA, ANGEL",
+      "jugadores": [
+        {
+          "nombre": "CABALLERO MORIANA, CARLOS",
+          "dorsal": null,
+          "posicion": "",
+          "foto": ""
+        },
+        {
+          "nombre": "CARRILLO ZARZUELA, HUGO",
+          "dorsal": null,
+          "posicion": "",
+          "foto": ""
+        },
+        {
+          "nombre": "CORTES BERMUDEZ, HAROLD",
+          "dorsal": null,
+          "posicion": "",
+          "foto": ""
+        },
+        {
+          "nombre": "DE COS RAMIREZ, LUIS MIGUEL",
+          "dorsal": null,
+          "posicion": "",
+          "foto": ""
+        },
+        {
+          "nombre": "DEL VALLE GALAN, DAMIAN",
+          "dorsal": null,
+          "posicion": "",
+          "foto": ""
+        },
+        {
+          "nombre": "DIAZ DE LA CRUZ, NICOLAS",
+          "dorsal": null,
+          "posicion": "",
+          "foto": ""
+        },
+        {
+          "nombre": "FERNÁNDEZ MONTERO, ALEJANDRO",
+          "dorsal": null,
+          "posicion": "",
+          "foto": ""
+        },
+        {
+          "nombre": "GALLO GIL, AGUSTIN",
+          "dorsal": null,
+          "posicion": "",
+          "foto": ""
+        },
+        {
+          "nombre": "LÓPEZ MARQUEZ, SERGIO",
+          "dorsal": null,
+          "posicion": "",
+          "foto": ""
+        },
+        {
+          "nombre": "LÓPEZ MATEOS, ADAY",
+          "dorsal": null,
+          "posicion": "",
+          "foto": ""
+        },
+        {
+          "nombre": "RAMIREZ CARRASCO, JUAN PEDRO",
+          "dorsal": null,
+          "posicion": "",
+          "foto": ""
+        },
+        {
+          "nombre": "RODRIGUEZ CABELLO, JUAN JOSE",
+          "dorsal": null,
+          "posicion": "",
+          "foto": ""
+        },
+        {
+          "nombre": "SANTOS JUNQUERA, IKER",
+          "dorsal": null,
+          "posicion": "",
+          "foto": ""
+        },
+        {
+          "nombre": "SOTO CHACON, CLAUDIO",
+          "dorsal": null,
+          "posicion": "",
+          "foto": ""
+        },
+        {
+          "nombre": "VALLE MARTIN, JESUS",
+          "dorsal": null,
+          "posicion": "",
+          "foto": ""
+        },
+        {
+          "nombre": "VICENTE TORO, DANIEL",
+          "dorsal": null,
+          "posicion": "",
+          "foto": ""
+        }
+      ],
       "equipos_federados": [
         {
           "nombre": "A.D. Icovesa",
-          "categoria_federada": "4ª ANDALUZA INFANTIL",
+          "categoria_federada": "4ª ANDALUZA INFANTIL (GRUPO 7)",
           "codigo_equipo": "13252190",
           "temporada": "2025-2026",
           "temporada_2026_27": "4ª ANDALUZA INFANTIL (CADIZ) · Grupo 7º",
-          "rfaf_url": "https://www.rfaf.es/pnfg/NPcd/NFG_VisClasificacion?cod_primaria=1000120&codcompeticion=45931674&codgrupo=46084358",
+          "rfaf_url": "https://www.rfaf.es/pnfg/NPcd/NFG_VisCalendario_Vis?cod_primaria=1000120&codtemporada=22&codcompeticion=49505530&codgrupo=49603909",
           "posicion_2025_2026": 11,
           "puntos_2025_2026": 4,
           "pj_2025_2026": 20,
