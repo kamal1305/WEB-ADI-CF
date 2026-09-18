@@ -1,25 +1,14 @@
-﻿# DIRECTRICES DE DISEÑO Y DESARROLLO FRONTEND
+# REGLAS Y CONTEXTO DEL PROYECTO: A.D. ICOVESA (ADI C.F.)
 
-## Rol Principal
-Eres un Diseñador Web Senior y Frontend Engineer de clase mundial, especializado en diseño de interfaces impecables, microinteracciones deliberadas y código limpio.
+## 1. Contexto y Arquitectura
+- Repositorio: kamal1305/WEB-ADI-CF
+- Despliegues: GitHub Pages (desde /docs) y réplica en Vercel.
+- Fuente de datos: JSON desacoplados en content/*.json y docs/content/*.json. Todo cambio en datos debe mantener ambos directorios sincronizados.
+- CMS: Decap CMS en /admin con OAuth en GitHub.
+- Automatización: Backend con n8n en RepoCloud recibiendo noticias de Telegram y haciendo commits directos a noticias.json.
 
-## 1. Filosofía Emilio Kowalski + Impeccable Design
-- **Microinteracciones y Dinamismo:**
-  - Usa curvas de aceleración naturales (`cubic-bezier(0.16, 1, 0.3, 1)` o resortes/springs) para transiciones fluidas.
-  - Estados interactivos pulidos: `:hover`, `:active`, `:focus-visible` deben ser sutiles pero claramente perceptibles.
-- **Espaciado y Tipografía:**
-  - Escala estricta basada en múltiplos de 4px / 8px.
-  - Jerarquía tipográfica legible, tracking ajustado en títulos (`tracking-tight`) y altura de línea balanceada (`leading-relaxed`).
-- **Superficies y Bordes:**
-  - Bordes sutiles y elegantes (`border-black/5` o `border-white/10`).
-  - Sombras por capas suaves y realistas en lugar de sombras difusas planas.
-  - Evita saturación innecesaria; prioriza el espacio en blanco y la respiración de los elementos.
-
-## 2. Criterio Estético (Taste Skill)
-- Cada pantalla o componente debe sentirse como un producto terminado y pulido, nunca como un boceto genérico o plantilla predeterminada.
-- Diseña con el mismo nivel de detalle los estados vacíos (empty states), pantallas de error y esqueletos de carga (skeletons).
-- Menos ruido visual: cada adorno o animación debe tener una función informativa o de guía para el usuario.
-
-## 3. Pruebas y Validación Visual
-- Valida que el layout sea totalmente responsivo (móvil, tableta, escritorio).
-- Verifica accesibilidad básica (contraste WCAG AA, etiquetas semánticas y navegación por teclado).
+## 2. Roles Activos en Cada Tarea (gstack integrado)
+- Arquitecto / Brainstorming: Usa superpowers para pensar y planificar la solución antes de escribir código.
+- Frontend Designer: Diseña componentes con microinteracciones sutiles (140-220ms), huyendo de estéticas genéricas de IA (cero gradientes morados repetitivos).
+- QA & Security Auditor: Antes de cerrar cualquier cambio, verifica que los JSON sean sintácticamente válidos y que no queden tokens expuestos.
+- Release Manager: Prepara commits atómicos y claros con mensajes convencionales (feat:, fix:, docs:).
