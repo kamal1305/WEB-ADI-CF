@@ -429,6 +429,7 @@ p { max-width: 65ch; }
 }
 .news-toggle:hover { color: var(--rosa-2); }
 .news-toggle:focus-visible { outline: 2px solid var(--rosa); outline-offset: 2px; border-radius: 4px; }
+.noticia-cuerpo-completo.abierto { display: block !important; }
 .match-tipo {
   font-size: 0.72rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase;
   color: var(--rosa); margin-bottom: 2px;
@@ -1837,9 +1838,18 @@ footer a:hover { color: var(--rosa); }
       opts = opts || {};
       var res = clasificarResultado(p);
       var cls = res ? ' ' + res : '';
+      var escudoClub = p.escudoClub || 'img/escudo.png';
+      var escudoRival = p.escudoRival || '';
+      var rival = p.rival || '';
       var html = '<div class="bento-card ' + (opts.next ? 'bento-next bento-span-4' : 'bento-result' + cls + ' bento-span-2') + (opts.delay ? ' reveal reveal-delay-' + opts.delay : ' reveal') + '">';
       html += '<div class="match-category">' + esc(p.categoria || (opts.next ? 'Próximo partido' : '')) + '</div>';
-      html += '<div class="match-escudos">' + escudoImg(p.escudoClub, 'Escudo A.D. Icovesa') + escudoImg(p.escudoRival, 'Escudo ' + (p.rival || '')) + '</div>';
+      html += '<div class="match-teams-logos" style="display: flex; align-items: center; gap: 8px; margin-bottom: 8px; justify-content: center;">';
+      html += '<img src="' + esc(escudoClub) + '" alt="ADI" style="width: 32px; height: 32px; object-fit: contain;">';
+      html += '<span style="font-weight: bold; color: #E6007E; font-size: 0.8rem;">VS</span>';
+      if (escudoRival) {
+        html += '<img src="' + esc(escudoRival) + '" alt="' + esc(rival) + '" style="width: 32px; height: 32px; object-fit: contain;" onerror="this.style.display=\'none\'">';
+      }
+      html += '</div>';
       html += '<div class="match-teams">' + esc(p.local || '?') + ' vs ' + esc(p.visitante || '?') + '</div>';
       if (p.tipo) html += '<div class="match-tipo">' + esc(p.tipo) + '</div>';
       html += '<div class="match-venue">' + esc(p.campo || '') + '</div>';
@@ -1862,6 +1872,7 @@ footer a:hover { color: var(--rosa); }
       var titleCls = 'news-title';
       var excerpt = i === 0 ? (n.resumen || '') : truncate(n.resumen || '', 100);
       var imgSrc = n.imagen || '';
+      var cuerpo = n.cuerpo || n.resumen || '';
       var html = '<div class="' + cls + ' reveal reveal-delay-' + Math.min(i + 1, 4) + '">';
       html += '<div class="news-img' + (imgSrc ? '' : ' no-img') + '" style="' + (imgSrc ? 'background:url(\'' + esc(imgSrc) + '\') center/cover no-repeat;' : '') + '"></div>';
       html += '<div class="news-body">';
@@ -1869,9 +1880,9 @@ footer a:hover { color: var(--rosa); }
       html += '<div class="' + titleCls + '">' + esc(n.titulo || '') + '</div>';
       if (excerpt) html += '<div class="news-excerpt">' + esc(excerpt) + '</div>';
       html += '<div class="news-date">' + esc(n.fecha || '') + '</div>';
-      if (n.cuerpo) {
-        html += '<div class="news-content">' + n.cuerpo + '</div>';
-        html += '<button class="news-toggle" onclick="toggleNewsContent(this)">[+ Leer crónica completa]</button>';
+      if (cuerpo) {
+        html += '<button class="btn-leer-mas" onclick="this.nextElementSibling.classList.toggle(\'abierto\'); this.textContent = this.nextElementSibling.classList.contains(\'abierto\') ? \'[- Leer menos]\' : \'[+ Leer más]\'" style="background: none; border: none; color: #E6007E; font-weight: bold; cursor: pointer; padding: 4px 0; margin-top: 8px; text-align: left;">[+ Leer más]</button>';
+        html += '<div class="noticia-cuerpo-completo" style="display: none; margin-top: 8px; padding-top: 8px; border-top: 1px solid rgba(255,255,255,0.1); color: #ccc; font-size: 0.88rem; line-height: 1.5;">' + cuerpo + '</div>';
       }
       html += '</div></div>';
       return html;
