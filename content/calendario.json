@@ -75,51 +75,6 @@
       "visitante": "A.D. Icovesa Alevín",
       "resultado": "",
       "rfaf_url": ""
-    },
-    {
-      "fecha": "Sáb 26 sep 2026",
-      "categoria": "Alevín",
-      "local": "CLUB DE FÚTBOL SHERRY ATLÉTICO \"A\"",
-      "visitante": "A.D. ICOVESA \"A\"",
-      "resultado": "",
-      "campo": "Visitante",
-      "rfaf_url": "https://www.rfaf.es/pnfg/NPcd/NFG_VisCalendario_Vis?cod_primaria=1000120&codtemporada=22&codcompeticion=49608278&codgrupo=49795797"
-    },
-    {
-      "fecha": "Sáb 26 sep 2026",
-      "categoria": "Alevín",
-      "local": "A.D. ICOVESA \"B\"",
-      "visitante": "CLUB DEPORTIVO PROMESAS XEREZ C.D. 1947",
-      "resultado": "",
-      "campo": "Campo de Fútbol Picadueñas",
-      "rfaf_url": "https://www.rfaf.es/pnfg/NPcd/NFG_VisCalendario_Vis?cod_primaria=1000120&codtemporada=22&codcompeticion=49608278&codgrupo=49796446"
-    },
-    {
-      "fecha": "Sáb 3 oct 2026",
-      "categoria": "Alevín",
-      "local": "A.D. ICOVESA \"A\"",
-      "visitante": "A.D. MARIANISTAS C.D. \"A\"",
-      "resultado": "",
-      "campo": "Campo de Fútbol Picadueñas",
-      "rfaf_url": "https://www.rfaf.es/pnfg/NPcd/NFG_VisCalendario_Vis?cod_primaria=1000120&codtemporada=22&codcompeticion=49608278&codgrupo=49795797"
-    },
-    {
-      "fecha": "Sáb 3 oct 2026",
-      "categoria": "Alevín",
-      "local": "AFICION XEREZ C.D.",
-      "visitante": "A.D. ICOVESA \"B\"",
-      "resultado": "",
-      "campo": "Visitante",
-      "rfaf_url": "https://www.rfaf.es/pnfg/NPcd/NFG_VisCalendario_Vis?cod_primaria=1000120&codtemporada=22&codcompeticion=49608278&codgrupo=49796446"
-    },
-    {
-      "fecha": "Sáb 3 oct 2026",
-      "categoria": "Infantil",
-      "local": "XEREZ DEPORTIVO F.C. \"A\"",
-      "visitante": "A.D. ICOVESA",
-      "resultado": "",
-      "campo": "Visitante",
-      "rfaf_url": "https://www.rfaf.es/pnfg/NPcd/NFG_VisCalendario_Vis?cod_primaria=1000120&codtemporada=22&codcompeticion=49505530&codgrupo=49603909"
     }
   ]
 }
