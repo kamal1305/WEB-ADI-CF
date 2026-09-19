@@ -2,9 +2,22 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>A.D. Icovesa — Fútbol base en Jerez</title>
 <meta name="description" content="Asociación Deportiva Icovesa (ADI C.F.), club de fútbol base en la barriada de Icovesa, Jerez de la Frontera. Fundado en 1994.">
+
+<!-- PWA & Mobile Web App Meta Tags -->
+<meta name="theme-color" content="#151824">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="ADI C.F.">
+<meta name="application-name" content="ADI C.F.">
+<link rel="manifest" href="manifest.json">
+<link rel="apple-touch-icon" href="img/icons/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="192x192" href="img/icons/icon-192.png">
+<link rel="icon" type="image/png" href="img/escudo.png">
+
 <!-- Open Graph / WhatsApp / Redes Sociales -->
 <meta property="og:type" content="website">
 <meta property="og:title" content="A.D. Icovesa — Fútbol base en Jerez">
@@ -20,7 +33,6 @@
 <meta name="twitter:title" content="A.D. Icovesa — Fútbol base en Jerez">
 <meta name="twitter:description" content="Web oficial de la A.D. Icovesa (Jerez de la Frontera).">
 <meta name="twitter:image" content="https://kamal1305.github.io/WEB-ADI-CF/img/escudo.png">
-<link rel="icon" type="image/png" href="img/escudo.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
@@ -74,7 +86,11 @@
    RESET & BASE
    ═══════════════════════════════════════════════════════════ */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+  -webkit-tap-highlight-color: transparent;
+}
 body {
   background: var(--bg);
   color: var(--ink);
@@ -85,6 +101,12 @@ body {
   -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;
 }
+@media (max-width: 860px) {
+  body {
+    padding-bottom: calc(68px + env(safe-area-inset-bottom, 0px));
+  }
+}
+button, a { touch-action: manipulation; }
 img { max-width: 100%; display: block; }
 a { color: var(--rosa); text-decoration: none; transition: color var(--dur-fast) ease; }
 a:hover { color: var(--rosa-h); }
@@ -200,6 +222,199 @@ p { max-width: 65ch; }
 @media (min-width: 860px) {
   .nav-links { display: flex; }
   .burger { display: none; }
+}
+
+/* ═══════════════════════════════════════════════════════════
+   PWA BOTTOM NAVIGATION (PANTALLAS TÁCTILES)
+   ═══════════════════════════════════════════════════════════ */
+.pwa-bottom-nav {
+  display: none;
+}
+
+@media (max-width: 860px) {
+  .pwa-bottom-nav {
+    display: flex;
+    align-items: stretch;
+    justify-content: space-around;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 990;
+    height: calc(62px + env(safe-area-inset-bottom, 0px));
+    padding: 4px 6px calc(4px + env(safe-area-inset-bottom, 0px)) 6px;
+    background: linear-gradient(180deg, rgba(27, 32, 48, 0.94) 0%, rgba(21, 24, 36, 0.98) 100%);
+    backdrop-filter: blur(20px) saturate(1.4);
+    -webkit-backdrop-filter: blur(20px) saturate(1.4);
+    border-top: 1px solid rgba(255, 255, 255, 0.12);
+    box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.45);
+    user-select: none;
+    -webkit-user-select: none;
+  }
+
+  .pwa-nav-item {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 3px;
+    text-decoration: none;
+    color: var(--ink-3);
+    padding: 4px 2px;
+    border-radius: 10px;
+    min-height: 48px;
+    transition: color 0.16s ease, transform 0.16s var(--ease-spring);
+    cursor: pointer;
+    background: none;
+    border: none;
+    font-family: inherit;
+    position: relative;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .pwa-nav-item:active {
+    transform: scale(0.92);
+  }
+
+  .pwa-nav-icon {
+    width: 22px;
+    height: 22px;
+    stroke: currentColor;
+    fill: none;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    transition: stroke 0.16s ease, transform 0.16s ease;
+  }
+
+  .pwa-nav-label {
+    font-size: 10.5px;
+    font-weight: 600;
+    letter-spacing: 0.01em;
+    line-height: 1;
+  }
+
+  .pwa-nav-item.active {
+    color: #ffffff;
+  }
+
+  .pwa-nav-item.active .pwa-nav-icon {
+    stroke: var(--rosa);
+    transform: translateY(-1px);
+  }
+
+  .pwa-nav-item.active::after {
+    content: '';
+    position: absolute;
+    bottom: 2px;
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: var(--rosa);
+    box-shadow: 0 0 8px var(--rosa);
+  }
+}
+
+/* ═══════════════════════════════════════════════════════════
+   PWA INSTALL BANNER
+   ═══════════════════════════════════════════════════════════ */
+.pwa-install-banner {
+  position: fixed;
+  top: 14px;
+  left: 50%;
+  transform: translateX(-50%) translateY(0);
+  width: calc(100% - 28px);
+  max-width: 460px;
+  z-index: 10000;
+  background: rgba(30, 36, 54, 0.96);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(230, 0, 126, 0.35);
+  border-radius: 16px;
+  padding: 12px 14px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), 0 0 20px rgba(230, 0, 126, 0.15);
+  animation: pwaSlideDown 0.35s var(--ease-spring);
+}
+
+@keyframes pwaSlideDown {
+  from { opacity: 0; transform: translateX(-50%) translateY(-20px); }
+  to { opacity: 1; transform: translateX(-50%) translateY(0); }
+}
+
+.pwa-banner-img {
+  width: 42px;
+  height: 42px;
+  border-radius: 10px;
+  flex-shrink: 0;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+.pwa-banner-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.pwa-banner-title {
+  font-family: var(--ff-display);
+  font-size: 13px;
+  color: #ffffff;
+  letter-spacing: -0.01em;
+  margin-bottom: 2px;
+}
+
+.pwa-banner-desc {
+  font-size: 11.5px;
+  color: var(--ink-3);
+  line-height: 1.25;
+}
+
+.pwa-banner-actions {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-shrink: 0;
+}
+
+.pwa-btn-install {
+  background: var(--rosa);
+  color: #ffffff;
+  border: none;
+  font-family: var(--ff-body);
+  font-weight: 700;
+  font-size: 12px;
+  padding: 7px 14px;
+  border-radius: 100px;
+  cursor: pointer;
+  box-shadow: 0 2px 10px rgba(230, 0, 126, 0.4);
+  transition: transform 0.16s ease, background 0.16s ease;
+}
+
+.pwa-btn-install:active {
+  transform: scale(0.94);
+}
+
+.pwa-btn-close {
+  background: none;
+  border: none;
+  color: var(--ink-3);
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  border-radius: 50%;
+  font-size: 16px;
+  transition: color 0.16s ease, background 0.16s ease;
+}
+
+.pwa-btn-close:hover {
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.1);
 }
 
 /* ═══════════════════════════════════════════════════════════
@@ -2566,7 +2781,61 @@ footer a:hover { color: var(--rosa); }
   .wa-opt .wa-opt-t{ font-family:'Outfit',sans-serif; font-weight:600; font-size:14px; line-height:1.2; color:#fff; }
   .wa-opt .wa-opt-s{ font-family:'Outfit',sans-serif; font-size:11.5px; color:rgba(250,250,250,.55); line-height:1.3; }
   .wa-foot{ padding:10px 18px; border-top:1px solid rgba(255,255,255,.08); font-family:'Outfit',sans-serif; font-size:11.5px; color:rgba(250,250,250,.45); text-align:center; }
+  @media (max-width: 860px) {
+    .wa-button {
+      bottom: calc(74px + env(safe-area-inset-bottom, 0px)) !important;
+      left: 18px !important;
+      width: 52px !important;
+      height: 52px !important;
+    }
+    .wa-button svg {
+      width: 28px !important;
+      height: 28px !important;
+    }
+    .wa-panel {
+      bottom: calc(138px + env(safe-area-inset-bottom, 0px)) !important;
+      left: 14px !important;
+      max-width: calc(100vw - 28px) !important;
+    }
+  }
 </style>
+
+<!-- ===================== PWA Bottom Navigation (Móviles táctiles) ===================== -->
+<nav class="pwa-bottom-nav" id="pwaBottomNav" aria-label="Navegación táctil móvil">
+  <a href="#inicio" class="pwa-nav-item active" data-section="inicio">
+    <svg class="pwa-nav-icon" viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+    <span class="pwa-nav-label">Inicio</span>
+  </a>
+  <a href="#temporada" class="pwa-nav-item" data-section="temporada">
+    <svg class="pwa-nav-icon" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/><circle cx="12" cy="16" r="2"/></svg>
+    <span class="pwa-nav-label">Partidos</span>
+  </a>
+  <a href="#futbol-base" class="pwa-nav-item" data-section="futbol-base">
+    <svg class="pwa-nav-icon" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+    <span class="pwa-nav-label">Equipos</span>
+  </a>
+  <a href="#noticias" class="pwa-nav-item" data-section="noticias">
+    <svg class="pwa-nav-icon" viewBox="0 0 24 24"><path d="M19 20H5a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v1m2 13a2 2 0 0 1-2-2V7m2 13a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-2m-4-3H9M7 16h6M7 8h6m-6 4h10"/></svg>
+    <span class="pwa-nav-label">Noticias</span>
+  </a>
+  <button class="pwa-nav-item" id="pwaMenuToggle" aria-label="Abrir opciones del menú">
+    <svg class="pwa-nav-icon" viewBox="0 0 24 24"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+    <span class="pwa-nav-label">Menú</span>
+  </button>
+</nav>
+
+<!-- ===================== PWA Install Banner ===================== -->
+<div id="pwaInstallBanner" class="pwa-install-banner" style="display: none;" role="dialog" aria-label="Instalar app de A.D. Icovesa">
+  <img src="img/icons/icon-192.png" alt="Icono A.D. Icovesa" class="pwa-banner-img">
+  <div class="pwa-banner-info">
+    <div class="pwa-banner-title">A.D. Icovesa App</div>
+    <div class="pwa-banner-desc" id="pwaBannerDesc">Instala la app para consultar partidos y noticias sin conexión.</div>
+  </div>
+  <div class="pwa-banner-actions">
+    <button id="pwaInstallBtn" class="pwa-btn-install">Instalar</button>
+    <button id="pwaCloseBtn" class="pwa-btn-close" aria-label="Cerrar aviso">✕</button>
+  </div>
+</div>
 
 <button class="wa-button" id="waButton" aria-label="Abrir chat de WhatsApp">
   <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
@@ -2744,6 +3013,155 @@ footer a:hover { color: var(--rosa); }
 
 <script>
 (function(){if(!window.chatbase||window.chatbase("getState")!=="initialized"){window.chatbase=(...arguments)=>{if(!window.chatbase.q){window.chatbase.q=[]}window.chatbase.q.push(arguments)};window.chatbase=new Proxy(window.chatbase,{get(target,prop){if(prop==="q"){return target.q}return(...args)=>target(prop,...args)}})}const onLoad=function(){const script=document.createElement("script");script.src="https://www.chatbase.co/embed.min.js";script.id="lTyoH7iDl6677wkKIFeCd";script.domain="www.chatbase.co";document.body.appendChild(script)};if(document.readyState==="complete"){onLoad()}else{window.addEventListener("load",onLoad)}})();
+</script>
+
+<!-- ===================== PWA Service Worker & Navegación Táctil ===================== -->
+<script>
+/* 1. Registro del Service Worker con soporte offline */
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', function() {
+    navigator.serviceWorker.register('./sw.js', { scope: './' })
+      .then(function(reg) {
+        reg.addEventListener('updatefound', function() {
+          var newWorker = reg.installing;
+          if (newWorker) {
+            newWorker.addEventListener('statechange', function() {
+              if (newWorker.state === 'installed' && navigator.serviceWorker.controller) {
+                console.log('ADI C.F. PWA: Nueva versión disponible lista para usar.');
+              }
+            });
+          }
+        });
+      })
+      .catch(function(err) {
+        console.warn('Error al registrar Service Worker:', err);
+      });
+  });
+}
+
+/* 2. Control de Navegación Táctil Móvil y ScrollSpy */
+(function() {
+  var bottomNav = document.getElementById('pwaBottomNav');
+  if (!bottomNav) return;
+
+  var navItems = bottomNav.querySelectorAll('.pwa-nav-item[data-section]');
+  var pwaMenuToggle = document.getElementById('pwaMenuToggle');
+  var burger = document.getElementById('burger-btn');
+  var mmenu = document.getElementById('mmenu');
+
+  // Alternar menú desde el botón táctil "Menú" de la barra inferior
+  if (pwaMenuToggle && burger && mmenu) {
+    pwaMenuToggle.addEventListener('click', function(e) {
+      e.preventDefault();
+      var isOpen = mmenu.classList.toggle('open');
+      burger.classList.toggle('open', isOpen);
+      pwaMenuToggle.classList.toggle('active', isOpen);
+    });
+
+    // Cerrar menú al pulsar en enlaces
+    mmenu.querySelectorAll('a').forEach(function(a) {
+      a.addEventListener('click', function() {
+        pwaMenuToggle.classList.remove('active');
+        burger.classList.remove('open');
+        mmenu.classList.remove('open');
+      });
+    });
+
+    // Sincronizar si se pulsa el burger superior
+    burger.addEventListener('click', function() {
+      setTimeout(function() {
+        pwaMenuToggle.classList.toggle('active', mmenu.classList.contains('open'));
+      }, 50);
+    });
+  }
+
+  // ScrollSpy para actualizar la pestaña activa en la barra inferior
+  var sections = ['inicio', 'temporada', 'futbol-base', 'noticias'];
+  var sectionEls = sections.map(function(id) { return document.getElementById(id); }).filter(Boolean);
+
+  if ('IntersectionObserver' in window && sectionEls.length > 0) {
+    var obsNav = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          var currentId = entry.target.id;
+          navItems.forEach(function(item) {
+            if (item.getAttribute('data-section') === currentId) {
+              item.classList.add('active');
+            } else {
+              item.classList.remove('active');
+            }
+          });
+        }
+      });
+    }, { rootMargin: '-20% 0px -60% 0px', threshold: 0 });
+
+    sectionEls.forEach(function(el) { obsNav.observe(el); });
+  }
+})();
+
+/* 3. Prompt de Instalación PWA (Android / Chromium & iOS) */
+(function() {
+  var banner = document.getElementById('pwaInstallBanner');
+  var installBtn = document.getElementById('pwaInstallBtn');
+  var closeBtn = document.getElementById('pwaCloseBtn');
+  var bannerDesc = document.getElementById('pwaBannerDesc');
+  if (!banner || !installBtn || !closeBtn) return;
+
+  var isStandalone = window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone === true;
+  if (isStandalone || localStorage.getItem('adi_pwa_dismissed') === 'true') {
+    return;
+  }
+
+  var deferredPrompt = null;
+  var ua = (window.navigator.userAgent || '').toLowerCase();
+  var isIos = /iphone|ipad|ipod/.test(ua);
+  var isSafari = isIos && !/crios|fxios|opios/.test(ua);
+
+  // Capturar evento de instalación en Android / Desktop Chromium
+  window.addEventListener('beforeinstallprompt', function(e) {
+    e.preventDefault();
+    deferredPrompt = e;
+    banner.style.display = 'flex';
+  });
+
+  installBtn.addEventListener('click', function() {
+    if (deferredPrompt) {
+      deferredPrompt.prompt();
+      deferredPrompt.userChoice.then(function(choice) {
+        deferredPrompt = null;
+        banner.style.display = 'none';
+        if (choice && choice.outcome === 'accepted') {
+          localStorage.setItem('adi_pwa_dismissed', 'true');
+        }
+      });
+    } else if (isIos) {
+      alert('Para instalar la app en tu iPhone o iPad:\n\n1. Pulsa el botón Compartir (icono cuadrado con flecha hacia arriba en Safari)\n2. Desliza hacia abajo y pulsa "Añadir a la pantalla de inicio"\n3. Pulsa "Añadir".');
+      banner.style.display = 'none';
+      localStorage.setItem('adi_pwa_dismissed', 'true');
+    }
+  });
+
+  closeBtn.addEventListener('click', function() {
+    banner.style.display = 'none';
+    localStorage.setItem('adi_pwa_dismissed', 'true');
+  });
+
+  // Notificación adaptada para iOS Safari tras breve interacción
+  if (isIos && isSafari && !isStandalone && localStorage.getItem('adi_pwa_dismissed') !== 'true') {
+    setTimeout(function() {
+      if (!isStandalone && banner.style.display !== 'flex') {
+        if (bannerDesc) bannerDesc.textContent = 'Pulsa Compartir y "Añadir a pantalla de inicio" para instalar la app.';
+        installBtn.textContent = '¿Cómo?';
+        banner.style.display = 'flex';
+      }
+    }, 4000);
+  }
+
+  window.addEventListener('appinstalled', function() {
+    banner.style.display = 'none';
+    localStorage.setItem('adi_pwa_dismissed', 'true');
+  });
+})();
 </script>
 
 </body>
