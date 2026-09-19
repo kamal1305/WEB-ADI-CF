@@ -1,6 +1,26 @@
 {
   "noticias": [
     {
+      "id": "cronica-20240914-cadete",
+      "titulo": "Arranca la ilusión: Gran expectación ante el inicio de la nueva temporada",
+      "fecha": "2024-09-14",
+      "categoria": "Cadete",
+      "resumen": "Máxima ilusión y ganas en la A.D. Icovesa ante el arranque de la nueva temporada futbolística. Nuestros jugadores afrontan con energía el primer partido del curso.",
+      "cuerpo": "<p>La espera ha llegado a su fin y la emoción se respira en el ambiente. Los equipos de la <strong>A.D. Icovesa</strong> encaran con intensidad el ansiado inicio de la competición, con la firme intención de brindar grandes tardes de fútbol a nuestra afición en Jerez.</p><p>Tras semanas de exigente preparación y un trabajo impecable por parte del <strong>cuerpo técnico</strong>, los jugadores saltan al césped ansiosos por demostrar su evolución. El compromiso, el compañerismo y el esfuerzo colectivo volverán a ser las señas de identidad de nuestro club desde el primer pitido inicial.</p><p>Desde la entidad animamos a todos los aficionados a acompañar al equipo en esta jornada inaugural. <strong>¡Arranca una temporada apasionante para la A.D. Icovesa!</strong></p>",
+      "imagen": "https://placehold.co/800x450/1a1a2e/ffffff?text=AD+Icovesa",
+      "fuente": "A.D. Icovesa"
+    },
+    {
+      "id": "cronica-20240324-alevin-a",
+      "titulo": "Espectacular remontada del Alevín A ante Marianistas (3-1)",
+      "fecha": "2024-03-24",
+      "categoria": "Alevín",
+      "resumen": "El Alevín A de la A.D. Icovesa firmó una magistral segunda parte para darle la vuelta al marcador ante Marianistas con goles de Hugo (2) y Dani.",
+      "cuerpo": "<p>Gran victoria del <strong>Alevín A de la A.D. Icovesa</strong> en un vibrante partido disputado este fin de semana, donde los nuestros se impusieron por 3-1 al Colegio Marianistas tras una memorable segunda mitad.</p><p>El encuentro no comenzó de la mejor manera para los icovesistas, que se marcharon al descanso por detrás en el marcador tras un primer tiempo muy disputado. Sin embargo, tras las correcciones tácticas del cuerpo técnico durante el receso, el equipo saltó al césped con una actitud arrolladora.</p><p>La reacción no se hizo esperar. La gran intensidad defensiva y el acertado juego asociativo permitieron dar la vuelta al resultado. <strong>Hugo</strong>, en estado de gracia, lideró la remontada con un sensacional doblete, mientras que <strong>Dani</strong> certificó la victoria anotando el definitivo 3-1.</p><p>Enhorabuena a todo el grupo por su esfuerzo, compañerismo y garra. ¡Gran trabajo, equipo!</p>",
+      "imagen": "https://placehold.co/800x450/1a1a2e/ffffff?text=AD+Icovesa",
+      "fuente": "A.D. Icovesa"
+    },
+    {
       "titulo": "Semana de Amistosos RFAF: Cuatro citas clave para nuestra cantera",
       "categoria": "Cantera",
       "fecha": "18 Sep 2026",
