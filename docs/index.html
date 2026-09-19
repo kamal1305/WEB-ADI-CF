@@ -13,24 +13,24 @@
    DESIGN TOKENS
    ═══════════════════════════════════════════════════════════ */
 :root {
-  --bg:       #0d0d12;
-  --bg-2:     #14141f;
-  --bg-3:     #1a1a27;
-  --surface:  #161623;
-  --surface-2:#1e1e2f;
+  --bg:       #151824;
+  --bg-2:     #1b2030;
+  --bg-3:     #232a3e;
+  --surface:  #1e2436;
+  --surface-2:#272f45;
   --ink:      #ffffff;
   --ink-2:    #e2e8f0;
   --ink-3:    #94a3b8;
   --rosa:     #E6007E;
-  --rosa-h:   #ff1493;
+  --rosa-h:   #ff2a9d;
   --rosa-d:   #b30062;
-  --rosa-bg:  rgba(230,0,126,0.12);
-  --rosa-glow:rgba(230,0,126,0.35);
+  --rosa-bg:  rgba(230,0,126,0.15);
+  --rosa-glow:rgba(230,0,126,0.42);
   --green:    #10B981;
   --amber:    #F59E0B;
   --red:      #EF4444;
-  --border:   rgba(255,255,255,0.1);
-  --border-2: rgba(255,255,255,0.2);
+  --border:   rgba(255,255,255,0.12);
+  --border-2: rgba(255,255,255,0.22);
 
   --ff-display: 'Archivo Black', Impact, 'Arial Black', sans-serif;
   --ff-body:    'Outfit', system-ui, -apple-system, sans-serif;
@@ -118,12 +118,9 @@ p { max-width: 65ch; }
    ═══════════════════════════════════════════════════════════ */
 .site-nav {
   position: sticky; top: 0; z-index: 100;
-  background: rgba(10,10,10,0.85);
+  background: rgba(21, 24, 36, 0.88);
   backdrop-filter: blur(16px) saturate(1.2);
   border-bottom: 1px solid var(--border);
-}
-@media (prefers-color-scheme: light) {
-  .site-nav { background: rgba(250,250,250,0.88); }
 }
 .nav-inner {
   max-width: var(--max-w); margin: 0 auto;
@@ -497,15 +494,15 @@ p { max-width: 65ch; }
 
 /* Acordeones Fútbol Base (<details>/<summary>) */
 .team-accordion {
-  background: #14141e; border: 1px solid rgba(255, 255, 255, 0.09);
+  background: var(--surface); border: 1px solid var(--border);
   border-radius: var(--radius); margin-bottom: 0.85rem;
   transition: border-color var(--dur-fast) ease, background var(--dur-fast) ease, box-shadow var(--dur-fast) ease;
   overflow: hidden;
 }
-.team-accordion:hover { border-color: rgba(230, 0, 126, 0.4); }
+.team-accordion:hover { border-color: rgba(230, 0, 126, 0.45); }
 .team-accordion[open] {
-  background: #171724; border-color: var(--rosa);
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4), 0 0 15px rgba(230, 0, 126, 0.15);
+  background: var(--surface-2); border-color: var(--rosa);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3), 0 0 16px rgba(230, 0, 126, 0.25);
 }
 .team-summary {
   list-style: none; cursor: pointer; padding: 1rem 1.25rem;
@@ -993,16 +990,16 @@ footer a:hover { color: var(--rosa); }
   background-size: 115px auto !important;
   background-position: center !important;
   background-repeat: no-repeat !important;
-  background-color: #12121b !important;
+  background-color: var(--bg-2) !important;
 }
 
 /* Fallback cuando una noticia no tiene imagen */
 .news-img.no-img {
   position: relative;
   background:
-    radial-gradient(circle at 80% 20%, rgba(230, 0, 126, 0.25) 0%, transparent 55%),
-    radial-gradient(circle at 15% 90%, rgba(230, 0, 126, 0.14) 0%, transparent 45%),
-    linear-gradient(160deg, var(--surface) 0%, #15151c 100%);
+    radial-gradient(circle at 80% 20%, rgba(230, 0, 126, 0.28) 0%, transparent 55%),
+    radial-gradient(circle at 15% 90%, rgba(230, 0, 126, 0.16) 0%, transparent 45%),
+    linear-gradient(160deg, var(--surface) 0%, #171c2a 100%);
   overflow: hidden;
 }
 .news-img.no-img::after {
@@ -1158,7 +1155,7 @@ footer a:hover { color: var(--rosa); }
 
 .shop-media {
   position: relative; overflow: hidden;
-  aspect-ratio: 1/1; background: #0D0D0D;
+  aspect-ratio: 1/1; background: var(--bg-3);
 }
 .shop-media img {
   width: 100%; height: 100%; object-fit: cover;
@@ -1168,8 +1165,8 @@ footer a:hover { color: var(--rosa); }
 
 .shop-badge {
   position: absolute; top: 12px; left: 12px; z-index: 2;
-  background: rgba(10,10,10,.78); color: var(--rosa);
-  border: 1px solid rgba(194,38,95,.35); border-radius: 100px;
+  background: rgba(21, 24, 36, 0.85); color: var(--rosa);
+  border: 1px solid rgba(230, 0, 126, 0.4); border-radius: 100px;
   padding: 4px 12px; font-size: var(--fs-xs); font-weight: 700;
   letter-spacing: 0.06em; text-transform: uppercase;
 }
@@ -2358,14 +2355,14 @@ footer a:hover { color: var(--rosa); }
   .wa-button svg{ width:32px; height:32px; }
   .wa-panel{
     position:fixed; left:24px; bottom:96px; z-index:9998; width:320px; max-width:calc(100vw - 48px);
-    background:#141414; color:#FAFAFA; border:1px solid rgba(194,38,95,.35);
+    background:var(--surface); color:#FAFAFA; border:1px solid rgba(230,0,126,.35);
     border-radius:18px; box-shadow:0 18px 50px rgba(0,0,0,.6);
     overflow:hidden; transform-origin:bottom left;
     opacity:0; visibility:hidden; transform:scale(.85) translateY(12px);
     transition:opacity .22s ease, transform .22s ease, visibility .22s;
   }
   .wa-panel.open{ opacity:1; visibility:visible; transform:scale(1) translateY(0); }
-  .wa-head{ display:flex; align-items:center; gap:12px; padding:16px 18px; background:linear-gradient(135deg,#1a1a1a,#222); border-bottom:1px solid rgba(194,38,95,.3); }
+  .wa-head{ display:flex; align-items:center; gap:12px; padding:16px 18px; background:linear-gradient(135deg,var(--surface-2),var(--bg-2)); border-bottom:1px solid rgba(230,0,126,.3); }
   .wa-head .wa-mini{ width:40px; height:40px; border-radius:12px; background:#25D366; display:flex; align-items:center; justify-content:center; flex-shrink:0; }
   .wa-head .wa-mini svg{ width:24px; height:24px; }
   .wa-head h3{ margin:0; font-family:'Archivo Black',sans-serif; font-size:15px; letter-spacing:.3px; color:#fff; }
@@ -2373,15 +2370,15 @@ footer a:hover { color: var(--rosa); }
   .wa-body{ padding:12px; display:flex; flex-direction:column; gap:8px; }
   .wa-opt{
     display:flex; align-items:center; gap:11px; padding:11px 12px; border-radius:12px; cursor:pointer;
-    background:rgba(255,255,255,.04); border:1px solid rgba(255,255,255,.06);
+    background:rgba(255,255,255,.05); border:1px solid rgba(255,255,255,.08);
     transition:background .18s ease, transform .18s ease, border-color .18s ease;
   }
-  .wa-opt:hover{ background:rgba(194,38,95,.12); border-color:rgba(194,38,95,.45); transform:translateX(-2px); }
+  .wa-opt:hover{ background:rgba(230,0,126,.15); border-color:rgba(230,0,126,.5); transform:translateX(-2px); }
   .wa-opt:active{ transform:scale(.98); }
-  .wa-opt svg{ width:22px; height:22px; flex-shrink:0; color:#C2265F; }
+  .wa-opt svg{ width:22px; height:22px; flex-shrink:0; color:var(--rosa); }
   .wa-opt .wa-opt-t{ font-family:'Outfit',sans-serif; font-weight:600; font-size:14px; line-height:1.2; color:#fff; }
   .wa-opt .wa-opt-s{ font-family:'Outfit',sans-serif; font-size:11.5px; color:rgba(250,250,250,.55); line-height:1.3; }
-  .wa-foot{ padding:10px 18px; border-top:1px solid rgba(255,255,255,.06); font-family:'Outfit',sans-serif; font-size:11.5px; color:rgba(250,250,250,.45); text-align:center; }
+  .wa-foot{ padding:10px 18px; border-top:1px solid rgba(255,255,255,.08); font-family:'Outfit',sans-serif; font-size:11.5px; color:rgba(250,250,250,.45); text-align:center; }
 </style>
 
 <button class="wa-button" id="waButton" aria-label="Abrir chat de WhatsApp">
