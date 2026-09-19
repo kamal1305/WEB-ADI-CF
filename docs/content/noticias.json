@@ -1,6 +1,16 @@
 {
   "noticias": [
     {
+      "id": "cronica-20240914-cadete",
+      "titulo": "Arranca la ilusión: Gran expectación ante el inicio de la nueva temporada",
+      "fecha": "2024-09-14",
+      "categoria": "Cadete",
+      "resumen": "Máxima ilusión y ganas en la A.D. Icovesa ante el arranque de la nueva temporada futbolística. Nuestros jugadores afrontan con energía el primer partido del curso.",
+      "cuerpo": "<p>La espera ha llegado a su fin y la emoción se respira en el ambiente. Los equipos de la <strong>A.D. Icovesa</strong> encaran con intensidad el ansiado inicio de la competición, con la firme intención de brindar grandes tardes de fútbol a nuestra afición en Jerez.</p><p>Tras semanas de exigente preparación y un trabajo impecable por parte del <strong>cuerpo técnico</strong>, los jugadores saltan al césped ansiosos por demostrar su evolución. El compromiso, el compañerismo y el esfuerzo colectivo volverán a ser las señas de identidad de nuestro club desde el primer pitido inicial.</p><p>Desde la entidad animamos a todos los aficionados a acompañar al equipo en esta jornada inaugural. <strong>¡Arranca una temporada apasionante para la A.D. Icovesa!</strong></p>",
+      "imagen": "https://placehold.co/800x450/1a1a2e/ffffff?text=AD+Icovesa",
+      "fuente": "A.D. Icovesa"
+    },
+    {
       "id": "cronica-20240324-alevin-a",
       "titulo": "Espectacular remontada del Alevín A ante Marianistas (3-1)",
       "fecha": "2024-03-24",
