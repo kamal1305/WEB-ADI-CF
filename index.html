@@ -340,161 +340,228 @@ p { max-width: 65ch; }
   transform: translateY(-2px);
 }
 
-/* Next match — large feature card */
-.bento-next {
-  background: linear-gradient(145deg, #1e2638 0%, #151b27 100%);
-  border: 1.5px solid rgba(255, 255, 255, 0.18);
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.35);
-}
-.bento-next:hover { border-color: rgba(255, 255, 255, 0.35); box-shadow: 0 10px 38px rgba(0, 0, 0, 0.45); }
-.bento-next .match-category {
-  color: #ffffff; background: rgba(230, 0, 126, 0.28);
-  border: 1px solid rgba(230, 0, 126, 0.5);
-  font-weight: 700;
-}
-.bento-next .match-category::before { background: #ff2a9d; }
-.bento-next .match-teams {
-  font-size: clamp(1.35rem, 2.2vw, 1.85rem);
-  color: #ffffff !important;
-  font-weight: 800;
-  text-shadow: 0 2px 6px rgba(0,0,0,0.5);
-}
-.bento-next .match-venue {
-  color: #e2e8f0 !important;
-  font-size: 0.95rem;
-  font-weight: 500;
-}
-.bento-next .match-date {
-  color: #ffffff !important;
-  font-weight: 700;
-}
-.bento-next .match-rfaf a {
-  color: #ffffff !important;
-  background: rgba(255, 255, 255, 0.16);
-  border: 1.5px solid #ffffff;
-  font-weight: 700;
+/* ============================================================
+   CARTELERÍA UNIFICADA CON PLANTILLA CORPORATIVA (#temporada)
+   ============================================================ */
+.match-card {
+  background: url('img/ESCUDOS/plantilla.png') center/cover no-repeat;
+  border: 1px solid rgba(230, 0, 126, 0.35);
+  border-radius: 14px;
+  position: relative;
+  overflow: hidden;
+  min-height: 220px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 1.25rem;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+  transition: transform var(--dur-fast) ease, border-color var(--dur-fast) ease, box-shadow var(--dur-fast) ease;
 }
 
-/* Result cards */
-.bento-result { border-left: 3px solid var(--border); }
-.bento-result.win { border-left-color: var(--green); }
-.bento-result.draw { border-left-color: var(--amber); }
-.bento-result.loss { border-left-color: var(--red); }
+.match-card:hover {
+  border-color: #E6007E;
+  transform: translateY(-3px);
+  box-shadow: 0 12px 36px rgba(230, 0, 126, 0.3);
+}
 
-.match-category {
-  display: inline-flex; align-items: center; gap: 6px;
-  padding: 4px 10px; border-radius: 100px;
-  font-size: var(--fs-xs); font-weight: 600;
-  color: var(--ink-2); background: var(--bg-3);
-  letter-spacing: 0.05em; text-transform: uppercase;
-  margin-bottom: 0.75rem; align-self: flex-start;
+.bento-next.match-card {
+  border: 1.5px solid rgba(230, 0, 126, 0.55);
+  box-shadow: 0 10px 32px rgba(230, 0, 126, 0.25);
+  min-height: 250px;
 }
-.match-category::before {
-  content: ''; width: 5px; height: 5px;
-  border-radius: 50%; background: var(--ink-3);
+
+.bento-next.match-card:hover {
+  border-color: #ff2a9d;
+  box-shadow: 0 14px 44px rgba(230, 0, 126, 0.4);
 }
-.match-date {
-  font-size: var(--fs-xs); color: var(--ink-3);
-  font-weight: 500; letter-spacing: 0.04em; text-transform: uppercase;
-  margin-top: auto; padding-top: 0.75rem;
+
+/* Capa Superior (Categoría y Condición) */
+.match-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  width: 100%;
+  position: relative;
+  z-index: 2;
 }
-.match-teams {
-  font-family: var(--ff-display);
-  font-size: clamp(1.05rem, 1.6vw, 1.25rem);
-  line-height: 1.2;
+
+.match-cat-badge {
+  background: #E6007E;
   color: #ffffff;
-  text-align: center;
-  margin: 0.35rem 0;
+  font-weight: 700;
+  font-size: 0.72rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  padding: 5px 12px;
+  border-radius: 6px;
+  box-shadow: 0 2px 8px rgba(230, 0, 126, 0.5);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
-.bento-next .match-teams {
-  font-size: clamp(1.35rem, 2.2vw, 1.85rem);
+
+.match-cond-badge {
+  background: rgba(12, 14, 22, 0.75);
+  backdrop-filter: blur(6px);
+  color: #f1f5f9;
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  font-weight: 700;
+  font-size: 0.7rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  padding: 4px 10px;
+  border-radius: 6px;
+  white-space: nowrap;
 }
-.match-escudos {
+
+.match-cond-badge.cond-local {
+  border-color: rgba(37, 211, 102, 0.5);
+  color: #4ade80;
+}
+
+.match-cond-badge.cond-visitante {
+  border-color: rgba(230, 0, 126, 0.5);
+  color: #ff80c0;
+}
+
+/* Zona Central (Enfrentamiento) */
+.match-versus {
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 16px;
-  margin: 14px 0 10px;
-  flex-wrap: wrap;
+  margin: 0.5rem 0;
+  position: relative;
+  z-index: 2;
 }
-.match-escudos .match-escudo {
-  width: 76px;
-  height: 76px;
+
+.match-versus .match-escudo {
+  width: 44px;
+  height: 44px;
   object-fit: contain;
-  border-radius: 12px;
-  background: rgba(255,255,255,0.08);
-  border: 1.5px solid rgba(255,255,255,0.18);
-  padding: 6px;
-  box-shadow: 0 4px 14px rgba(0,0,0,0.45);
+  border-radius: 10px;
+  background: rgba(14, 16, 24, 0.85);
+  backdrop-filter: blur(4px);
+  border: 1.5px solid rgba(255, 255, 255, 0.22);
+  padding: 4px;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.65);
+  transition: transform var(--dur-fast) ease, border-color var(--dur-fast) ease;
 }
-.bento-next .match-escudos .match-escudo {
-  width: 84px;
-  height: 84px;
-  padding: 7px;
+
+.match-card:hover .match-versus .match-escudo {
+  transform: scale(1.08);
+  border-color: rgba(255, 255, 255, 0.45);
 }
-@media (max-width: 600px) {
-  .match-escudos .match-escudo { width: 62px; height: 62px; }
-  .bento-next .match-escudos .match-escudo { width: 68px; height: 68px; }
+
+.bento-next .match-versus .match-escudo {
+  width: 52px;
+  height: 52px;
+  padding: 5px;
 }
-.match-escudos .vs-badge {
+
+.match-versus .match-vs-badge {
   font-family: var(--ff-display);
   font-weight: 800;
   color: #E6007E;
-  font-size: 1.1rem;
+  font-size: 1.15rem;
   letter-spacing: 0.05em;
-  padding: 4px 12px;
-  background: rgba(230,0,126,0.15);
+  background: rgba(12, 14, 22, 0.85);
+  border: 1.5px solid rgba(230, 0, 126, 0.55);
   border-radius: 8px;
-  border: 1.5px solid rgba(230,0,126,0.4);
+  padding: 3px 11px;
+  box-shadow: 0 0 14px rgba(230, 0, 126, 0.35);
 }
 
-.match-hora-badge {
+.bento-next .match-versus .match-vs-badge {
+  font-size: 1.3rem;
+  padding: 4px 14px;
+}
+
+/* Capa Inferior (Datos del encuentro) */
+.match-bottom {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  text-align: center;
+  background: linear-gradient(180deg, rgba(14, 16, 24, 0.72) 0%, rgba(10, 12, 18, 0.94) 100%);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 10px;
+  padding: 0.65rem 0.85rem;
+  position: relative;
+  z-index: 2;
+}
+
+.match-bottom .match-teams {
+  color: #ffffff !important;
+  font-weight: 800;
+  font-family: var(--ff-display);
+  font-size: clamp(0.95rem, 1.4vw, 1.15rem);
+  line-height: 1.25;
+  margin: 0 0 4px;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.95);
+}
+
+.bento-next .match-bottom .match-teams {
+  font-size: clamp(1.15rem, 2vw, 1.45rem);
+}
+
+.match-bottom .match-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  font-size: 0.82rem;
+  color: #f1f5f9;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.85);
+}
+
+.match-bottom .match-datetime {
+  font-weight: 600;
+  color: #f1f5f9;
+}
+
+.match-bottom .match-venue {
+  color: #e2e8f0;
+  font-weight: 500;
+  font-size: 0.8rem;
+}
+
+.match-bottom .match-score {
+  font-family: var(--ff-display);
+  font-size: 1.4rem;
+  font-weight: 800;
+  color: #ffffff;
+  margin-top: 4px;
+  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.9);
+}
+
+.match-bottom .match-rfaf {
+  margin-top: 6px;
+}
+
+.match-bottom .match-rfaf a {
+  color: #ffffff !important;
+  font-weight: 700;
+  font-size: 0.78rem;
+  text-decoration: none;
+  background: rgba(255, 255, 255, 0.15);
+  border: 1.5px solid #ffffff;
+  border-radius: 100px;
+  padding: 4px 14px;
   display: inline-flex;
   align-items: center;
-  align-self: center;
-  margin: 0.5rem 0 0.25rem;
-  padding: 4px 12px;
-  background: rgba(255, 255, 255, 0.06);
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  border-radius: 100px;
-  color: #f1f5f9;
-  font-weight: 700;
-  font-size: 0.9rem;
-  letter-spacing: 0.03em;
+  gap: 6px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+  transition: all var(--dur-fast) ease;
 }
-.bento-next .match-hora-badge {
-  background: rgba(230, 0, 126, 0.2);
-  border-color: rgba(230, 0, 126, 0.45);
-  color: #ffffff;
-  font-size: 1rem;
-  padding: 6px 16px;
+
+.match-bottom .match-rfaf a:hover {
+  background: #ffffff;
+  color: #11141d !important;
+  border-color: #ffffff;
+  transform: translateY(-1px);
 }
-.match-tipo {
-  font-size: 0.72rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase;
-  color: var(--rosa); margin-bottom: 2px; text-align: center;
-}
-.match-venue {
-  font-size: var(--fs-small); color: #f1f5f9 !important; margin-top: 6px; text-align: center;
-}
-.match-date {
-  font-size: var(--fs-xs); color: #f1f5f9 !important;
-  font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase;
-  margin-top: auto; padding-top: 0.75rem; text-align: center;
-}
-.match-score {
-  font-family: var(--ff-display); font-size: clamp(1.5rem, 3vw, 2rem);
-  color: var(--ink); margin: 0.5rem 0 0.25rem; text-align: center;
-  letter-spacing: 0.05em;
-}
-.match-result-label {
-  font-size: var(--fs-xs); font-weight: 600;
-  letter-spacing: 0.06em; text-transform: uppercase; text-align: center;
-}
-.match-result-label.win { color: var(--green); }
-.match-result-label.draw { color: var(--amber); }
-.match-result-label.loss { color: var(--red); }
-.match-rfaf { text-align: center; margin-top: 8px; font-size: 0.82rem; }
-.match-rfaf a { color: #ffffff !important; font-weight: 700; text-decoration: none; }
 
 /* Noticias interactivas */
 .btn-toggle-cronica {
@@ -2099,29 +2166,44 @@ footer a:hover { color: var(--rosa); }
 
       var fallbackImg = 'img/escudo.png';
 
-      var html = '<div class="bento-card ' + (isNext ? 'bento-next bento-span-4' : 'bento-result bento-span-2') + (opts.delay ? ' reveal reveal-delay-' + opts.delay : ' reveal') + '">';
-      html += '<div class="match-category">' + esc(p.categoria || (isNext ? 'Partido Destacado' : 'Amistoso RFAF')) + (p.tipo ? ' · ' + esc(p.tipo) : '') + '</div>';
+      var html = '<div class="bento-card match-card ' + (isNext ? 'bento-next bento-span-4' : 'bento-result bento-span-2') + (opts.delay ? ' reveal reveal-delay-' + opts.delay : ' reveal') + '">';
 
-      html += '<div class="match-escudos">';
-      html += '<img class="match-escudo" src="' + esc(escudo1) + '" alt="' + esc(alt1) + '" onerror="this.onerror=null; this.src=\'' + fallbackImg + '\';">';
-      html += '<span class="vs-badge">VS</span>';
-      html += '<img class="match-escudo" src="' + esc(escudo2) + '" alt="' + esc(alt2) + '" onerror="this.onerror=null; this.src=\'' + fallbackImg + '\';">';
+      // Capa Superior: Badge de Categoría en magenta (#E6007E) y condición (Local / Visitante)
+      var categoriaTxt = esc((p.categoria || 'Fútbol Base').toUpperCase());
+      var condicionTxt = esc(p.condicion || (esVisitante ? 'Visitante' : 'Local'));
+      html += '<div class="match-top">';
+      html += '  <span class="match-cat-badge">' + categoriaTxt + '</span>';
+      html += '  <span class="match-cond-badge ' + (esVisitante ? 'cond-visitante' : 'cond-local') + '">' + condicionTxt + '</span>';
       html += '</div>';
 
-      html += '<div class="match-teams">' + esc(localName) + ' vs ' + esc(visitanteName) + '</div>';
-      html += '<div class="match-venue">' + esc(p.campo || 'Por determinar') + '</div>';
+      // Zona Central (Enfrentamiento):
+      // Contenedor flex centrado: <img> A.D. Icovesa 44x44px, Badge central "VS" en magenta (#E6007E), <img> rival 44x44px
+      html += '<div class="match-versus">';
+      html += '  <img class="match-escudo" src="' + esc(escudo1) + '" alt="' + esc(alt1) + '" onerror="this.onerror=null; this.src=\'' + fallbackImg + '\';">';
+      html += '  <span class="match-vs-badge">VS</span>';
+      html += '  <img class="match-escudo" src="' + esc(escudo2) + '" alt="' + esc(alt2) + '" onerror="this.onerror=null; this.src=\'' + fallbackImg + '\';">';
+      html += '</div>';
+
+      // Capa Inferior (Datos del encuentro):
+      // Nombres de los equipos en blanco puro (#ffffff, negrita).
+      // Fecha, hora y campo con tipografía blanca/gris (#f1f5f9) con text-shadow para legibilidad absoluta.
+      html += '<div class="match-bottom">';
+      html += '  <div class="match-teams">' + esc(localName) + ' vs ' + esc(visitanteName) + '</div>';
+      var fechaTxt = p.fechaTexto || fechaBonita(p.fecha);
+      var horaTxt = p.hora ? ' · ' + esc(p.hora) + ' h' : '';
+      html += '  <div class="match-meta">';
+      html += '    <div class="match-datetime">📅 ' + esc(fechaTxt) + horaTxt + '</div>';
+      html += '    <div class="match-venue">📍 ' + esc(p.campo || 'Por determinar') + '</div>';
+      html += '  </div>';
 
       if (p.resultado && p.resultado !== '—') {
-        html += '<div class="match-score">' + esc(p.resultado) + '</div>';
-      } else {
-        html += '<div class="match-hora-badge">' + (p.hora ? esc(p.hora) + ' h' : 'Amistoso de preparación') + '</div>';
+        html += '  <div class="match-score">' + esc(p.resultado) + '</div>';
       }
-
-      var fechaTxt = p.fechaTexto || fechaBonita(p.fecha);
-      html += '<div class="match-date">' + esc(fechaTxt) + '</div>';
       if (p.rfaf_url) {
-        html += '<div class="match-rfaf"><a href="' + esc(p.rfaf_url) + '" target="_blank" rel="noopener">Acta / Calendario oficial RFAF ↗</a></div>';
+        html += '  <div class="match-rfaf"><a href="' + esc(p.rfaf_url) + '" target="_blank" rel="noopener">Acta / Calendario oficial RFAF ↗</a></div>';
       }
+      html += '</div>';
+
       html += '</div>';
       return html;
     }
