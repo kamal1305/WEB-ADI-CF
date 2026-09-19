@@ -321,7 +321,9 @@ Tu misión es transformar el resultado del partido en una publicación deportiva
 
 Debes responder ÚNICAMENTE con un objeto JSON válido (sin Markdown, sin bloques \`\`\`json):
 {
-  "copy_redes": "Copy persuasivo, vibrante y deportivo. Con tono de barrio jerezano noble, emojis futboleros (⚽🔥💙💖👏), resumen del partido, felicitación a la plantilla y los hashtags oficiales: #ADIcovesa #Jerez #FutbolBase #CanteraIcovesa #OrgulloDeBarrio",
+  "copy_redes": "Copy persuasivo, vibrante y deportivo para Instagram y Facebook. Con tono de barrio jerezano noble, emojis futboleros (⚽🔥💙💖👏), resumen del partido, felicitación a la plantilla y los hashtags oficiales: #ADIcovesa #Jerez #FutbolBase #CanteraIcovesa #OrgulloDeBarrio",
+  "copy_x": "Tweet oficial conciso para X (máximo 250 caracteres con titular, resultado, enlace https://kamal1305.github.io/WEB-ADI-CF/#noticias y hashtags #ADIcovesa #Jerez)",
+  "copy_telegram": "Mensaje deportivo completo con formato Markdown para el Canal de Telegram de socios y familias con negritas, resultado, hitos y enlace directo a la web",
   "slide1": {
     "categoria": "INFANTIL | BENJAMÍN | ALEVÍN | etc.",
     "competicion": "AMISTOSO PRETEMPORADA | LIGA RFAF",
@@ -389,6 +391,12 @@ try {
 // Fallbacks de seguridad
 if (!social.copy_redes) {
   social.copy_redes = '¡Gran partido de nuestra cantera de A.D. Icovesa! ⚽🔥 Seguimos sumando aprendizaje, entrega y pasión por nuestros colores. ¡Orgullosos de nuestro equipo! #ADIcovesa #Jerez #FutbolBase';
+}
+if (!social.copy_x) {
+  social.copy_x = '⚽ Gran partido de la cantera de la A.D. Icovesa. ¡Orgullo de equipo y de barrio! Crónica completa en la web: https://kamal1305.github.io/WEB-ADI-CF/#noticias #ADIcovesa #Jerez';
+}
+if (!social.copy_telegram) {
+  social.copy_telegram = '📢 *NOVEDADES A.D. ICOVESA*\\n\\n' + social.copy_redes + '\\n\\n🌐 [Ver crónica en la web oficial](https://kamal1305.github.io/WEB-ADI-CF/#noticias)';
 }
 
 social.slide1 = social.slide1 || {
@@ -649,6 +657,8 @@ const svg4 = \`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 1080" w
 return [{
   json: {
     copy_redes: social.copy_redes,
+    copy_x: social.copy_x,
+    copy_telegram: social.copy_telegram,
     slide1_svg: svg1,
     slide2_svg: svg2,
     slide3_svg: svg3,
@@ -671,10 +681,16 @@ return [{
         resource: "message",
         operation: "sendMessage",
         chatId: "={{ $('Normalizar Mensaje Partido').first().json.chatId }}",
-        text: `=📢 *PROPUESTA DE PUBLICACIÓN EN REDES SOCIALES*
+        text: `=📢 *PROPUESTA DE PUBLICACIÓN EN REDES SOCIALES (CASCADA)*
 
-📝 *Copy para Instagram / Facebook / X:*
+📸 *Instagram / Facebook:*
 {{ $('Parsear Social Media JSON').first().json.copy_redes }}
+
+🐦 *X (Twitter):*
+{{ $('Parsear Social Media JSON').first().json.copy_x }}
+
+💬 *Canal Oficial Telegram:*
+{{ $('Parsear Social Media JSON').first().json.copy_telegram }}
 
 🖼️ *Carrusel Generado (4 Diapositivas 1080x1080 px):*
 1️⃣ *Marcador:* {{ $('Parsear Social Media JSON').first().json.slide1.equipo_local }} {{ $('Parsear Social Media JSON').first().json.slide1.goles_local }} - {{ $('Parsear Social Media JSON').first().json.slide1.goles_visitante }} {{ $('Parsear Social Media JSON').first().json.slide1.equipo_visitante }}
@@ -682,7 +698,7 @@ return [{
 3️⃣ *Valores:* {{ $('Parsear Social Media JSON').first().json.slide3.titular }}
 4️⃣ *Web:* {{ $('Parsear Social Media JSON').first().json.slide4.web_url }}
 
-Por favor, revisa la propuesta y pulsa una opción para autorizar la publicación oficial:`,
+Por favor, revisa la propuesta y pulsa una opción para autorizar la emisión oficial en cascada:`,
         replyMarkup: "inlineKeyboard",
         inlineKeyboard: {
           rows: [
@@ -798,10 +814,44 @@ Por favor, revisa la propuesta y pulsa una opción para autorizar la publicació
     },
     {
       parameters: {
+        method: "POST",
+        url: "https://api.twitter.com/2/tweets",
+        sendHeaders: true,
+        headerParameters: {
+          parameters: [
+            {
+              name: "Authorization",
+              value: "Bearer {{ $env.TWITTER_BEARER_TOKEN || 'TU_TWITTER_BEARER_TOKEN' }}"
+            },
+            {
+              name: "Content-Type",
+              value: "application/json"
+            }
+          ]
+        },
+        sendBody: true,
+        bodyParameters: {
+          parameters: [
+            {
+              name: "text",
+              value: "={{ $('Parsear Social Media JSON').first().json.copy_x }}"
+            }
+          ]
+        },
+        options: {}
+      },
+      id: "node-x-twitter-api",
+      name: "X API v2 (Twitter)",
+      type: "n8n-nodes-base.httpRequest",
+      typeVersion: 4.2,
+      position: [2380, 480]
+    },
+    {
+      parameters: {
         resource: "message",
         operation: "sendMessage",
         chatId: "@adicovesa_canal",
-        text: "=📢 *NUEVA JORNADA · A.D. ICOVESA*\n\n{{ $('Parsear Social Media JSON').first().json.copy_redes }}\n\n🌐 [Leer crónica completa](https://kamal1305.github.io/WEB-ADI-CF/#noticias)",
+        text: "=📢 *NUEVA JORNADA · A.D. ICOVESA*\n\n{{ $('Parsear Social Media JSON').first().json.copy_telegram }}\n\n🌐 [Leer crónica completa](https://kamal1305.github.io/WEB-ADI-CF/#noticias)",
         additionalFields: {
           parse_mode: "Markdown"
         }
@@ -810,7 +860,7 @@ Por favor, revisa la propuesta y pulsa una opción para autorizar la publicació
       name: "Telegram Channel (Canal Oficial)",
       type: "n8n-nodes-base.telegram",
       typeVersion: 1.2,
-      position: [2380, 480],
+      position: [2620, 480],
       credentials: {
         telegramApi: {
           id: "adi-telegram-bot",
@@ -823,7 +873,7 @@ Por favor, revisa la propuesta y pulsa una opción para autorizar la publicació
         resource: "message",
         operation: "sendMessage",
         chatId: "={{ $('Normalizar Mensaje Partido').first().json.chatId }}",
-        text: "=🎉 *¡Publicación Autorizada y Completada!*\n\nEl contenido ya ha sido emitido con éxito hacia Meta (Instagram / Facebook) y el Canal Oficial de Telegram de la A.D. Icovesa.",
+        text: "=🎉 *¡Publicación Autorizada y Emitida en Cascada!*\n\nEl contenido deportivo ya ha sido emitido con éxito hacia:\n✅ *Meta* (Instagram y Facebook)\n✅ *X* (Twitter @adicovesa)\n✅ *Telegram* (Canal Oficial @adicovesa_canal)\n\n🌐 [Ver web oficial](https://kamal1305.github.io/WEB-ADI-CF/#noticias)",
         additionalFields: {
           parse_mode: "Markdown"
         }
@@ -832,7 +882,7 @@ Por favor, revisa la propuesta y pulsa una opción para autorizar la publicació
       name: "Telegram - Confirmar Publicación Redes",
       type: "n8n-nodes-base.telegram",
       typeVersion: 1.2,
-      position: [2620, 480],
+      position: [2860, 480],
       credentials: {
         telegramApi: {
           id: "adi-telegram-bot",
@@ -1056,6 +1106,17 @@ Por favor, revisa la propuesta y pulsa una opción para autorizar la publicació
       ]
     },
     "Meta Graph API (Instagram / Facebook)": {
+      main: [
+        [
+          {
+            node: "X API v2 (Twitter)",
+            type: "main",
+            index: 0
+          }
+        ]
+      ]
+    },
+    "X API v2 (Twitter)": {
       main: [
         [
           {
