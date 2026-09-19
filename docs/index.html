@@ -118,9 +118,10 @@ p { max-width: 65ch; }
    ═══════════════════════════════════════════════════════════ */
 .site-nav {
   position: sticky; top: 0; z-index: 100;
-  background: rgba(21, 24, 36, 0.88);
-  backdrop-filter: blur(16px) saturate(1.2);
-  border-bottom: 1px solid var(--border);
+  background: linear-gradient(135deg, rgba(165, 18, 92, 0.95) 0%, rgba(125, 12, 68, 0.96) 100%);
+  backdrop-filter: blur(16px) saturate(1.3);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.18);
+  box-shadow: 0 4px 20px rgba(130, 10, 70, 0.35);
 }
 .nav-inner {
   max-width: var(--max-w); margin: 0 auto;
@@ -128,22 +129,27 @@ p { max-width: 65ch; }
   display: flex; align-items: center; justify-content: space-between;
   height: 64px;
 }
-.brand { display: flex; align-items: center; gap: 12px; text-decoration: none; color: var(--ink); }
-.brand img { width: 42px; height: 42px; border-radius: 50%; }
-.brand-name { font-family: var(--ff-display); font-size: 16px; letter-spacing: -0.02em; }
+.brand { display: flex; align-items: center; gap: 12px; text-decoration: none; color: #ffffff; }
+.brand img { width: 42px; height: 42px; border-radius: 50%; box-shadow: 0 2px 8px rgba(0,0,0,0.35); }
+.brand-name { font-family: var(--ff-display); font-size: 16px; letter-spacing: -0.02em; color: #ffffff; }
 .nav-links { display: none; gap: 28px; align-items: center; }
 .nav-links a {
-  color: var(--ink-2); text-decoration: none; font-weight: 500;
+  color: rgba(255, 255, 255, 0.9); text-decoration: none; font-weight: 600;
   font-size: 0.875rem; letter-spacing: 0.01em;
-  transition: color var(--dur-fast) ease;
+  transition: color var(--dur-fast) ease, text-shadow var(--dur-fast) ease;
 }
-.nav-links a:hover { color: var(--ink); }
+.nav-links a:hover { color: #ffffff; text-shadow: 0 0 10px rgba(255, 255, 255, 0.6); }
 .nav-cta {
-  background: var(--rosa) !important; color: #fff !important;
-  padding: 8px 20px; border-radius: 100px; font-weight: 600;
-  transition: background var(--dur-fast) ease, transform var(--dur-fast) ease !important;
+  background: #25D366 !important; color: #ffffff !important;
+  padding: 8px 22px; border-radius: 100px; font-weight: 700;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.3);
+  transition: background var(--dur-fast) ease, transform var(--dur-fast) ease, box-shadow var(--dur-fast) ease !important;
 }
-.nav-cta:hover { background: var(--rosa-h) !important; }
+.nav-cta:hover {
+  background: #1da851 !important; color: #ffffff !important;
+  box-shadow: 0 6px 18px rgba(37, 211, 102, 0.5);
+  transform: translateY(-1px);
+}
 .nav-cta:active { transform: scale(0.97); }
 
 .burger {
@@ -151,7 +157,7 @@ p { max-width: 65ch; }
   background: none; border: none; cursor: pointer; padding: 8px;
 }
 .burger span {
-  width: 22px; height: 2px; background: var(--ink);
+  width: 22px; height: 2px; background: #ffffff;
   transition: transform var(--dur-fast) ease, opacity var(--dur-fast) ease;
 }
 .burger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
@@ -159,16 +165,21 @@ p { max-width: 65ch; }
 .burger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
 
 .mobile-menu {
-  display: none; flex-direction: column; padding: 0 clamp(1rem, 4vw, 1.5rem) 20px;
-  border-top: 1px solid var(--border);
+  display: none; flex-direction: column;
+  padding: 0 clamp(1rem, 4vw, 1.5rem) 20px;
+  border-top: 1px solid rgba(255, 255, 255, 0.18);
+  background: rgba(125, 12, 68, 0.98);
 }
 .mobile-menu.open { display: flex; }
 .mobile-menu a {
-  padding: 14px 0; text-decoration: none; color: var(--ink-2);
-  border-bottom: 1px solid var(--border); font-weight: 500; font-size: 0.9375rem;
+  padding: 14px 0; text-decoration: none;
+  color: #ffffff; border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+  font-weight: 600; font-size: 0.9375rem;
+  transition: color var(--dur-fast) ease;
 }
 .mobile-menu a:last-child { border-bottom: none; }
-.mobile-menu a:hover { color: var(--rosa); }
+.mobile-menu a:hover { color: #25D366; }
+.mobile-menu a[href="#contacto"] { color: #25D366; font-weight: 700; }
 
 @media (min-width: 860px) {
   .nav-links { display: flex; }
@@ -331,17 +342,38 @@ p { max-width: 65ch; }
 
 /* Next match — large feature card */
 .bento-next {
-  background: linear-gradient(135deg, var(--rosa-d) 0%, #1a0a14 50%, var(--surface) 100%);
-  border-color: rgba(194,38,95,0.3);
+  background: linear-gradient(145deg, #1e2638 0%, #151b27 100%);
+  border: 1.5px solid rgba(255, 255, 255, 0.18);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.35);
 }
-.bento-next:hover { border-color: var(--rosa); }
+.bento-next:hover { border-color: rgba(255, 255, 255, 0.35); box-shadow: 0 10px 38px rgba(0, 0, 0, 0.45); }
 .bento-next .match-category {
-  color: var(--rosa); background: rgba(194,38,95,0.15);
-  border: 1px solid rgba(194,38,95,0.3);
+  color: #ffffff; background: rgba(230, 0, 126, 0.28);
+  border: 1px solid rgba(230, 0, 126, 0.5);
+  font-weight: 700;
 }
-.bento-next .match-category::before { background: var(--rosa); }
-.bento-next .match-teams { font-size: clamp(1.25rem, 2vw, 1.75rem); }
-.bento-next .match-venue { color: var(--ink-2); }
+.bento-next .match-category::before { background: #ff2a9d; }
+.bento-next .match-teams {
+  font-size: clamp(1.35rem, 2.2vw, 1.85rem);
+  color: #ffffff !important;
+  font-weight: 800;
+  text-shadow: 0 2px 6px rgba(0,0,0,0.5);
+}
+.bento-next .match-venue {
+  color: #e2e8f0 !important;
+  font-size: 0.95rem;
+  font-weight: 500;
+}
+.bento-next .match-date {
+  color: #ffffff !important;
+  font-weight: 700;
+}
+.bento-next .match-rfaf a {
+  color: #ffffff !important;
+  background: rgba(255, 255, 255, 0.16);
+  border: 1.5px solid #ffffff;
+  font-weight: 700;
+}
 
 /* Result cards */
 .bento-result { border-left: 3px solid var(--border); }
@@ -381,34 +413,39 @@ p { max-width: 65ch; }
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 10px;
-  margin: 10px 0 8px;
+  gap: 16px;
+  margin: 14px 0 10px;
   flex-wrap: wrap;
 }
 .match-escudos .match-escudo {
-  width: 38px;
-  height: 38px;
+  width: 76px;
+  height: 76px;
   object-fit: contain;
-  border-radius: 8px;
-  background: rgba(255,255,255,0.06);
-  border: 1px solid rgba(255,255,255,0.14);
-  padding: 3px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.4);
+  border-radius: 12px;
+  background: rgba(255,255,255,0.08);
+  border: 1.5px solid rgba(255,255,255,0.18);
+  padding: 6px;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.45);
 }
 .bento-next .match-escudos .match-escudo {
-  width: 42px;
-  height: 42px;
+  width: 84px;
+  height: 84px;
+  padding: 7px;
+}
+@media (max-width: 600px) {
+  .match-escudos .match-escudo { width: 62px; height: 62px; }
+  .bento-next .match-escudos .match-escudo { width: 68px; height: 68px; }
 }
 .match-escudos .vs-badge {
   font-family: var(--ff-display);
   font-weight: 800;
   color: #E6007E;
-  font-size: 0.9rem;
+  font-size: 1.1rem;
   letter-spacing: 0.05em;
-  padding: 2px 8px;
-  background: rgba(230,0,126,0.12);
-  border-radius: 6px;
-  border: 1px solid rgba(230,0,126,0.3);
+  padding: 4px 12px;
+  background: rgba(230,0,126,0.15);
+  border-radius: 8px;
+  border: 1.5px solid rgba(230,0,126,0.4);
 }
 
 .match-hora-badge {
@@ -456,12 +493,8 @@ p { max-width: 65ch; }
 .match-result-label.win { color: var(--green); }
 .match-result-label.draw { color: var(--amber); }
 .match-result-label.loss { color: var(--red); }
-.match-rfaf {
-  text-align: center; margin-top: 6px; font-size: 0.75rem;
-}
-.match-rfaf a {
-  color: var(--rosa); text-decoration: underline;
-}
+.match-rfaf { text-align: center; margin-top: 8px; font-size: 0.82rem; }
+.match-rfaf a { color: #ffffff !important; font-weight: 700; text-decoration: none; }
 
 /* Noticias interactivas */
 .btn-toggle-cronica {
@@ -701,27 +734,42 @@ p { max-width: 65ch; }
 .clasif-cta {
   flex-shrink: 0;
   display: inline-flex; align-items: center; gap: 6px;
-  font-size: 0.8rem; font-weight: 600;
-  color: var(--rosa); text-decoration: none;
-  border: 1px solid var(--border-2); border-radius: 100px;
-  padding: 8px 14px;
+  font-size: 0.82rem; font-weight: 700;
+  color: #ffffff !important; text-decoration: none;
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.3); border-radius: 100px;
+  padding: 8px 16px;
   transition: all var(--dur-fast) ease;
 }
-.clasif-cta:hover { background: var(--rosa); color: #fff; border-color: var(--rosa); }
+.clasif-cta:hover { background: #ffffff; color: #151824 !important; border-color: #ffffff; }
 .clasif-cta svg { width: 14px; height: 14px; }
 
 .match-rfaf {
-  margin-top: 0.5rem;
-  font-size: 0.75rem;
+  margin-top: 0.75rem;
+  text-align: center;
 }
 .match-rfaf a {
-  color: var(--ink-3);
+  color: #ffffff !important;
+  font-weight: 700;
+  font-size: 0.82rem;
   text-decoration: none;
-  border-bottom: 1px solid var(--border-2);
-  padding-bottom: 1px;
-  transition: color var(--dur-fast) ease, border-color var(--dur-fast) ease;
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 100px;
+  padding: 6px 16px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  transition: all var(--dur-fast) ease;
 }
-.match-rfaf a:hover { color: var(--rosa); border-color: var(--rosa); }
+.match-rfaf a:hover {
+  background: #ffffff;
+  color: #151824 !important;
+  border-color: #ffffff;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+}
 
 .team-federados {
   margin: 0.5rem 0 0.75rem;
@@ -730,8 +778,8 @@ p { max-width: 65ch; }
   line-height: 1.6;
 }
 .team-federados span { color: var(--ink-3); }
-.team-federados a { color: var(--rosa); text-decoration: none; border-bottom: 1px solid transparent; }
-.team-federados a:hover { border-color: var(--rosa); }
+.team-federados a { color: #ffffff !important; text-decoration: underline; text-underline-offset: 3px; font-weight: 600; }
+.team-federados a:hover { color: #ff2a9d !important; }
 
 .cat-card .cat-age {
   font-size: var(--fs-xs); color: var(--ink-3);
@@ -1116,18 +1164,18 @@ footer a:hover { color: var(--rosa); }
 .footer-admin svg { width: 14px; height: 14px; }
 
 /* ═══════════════════════════════════════════════════════════
-   TIENDA — MERCHANDISING
+   EQUIPACIÓN Y COMPLEMENTOS — TIENDA
    ═══════════════════════════════════════════════════════════ */
 .shop-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: var(--gap);
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
 }
-@media (max-width: 640px) {
-  .shop-grid { grid-template-columns: repeat(2, 1fr); }
+@media (max-width: 960px) {
+  .shop-grid { grid-template-columns: repeat(2, 1fr); gap: 1.25rem; }
 }
-@media (min-width: 641px) and (max-width: 860px) {
-  .shop-grid { grid-template-columns: repeat(3, 1fr); }
+@media (max-width: 580px) {
+  .shop-grid { grid-template-columns: 1fr; gap: 1.25rem; }
 }
 
 .shop-card {
@@ -1136,87 +1184,86 @@ footer a:hover { color: var(--rosa); }
   border-radius: var(--radius-lg);
   overflow: hidden;
   display: flex; flex-direction: column;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
   transition: border-color var(--dur-fast) ease,
               transform var(--dur-fast) var(--ease-spring),
               box-shadow var(--dur-fast) ease;
 }
 .shop-card:hover {
   border-color: var(--rosa);
-  transform: translateY(-3px);
-  box-shadow: 0 14px 40px rgba(194,38,95,.14);
-}
-
-.shop-card-hero { grid-column: span 2; }
-@media (min-width: 860px) {
-  .shop-card-hero { flex-direction: row; }
-  .shop-card-hero .shop-media { aspect-ratio: auto; height: 100%; min-height: 220px; }
-  .shop-card-hero .shop-body { flex: 1 1 45%; padding: clamp(1.2rem, 2.5vw, 1.75rem); }
+  transform: translateY(-4px);
+  box-shadow: 0 12px 32px rgba(230, 0, 126, 0.22);
 }
 
 .shop-media {
   position: relative; overflow: hidden;
-  aspect-ratio: 1/1; background: var(--bg-3);
+  height: 290px;
+  background: #10131d;
+  display: flex; align-items: center; justify-content: center;
+  border-bottom: 1px solid var(--border);
 }
 .shop-media img {
-  width: 100%; height: 100%; object-fit: cover;
+  width: 100%; height: 100%; object-fit: contain;
+  padding: 12px;
   transition: transform var(--dur-med) var(--ease-out);
 }
-.shop-card:hover .shop-media img { transform: scale(1.04); }
+.shop-card:hover .shop-media img { transform: scale(1.05); }
 
 .shop-badge {
   position: absolute; top: 12px; left: 12px; z-index: 2;
-  background: rgba(21, 24, 36, 0.85); color: var(--rosa);
-  border: 1px solid rgba(230, 0, 126, 0.4); border-radius: 100px;
-  padding: 4px 12px; font-size: var(--fs-xs); font-weight: 700;
+  background: rgba(21, 24, 36, 0.92); color: #ffffff;
+  border: 1px solid rgba(230, 0, 126, 0.5); border-radius: 100px;
+  padding: 5px 12px; font-size: var(--fs-xs); font-weight: 700;
   letter-spacing: 0.06em; text-transform: uppercase;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.4);
 }
 
 .shop-body {
-  padding: 1rem 1.1rem 1.2rem;
-  display: flex; flex-direction: column; gap: 4px; flex: 1;
+  padding: 1.25rem 1.35rem 1.4rem;
+  display: flex; flex-direction: column; gap: 6px; flex: 1;
 }
 .shop-tag {
-  font-size: var(--fs-xs); color: var(--ink-3); font-weight: 600;
+  font-size: var(--fs-xs); color: var(--rosa); font-weight: 700;
   letter-spacing: 0.06em; text-transform: uppercase;
 }
 .shop-name {
-  font-family: var(--ff-display); font-size: 1.05rem; line-height: 1.15;
+  font-family: var(--ff-display); font-size: 1.15rem; line-height: 1.25; color: #ffffff;
 }
 .shop-desc {
-  font-size: var(--fs-small); color: var(--ink-2); line-height: 1.5;
+  font-size: 0.875rem; color: var(--ink-2); line-height: 1.55;
 }
 .shop-price {
-  font-weight: 800; color: var(--rosa); font-size: 1.1rem; margin-top: 4px;
+  font-weight: 800; color: #ffffff; font-size: 1.4rem; margin-top: 6px;
+  font-family: var(--ff-display);
 }
-.shop-foot { margin-top: auto; padding-top: 12px; }
+.shop-foot { margin-top: auto; padding-top: 14px; }
 
 .btn-wa {
   display: inline-flex; align-items: center; gap: 8px; justify-content: center;
-  padding: 11px 16px; border-radius: 100px; border: none; cursor: pointer;
-  background: var(--rosa); color: #fff;
-  font-family: var(--ff-body); font-weight: 600; font-size: 0.875rem;
+  width: 100%;
+  padding: 12px 18px; border-radius: 100px; border: none; cursor: pointer;
+  background: #25D366 !important; color: #ffffff !important;
+  font-family: var(--ff-body); font-weight: 700; font-size: 0.9rem;
   text-decoration: none;
-  transition: background var(--dur-fast) ease, transform var(--dur-fast) ease;
+  box-shadow: 0 4px 14px rgba(37, 211, 102, 0.35);
+  transition: background var(--dur-fast) ease, transform var(--dur-fast) ease, box-shadow var(--dur-fast) ease;
 }
-.btn-wa:hover { background: var(--rosa-h); color: #fff; }
+.btn-wa:hover {
+  background: #1da851 !important; color: #ffffff !important;
+  box-shadow: 0 6px 20px rgba(37, 211, 102, 0.5);
+  transform: translateY(-2px);
+}
 .btn-wa:active { transform: scale(.97); }
-.btn-wa svg { width: 16px; height: 16px; flex-shrink: 0; }
+.btn-wa svg { width: 18px; height: 18px; flex-shrink: 0; fill: currentColor; }
 
-.tallas {
-  display: flex; gap: 6px; flex-wrap: wrap; margin-top: 8px;
+.shop-note {
+  border: 1px dashed rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.03);
 }
-.talla {
-  min-width: 34px; padding: 6px 0; text-align: center;
-  border: 1px solid var(--border-2); border-radius: 8px;
-  font-size: var(--fs-xs); font-weight: 700; color: var(--ink-2);
-  cursor: pointer; background: transparent;
-  transition: all var(--dur-fast) ease;
+.shop-note:hover {
+  border-color: var(--rosa);
+  box-shadow: 0 8px 24px rgba(230, 0, 126, 0.15);
 }
-.talla:hover { border-color: var(--rosa); color: var(--ink); }
-.talla.sel { background: var(--rosa); border-color: var(--rosa); color: #fff; }
-
-.shop-note { border-style: dashed; background: transparent; }
-.shop-note:hover { border-color: var(--rosa); transform: none; box-shadow: none; }
 
 /* ═══════════════════════════════════════════════════════════
    PATROCINIOS — PAQUETES
@@ -1611,87 +1658,129 @@ footer a:hover { color: var(--rosa); }
 </section>
 
 <!-- ═══════════════════════════════════════════════════════════
-     TIENDA OFICIAL
+     EQUIPACIÓN Y COMPLEMENTOS (TIENDA OFICIAL)
      ═══════════════════════════════════════════════════════════ -->
 <section id="tienda" class="section section-alt">
   <div class="wrap">
     <div class="section-head reveal">
-      <span class="kicker">Tienda oficial</span>
+      <span class="kicker">Equipación oficial</span>
       <h2>EQUIPACIÓN Y COMPLEMENTOS</h2>
-      <p>Llévate la equipación oficial del club. Pedidos por WhatsApp con envío o recogida en el campo.</p>
+      <p>Indumentaria y material oficial de la A.D. Icovesa. Haz tu pedido directamente por WhatsApp indicando el artículo y tu talla.</p>
     </div>
     <div class="shop-grid">
 
-      <!-- Camiseta oficial (destacada) -->
-      <div class="shop-card shop-card-hero reveal">
+      <!-- 1. Chándal (30 €) -->
+      <div class="shop-card reveal">
         <div class="shop-media">
-          <span class="shop-badge">1ª Equipación</span>
-          <img src="img/tienda-camiseta.jpg" alt="Camiseta oficial ADI C.F. 2026-2027">
+          <span class="shop-badge">Oficial RFAF</span>
+          <img src="img/equipaje/chandal.jpeg" alt="Chándal oficial ADI C.F.">
         </div>
         <div class="shop-body">
-          <div class="shop-tag">Rosa / Negro</div>
-          <div class="shop-name">Camiseta Oficial 2026-2027</div>
-          <div class="shop-desc">Primera equipación del club. Cuello redondo y tejido transpirable con detalles en rosa.</div>
-          <div class="shop-price">25 €</div>
-          <div class="tallas">
-            <button class="talla" data-talla="XS">XS</button>
-            <button class="talla" data-talla="S">S</button>
-            <button class="talla sel" data-talla="M">M</button>
-            <button class="talla" data-talla="L">L</button>
-            <button class="talla" data-talla="XL">XL</button>
+          <div class="shop-tag">Chándal completo</div>
+          <h3 class="shop-name">Chándal Oficial ADI C.F.</h3>
+          <div class="shop-desc">Conjunto oficial de chaqueta con cremallera y pantalón técnico en negro y rosa flúor. Escudo bordado de la A.D. Icovesa.</div>
+          <div class="shop-price">30 €</div>
+          <div class="shop-foot">
+            <a class="btn-wa shop-wa" data-compra="Chándal Oficial ADI C.F. (30 €)">
+              <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+              Pedir por WhatsApp
+            </a>
           </div>
-          <div class="shop-foot"><a class="btn-wa shop-wa" data-compra="Camiseta Oficial 2026-2027"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>Pedir por WhatsApp</a></div>
         </div>
       </div>
 
-      <!-- Sudadera -->
-      <div class="shop-card bento-span-1 reveal reveal-delay-1">
+      <!-- 2. Sudadera (21 €) -->
+      <div class="shop-card reveal reveal-delay-1">
         <div class="shop-media">
-          <img src="img/tienda-sudadera.jpg" alt="Sudadera ADI C.F.">
+          <span class="shop-badge">Técnica</span>
+          <img src="img/equipaje/sudadera.jpeg" alt="Sudadera oficial ADI C.F.">
         </div>
         <div class="shop-body">
           <div class="shop-tag">Entrenamiento</div>
-          <div class="shop-name">Sudadera ADI C.F.</div>
-          <div class="shop-desc">Sudadera con capucha, cordones rosa y bolsillo canguro con el escudo del club.</div>
-          <div class="shop-price">30 €</div>
-          <div class="shop-foot"><a class="btn-wa shop-wa" data-compra="Sudadera ADI C.F."><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>Pedir por WhatsApp</a></div>
+          <h3 class="shop-name">Sudadera Oficial ADI C.F.</h3>
+          <div class="shop-desc">Sudadera técnica oficial Luanvi con cremallera al cuello, trama geométrica en rosa flúor y escudo oficial del club.</div>
+          <div class="shop-price">21 €</div>
+          <div class="shop-foot">
+            <a class="btn-wa shop-wa" data-compra="Sudadera Oficial ADI C.F. (21 €)">
+              <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+              Pedir por WhatsApp
+            </a>
+          </div>
         </div>
       </div>
 
-      <!-- Botella térmica -->
-      <div class="shop-card bento-span-1 reveal reveal-delay-2">
+      <!-- 3. Equipación de partido (25 €) -->
+      <div class="shop-card reveal reveal-delay-2">
         <div class="shop-media">
-          <img src="img/tienda-botella.jpg" alt="Botella térmica ADI C.F.">
+          <span class="shop-badge">1ª Equipación</span>
+          <img src="img/equipaje/equipacion-partido.jpeg" alt="Equipación oficial de partido ADI C.F.">
         </div>
         <div class="shop-body">
-          <div class="shop-tag">Complementos</div>
-          <div class="shop-name">Botella Térmica 500 ml</div>
-          <div class="shop-desc">Botella térmica de acero inoxidable con la etiqueta oficial del club.</div>
-          <div class="shop-price">12 €</div>
-          <div class="shop-foot"><a class="btn-wa shop-wa" data-compra="Botella Térmica ADI C.F. 500 ml"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>Pedir por WhatsApp</a></div>
+          <div class="shop-tag">Competición oficial</div>
+          <h3 class="shop-name">Equipación Oficial de Partido</h3>
+          <div class="shop-desc">Camiseta oficial de juego en rosa flúor con escudo bordado de la A.D. Icovesa y logotipo Luanvi transpirable.</div>
+          <div class="shop-price">25 €</div>
+          <div class="shop-foot">
+            <a class="btn-wa shop-wa" data-compra="Equipación Oficial de Partido (25 €)">
+              <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+              Pedir por WhatsApp
+            </a>
+          </div>
         </div>
       </div>
 
-      <!-- Bufanda / accesorios -->
-      <div class="shop-card bento-span-2 reveal reveal-delay-3">
+      <!-- 4. Bermuda y Polo de paseo (27 €) -->
+      <div class="shop-card reveal reveal-delay-3">
         <div class="shop-media">
-          <img src="img/tienda-bufanda.jpg" alt="Bufanda y accesorios ADI C.F.">
+          <span class="shop-badge">Pack Paseo</span>
+          <img src="img/equipaje/bermuda-polo.jpeg" alt="Bermuda y polo de paseo ADI C.F.">
         </div>
         <div class="shop-body">
-          <div class="shop-tag">Accesorios</div>
-          <div class="shop-name">Bufanda y Accesorios Oficiales</div>
-          <div class="shop-desc">Bufanda diagonal con rayas rosa y negra, llaveros, calcetines y más para completar tu equipación.</div>
-          <div class="shop-price">desde 8 €</div>
-          <div class="shop-foot"><a class="btn-wa shop-wa" data-compra="Bufanda y accesorios oficiales ADI C.F."><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>Pedir por WhatsApp</a></div>
+          <div class="shop-tag">Paseo y concentración</div>
+          <h3 class="shop-name">Bermuda y Polo de Paseo</h3>
+          <div class="shop-desc">Conjunto oficial de polo en rosa flúor con cuello camisero y escudo bordado, junto con bermuda negra técnica Luanvi.</div>
+          <div class="shop-price">27 €</div>
+          <div class="shop-foot">
+            <a class="btn-wa shop-wa" data-compra="Bermuda y Polo de Paseo (27 €)">
+              <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+              Pedir por WhatsApp
+            </a>
+          </div>
         </div>
       </div>
 
-      <!-- Info / encargos -->
-      <div class="shop-card shop-note bento-span-2 reveal reveal-delay-4">
-        <div class="shop-body" style="justify-content:center; padding:2rem;">
-          <div class="shop-name" style="margin-bottom:0.5rem;">¿Buscas otra talla o equipación?</div>
-          <div class="shop-desc">Si no encuentras lo que buscas o prefieres la segunda equipación, escríbenos y lo encargamos para ti.</div>
-          <div class="shop-foot" style="margin-top:1rem;"><a class="btn-wa shop-wa" data-compra="Consulta sobre productos de la tienda"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>Consultar por WhatsApp</a></div>
+      <!-- 5. Bolso Rin (17 €) -->
+      <div class="shop-card reveal reveal-delay-4">
+        <div class="shop-media">
+          <span class="shop-badge">Equipaje Oficial</span>
+          <img src="img/equipaje/bolso-rin.jpeg" alt="Bolso mochila Rin con zapatillero ADI C.F.">
+        </div>
+        <div class="shop-body">
+          <div class="shop-tag">Accesorios y mochila</div>
+          <h3 class="shop-name">Bolso Rin con Zapatillero</h3>
+          <div class="shop-desc">Mochila deportiva oficial Luanvi modelo Rin, con compartimento inferior rígido para botas y zapatillas, y escudo del club.</div>
+          <div class="shop-price">17 €</div>
+          <div class="shop-foot">
+            <a class="btn-wa shop-wa" data-compra="Bolso Rin con Zapatillero (17 €)">
+              <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+              Pedir por WhatsApp
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- 6. Información / Tallas especiales -->
+      <div class="shop-card shop-note reveal reveal-delay-5">
+        <div class="shop-body" style="justify-content:center; text-align:center; padding:2rem 1.5rem;">
+          <div class="shop-tag" style="margin-bottom:0.5rem;">Atención al socio</div>
+          <h3 class="shop-name" style="margin-bottom:0.75rem;">¿Dudas con la talla o equipación?</h3>
+          <div class="shop-desc">Atención directa para familias, jugadores y aficionados. Si necesitas tallas especiales, ropa de portero o pedidos colectivos, escríbenos directamente.</div>
+          <div class="shop-foot" style="margin-top:1.5rem;">
+            <a class="btn-wa shop-wa" data-compra="Consulta general sobre equipación y complementos">
+              <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+              Consultar por WhatsApp
+            </a>
+          </div>
         </div>
       </div>
 
@@ -1840,7 +1929,7 @@ footer a:hover { color: var(--rosa); }
       </div>
       <h3 class="canal-wa-title">Canal Oficial de Avisos ADI CF</h3>
       <p class="canal-wa-desc">Entérate al instante de horarios de partidos, convocatorias, fotos del fin de semana y avisos de última hora. Canal gratuito y sin saturación de mensajes.</p>
-      <a class="btn-wa" href="https://wa.me/34680448182?text=Hola%20ADI%20CF%2C%20me%20gustar%C3%ADa%20unirme%20al%20canal%20oficial%20de%20avisos%20de%20la%20cantera." target="_blank" rel="noopener">
+      <a class="btn-wa" href="https://wa.me/34625514859?text=Hola%20ADI%20CF%2C%20me%20gustar%C3%ADa%20unirme%20al%20canal%20oficial%20de%20avisos%20de%20la%20cantera." target="_blank" rel="noopener">
         <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
         Unirme al canal de avisos
       </a>
@@ -2429,7 +2518,7 @@ footer a:hover { color: var(--rosa); }
 <script>
 (function(){
   /* Cambia aquí el número de WhatsApp (código de país + número, sin + ni espacios) */
-  const TELEFONO_WHATSAPP = '34680448182';
+  const TELEFONO_WHATSAPP = '34625514859';
   window.TELEFONO_WHATSAPP = TELEFONO_WHATSAPP;
 
   var btn = document.getElementById('waButton');
